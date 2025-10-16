@@ -1,4 +1,4 @@
-package com.example.test05.ui.theme
+package com.example.tencentmeeting.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.example.test05
+package com.example.tencentmeeting
 
 import org.junit.Test
 

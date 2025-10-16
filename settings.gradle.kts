@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "test05"
+rootProject.name = "TencentMeeting"
 include(":app")

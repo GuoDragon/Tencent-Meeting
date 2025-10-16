@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(move:*)",
+      "Bash(./gradlew:*)",
+      "Bash(cmd.exe /c gradlew.bat clean)",
+      "Bash(cmd.exe:*)",
+      "Read(//c//**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
