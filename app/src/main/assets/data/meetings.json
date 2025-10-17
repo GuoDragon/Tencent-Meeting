@@ -1,0 +1,53 @@
+[
+  {
+    "meetingId": "meeting001",
+    "topic": "项目启动会议",
+    "password": "123456",
+    "hostId": "user001",
+    "startTime": 1697500800000,
+    "endTime": 1697504400000,
+    "status": "ENDED",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": false
+    }
+  },
+  {
+    "meetingId": "meeting002",
+    "topic": "技术方案讨论",
+    "password": null,
+    "hostId": "user002",
+    "startTime": 1697587200000,
+    "endTime": null,
+    "status": "ONGOING",
+    "meetingType": "INSTANT",
+    "participantIds": ["user002", "user003", "user004"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": false,
+      "enableWaitingRoom": true
+    }
+  },
+  {
+    "meetingId": "meeting003",
+    "topic": "周会汇报",
+    "password": "888888",
+    "hostId": "user001",
+    "startTime": 1697673600000,
+    "endTime": null,
+    "status": "UPCOMING",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003", "user004", "user005"],
+    "settings": {
+      "allowParticipantUnmute": false,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": true
+    }
+  }
+]

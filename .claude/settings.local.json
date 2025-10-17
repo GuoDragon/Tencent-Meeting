@@ -5,7 +5,8 @@
       "Bash(./gradlew:*)",
       "Bash(cmd.exe /c gradlew.bat clean)",
       "Bash(cmd.exe:*)",
-      "Read(//c//**)"
+      "Read(//c//**)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": []

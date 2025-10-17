@@ -1,0 +1,37 @@
+[
+  {
+    "userId": "user001",
+    "username": "张三",
+    "avatar": "https://example.com/avatars/zhangsan.jpg",
+    "phone": "13800138001",
+    "email": "zhangsan@example.com"
+  },
+  {
+    "userId": "user002",
+    "username": "李四",
+    "avatar": "https://example.com/avatars/lisi.jpg",
+    "phone": "13800138002",
+    "email": "lisi@example.com"
+  },
+  {
+    "userId": "user003",
+    "username": "王五",
+    "avatar": "https://example.com/avatars/wangwu.jpg",
+    "phone": "13800138003",
+    "email": "wangwu@example.com"
+  },
+  {
+    "userId": "user004",
+    "username": "赵六",
+    "avatar": "https://example.com/avatars/zhaoliu.jpg",
+    "phone": "13800138004",
+    "email": "zhaoliu@example.com"
+  },
+  {
+    "userId": "user005",
+    "username": "孙七",
+    "avatar": "https://example.com/avatars/sunqi.jpg",
+    "phone": "13800138005",
+    "email": "sunqi@example.com"
+  }
+]
