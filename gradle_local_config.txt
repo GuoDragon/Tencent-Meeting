@@ -1,0 +1,14 @@
+如果要使用本地Gradle文件，请按照以下步骤：
+
+1. 下载gradle-8.5-bin.zip到本地
+2. 修改gradle-wrapper.properties文件中的distributionUrl为：
+   distributionUrl=file:///D:/path/to/gradle-8.5-bin.zip
+
+注意：
+- 使用三个斜杠 file:///
+- 路径使用正斜杠
+- 确保路径正确
+
+示例：
+如果文件在 D:\downloads\gradle-8.5-bin.zip
+则设置为：distributionUrl=file:///D:/downloads/gradle-8.5-bin.zip

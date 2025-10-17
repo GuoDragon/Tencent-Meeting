@@ -1,2 +1,91 @@
 # Tencent-Meeting
 腾讯会议模拟
+
+## 项目介绍
+这是一个腾讯会议App的模拟版本，采用Android Jetpack Compose技术栈开发。项目遵循MVP架构模式，提供了腾讯会议的核心功能界面。
+
+## 已实现功能
+### HomePage（会议首页）
+- 功能按钮区域：
+  - 加入会议
+  - 快速会议  
+  - 预定会议
+- 会议列表：显示进行中和待开始的会议
+- 底部导航栏：会议、通讯录、我的三个Tab
+
+### MePage（我的页面）
+- 用户信息卡片：显示头像、昵称、手机号、邮箱
+- 功能选项：个人信息、会议设置、关于
+- 历史会议列表：显示已结束的会议记录
+
+## 技术架构
+- **架构模式**: MVP (Model-View-Presenter)
+- **UI框架**: Jetpack Compose + Material 3
+- **数据存储**: JSON文件存储在assets/data目录
+- **数据解析**: Gson
+- **状态管理**: Compose State
+- **响应式设计**: 动态计算屏幕尺寸，适配不同设备
+
+## 项目结构
+```
+app/src/main/java/com/example/tencentmeeting/
+├── MainActivity.kt                 # 主Activity，包含底部导航
+├── model/                         # 数据模型
+│   ├── User.kt
+│   ├── Meeting.kt
+│   ├── MeetingParticipant.kt
+│   ├── Message.kt
+│   └── ...
+├── data/                          # 数据层
+│   └── DataRepository.kt
+├── contract/                      # MVP接口定义
+│   ├── HomeContract.kt
+│   └── MeContract.kt
+├── presenter/                     # 业务逻辑层
+│   ├── HomePresenter.kt
+│   └── MePresenter.kt
+├── view/                          # UI层
+│   ├── HomePage.kt
+│   └── MePage.kt
+└── ui/theme/                      # 主题样式
+    ├── Color.kt
+    ├── Theme.kt
+    └── Type.kt
+```
+
+## 数据文件
+项目使用JSON文件模拟数据，存储在`app/src/main/assets/data/`目录：
+- `users.json` - 用户信息
+- `meetings.json` - 会议信息
+- `meeting_participants.json` - 参会人员状态
+- `messages.json` - 聊天消息
+- `hand_raise_records.json` - 举手记录
+
+## 运行说明
+1. 使用Android Studio打开项目
+2. 等待Gradle同步完成
+3. 连接Android设备或启动模拟器
+4. 点击运行按钮
+
+## 开发进度
+- [x] 项目架构搭建
+- [x] 数据模型定义
+- [x] HomePage UI实现（会议功能）
+- [x] MePage UI实现（用户信息和历史会议）
+- [x] 底部导航栏
+- [x] MVP架构完善
+- [ ] 通讯录页面
+- [ ] 各功能页面跳转
+- [ ] 页面间数据传递
+
+## 界面设计说明
+- **会议页面**：专注于会议功能，显示进行中和待开始的会议
+- **我的页面**：展示用户信息和历史会议记录
+- **职责分离**：不同类型的信息分布在对应的页面中，提升用户体验
+- **界面布局**：主要内容区域向下偏移屏幕高度的10%，为状态栏和系统UI预留空间
+
+## 注意事项
+- 项目仅供学习和演示使用
+- 所有数据为本地模拟数据，不涉及真实网络请求
+- UI设计参考腾讯会议App，但不完全相同
+- 页面布局经过优化，符合移动端使用习惯

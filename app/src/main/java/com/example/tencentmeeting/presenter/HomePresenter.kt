@@ -1,0 +1,65 @@
+package com.example.tencentmeeting.presenter
+
+import com.example.tencentmeeting.contract.HomeContract
+import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.MeetingStatus
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
+class HomePresenter(
+    private val dataRepository: DataRepository
+) : HomeContract.Presenter {
+    
+    private var view: HomeContract.View? = null
+    private val presenterScope = CoroutineScope(Dispatchers.Main + Job())
+    
+    override fun attachView(view: HomeContract.View) {
+        this.view = view
+    }
+    
+    override fun detachView() {
+        this.view = null
+    }
+    
+    
+    override fun loadMeetings() {
+        presenterScope.launch {
+            try {
+                val meetings = withContext(Dispatchers.IO) {
+                    dataRepository.getMeetings()
+                }
+                
+                val activeMeetings = meetings.filter { 
+                    it.status == MeetingStatus.ONGOING || it.status == MeetingStatus.UPCOMING 
+                }.take(5)
+                
+                if (activeMeetings.isNotEmpty()) {
+                    view?.showMeetings(activeMeetings)
+                } else {
+                    view?.showEmptyMeetings()
+                }
+            } catch (e: Exception) {
+                view?.showError("加载会议信息失败: ${e.message}")
+            }
+        }
+    }
+    
+    override fun onJoinMeetingClicked() {
+        view?.navigateToJoinMeeting()
+    }
+    
+    override fun onQuickMeetingClicked() {
+        view?.navigateToQuickMeeting()
+    }
+    
+    override fun onScheduledMeetingClicked() {
+        view?.navigateToScheduledMeeting()
+    }
+    
+    override fun onDestroy() {
+        detachView()
+    }
+}
