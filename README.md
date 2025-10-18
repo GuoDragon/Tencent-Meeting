@@ -18,6 +18,12 @@
 - 功能选项：个人信息、会议设置、关于
 - 历史会议列表：显示已结束的会议记录
 
+### ContactPage（通讯录页面）
+- 顶部标题栏：显示"通讯录"标题和添加好友按钮
+- 搜索功能：支持通过姓名和手机号搜索联系人
+- 联系人列表：显示所有联系人的头像和姓名
+- 邀请功能：支持邀请联系人参加会议
+
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
 - **UI框架**: Jetpack Compose + Material 3
@@ -40,13 +46,16 @@ app/src/main/java/com/example/tencentmeeting/
 │   └── DataRepository.kt
 ├── contract/                      # MVP接口定义
 │   ├── HomeContract.kt
-│   └── MeContract.kt
+│   ├── MeContract.kt
+│   └── ContactContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
-│   └── MePresenter.kt
+│   ├── MePresenter.kt
+│   └── ContactPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
-│   └── MePage.kt
+│   ├── MePage.kt
+│   └── ContactPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -72,14 +81,16 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] 数据模型定义
 - [x] HomePage UI实现（会议功能）
 - [x] MePage UI实现（用户信息和历史会议）
+- [x] ContactPage UI实现（通讯录功能）
 - [x] 底部导航栏
 - [x] MVP架构完善
-- [ ] 通讯录页面
+- [x] 用户信息微调（更新为刘承龙）
 - [ ] 各功能页面跳转
 - [ ] 页面间数据传递
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议
+- **通讯录页面**：提供联系人管理，支持搜索和邀请功能
 - **我的页面**：展示用户信息和历史会议记录
 - **职责分离**：不同类型的信息分布在对应的页面中，提升用户体验
 - **界面布局**：主要内容区域向下偏移屏幕高度的10%，为状态栏和系统UI预留空间

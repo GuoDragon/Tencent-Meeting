@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.tencentmeeting.ui.theme.TencentMeetingTheme
 import com.example.tencentmeeting.view.HomePage
 import com.example.tencentmeeting.view.MePage
+import com.example.tencentmeeting.view.ContactPage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,19 +144,6 @@ fun BottomNavigationBar(
     }
 }
 
-@Composable
-fun ContactPage() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = "通讯录页面",
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Medium
-        )
-    }
-}
 
 
 @Preview(showBackground = true)

@@ -140,7 +140,7 @@ private fun UserInfoCard(user: User?) {
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = user?.username?.firstOrNull()?.toString() ?: "U",
+                        text = "刘",
                         color = Color.White,
                         fontSize = 32.sp,
                         fontWeight = FontWeight.Bold
@@ -154,7 +154,7 @@ private fun UserInfoCard(user: User?) {
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = user?.username ?: "用户",
+                        text = "刘承龙",
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
@@ -165,14 +165,12 @@ private fun UserInfoCard(user: User?) {
                         fontSize = 16.sp,
                         color = Color.Gray
                     )
-                    if (!user?.email.isNullOrEmpty()) {
-                        Spacer(modifier = Modifier.height(2.dp))
-                        Text(
-                            text = user?.email ?: "",
-                            fontSize = 14.sp,
-                            color = Color.Gray
-                        )
-                    }
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = "liuchenglong@example.com",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
                 }
                 
                 // 设置图标
