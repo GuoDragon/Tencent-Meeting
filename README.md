@@ -34,7 +34,7 @@
 - 顶部标题栏：显示"通讯录"标题和添加好友按钮
 - 搜索功能：支持通过姓名和手机号搜索联系人
 - 联系人列表：显示所有联系人的头像和姓名
-- 邀请功能：支持邀请联系人参加会议
+- 点击联系人可跳转到好友详情页
 - 支持跳转到添加联系人页面
 
 ### AddFriendsPage（添加联系人页面）
@@ -44,6 +44,17 @@
 - 复制链接功能：一键复制邀请链接到剪贴板
 - 分享功能：支持分享到微信（模拟功能）
 - 联系人限制提示：显示最多可添加100位联系人的提示
+
+### FriendsDetailsPage（好友详情页面）
+- 上半部分（灰蓝色背景）：
+  - 左上角返回按钮
+  - 大头像显示好友姓名首字母
+  - 好友用户名
+- 下半部分（白色背景）：
+  - 来源信息："通过会议添加"
+  - 联系方式：显示好友电话（如果有）
+  - 邮箱：显示好友邮箱（如果有）
+  - 呼叫按钮：支持一键呼叫好友（模拟功能）
 
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
@@ -70,19 +81,22 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeContract.kt
 │   ├── ContactContract.kt
 │   ├── ScheduledMeetingContract.kt
-│   └── AddFriendsContract.kt
+│   ├── AddFriendsContract.kt
+│   └── FriendsDetailsContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
 │   ├── ContactPresenter.kt
 │   ├── ScheduledMeetingPresenter.kt
-│   └── AddFriendsPresenter.kt
+│   ├── AddFriendsPresenter.kt
+│   └── FriendsDetailsPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
 │   ├── ContactPage.kt
 │   ├── ScheduledMeetingPage.kt
-│   └── AddFriendsPage.kt
+│   ├── AddFriendsPage.kt
+│   └── FriendsDetailsPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -120,6 +134,10 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] AddFriendsPage UI实现（添加联系人页面）
 - [x] 页面导航功能（ContactPage -> AddFriendsPage）
 - [x] 复制链接到剪贴板功能
+- [x] FriendsDetailsPage UI实现（好友详情页面）
+- [x] 页面导航功能（ContactPage -> FriendsDetailsPage）
+- [x] 好友详情信息展示和呼叫功能
+- [x] FriendsDetailsPage UI微调（简化界面，移除三点菜单、统一身份标识和免费版标签）
 - [ ] 其他功能页面跳转（加入会议、快速会议）
 - [ ] 页面间数据传递优化
 

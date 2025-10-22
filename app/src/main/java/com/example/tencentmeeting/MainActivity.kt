@@ -23,6 +23,8 @@ import com.example.tencentmeeting.view.MePage
 import com.example.tencentmeeting.view.ContactPage
 import com.example.tencentmeeting.view.ScheduledMeetingPage
 import com.example.tencentmeeting.view.AddFriendsPage
+import com.example.tencentmeeting.view.FriendsDetailsPage
+import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,8 @@ fun MainScreen() {
     var selectedTab by remember { mutableStateOf(0) }
     var showScheduledMeetingPage by remember { mutableStateOf(false) }
     var showAddFriendsPage by remember { mutableStateOf(false) }
+    var showFriendsDetailsPage by remember { mutableStateOf(false) }
+    var selectedContact by remember { mutableStateOf<User?>(null) }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -52,6 +56,12 @@ fun MainScreen() {
         // 显示添加联系人页面
         AddFriendsPage(
             onNavigateBack = { showAddFriendsPage = false }
+        )
+    } else if (showFriendsDetailsPage && selectedContact != null) {
+        // 显示好友详情页面
+        FriendsDetailsPage(
+            friend = selectedContact!!,
+            onNavigateBack = { showFriendsDetailsPage = false }
         )
     } else {
         // 显示主页面
@@ -73,7 +83,11 @@ fun MainScreen() {
                         onNavigateToScheduledMeeting = { showScheduledMeetingPage = true }
                     )
                     1 -> ContactPage(
-                        onNavigateToAddFriends = { showAddFriendsPage = true }
+                        onNavigateToAddFriends = { showAddFriendsPage = true },
+                        onNavigateToFriendDetails = { contact ->
+                            selectedContact = contact
+                            showFriendsDetailsPage = true
+                        }
                     )
                     2 -> MePage()
                 }

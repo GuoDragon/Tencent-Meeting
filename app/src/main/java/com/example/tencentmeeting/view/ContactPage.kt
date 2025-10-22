@@ -28,7 +28,8 @@ import com.example.tencentmeeting.presenter.ContactPresenter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ContactPage(
-    onNavigateToAddFriends: () -> Unit = {}
+    onNavigateToAddFriends: () -> Unit = {},
+    onNavigateToFriendDetails: (User) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -166,7 +167,7 @@ fun ContactPage(
                         items(contacts) { contact ->
                             ContactItem(
                                 contact = contact,
-                                onInviteClick = { presenter.inviteContact(contact) }
+                                onClick = { onNavigateToFriendDetails(contact) }
                             )
                         }
                     }
@@ -267,13 +268,13 @@ private fun SearchBar(
 @Composable
 private fun ContactItem(
     contact: User,
-    onInviteClick: () -> Unit
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
-            .clickable { onInviteClick() },
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
