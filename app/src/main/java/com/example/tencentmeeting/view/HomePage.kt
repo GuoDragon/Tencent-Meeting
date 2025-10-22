@@ -32,7 +32,8 @@ import com.example.tencentmeeting.presenter.HomePresenter
 @Composable
 fun HomePage(
     onNavigateToScheduledMeeting: () -> Unit = {},
-    onNavigateToJoinMeeting: () -> Unit = {}
+    onNavigateToJoinMeeting: () -> Unit = {},
+    onNavigateToQuickMeeting: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
@@ -76,7 +77,7 @@ fun HomePage(
             }
             
             override fun navigateToQuickMeeting() {
-                // TODO: 实现页面跳转
+                onNavigateToQuickMeeting()
             }
             
             override fun navigateToScheduledMeeting() {

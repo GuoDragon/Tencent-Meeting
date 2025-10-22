@@ -25,6 +25,7 @@ import com.example.tencentmeeting.view.ScheduledMeetingPage
 import com.example.tencentmeeting.view.AddFriendsPage
 import com.example.tencentmeeting.view.FriendsDetailsPage
 import com.example.tencentmeeting.view.JoinMeetingPage
+import com.example.tencentmeeting.view.QuickMeetingPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -47,6 +48,7 @@ fun MainScreen() {
     var showAddFriendsPage by remember { mutableStateOf(false) }
     var showFriendsDetailsPage by remember { mutableStateOf(false) }
     var showJoinMeetingPage by remember { mutableStateOf(false) }
+    var showQuickMeetingPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
 
     if (showScheduledMeetingPage) {
@@ -70,6 +72,11 @@ fun MainScreen() {
         JoinMeetingPage(
             onNavigateBack = { showJoinMeetingPage = false }
         )
+    } else if (showQuickMeetingPage) {
+        // 显示快速会议页面
+        QuickMeetingPage(
+            onNavigateBack = { showQuickMeetingPage = false }
+        )
     } else {
         // 显示主页面
         Scaffold(
@@ -88,7 +95,8 @@ fun MainScreen() {
                 when (selectedTab) {
                     0 -> HomePage(
                         onNavigateToScheduledMeeting = { showScheduledMeetingPage = true },
-                        onNavigateToJoinMeeting = { showJoinMeetingPage = true }
+                        onNavigateToJoinMeeting = { showJoinMeetingPage = true },
+                        onNavigateToQuickMeeting = { showQuickMeetingPage = true }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },

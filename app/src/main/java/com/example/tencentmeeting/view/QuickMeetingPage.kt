@@ -5,8 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,34 +15,31 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.tencentmeeting.contract.JoinMeetingContract
+import com.example.tencentmeeting.contract.QuickMeetingContract
 import com.example.tencentmeeting.data.DataRepository
 import com.example.tencentmeeting.model.User
-import com.example.tencentmeeting.presenter.JoinMeetingPresenter
+import com.example.tencentmeeting.presenter.QuickMeetingPresenter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun JoinMeetingPage(
+fun QuickMeetingPage(
     onNavigateBack: () -> Unit
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
-    val presenter = remember { JoinMeetingPresenter(dataRepository) }
+    val presenter = remember { QuickMeetingPresenter(dataRepository) }
 
     var currentUser by remember { mutableStateOf<User?>(null) }
-    var meetingId by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var useNameAlways by remember { mutableStateOf(true) }
-    var micEnabled by remember { mutableStateOf(false) }
-    var speakerEnabled by remember { mutableStateOf(true) }
     var videoEnabled by remember { mutableStateOf(false) }
+    var micEnabled by remember { mutableStateOf(true) }
+    var speakerEnabled by remember { mutableStateOf(true) }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var showSuccessMessage by remember { mutableStateOf(false) }
 
     // MVP View实现
     val view = remember {
-        object : JoinMeetingContract.View {
+        object : QuickMeetingContract.View {
             override fun showUserInfo(user: User) {
                 currentUser = user
             }
@@ -60,7 +56,7 @@ fun JoinMeetingPage(
                 errorMessage = message
             }
 
-            override fun showJoinSuccess(meetingId: String) {
+            override fun showStartMeetingSuccess(meetingId: String) {
                 showSuccessMessage = true
             }
         }
@@ -82,7 +78,7 @@ fun JoinMeetingPage(
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "加入会议",
+                        text = "快速会议",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -90,8 +86,8 @@ fun JoinMeetingPage(
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "返回",
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "退出",
                             tint = Color.Black
                         )
                     }
@@ -128,52 +124,7 @@ fun JoinMeetingPage(
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
-                        // 会议号输入框
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "会议号",
-                                fontSize = 16.sp,
-                                color = Color.Black,
-                                modifier = Modifier.width(80.dp)
-                            )
-                            OutlinedTextField(
-                                value = meetingId,
-                                onValueChange = { meetingId = it },
-                                placeholder = {
-                                    Text(
-                                        text = "请输入会议号",
-                                        color = Color.Gray,
-                                        fontSize = 14.sp
-                                    )
-                                },
-                                trailingIcon = {
-                                    Icon(
-                                        imageVector = Icons.Default.ArrowDropDown,
-                                        contentDescription = null,
-                                        tint = Color.Gray
-                                    )
-                                },
-                                singleLine = true,
-                                colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = Color.Transparent,
-                                    unfocusedBorderColor = Color.Transparent,
-                                    cursorColor = Color(0xFF1976D2)
-                                ),
-                                modifier = Modifier.weight(1f)
-                            )
-                        }
-
-                        Divider(
-                            color = Color(0xFFEEEEEE),
-                            thickness = 1.dp,
-                            modifier = Modifier.padding(vertical = 8.dp)
-                        )
-
-                        // 您的姓名
+                        // 入会姓名
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -182,7 +133,7 @@ fun JoinMeetingPage(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(
-                                text = "您的姓名",
+                                text = "入会姓名",
                                 fontSize = 16.sp,
                                 color = Color.Black
                             )
@@ -199,48 +150,9 @@ fun JoinMeetingPage(
                             modifier = Modifier.padding(vertical = 8.dp)
                         )
 
-                        // 当前设备始终使用此名称入会
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 8.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Text(
-                                text = "当前设备始终使用此名称入会",
-                                fontSize = 14.sp,
-                                color = Color.Black
-                            )
-                            Checkbox(
-                                checked = useNameAlways,
-                                onCheckedChange = { useNameAlways = it },
-                                colors = CheckboxDefaults.colors(
-                                    checkedColor = Color(0xFF1976D2)
-                                )
-                            )
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // 设备设置卡片
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) {
-                        // 开启麦克风
+                        // 麦克风是否开启
                         SwitchSettingItem(
-                            title = "开启麦克风",
+                            title = "麦克风是否开启",
                             checked = micEnabled,
                             onCheckedChange = { micEnabled = it }
                         )
@@ -251,11 +163,11 @@ fun JoinMeetingPage(
                             modifier = Modifier.padding(vertical = 8.dp)
                         )
 
-                        // 开启扬声器
+                        // 摄像头是否开启
                         SwitchSettingItem(
-                            title = "开启扬声器",
-                            checked = speakerEnabled,
-                            onCheckedChange = { speakerEnabled = it }
+                            title = "摄像头是否开启",
+                            checked = videoEnabled,
+                            onCheckedChange = { videoEnabled = it }
                         )
 
                         Divider(
@@ -264,11 +176,11 @@ fun JoinMeetingPage(
                             modifier = Modifier.padding(vertical = 8.dp)
                         )
 
-                        // 开启视频
+                        // 扬声器是否开启
                         SwitchSettingItem(
-                            title = "开启视频",
-                            checked = videoEnabled,
-                            onCheckedChange = { videoEnabled = it }
+                            title = "扬声器是否开启",
+                            checked = speakerEnabled,
+                            onCheckedChange = { speakerEnabled = it }
                         )
                     }
                 }
@@ -276,7 +188,7 @@ fun JoinMeetingPage(
                 Spacer(modifier = Modifier.height(32.dp))
             }
 
-            // 底部加入会议按钮
+            // 底部开始会议按钮
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -285,27 +197,22 @@ fun JoinMeetingPage(
             ) {
                 Button(
                     onClick = {
-                        if (meetingId.isNotEmpty()) {
-                            presenter.joinMeeting(
-                                meetingId = meetingId,
-                                password = password.ifEmpty { null },
-                                micEnabled = micEnabled,
-                                speakerEnabled = speakerEnabled,
-                                videoEnabled = videoEnabled
-                            )
-                        }
+                        presenter.startQuickMeeting(
+                            videoEnabled = videoEnabled,
+                            usePersonalMeetingId = false,
+                            micEnabled = micEnabled,
+                            speakerEnabled = speakerEnabled
+                        )
                     },
-                    enabled = meetingId.isNotEmpty(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(48.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (meetingId.isNotEmpty()) Color(0xFF1976D2) else Color(0xFFB0BEC5),
-                        disabledContainerColor = Color(0xFFB0BEC5)
+                        containerColor = Color(0xFF1976D2)
                     )
                 ) {
                     Text(
-                        text = "加入会议",
+                        text = "开始会议",
                         fontSize = 16.sp,
                         color = Color.White,
                         fontWeight = FontWeight.Medium
@@ -313,7 +220,7 @@ fun JoinMeetingPage(
                 }
             }
 
-            // 加入成功提示
+            // 开始会议成功提示
             if (showSuccessMessage) {
                 LaunchedEffect(Unit) {
                     kotlinx.coroutines.delay(2000)
@@ -328,7 +235,7 @@ fun JoinMeetingPage(
                         colors = CardDefaults.cardColors(containerColor = Color(0xFF4CAF50))
                     ) {
                         Text(
-                            text = "正在加入会议...",
+                            text = "正在启动会议...",
                             color = Color.White,
                             modifier = Modifier.padding(16.dp)
                         )

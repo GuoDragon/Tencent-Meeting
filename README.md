@@ -71,6 +71,16 @@
   - 会议号有内容时：蓝色且可点击
 - 支持加入会议功能（模拟）
 
+### QuickMeetingPage（快速会议页面）
+- 顶部信息栏：居中显示"快速会议"标题，左侧退出按钮
+- 中间功能区：
+  - 入会姓名：显示用户姓名（刘承龙）
+  - 麦克风是否开启开关（默认开启）
+  - 摄像头是否开启开关（默认关闭）
+  - 扬声器是否开启开关（默认开启）
+- 底部开始会议按钮：蓝色且始终可点击
+- 支持启动快速会议功能（模拟）
+
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
 - **UI框架**: Jetpack Compose + Material 3
@@ -98,7 +108,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── ScheduledMeetingContract.kt
 │   ├── AddFriendsContract.kt
 │   ├── FriendsDetailsContract.kt
-│   └── JoinMeetingContract.kt
+│   ├── JoinMeetingContract.kt
+│   └── QuickMeetingContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -106,7 +117,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── ScheduledMeetingPresenter.kt
 │   ├── AddFriendsPresenter.kt
 │   ├── FriendsDetailsPresenter.kt
-│   └── JoinMeetingPresenter.kt
+│   ├── JoinMeetingPresenter.kt
+│   └── QuickMeetingPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -114,7 +126,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── ScheduledMeetingPage.kt
 │   ├── AddFriendsPage.kt
 │   ├── FriendsDetailsPage.kt
-│   └── JoinMeetingPage.kt
+│   ├── JoinMeetingPage.kt
+│   └── QuickMeetingPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -159,7 +172,10 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] JoinMeetingPage UI实现（加入会议页面）
 - [x] 页面导航功能（HomePage -> JoinMeetingPage）
 - [x] 会议号输入、设备设置和动态按钮状态
-- [ ] 其他功能页面跳转（快速会议）
+- [x] JoinMeetingPage UI微调（入会姓名改为"刘承龙"）
+- [x] QuickMeetingPage UI实现（快速会议页面）
+- [x] 页面导航功能（HomePage -> QuickMeetingPage）
+- [x] 快速会议设备设置和启动会议功能
 - [ ] 页面间数据传递优化
 
 ## 界面设计说明
