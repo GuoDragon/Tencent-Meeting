@@ -56,6 +56,21 @@
   - 邮箱：显示好友邮箱（如果有）
   - 呼叫按钮：支持一键呼叫好友（模拟功能）
 
+### JoinMeetingPage（加入会议页面）
+- 顶部信息栏：居中显示"加入会议"标题，左侧返回按钮
+- 会议信息区：
+  - 会议号输入框（带下拉箭头）
+  - 显示用户姓名（刘承龙）
+  - "当前设备始终使用此名称入会"复选框
+- 设备设置区：
+  - 开启麦克风开关（默认关闭）
+  - 开启扬声器开关（默认开启）
+  - 开启视频开关（默认关闭）
+- 底部加入按钮：
+  - 会议号为空时：灰蓝色且禁用
+  - 会议号有内容时：蓝色且可点击
+- 支持加入会议功能（模拟）
+
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
 - **UI框架**: Jetpack Compose + Material 3
@@ -82,21 +97,24 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── ContactContract.kt
 │   ├── ScheduledMeetingContract.kt
 │   ├── AddFriendsContract.kt
-│   └── FriendsDetailsContract.kt
+│   ├── FriendsDetailsContract.kt
+│   └── JoinMeetingContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
 │   ├── ContactPresenter.kt
 │   ├── ScheduledMeetingPresenter.kt
 │   ├── AddFriendsPresenter.kt
-│   └── FriendsDetailsPresenter.kt
+│   ├── FriendsDetailsPresenter.kt
+│   └── JoinMeetingPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
 │   ├── ContactPage.kt
 │   ├── ScheduledMeetingPage.kt
 │   ├── AddFriendsPage.kt
-│   └── FriendsDetailsPage.kt
+│   ├── FriendsDetailsPage.kt
+│   └── JoinMeetingPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -138,7 +156,10 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] 页面导航功能（ContactPage -> FriendsDetailsPage）
 - [x] 好友详情信息展示和呼叫功能
 - [x] FriendsDetailsPage UI微调（简化界面，移除三点菜单、统一身份标识和免费版标签）
-- [ ] 其他功能页面跳转（加入会议、快速会议）
+- [x] JoinMeetingPage UI实现（加入会议页面）
+- [x] 页面导航功能（HomePage -> JoinMeetingPage）
+- [x] 会议号输入、设备设置和动态按钮状态
+- [ ] 其他功能页面跳转（快速会议）
 - [ ] 页面间数据传递优化
 
 ## 界面设计说明

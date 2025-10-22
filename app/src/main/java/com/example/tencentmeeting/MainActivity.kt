@@ -24,6 +24,7 @@ import com.example.tencentmeeting.view.ContactPage
 import com.example.tencentmeeting.view.ScheduledMeetingPage
 import com.example.tencentmeeting.view.AddFriendsPage
 import com.example.tencentmeeting.view.FriendsDetailsPage
+import com.example.tencentmeeting.view.JoinMeetingPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -45,6 +46,7 @@ fun MainScreen() {
     var showScheduledMeetingPage by remember { mutableStateOf(false) }
     var showAddFriendsPage by remember { mutableStateOf(false) }
     var showFriendsDetailsPage by remember { mutableStateOf(false) }
+    var showJoinMeetingPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
 
     if (showScheduledMeetingPage) {
@@ -63,6 +65,11 @@ fun MainScreen() {
             friend = selectedContact!!,
             onNavigateBack = { showFriendsDetailsPage = false }
         )
+    } else if (showJoinMeetingPage) {
+        // 显示加入会议页面
+        JoinMeetingPage(
+            onNavigateBack = { showJoinMeetingPage = false }
+        )
     } else {
         // 显示主页面
         Scaffold(
@@ -80,7 +87,8 @@ fun MainScreen() {
             ) {
                 when (selectedTab) {
                     0 -> HomePage(
-                        onNavigateToScheduledMeeting = { showScheduledMeetingPage = true }
+                        onNavigateToScheduledMeeting = { showScheduledMeetingPage = true },
+                        onNavigateToJoinMeeting = { showJoinMeetingPage = true }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },
