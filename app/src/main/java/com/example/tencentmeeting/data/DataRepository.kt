@@ -9,6 +9,9 @@ import java.io.IOException
 class DataRepository(private val context: Context) {
     private val gson = Gson()
 
+    // 内存中的会议列表（用于临时保存新创建的会议）
+    private val inMemoryMeetings = mutableListOf<Meeting>()
+
     fun getUsers(): List<User> {
         return try {
             val jsonString = readJsonFromAssets("data/users.json")
@@ -23,10 +26,20 @@ class DataRepository(private val context: Context) {
         return try {
             val jsonString = readJsonFromAssets("data/meetings.json")
             val type = object : TypeToken<List<Meeting>>() {}.type
-            gson.fromJson(jsonString, type)
+            val jsonMeetings: List<Meeting> = gson.fromJson(jsonString, type)
+            // 合并JSON文件中的会议和内存中的会议
+            jsonMeetings + inMemoryMeetings
         } catch (e: Exception) {
-            emptyList()
+            inMemoryMeetings.toList()
         }
+    }
+
+    /**
+     * 保存会议到内存
+     * 注意：这只会保存到内存中，不会写入JSON文件
+     */
+    fun saveMeeting(meeting: Meeting) {
+        inMemoryMeetings.add(meeting)
     }
 
     fun getMeetingParticipants(): List<MeetingParticipant> {

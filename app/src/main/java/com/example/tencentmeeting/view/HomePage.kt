@@ -30,12 +30,14 @@ import com.example.tencentmeeting.model.User
 import com.example.tencentmeeting.presenter.HomePresenter
 
 @Composable
-fun HomePage() {
+fun HomePage(
+    onNavigateToScheduledMeeting: () -> Unit = {}
+) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val topSpacing = screenHeight * 0.1f // 页面高度的十分之一
-    
+
     val dataRepository = DataRepository.getInstance(context)
     val presenter = remember { HomePresenter(dataRepository) }
     
@@ -77,7 +79,7 @@ fun HomePage() {
             }
             
             override fun navigateToScheduledMeeting() {
-                // TODO: 实现页面跳转
+                onNavigateToScheduledMeeting()
             }
         }
     }

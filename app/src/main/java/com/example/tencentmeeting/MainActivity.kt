@@ -21,6 +21,7 @@ import com.example.tencentmeeting.ui.theme.TencentMeetingTheme
 import com.example.tencentmeeting.view.HomePage
 import com.example.tencentmeeting.view.MePage
 import com.example.tencentmeeting.view.ContactPage
+import com.example.tencentmeeting.view.ScheduledMeetingPage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,24 +39,35 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     var selectedTab by remember { mutableStateOf(0) }
-    
-    Scaffold(
-        bottomBar = {
-            BottomNavigationBar(
-                selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it }
-            )
-        }
-    ) { innerPadding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            when (selectedTab) {
-                0 -> HomePage()
-                1 -> ContactPage()
-                2 -> MePage()
+    var showScheduledMeetingPage by remember { mutableStateOf(false) }
+
+    if (showScheduledMeetingPage) {
+        // 显示预定会议页面
+        ScheduledMeetingPage(
+            onNavigateBack = { showScheduledMeetingPage = false }
+        )
+    } else {
+        // 显示主页面
+        Scaffold(
+            bottomBar = {
+                BottomNavigationBar(
+                    selectedTab = selectedTab,
+                    onTabSelected = { selectedTab = it }
+                )
+            }
+        ) { innerPadding ->
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            ) {
+                when (selectedTab) {
+                    0 -> HomePage(
+                        onNavigateToScheduledMeeting = { showScheduledMeetingPage = true }
+                    )
+                    1 -> ContactPage()
+                    2 -> MePage()
+                }
             }
         }
     }

@@ -6,7 +6,12 @@
       "Bash(cmd.exe /c gradlew.bat clean)",
       "Bash(cmd.exe:*)",
       "Read(//c//**)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(dir:*)",
+      "Bash(gradlew.bat build:*)",
+      "Bash(.gradlew.bat build)",
+      "Bash(cmd /c \"gradlew.bat build\")",
+      "Bash(powershell -Command \".\\gradlew.bat compileDebugKotlin 2>&1 | Select-Object -Last 50\")"
     ],
     "deny": [],
     "ask": []

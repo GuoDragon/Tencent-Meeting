@@ -8,10 +8,22 @@
 ### HomePage（会议首页）
 - 功能按钮区域：
   - 加入会议
-  - 快速会议  
+  - 快速会议
   - 预定会议
 - 会议列表：显示进行中和待开始的会议
 - 底部导航栏：会议、通讯录、我的三个Tab
+- 支持跳转到预定会议页面
+
+### ScheduledMeetingPage（预定会议页面）
+- 顶部信息栏：显示居中对齐的"预定会议"标题，左侧取消按钮，右侧完成按钮
+- 会议主题：显示默认会议主题（刘承龙预定的会议）
+- 开始时间：支持选择会议开始的日期和时间
+- 会议时长：支持选择会议时长（15、30、45、60、90、120分钟）
+- 重复频率：支持选择会议重复模式（不重复、每天、每周、每月）
+- 参会人：支持从通讯录中选择多个参会人员
+- 入会密码：支持设置6位数字入会密码
+- 数据验证：验证会议时间、密码格式等
+- 会议保存：将预定的会议保存到内存中
 
 ### MePage（我的页面）
 - 用户信息卡片：显示头像、昵称、手机号、邮箱
@@ -47,15 +59,18 @@ app/src/main/java/com/example/tencentmeeting/
 ├── contract/                      # MVP接口定义
 │   ├── HomeContract.kt
 │   ├── MeContract.kt
-│   └── ContactContract.kt
+│   ├── ContactContract.kt
+│   └── ScheduledMeetingContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
-│   └── ContactPresenter.kt
+│   ├── ContactPresenter.kt
+│   └── ScheduledMeetingPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
-│   └── ContactPage.kt
+│   ├── ContactPage.kt
+│   └── ScheduledMeetingPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -85,8 +100,13 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] 底部导航栏
 - [x] MVP架构完善
 - [x] 用户信息微调（更新为刘承龙）
-- [ ] 各功能页面跳转
-- [ ] 页面间数据传递
+- [x] ScheduledMeetingPage UI实现（预定会议页面）
+- [x] 预定会议功能实现（开始时间、会议时长、重复频率、参会人、入会密码）
+- [x] 页面导航功能（HomePage -> ScheduledMeetingPage）
+- [x] 会议数据保存到内存
+- [x] ScheduledMeetingPage UI微调（标题居中对齐，会议主题改为"刘承龙预定的会议"）
+- [ ] 其他功能页面跳转（加入会议、快速会议）
+- [ ] 页面间数据传递优化
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议
