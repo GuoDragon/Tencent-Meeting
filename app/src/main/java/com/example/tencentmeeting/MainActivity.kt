@@ -22,6 +22,7 @@ import com.example.tencentmeeting.view.HomePage
 import com.example.tencentmeeting.view.MePage
 import com.example.tencentmeeting.view.ContactPage
 import com.example.tencentmeeting.view.ScheduledMeetingPage
+import com.example.tencentmeeting.view.AddFriendsPage
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,11 +41,17 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     var selectedTab by remember { mutableStateOf(0) }
     var showScheduledMeetingPage by remember { mutableStateOf(false) }
+    var showAddFriendsPage by remember { mutableStateOf(false) }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
         ScheduledMeetingPage(
             onNavigateBack = { showScheduledMeetingPage = false }
+        )
+    } else if (showAddFriendsPage) {
+        // 显示添加联系人页面
+        AddFriendsPage(
+            onNavigateBack = { showAddFriendsPage = false }
         )
     } else {
         // 显示主页面
@@ -65,7 +72,9 @@ fun MainScreen() {
                     0 -> HomePage(
                         onNavigateToScheduledMeeting = { showScheduledMeetingPage = true }
                     )
-                    1 -> ContactPage()
+                    1 -> ContactPage(
+                        onNavigateToAddFriends = { showAddFriendsPage = true }
+                    )
                     2 -> MePage()
                 }
             }

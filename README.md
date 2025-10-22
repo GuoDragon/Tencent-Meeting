@@ -35,6 +35,15 @@
 - 搜索功能：支持通过姓名和手机号搜索联系人
 - 联系人列表：显示所有联系人的头像和姓名
 - 邀请功能：支持邀请联系人参加会议
+- 支持跳转到添加联系人页面
+
+### AddFriendsPage（添加联系人页面）
+- 顶部信息栏：居中显示"添加联系人"标题，左侧返回按钮
+- 用户信息展示：显示当前用户头像（刘承龙）和账号类型（免费版）
+- 邀请链接：自动生成的会议邀请链接文本
+- 复制链接功能：一键复制邀请链接到剪贴板
+- 分享功能：支持分享到微信（模拟功能）
+- 联系人限制提示：显示最多可添加100位联系人的提示
 
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
@@ -60,17 +69,20 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── HomeContract.kt
 │   ├── MeContract.kt
 │   ├── ContactContract.kt
-│   └── ScheduledMeetingContract.kt
+│   ├── ScheduledMeetingContract.kt
+│   └── AddFriendsContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
 │   ├── ContactPresenter.kt
-│   └── ScheduledMeetingPresenter.kt
+│   ├── ScheduledMeetingPresenter.kt
+│   └── AddFriendsPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
 │   ├── ContactPage.kt
-│   └── ScheduledMeetingPage.kt
+│   ├── ScheduledMeetingPage.kt
+│   └── AddFriendsPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -105,6 +117,9 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] 页面导航功能（HomePage -> ScheduledMeetingPage）
 - [x] 会议数据保存到内存
 - [x] ScheduledMeetingPage UI微调（标题居中对齐，会议主题改为"刘承龙预定的会议"）
+- [x] AddFriendsPage UI实现（添加联系人页面）
+- [x] 页面导航功能（ContactPage -> AddFriendsPage）
+- [x] 复制链接到剪贴板功能
 - [ ] 其他功能页面跳转（加入会议、快速会议）
 - [ ] 页面间数据传递优化
 

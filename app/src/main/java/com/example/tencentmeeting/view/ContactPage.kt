@@ -27,7 +27,9 @@ import com.example.tencentmeeting.presenter.ContactPresenter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ContactPage() {
+fun ContactPage(
+    onNavigateToAddFriends: () -> Unit = {}
+) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
     val presenter = remember { ContactPresenter(dataRepository) }
@@ -106,7 +108,7 @@ fun ContactPage() {
             },
             actions = {
                 IconButton(
-                    onClick = { }
+                    onClick = onNavigateToAddFriends
                 ) {
                     Icon(
                         imageVector = Icons.Default.PersonAdd,
