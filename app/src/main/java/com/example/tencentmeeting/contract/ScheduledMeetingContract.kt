@@ -9,7 +9,7 @@ interface ScheduledMeetingContract {
         fun showLoading()
         fun hideLoading()
         fun showError(message: String)
-        fun showSuccess(message: String)
+        fun showSuccess(message: String, meetingId: String)
         fun navigateBack()
     }
 

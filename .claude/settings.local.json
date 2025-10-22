@@ -12,7 +12,9 @@
       "Bash(.gradlew.bat build)",
       "Bash(cmd /c \"gradlew.bat build\")",
       "Bash(powershell -Command \".\\gradlew.bat compileDebugKotlin 2>&1 | Select-Object -Last 50\")",
-      "Bash(powershell -Command \".\\gradlew.bat build 2>&1 | Select-Object -Last 50\")"
+      "Bash(powershell -Command \".\\gradlew.bat build 2>&1 | Select-Object -Last 50\")",
+      "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && gradlew.bat build\")",
+      "Bash(powershell -Command:*)"
     ],
     "deny": [],
     "ask": []

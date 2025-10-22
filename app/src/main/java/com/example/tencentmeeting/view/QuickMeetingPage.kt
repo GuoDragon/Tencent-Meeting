@@ -23,7 +23,8 @@ import com.example.tencentmeeting.presenter.QuickMeetingPresenter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun QuickMeetingPage(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToMeetingDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -57,7 +58,7 @@ fun QuickMeetingPage(
             }
 
             override fun showStartMeetingSuccess(meetingId: String) {
-                showSuccessMessage = true
+                onNavigateToMeetingDetails(meetingId)
             }
         }
     }

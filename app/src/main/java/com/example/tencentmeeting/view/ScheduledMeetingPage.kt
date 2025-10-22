@@ -27,7 +27,8 @@ import java.util.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScheduledMeetingPage(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToMeetingDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -69,8 +70,8 @@ fun ScheduledMeetingPage(
                 // 可以使用Snackbar显示错误
             }
 
-            override fun showSuccess(message: String) {
-                // 可以使用Snackbar显示成功
+            override fun showSuccess(message: String, meetingId: String) {
+                onNavigateToMeetingDetails(meetingId)
             }
 
             override fun navigateBack() {

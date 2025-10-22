@@ -24,7 +24,8 @@ import com.example.tencentmeeting.presenter.JoinMeetingPresenter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun JoinMeetingPage(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToMeetingDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -61,7 +62,7 @@ fun JoinMeetingPage(
             }
 
             override fun showJoinSuccess(meetingId: String) {
-                showSuccessMessage = true
+                onNavigateToMeetingDetails(meetingId)
             }
         }
     }

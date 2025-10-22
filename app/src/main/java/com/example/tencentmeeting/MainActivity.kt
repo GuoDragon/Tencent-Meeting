@@ -26,6 +26,7 @@ import com.example.tencentmeeting.view.AddFriendsPage
 import com.example.tencentmeeting.view.FriendsDetailsPage
 import com.example.tencentmeeting.view.JoinMeetingPage
 import com.example.tencentmeeting.view.QuickMeetingPage
+import com.example.tencentmeeting.view.MeetingDetailsPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -49,12 +50,19 @@ fun MainScreen() {
     var showFriendsDetailsPage by remember { mutableStateOf(false) }
     var showJoinMeetingPage by remember { mutableStateOf(false) }
     var showQuickMeetingPage by remember { mutableStateOf(false) }
+    var showMeetingDetailsPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
+    var currentMeetingId by remember { mutableStateOf("") }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
         ScheduledMeetingPage(
-            onNavigateBack = { showScheduledMeetingPage = false }
+            onNavigateBack = { showScheduledMeetingPage = false },
+            onNavigateToMeetingDetails = { meetingId ->
+                currentMeetingId = meetingId
+                showScheduledMeetingPage = false
+                showMeetingDetailsPage = true
+            }
         )
     } else if (showAddFriendsPage) {
         // 显示添加联系人页面
@@ -70,12 +78,28 @@ fun MainScreen() {
     } else if (showJoinMeetingPage) {
         // 显示加入会议页面
         JoinMeetingPage(
-            onNavigateBack = { showJoinMeetingPage = false }
+            onNavigateBack = { showJoinMeetingPage = false },
+            onNavigateToMeetingDetails = { meetingId ->
+                currentMeetingId = meetingId
+                showJoinMeetingPage = false
+                showMeetingDetailsPage = true
+            }
         )
     } else if (showQuickMeetingPage) {
         // 显示快速会议页面
         QuickMeetingPage(
-            onNavigateBack = { showQuickMeetingPage = false }
+            onNavigateBack = { showQuickMeetingPage = false },
+            onNavigateToMeetingDetails = { meetingId ->
+                currentMeetingId = meetingId
+                showQuickMeetingPage = false
+                showMeetingDetailsPage = true
+            }
+        )
+    } else if (showMeetingDetailsPage) {
+        // 显示会议详情页面
+        MeetingDetailsPage(
+            meetingId = currentMeetingId,
+            onNavigateBack = { showMeetingDetailsPage = false }
         )
     } else {
         // 显示主页面

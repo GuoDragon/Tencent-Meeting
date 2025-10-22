@@ -81,6 +81,54 @@
 - 底部开始会议按钮：蓝色且始终可点击
 - 支持启动快速会议功能（模拟）
 
+### MeetingDetailsPage（会议详情页面）
+- 顶部信息栏：
+  - 黑色背景（#1F2227）延伸至屏幕顶部边缘
+  - 顶部padding 40dp适配系统状态栏
+  - 左侧：声音设置按钮
+  - 中间：会议标题和会议时长计时（居中显示）
+  - 右侧：红色"结束"按钮
+- 中间参会人区域：
+  - 显示参会人圆形头像（显示姓名首字母）
+  - 显示参会人姓名（刘承龙）
+  - 麦克风静音时显示红色静音图标
+  - 暂不实现开启摄像头的视频效果
+- 左下角弹幕输入区：
+  - 距底部120dp，位置优化
+  - 聊天图标和表情图标
+  - "说点什么..."提示文字
+- 底部功能区（4个按钮）：
+  - 解除静音/静音：切换麦克风状态
+  - 开启视频/关闭视频：切换摄像头状态
+  - 共享屏幕：绿色图标
+  - 管理成员(1)：点击显示成员管理页面
+- 支持从快速会议、加入会议、预定会议进入
+
+### MembersManagePage（成员管理页面）
+- 弹窗样式：
+  - 白色圆角背景，覆盖在会议页面上方
+  - 半透明黑色背景遮罩
+- 顶部信息栏：
+  - 中间："管理成员"标题
+  - 右侧：关闭按钮
+- 搜索和邀请区：
+  - 搜索框：支持搜索成员
+  - 右侧邀请按钮：邀请新成员入会
+- Tab切换：
+  - "会议中(N)"：蓝色选中状态，显示当前参会人数
+  - "未入会"：灰色未选中状态
+- 成员列表：
+  - 圆形头像（显示姓名首字母）
+  - 成员姓名
+  - 身份标签："(主持人，我)"
+  - 麦克风图标：显示静音/开启状态，受全员静音状态影响
+  - 摄像头图标：显示关闭/开启状态
+- 底部按钮：
+  - "全体静音"：主持人功能，点击后所有成员麦克风图标变为红色静音状态
+  - "解除全体静音"：主持人功能，点击后恢复成员麦克风图标原始状态
+- 全员静音功能：支持主持人一键静音/解除静音所有成员，麦克风图标实时响应状态变化
+- 从会议详情页"管理成员"按钮进入
+
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
 - **UI框架**: Jetpack Compose + Material 3
@@ -109,7 +157,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── AddFriendsContract.kt
 │   ├── FriendsDetailsContract.kt
 │   ├── JoinMeetingContract.kt
-│   └── QuickMeetingContract.kt
+│   ├── QuickMeetingContract.kt
+│   ├── MeetingDetailsContract.kt
+│   └── MembersManageContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -118,7 +168,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── AddFriendsPresenter.kt
 │   ├── FriendsDetailsPresenter.kt
 │   ├── JoinMeetingPresenter.kt
-│   └── QuickMeetingPresenter.kt
+│   ├── QuickMeetingPresenter.kt
+│   ├── MeetingDetailsPresenter.kt
+│   └── MembersManagePresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -127,7 +179,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── AddFriendsPage.kt
 │   ├── FriendsDetailsPage.kt
 │   ├── JoinMeetingPage.kt
-│   └── QuickMeetingPage.kt
+│   ├── QuickMeetingPage.kt
+│   ├── MeetingDetailsPage.kt
+│   └── MembersManagePage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -176,6 +230,16 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] QuickMeetingPage UI实现（快速会议页面）
 - [x] 页面导航功能（HomePage -> QuickMeetingPage）
 - [x] 快速会议设备设置和启动会议功能
+- [x] MeetingDetailsPage UI实现（会议详情页面）
+- [x] 页面导航功能（QuickMeetingPage/JoinMeetingPage/ScheduledMeetingPage -> MeetingDetailsPage）
+- [x] 会议详情显示、参会人列表、设备控制、会议时长计时
+- [x] MeetingDetailsPage UI微调（顶部栏添加黑色背景和间距、弹幕区位置优化、用户名统一为刘承龙）
+- [x] MeetingDetailsPage UI再次微调（顶部黑色背景延伸至屏幕边缘、删除退出按钮、功能居中显示）
+- [x] 数据微调（通讯录第一个好友从刘承龙改为张三）
+- [x] MembersManagePage UI实现（成员管理页面）
+- [x] 页面导航功能（MeetingDetailsPage -> MembersManagePage）
+- [x] 成员列表显示、搜索功能、Tab切换、全员静音/解除全员静音
+- [x] MembersManagePage全员静音功能完善（麦克风图标实时响应状态变化）
 - [ ] 页面间数据传递优化
 
 ## 界面设计说明

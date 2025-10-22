@@ -1,17 +1,17 @@
 [
   {
     "userId": "user001",
-    "username": "张三",
-    "avatar": "https://example.com/avatars/zhangsan.jpg",
+    "username": "刘承龙",
+    "avatar": "https://example.com/avatars/liuchenglong.jpg",
     "phone": "13800138001",
-    "email": "zhangsan@example.com"
+    "email": "liuchenglong@example.com"
   },
   {
     "userId": "user002",
-    "username": "李四",
-    "avatar": "https://example.com/avatars/lisi.jpg",
+    "username": "张三",
+    "avatar": "https://example.com/avatars/zhangsan.jpg",
     "phone": "13800138002",
-    "email": "lisi@example.com"
+    "email": "zhangsan@example.com"
   },
   {
     "userId": "user003",
