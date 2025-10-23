@@ -12,6 +12,9 @@ class DataRepository(private val context: Context) {
     // 内存中的会议列表（用于临时保存新创建的会议）
     private val inMemoryMeetings = mutableListOf<Meeting>()
 
+    // 内存中的消息列表（用于临时保存新发送的消息）
+    private val inMemoryMessages = mutableListOf<Message>()
+
     fun getUsers(): List<User> {
         return try {
             val jsonString = readJsonFromAssets("data/users.json")
@@ -56,10 +59,32 @@ class DataRepository(private val context: Context) {
         return try {
             val jsonString = readJsonFromAssets("data/messages.json")
             val type = object : TypeToken<List<Message>>() {}.type
-            gson.fromJson(jsonString, type)
+            val jsonMessages: List<Message> = gson.fromJson(jsonString, type)
+            // 合并JSON文件中的消息和内存中的消息
+            jsonMessages + inMemoryMessages
         } catch (e: Exception) {
-            emptyList()
+            inMemoryMessages.toList()
         }
+    }
+
+    /**
+     * 根据会议ID获取该会议的所有消息
+     * @param meetingId 会议ID
+     * @return 该会议的消息列表，按时间戳排序
+     */
+    fun getMessagesByMeetingId(meetingId: String): List<Message> {
+        return getMessages()
+            .filter { it.meetingId == meetingId }
+            .sortedBy { it.timestamp }
+    }
+
+    /**
+     * 添加新消息到内存
+     * 注意：这只会保存到内存中，不会写入JSON文件
+     * @param message 要添加的消息
+     */
+    fun addMessage(message: Message) {
+        inMemoryMessages.add(message)
     }
 
     fun getHandRaiseRecords(): List<HandRaiseRecord> {

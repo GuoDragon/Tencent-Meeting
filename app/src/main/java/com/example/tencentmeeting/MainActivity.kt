@@ -27,6 +27,7 @@ import com.example.tencentmeeting.view.FriendsDetailsPage
 import com.example.tencentmeeting.view.JoinMeetingPage
 import com.example.tencentmeeting.view.QuickMeetingPage
 import com.example.tencentmeeting.view.MeetingDetailsPage
+import com.example.tencentmeeting.view.MeetingChatPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -51,8 +52,10 @@ fun MainScreen() {
     var showJoinMeetingPage by remember { mutableStateOf(false) }
     var showQuickMeetingPage by remember { mutableStateOf(false) }
     var showMeetingDetailsPage by remember { mutableStateOf(false) }
+    var showMeetingChatPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
+    var currentChatMeetingId by remember { mutableStateOf("") }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -95,11 +98,25 @@ fun MainScreen() {
                 showMeetingDetailsPage = true
             }
         )
+    } else if (showMeetingChatPage) {
+        // 显示会议聊天页面
+        MeetingChatPage(
+            meetingId = currentChatMeetingId,
+            onClose = {
+                showMeetingChatPage = false
+                showMeetingDetailsPage = true
+            }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
             meetingId = currentMeetingId,
-            onNavigateBack = { showMeetingDetailsPage = false }
+            onNavigateBack = { showMeetingDetailsPage = false },
+            onNavigateToChatPage = {
+                currentChatMeetingId = currentMeetingId
+                showMeetingDetailsPage = false
+                showMeetingChatPage = true
+            }
         )
     } else {
         // 显示主页面

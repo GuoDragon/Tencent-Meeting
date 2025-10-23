@@ -9,6 +9,7 @@ interface MeetingDetailsContract {
         fun updateMicStatus(enabled: Boolean)
         fun updateVideoStatus(enabled: Boolean)
         fun updateSpeakerStatus(enabled: Boolean)
+        fun updateScreenShareStatus(isSharing: Boolean)
         fun showMeetingDuration(duration: String)
         fun showLoading()
         fun hideLoading()

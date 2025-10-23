@@ -1,8 +1,11 @@
 package com.example.tencentmeeting.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -10,6 +13,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -24,7 +28,8 @@ import com.example.tencentmeeting.presenter.MeetingDetailsPresenter
 @Composable
 fun MeetingDetailsPage(
     meetingId: String = "",
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    onNavigateToChatPage: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -36,6 +41,7 @@ fun MeetingDetailsPage(
     var micEnabled by remember { mutableStateOf(false) }
     var videoEnabled by remember { mutableStateOf(false) }
     var speakerEnabled by remember { mutableStateOf(true) }
+    var isScreenSharing by remember { mutableStateOf(false) }
     var danmuText by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
@@ -62,6 +68,10 @@ fun MeetingDetailsPage(
 
             override fun updateSpeakerStatus(enabled: Boolean) {
                 speakerEnabled = enabled
+            }
+
+            override fun updateScreenShareStatus(isSharing: Boolean) {
+                isScreenSharing = isSharing
             }
 
             override fun showMeetingDuration(duration: String) {
@@ -116,18 +126,24 @@ fun MeetingDetailsPage(
                 onEndMeetingClick = { presenter.endMeeting() }
             )
 
-            // 中间参会人区域
+            // 中间内容区域（参会人或屏幕共享）
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
                 contentAlignment = Alignment.Center
             ) {
-                if (participants.isNotEmpty()) {
-                    ParticipantView(
-                        participant = participants.first(),
-                        micEnabled = micEnabled
-                    )
+                if (isScreenSharing) {
+                    // 屏幕共享视图
+                    ScreenShareView()
+                } else {
+                    // 参会人视图
+                    if (participants.isNotEmpty()) {
+                        ParticipantView(
+                            participant = participants.first(),
+                            micEnabled = micEnabled
+                        )
+                    }
                 }
             }
 
@@ -142,17 +158,12 @@ fun MeetingDetailsPage(
             )
         }
 
-        // 左下角弹幕输入区
+        // 左下角聊天入口
         DanmuInputArea(
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(start = 16.dp, bottom = 120.dp),
-            danmuText = danmuText,
-            onDanmuTextChange = { danmuText = it },
-            onSendClick = {
-                presenter.sendDanmu(danmuText)
-                danmuText = ""
-            }
+            onClick = onNavigateToChatPage
         )
 
         // 错误提示
@@ -293,9 +304,7 @@ private fun ParticipantView(
 @Composable
 private fun DanmuInputArea(
     modifier: Modifier = Modifier,
-    danmuText: String,
-    onDanmuTextChange: (String) -> Unit,
-    onSendClick: () -> Unit
+    onClick: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -303,7 +312,8 @@ private fun DanmuInputArea(
             .height(48.dp)
             .clip(MaterialTheme.shapes.medium)
             .background(Color(0xFF3C4148))
-            .padding(horizontal = 12.dp),
+            .padding(horizontal = 12.dp)
+            .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -400,6 +410,216 @@ private fun FunctionButton(
             text = text,
             fontSize = 11.sp,
             color = Color.White
+        )
+    }
+}
+
+/**
+ * 屏幕共享视图组件
+ * 模拟显示手机桌面屏幕
+ */
+@Composable
+private fun ScreenShareView() {
+    // 手机屏幕容器（带边框）
+    Box(
+        modifier = Modifier
+            .fillMaxWidth(0.85f)
+            .aspectRatio(9f / 19f)  // 手机屏幕比例
+            .clip(RoundedCornerShape(32.dp))
+            .border(
+                width = 8.dp,
+                color = Color(0xFF2C2C2E),
+                shape = RoundedCornerShape(32.dp)
+            )
+            .background(Color.Black)
+    ) {
+        // 屏幕内容
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF5D7A9E),  // 蓝灰色
+                            Color(0xFF2C3E50),  // 深蓝灰
+                            Color(0xFF1A1A2E)   // 深色
+                        )
+                    )
+                )
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                // 顶部状态栏
+                ScreenStatusBar()
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                // 底部应用图标区域
+                ScreenAppIcons()
+
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+        }
+    }
+}
+
+/**
+ * 模拟手机屏幕顶部状态栏
+ */
+@Composable
+private fun ScreenStatusBar() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp, start = 24.dp)
+    ) {
+        // 时间
+        Text(
+            text = "6:59",
+            fontSize = 14.sp,
+            color = Color.White.copy(alpha = 0.9f),
+            fontWeight = FontWeight.Normal
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // 日期
+        Text(
+            text = "Thu, Oct 23",
+            fontSize = 12.sp,
+            color = Color.White.copy(alpha = 0.7f),
+            fontWeight = FontWeight.Light
+        )
+    }
+}
+
+/**
+ * 模拟手机屏幕应用图标
+ */
+@Composable
+private fun ScreenAppIcons() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // 第一行应用图标
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            AppIcon(icon = Icons.Default.Email, label = "Gmail")
+            AppIcon(icon = Icons.Default.PhotoLibrary, label = "Photos")
+            AppIcon(icon = Icons.Default.PlayCircle, label = "YouTube")
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // 第二行应用图标
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            AppIcon(icon = Icons.Default.Phone, label = "Phone")
+            AppIcon(icon = Icons.Default.Message, label = "Messages")
+            Spacer(modifier = Modifier.width(64.dp)) // 空白占位
+            AppIcon(icon = Icons.Default.Email, label = "Gmail")
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // 搜索栏
+        Box(
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .height(48.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color.White),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search",
+                    tint = Color(0xFF5F6368),
+                    modifier = Modifier.size(24.dp)
+                )
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                Icon(
+                    imageVector = Icons.Default.Mic,
+                    contentDescription = "Voice",
+                    tint = Color(0xFF4285F4),
+                    modifier = Modifier.size(24.dp)
+                )
+
+                Icon(
+                    imageVector = Icons.Default.Camera,
+                    contentDescription = "Camera",
+                    tint = Color(0xFF4285F4),
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // 导航栏指示器
+        Box(
+            modifier = Modifier
+                .width(120.dp)
+                .height(4.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(Color.White.copy(alpha = 0.6f))
+        )
+    }
+}
+
+/**
+ * 单个应用图标组件
+ */
+@Composable
+private fun AppIcon(
+    icon: ImageVector,
+    label: String
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(72.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(56.dp)
+                .clip(CircleShape)
+                .background(Color.White),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                tint = Color(0xFF4285F4),
+                modifier = Modifier.size(32.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(6.dp))
+
+        Text(
+            text = label,
+            fontSize = 11.sp,
+            color = Color.White,
+            fontWeight = FontWeight.Normal
         )
     }
 }

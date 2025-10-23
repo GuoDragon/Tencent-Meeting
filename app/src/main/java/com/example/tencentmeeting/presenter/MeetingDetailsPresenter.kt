@@ -19,6 +19,7 @@ class MeetingDetailsPresenter(
     private var micEnabled = false
     private var videoEnabled = false
     private var speakerEnabled = true
+    private var isScreenSharing = false
 
     private var durationJob: Job? = null
     private var durationSeconds = 0
@@ -93,10 +94,9 @@ class MeetingDetailsPresenter(
     }
 
     override fun shareScreen() {
-        // 模拟共享屏幕功能
-        presenterScope.launch {
-            view?.showError("共享屏幕功能")
-        }
+        // 切换屏幕共享状态
+        isScreenSharing = !isScreenSharing
+        view?.updateScreenShareStatus(isScreenSharing)
     }
 
     override fun manageMember() {

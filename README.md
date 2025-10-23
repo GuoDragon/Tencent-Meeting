@@ -100,8 +100,14 @@
 - 底部功能区（4个按钮）：
   - 解除静音/静音：切换麦克风状态
   - 开启视频/关闭视频：切换摄像头状态
-  - 共享屏幕：绿色图标
+  - 共享屏幕：绿色图标，点击切换屏幕共享状态
   - 管理成员(1)：点击显示成员管理页面
+- 屏幕共享功能：
+  - 点击"共享屏幕"按钮后，中间区域从参会人视图切换为屏幕共享视图
+  - 显示模拟的手机桌面屏幕（蓝色渐变壁纸）
+  - 包含顶部状态栏（时间、日期）和应用图标
+  - 再次点击"共享屏幕"可返回参会人视图
+  - 顶部栏和底部功能栏保持不变
 - 支持从快速会议、加入会议、预定会议进入
 
 ### MembersManagePage（成员管理页面）
@@ -128,6 +134,37 @@
   - "解除全体静音"：主持人功能，点击后恢复成员麦克风图标原始状态
 - 全员静音功能：支持主持人一键静音/解除静音所有成员，麦克风图标实时响应状态变化
 - 从会议详情页"管理成员"按钮进入
+
+### MeetingChatPage（会议聊天页面）
+- 顶部信息栏：
+  - 白色背景
+  - 中间："聊天"标题（居中显示，粗体18sp）
+  - 右侧：关闭按钮（X图标）
+- 消息列表区域：
+  - 浅灰色背景（#F5F5F5）
+  - 支持滚动显示历史消息
+  - 消息气泡样式：
+    - 我的消息：蓝色气泡，右对齐
+    - 其他人消息：白色气泡，左对齐
+    - 显示发送者姓名和发送时间（HH:mm格式）
+  - 空状态：显示"暂无消息"提示
+  - 加载状态：显示圆形加载指示器
+- 底部输入区：
+  - 白色背景，顶部阴影
+  - 圆角文本输入框（提示："请输入消息..."）
+  - 右侧圆形发送按钮：
+    - 有内容时蓝色可点击
+    - 无内容时灰色禁用
+  - 支持多行输入（最多3行）
+- 消息功能：
+  - 根据会议ID加载历史消息
+  - 支持发送文本消息
+  - 消息保存到内存（关闭APP后消失）
+  - 发送消息后自动滚动到最新
+  - 当前用户显示为"我"
+- 页面导航：
+  - 从会议详情页左下角聊天入口打开
+  - 点击关闭按钮返回会议详情页
 
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
@@ -159,7 +196,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── JoinMeetingContract.kt
 │   ├── QuickMeetingContract.kt
 │   ├── MeetingDetailsContract.kt
-│   └── MembersManageContract.kt
+│   ├── MembersManageContract.kt
+│   └── MeetingChatContract.kt
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -170,7 +208,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── JoinMeetingPresenter.kt
 │   ├── QuickMeetingPresenter.kt
 │   ├── MeetingDetailsPresenter.kt
-│   └── MembersManagePresenter.kt
+│   ├── MembersManagePresenter.kt
+│   └── MeetingChatPresenter.kt
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -181,7 +220,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── JoinMeetingPage.kt
 │   ├── QuickMeetingPage.kt
 │   ├── MeetingDetailsPage.kt
-│   └── MembersManagePage.kt
+│   ├── MembersManagePage.kt
+│   └── MeetingChatPage.kt
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -240,6 +280,13 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] 页面导航功能（MeetingDetailsPage -> MembersManagePage）
 - [x] 成员列表显示、搜索功能、Tab切换、全员静音/解除全员静音
 - [x] MembersManagePage全员静音功能完善（麦克风图标实时响应状态变化）
+- [x] MeetingChatPage UI实现（会议聊天页面）
+- [x] 页面导航功能（MeetingDetailsPage -> MeetingChatPage）
+- [x] 聊天消息显示、发送文本消息、消息气泡样式
+- [x] 消息数据管理（内存存储）、消息列表自动滚动
+- [x] ShareScreen屏幕共享功能实现
+- [x] 屏幕共享状态切换（点击"共享屏幕"按钮切换视图）
+- [x] ScreenShareView组件实现（模拟手机桌面、渐变壁纸、应用图标）
 - [ ] 页面间数据传递优化
 
 ## 界面设计说明
