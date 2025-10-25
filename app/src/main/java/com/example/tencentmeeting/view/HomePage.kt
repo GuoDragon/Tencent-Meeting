@@ -33,7 +33,8 @@ import com.example.tencentmeeting.presenter.HomePresenter
 fun HomePage(
     onNavigateToScheduledMeeting: () -> Unit = {},
     onNavigateToJoinMeeting: () -> Unit = {},
-    onNavigateToQuickMeeting: () -> Unit = {}
+    onNavigateToQuickMeeting: () -> Unit = {},
+    onNavigateToMeetingDetails: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
@@ -116,7 +117,8 @@ fun HomePage(
         MeetingsSection(
             meetings = currentMeetings,
             showEmptyState = showEmptyState,
-            isLoading = isLoading
+            isLoading = isLoading,
+            onNavigateToMeetingDetails = onNavigateToMeetingDetails
         )
         
         // 错误提示
@@ -202,7 +204,8 @@ private fun FunctionButton(
 private fun MeetingsSection(
     meetings: List<Meeting>,
     showEmptyState: Boolean,
-    isLoading: Boolean
+    isLoading: Boolean,
+    onNavigateToMeetingDetails: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -211,7 +214,6 @@ private fun MeetingsSection(
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
@@ -219,12 +221,6 @@ private fun MeetingsSection(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
-            )
-            Text(
-                text = ">",
-                fontSize = 16.sp,
-                color = Color.Gray,
-                modifier = Modifier.clickable { }
             )
         }
         
@@ -247,7 +243,10 @@ private fun MeetingsSection(
             else -> {
                 LazyColumn {
                     items(meetings) { meeting ->
-                        MeetingItem(meeting = meeting)
+                        MeetingItem(
+                            meeting = meeting,
+                            onNavigateToMeetingDetails = onNavigateToMeetingDetails
+                        )
                     }
                 }
             }
@@ -280,12 +279,20 @@ private fun EmptyMeetingsState() {
 }
 
 @Composable
-private fun MeetingItem(meeting: Meeting) {
+private fun MeetingItem(
+    meeting: Meeting,
+    onNavigateToMeetingDetails: (String) -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
-            .clickable { },
+            .clickable {
+                // Only navigate to meeting details if status is ONGOING
+                if (meeting.status.name == "ONGOING") {
+                    onNavigateToMeetingDetails(meeting.meetingId)
+                }
+            },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {

@@ -8,7 +8,7 @@ interface QuickMeetingContract {
         fun showLoading()
         fun hideLoading()
         fun showError(message: String)
-        fun showStartMeetingSuccess(meetingId: String)
+        fun showStartMeetingSuccess(meetingId: String, micEnabled: Boolean, videoEnabled: Boolean, speakerEnabled: Boolean)
     }
 
     interface Presenter {

@@ -98,7 +98,8 @@ class ScheduledMeetingPresenter(
                 }
 
                 view?.hideLoading()
-                view?.showSuccess("会议预定成功", meetingId)
+                view?.showSuccess("会议预定成功")
+                view?.navigateBack()
             } catch (e: Exception) {
                 view?.hideLoading()
                 view?.showError("保存会议失败: ${e.message}")

@@ -287,7 +287,17 @@ app/src/main/java/com/example/tencentmeeting/
 - [x] ShareScreen屏幕共享功能实现
 - [x] 屏幕共享状态切换（点击"共享屏幕"按钮切换视图）
 - [x] ScreenShareView组件实现（模拟手机桌面、渐变壁纸、应用图标）
-- [ ] 页面间数据传递优化
+- [x] 页面间数据传递优化
+- [x] MePage历史会议UI微调（删除右侧箭头，添加更多历史会议记录）
+- [x] 会议设���传递优化（快速会议、加入会议的设置状态传递到会议详情页）
+- [x] MembersManagePage全员静音功能验证（确认功能正常工作）
+- [x] ScheduledMeetingPage预定会议优化（完成预定后返回主页而非直接进入会议）
+- [x] HomePage会议列表优化（删除右侧箭头，支持点击进行中会议直接进入）
+- [x] MePage历史会议列表滑动修复（添加高度约束，使列表可以正常滚动）
+- [x] MePage整体滚动功能完善（添加verticalScroll，修复滑动问题）
+- [x] MePage功能选项删除（移除"个人信息"、"会议设置"、"关于"三行）
+- [x] ScheduledMeetingPage日期时间选择器实现（支持更改会议开始时间）
+- [x] ScheduledMeetingPage编译错误修复（修复字符串拼接语法错误，删除重复函数定义）
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

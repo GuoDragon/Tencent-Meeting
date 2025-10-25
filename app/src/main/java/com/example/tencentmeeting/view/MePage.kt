@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -89,13 +91,14 @@ fun MePage() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF5F5F5))
+            .verticalScroll(rememberScrollState())
     ) {
         // 向下移动页面十分之一的空间
         Spacer(modifier = Modifier.height(topSpacing))
-        
+
         // 用户信息卡片
         UserInfoCard(user = currentUser)
-        
+
         // 历史会议列表
         HistoryMeetingsSection(
             meetings = historyMeetings,
@@ -172,7 +175,7 @@ private fun UserInfoCard(user: User?) {
                         color = Color.Gray
                     )
                 }
-                
+
                 // 设置图标
                 Icon(
                     imageVector = Icons.Default.Settings,
@@ -183,77 +186,7 @@ private fun UserInfoCard(user: User?) {
                         .clickable { }
                 )
             }
-            
-            Spacer(modifier = Modifier.height(20.dp))
-            
-            // 功能选项
-            FunctionOptions()
         }
-    }
-}
-
-@Composable
-private fun FunctionOptions() {
-    Column {
-        FunctionOptionItem(
-            icon = Icons.Default.Person,
-            title = "个人信息",
-            onClick = { }
-        )
-        
-        Spacer(modifier = Modifier.height(12.dp))
-        
-        FunctionOptionItem(
-            icon = Icons.Default.Settings,
-            title = "会议设置",
-            onClick = { }
-        )
-        
-        Spacer(modifier = Modifier.height(12.dp))
-        
-        FunctionOptionItem(
-            icon = Icons.Default.Info,
-            title = "关于",
-            onClick = { }
-        )
-    }
-}
-
-@Composable
-private fun FunctionOptionItem(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    onClick: () -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = title,
-            tint = Color(0xFF1976D2),
-            modifier = Modifier.size(20.dp)
-        )
-        
-        Spacer(modifier = Modifier.width(12.dp))
-        
-        Text(
-            text = title,
-            fontSize = 16.sp,
-            color = Color.Black,
-            modifier = Modifier.weight(1f)
-        )
-        
-        Icon(
-            imageVector = Icons.Default.ChevronRight,
-            contentDescription = "进入",
-            tint = Color.Gray,
-            modifier = Modifier.size(16.dp)
-        )
     }
 }
 
@@ -270,7 +203,6 @@ private fun HistoryMeetingsSection(
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
@@ -278,12 +210,6 @@ private fun HistoryMeetingsSection(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
-            )
-            Text(
-                text = ">",
-                fontSize = 16.sp,
-                color = Color.Gray,
-                modifier = Modifier.clickable { }
             )
         }
         
@@ -304,8 +230,8 @@ private fun HistoryMeetingsSection(
                 EmptyHistoryState()
             }
             else -> {
-                LazyColumn {
-                    items(meetings) { meeting ->
+                Column {
+                    meetings.forEach { meeting ->
                         HistoryMeetingItem(meeting = meeting)
                     }
                 }

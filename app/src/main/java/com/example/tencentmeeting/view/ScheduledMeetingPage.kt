@@ -70,8 +70,8 @@ fun ScheduledMeetingPage(
                 // 可以使用Snackbar显示错误
             }
 
-            override fun showSuccess(message: String, meetingId: String) {
-                onNavigateToMeetingDetails(meetingId)
+            override fun showSuccess(message: String) {
+                // Show success message, navigateBack will be called by presenter
             }
 
             override fun navigateBack() {
@@ -358,76 +358,6 @@ private fun SwitchSettingItem(
 }
 
 @Composable
-private fun DatePickerDialog(
-    currentTime: Long,
-    onConfirm: (Long) -> Unit,
-    onDismiss: () -> Unit
-) {
-    val calendar = Calendar.getInstance().apply { timeInMillis = currentTime }
-    var selectedDate by remember { mutableStateOf(calendar.time) }
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("选择日期") },
-        text = {
-            Text("选择的日期: ${SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA).format(selectedDate)}")
-        },
-        confirmButton = {
-            TextButton(onClick = {
-                val newCalendar = Calendar.getInstance().apply {
-                    timeInMillis = currentTime
-                    time = selectedDate
-                }
-                onConfirm(newCalendar.timeInMillis)
-            }) {
-                Text("确定")
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text("取消")
-            }
-        }
-    )
-}
-
-@Composable
-private fun TimePickerDialog(
-    currentTime: Long,
-    onConfirm: (Long) -> Unit,
-    onDismiss: () -> Unit
-) {
-    val calendar = Calendar.getInstance().apply { timeInMillis = currentTime }
-    var selectedHour by remember { mutableStateOf(calendar.get(Calendar.HOUR_OF_DAY)) }
-    var selectedMinute by remember { mutableStateOf(calendar.get(Calendar.MINUTE)) }
-
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("选择时间") },
-        text = {
-            Text("选择的时间: ${String.format("%02d:%02d", selectedHour, selectedMinute)}")
-        },
-        confirmButton = {
-            TextButton(onClick = {
-                val newCalendar = Calendar.getInstance().apply {
-                    timeInMillis = currentTime
-                    set(Calendar.HOUR_OF_DAY, selectedHour)
-                    set(Calendar.MINUTE, selectedMinute)
-                }
-                onConfirm(newCalendar.timeInMillis)
-            }) {
-                Text("确定")
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text("取消")
-            }
-        }
-    )
-}
-
-@Composable
 private fun DurationPickerDialog(
     currentDuration: Int,
     onConfirm: (Int) -> Unit,
@@ -614,6 +544,190 @@ private fun PasswordInputDialog(
                 onClick = { onConfirm(password) },
                 enabled = password.length == 6
             ) {
+                Text("确定")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("取消")
+            }
+        }
+    )
+}
+
+@Composable
+private fun DatePickerDialog(
+    currentTime: Long,
+    onConfirm: (Long) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val calendar = Calendar.getInstance().apply { timeInMillis = currentTime }
+    var selectedYear by remember { mutableStateOf(calendar.get(Calendar.YEAR)) }
+    var selectedMonth by remember { mutableStateOf(calendar.get(Calendar.MONTH)) }
+    var selectedDay by remember { mutableStateOf(calendar.get(Calendar.DAY_OF_MONTH)) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("选择日期") },
+        text = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // 年份选择
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    IconButton(onClick = { selectedYear-- }) {
+                        Icon(Icons.Default.Remove, "减少年份")
+                    }
+                    Text("${selectedYear}年", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = { selectedYear++ }) {
+                        Icon(Icons.Default.Add, "增加年份")
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // 月份选择
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    IconButton(onClick = {
+                        if (selectedMonth > 0) selectedMonth--
+                        else { selectedMonth = 11; selectedYear-- }
+                    }) {
+                        Icon(Icons.Default.Remove, "减少月份")
+                    }
+                    Text("${selectedMonth + 1}月", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = {
+                        if (selectedMonth < 11) selectedMonth++
+                        else { selectedMonth = 0; selectedYear++ }
+                    }) {
+                        Icon(Icons.Default.Add, "增加月份")
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // 日期选择
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    val maxDays = Calendar.getInstance().apply {
+                        set(Calendar.YEAR, selectedYear)
+                        set(Calendar.MONTH, selectedMonth)
+                        set(Calendar.DAY_OF_MONTH, 1)
+                    }.getActualMaximum(Calendar.DAY_OF_MONTH)
+
+                    IconButton(onClick = {
+                        if (selectedDay > 1) selectedDay--
+                    }) {
+                        Icon(Icons.Default.Remove, "减少日期")
+                    }
+                    Text("${selectedDay}日", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = {
+                        if (selectedDay < maxDays) selectedDay++
+                    }) {
+                        Icon(Icons.Default.Add, "增加日期")
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                val newCalendar = Calendar.getInstance().apply {
+                    timeInMillis = currentTime
+                    set(Calendar.YEAR, selectedYear)
+                    set(Calendar.MONTH, selectedMonth)
+                    set(Calendar.DAY_OF_MONTH, selectedDay)
+                }
+                onConfirm(newCalendar.timeInMillis)
+            }) {
+                Text("确定")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text("取消")
+            }
+        }
+    )
+}
+
+@Composable
+private fun TimePickerDialog(
+    currentTime: Long,
+    onConfirm: (Long) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val calendar = Calendar.getInstance().apply { timeInMillis = currentTime }
+    var selectedHour by remember { mutableStateOf(calendar.get(Calendar.HOUR_OF_DAY)) }
+    var selectedMinute by remember { mutableStateOf(calendar.get(Calendar.MINUTE)) }
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text("选择时间") },
+        text = {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // 小时选择
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    IconButton(onClick = {
+                        if (selectedHour > 0) selectedHour-- else selectedHour = 23
+                    }) {
+                        Icon(Icons.Default.Remove, "减少小时")
+                    }
+                    Text(String.format("%02d", selectedHour), fontSize = 32.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = {
+                        if (selectedHour < 23) selectedHour++ else selectedHour = 0
+                    }) {
+                        Icon(Icons.Default.Add, "增加小时")
+                    }
+                }
+
+                Text(":", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+
+                // 分钟选择
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    IconButton(onClick = {
+                        if (selectedMinute > 0) selectedMinute-- else selectedMinute = 59
+                    }) {
+                        Icon(Icons.Default.Remove, "减少分钟")
+                    }
+                    Text(String.format("%02d", selectedMinute), fontSize = 32.sp, fontWeight = FontWeight.Bold)
+                    IconButton(onClick = {
+                        if (selectedMinute < 59) selectedMinute++ else selectedMinute = 0
+                    }) {
+                        Icon(Icons.Default.Add, "增加分钟")
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                val newCalendar = Calendar.getInstance().apply {
+                    timeInMillis = currentTime
+                    set(Calendar.HOUR_OF_DAY, selectedHour)
+                    set(Calendar.MINUTE, selectedMinute)
+                    set(Calendar.SECOND, 0)
+                }
+                onConfirm(newCalendar.timeInMillis)
+            }) {
                 Text("确定")
             }
         },

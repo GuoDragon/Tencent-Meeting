@@ -55,9 +55,9 @@ class JoinMeetingPresenter(
             try {
                 view?.showLoading()
                 // 模拟加入会议的过程
-                // 在实际应用中，这里会调用会议SDK的加入会议API
+                // 在实际应用中,这里会调用会议SDK的加入会议API
                 kotlinx.coroutines.delay(500)
-                view?.showJoinSuccess(meetingId)
+                view?.showJoinSuccess(meetingId, micEnabled, videoEnabled, speakerEnabled)
             } catch (e: Exception) {
                 view?.showError("加入会议失败: ${e.message}")
             } finally {

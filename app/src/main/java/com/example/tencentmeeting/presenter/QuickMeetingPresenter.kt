@@ -60,7 +60,7 @@ class QuickMeetingPresenter(
                 // 这里可以保存会议设置到内存中
                 // 例如保存麦克风、摄像头、扬声器的状态
 
-                view?.showStartMeetingSuccess(meetingId)
+                view?.showStartMeetingSuccess(meetingId, micEnabled, videoEnabled, speakerEnabled)
             } catch (e: Exception) {
                 view?.showError("启动会议失败: ${e.message}")
             } finally {

@@ -49,5 +49,73 @@
       "cameraOffOnEntry": true,
       "enableWaitingRoom": true
     }
+  },
+  {
+    "meetingId": "meeting004",
+    "topic": "产品需求评审",
+    "password": "666666",
+    "hostId": "user003",
+    "startTime": 1697328000000,
+    "endTime": 1697331600000,
+    "status": "ENDED",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003", "user004"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": false
+    }
+  },
+  {
+    "meetingId": "meeting005",
+    "topic": "客户演示会议",
+    "password": "999999",
+    "hostId": "user002",
+    "startTime": 1697241600000,
+    "endTime": 1697245200000,
+    "status": "ENDED",
+    "meetingType": "INSTANT",
+    "participantIds": ["user002", "user003", "user005"],
+    "settings": {
+      "allowParticipantUnmute": false,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": true
+    }
+  },
+  {
+    "meetingId": "meeting006",
+    "topic": "团队建设讨论",
+    "password": null,
+    "hostId": "user001",
+    "startTime": 1697155200000,
+    "endTime": 1697158800000,
+    "status": "ENDED",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003", "user004", "user005"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": false,
+      "cameraOffOnEntry": false,
+      "enableWaitingRoom": false
+    }
+  },
+  {
+    "meetingId": "meeting007",
+    "topic": "季度总结会议",
+    "password": "555555",
+    "hostId": "user004",
+    "startTime": 1697068800000,
+    "endTime": 1697072400000,
+    "status": "ENDED",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003", "user004"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": true
+    }
   }
 ]

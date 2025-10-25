@@ -56,6 +56,9 @@ fun MainScreen() {
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
+    var initialMicEnabled by remember { mutableStateOf(true) }
+    var initialVideoEnabled by remember { mutableStateOf(false) }
+    var initialSpeakerEnabled by remember { mutableStateOf(true) }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -82,8 +85,11 @@ fun MainScreen() {
         // 显示加入会议页面
         JoinMeetingPage(
             onNavigateBack = { showJoinMeetingPage = false },
-            onNavigateToMeetingDetails = { meetingId ->
+            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled ->
                 currentMeetingId = meetingId
+                initialMicEnabled = micEnabled
+                initialVideoEnabled = videoEnabled
+                initialSpeakerEnabled = speakerEnabled
                 showJoinMeetingPage = false
                 showMeetingDetailsPage = true
             }
@@ -92,8 +98,11 @@ fun MainScreen() {
         // 显示快速会议页面
         QuickMeetingPage(
             onNavigateBack = { showQuickMeetingPage = false },
-            onNavigateToMeetingDetails = { meetingId ->
+            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled ->
                 currentMeetingId = meetingId
+                initialMicEnabled = micEnabled
+                initialVideoEnabled = videoEnabled
+                initialSpeakerEnabled = speakerEnabled
                 showQuickMeetingPage = false
                 showMeetingDetailsPage = true
             }
@@ -111,6 +120,9 @@ fun MainScreen() {
         // 显示会议详情页面
         MeetingDetailsPage(
             meetingId = currentMeetingId,
+            initialMicEnabled = initialMicEnabled,
+            initialVideoEnabled = initialVideoEnabled,
+            initialSpeakerEnabled = initialSpeakerEnabled,
             onNavigateBack = { showMeetingDetailsPage = false },
             onNavigateToChatPage = {
                 currentChatMeetingId = currentMeetingId
@@ -137,7 +149,11 @@ fun MainScreen() {
                     0 -> HomePage(
                         onNavigateToScheduledMeeting = { showScheduledMeetingPage = true },
                         onNavigateToJoinMeeting = { showJoinMeetingPage = true },
-                        onNavigateToQuickMeeting = { showQuickMeetingPage = true }
+                        onNavigateToQuickMeeting = { showQuickMeetingPage = true },
+                        onNavigateToMeetingDetails = { meetingId ->
+                            currentMeetingId = meetingId
+                            showMeetingDetailsPage = true
+                        }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },

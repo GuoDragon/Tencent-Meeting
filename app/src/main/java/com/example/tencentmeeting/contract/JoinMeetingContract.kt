@@ -9,7 +9,7 @@ interface JoinMeetingContract {
         fun showLoading()
         fun hideLoading()
         fun showError(message: String)
-        fun showJoinSuccess(meetingId: String)
+        fun showJoinSuccess(meetingId: String, micEnabled: Boolean, videoEnabled: Boolean, speakerEnabled: Boolean)
     }
 
     interface Presenter {

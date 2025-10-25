@@ -9,16 +9,19 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MeetingDetailsPresenter(
-    private val dataRepository: DataRepository
+    private val dataRepository: DataRepository,
+    initialMicEnabled: Boolean = false,
+    initialVideoEnabled: Boolean = false,
+    initialSpeakerEnabled: Boolean = true
 ) : MeetingDetailsContract.Presenter {
 
     private var view: MeetingDetailsContract.View? = null
     private val presenterJob = Job()
     private val presenterScope = CoroutineScope(Dispatchers.Main + presenterJob)
 
-    private var micEnabled = false
-    private var videoEnabled = false
-    private var speakerEnabled = true
+    private var micEnabled = initialMicEnabled
+    private var videoEnabled = initialVideoEnabled
+    private var speakerEnabled = initialSpeakerEnabled
     private var isScreenSharing = false
 
     private var durationJob: Job? = null

@@ -28,19 +28,22 @@ import com.example.tencentmeeting.presenter.MeetingDetailsPresenter
 @Composable
 fun MeetingDetailsPage(
     meetingId: String = "",
+    initialMicEnabled: Boolean = false,
+    initialVideoEnabled: Boolean = false,
+    initialSpeakerEnabled: Boolean = true,
     onNavigateBack: () -> Unit,
     onNavigateToChatPage: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
-    val presenter = remember { MeetingDetailsPresenter(dataRepository) }
+    val presenter = remember { MeetingDetailsPresenter(dataRepository, initialMicEnabled, initialVideoEnabled, initialSpeakerEnabled) }
 
     var meetingTopic by remember { mutableStateOf("腾讯会议") }
     var meetingDuration by remember { mutableStateOf("00:00") }
     var participants by remember { mutableStateOf<List<User>>(emptyList()) }
-    var micEnabled by remember { mutableStateOf(false) }
-    var videoEnabled by remember { mutableStateOf(false) }
-    var speakerEnabled by remember { mutableStateOf(true) }
+    var micEnabled by remember { mutableStateOf(initialMicEnabled) }
+    var videoEnabled by remember { mutableStateOf(initialVideoEnabled) }
+    var speakerEnabled by remember { mutableStateOf(initialSpeakerEnabled) }
     var isScreenSharing by remember { mutableStateOf(false) }
     var danmuText by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
