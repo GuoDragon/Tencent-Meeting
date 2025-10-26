@@ -15,6 +15,9 @@ class DataRepository(private val context: Context) {
     // 内存中的消息列表（用于临时保存新发送的消息）
     private val inMemoryMessages = mutableListOf<Message>()
 
+    // 内存中的邀请列表（用于临时保存新发送的邀请）
+    private val inMemoryInvitations = mutableListOf<MeetingInvitation>()
+
     fun getUsers(): List<User> {
         return try {
             val jsonString = readJsonFromAssets("data/users.json")
@@ -95,6 +98,57 @@ class DataRepository(private val context: Context) {
         } catch (e: Exception) {
             emptyList()
         }
+    }
+
+    /**
+     * 获取所有会议邀请
+     */
+    fun getMeetingInvitations(): List<MeetingInvitation> {
+        return try {
+            val jsonString = readJsonFromAssets("data/meeting_invitations.json")
+            val type = object : TypeToken<List<MeetingInvitation>>() {}.type
+            val jsonInvitations: List<MeetingInvitation> = gson.fromJson(jsonString, type)
+            // 合并JSON文件中的邀请和内存中的邀请
+            jsonInvitations + inMemoryInvitations
+        } catch (e: Exception) {
+            inMemoryInvitations.toList()
+        }
+    }
+
+    /**
+     * 根据会议ID获取该会议的所有邀请
+     */
+    fun getInvitationsByMeetingId(meetingId: String): List<MeetingInvitation> {
+        return getMeetingInvitations()
+            .filter { it.meetingId == meetingId }
+    }
+
+    /**
+     * 获取可以邀请的用户（未在会议中的用户）
+     * @param meetingId 会议ID
+     * @param currentUserId 当前用户ID（主持人ID，不显示在可邀请列表中）
+     */
+    fun getAvailableUsersToInvite(meetingId: String, currentUserId: String): List<User> {
+        val allUsers = getUsers()
+        val participants = getMeetingParticipants().filter { it.meetingId == meetingId }
+        val participantIds = participants.map { it.userId }
+        val invitations = getInvitationsByMeetingId(meetingId)
+        val invitedUserIds = invitations.map { it.inviteeId }
+
+        return allUsers.filter { user ->
+            // 排除当前用户（主持人）、已在会议中的用户、已被邀请的用户
+            user.userId != currentUserId &&
+            !participantIds.contains(user.userId) &&
+            !invitedUserIds.contains(user.userId)
+        }
+    }
+
+    /**
+     * 添加新的会议邀请到内存
+     * @param invitation 要添加的邀请
+     */
+    fun addInvitation(invitation: MeetingInvitation) {
+        inMemoryInvitations.add(invitation)
     }
 
     private fun readJsonFromAssets(fileName: String): String {

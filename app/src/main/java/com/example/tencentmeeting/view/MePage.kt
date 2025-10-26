@@ -30,12 +30,14 @@ import com.example.tencentmeeting.model.User
 import com.example.tencentmeeting.presenter.MePresenter
 
 @Composable
-fun MePage() {
+fun MePage(
+    onMeetingClick: (String) -> Unit = {}
+) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val topSpacing = screenHeight * 0.1f // 页面高度的十分之一
-    
+
     val dataRepository = DataRepository.getInstance(context)
     val presenter = remember { MePresenter(dataRepository) }
     
@@ -103,7 +105,8 @@ fun MePage() {
         HistoryMeetingsSection(
             meetings = historyMeetings,
             showEmptyState = showEmptyState,
-            isLoading = isLoading
+            isLoading = isLoading,
+            onMeetingClick = onMeetingClick
         )
         
         // 错误提示
@@ -175,16 +178,6 @@ private fun UserInfoCard(user: User?) {
                         color = Color.Gray
                     )
                 }
-
-                // 设置图标
-                Icon(
-                    imageVector = Icons.Default.Settings,
-                    contentDescription = "设置",
-                    tint = Color.Gray,
-                    modifier = Modifier
-                        .size(24.dp)
-                        .clickable { }
-                )
             }
         }
     }
@@ -194,7 +187,8 @@ private fun UserInfoCard(user: User?) {
 private fun HistoryMeetingsSection(
     meetings: List<Meeting>,
     showEmptyState: Boolean,
-    isLoading: Boolean
+    isLoading: Boolean,
+    onMeetingClick: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -232,7 +226,10 @@ private fun HistoryMeetingsSection(
             else -> {
                 Column {
                     meetings.forEach { meeting ->
-                        HistoryMeetingItem(meeting = meeting)
+                        HistoryMeetingItem(
+                            meeting = meeting,
+                            onClick = { onMeetingClick(meeting.meetingId) }
+                        )
                     }
                 }
             }
@@ -265,12 +262,31 @@ private fun EmptyHistoryState() {
 }
 
 @Composable
-private fun HistoryMeetingItem(meeting: Meeting) {
+private fun HistoryMeetingItem(
+    meeting: Meeting,
+    onClick: () -> Unit
+) {
+    // 计算会议时长
+    val duration = if (meeting.endTime != null) {
+        val durationMillis = meeting.endTime - meeting.startTime
+        val hours = durationMillis / (1000 * 60 * 60)
+        val minutes = (durationMillis % (1000 * 60 * 60)) / (1000 * 60)
+
+        when {
+            hours > 0 && minutes > 0 -> "${hours}小时${minutes}分钟"
+            hours > 0 -> "${hours}小时"
+            minutes > 0 -> "${minutes}分钟"
+            else -> "少于1分钟"
+        }
+    } else {
+        "未知时长"
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
-            .clickable { },
+            .clickable { onClick() },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
@@ -286,9 +302,9 @@ private fun HistoryMeetingItem(meeting: Meeting) {
                 tint = Color.Gray,
                 modifier = Modifier.size(24.dp)
             )
-            
+
             Spacer(modifier = Modifier.width(12.dp))
-            
+
             Column(
                 modifier = Modifier.weight(1f)
             ) {
@@ -306,9 +322,9 @@ private fun HistoryMeetingItem(meeting: Meeting) {
                     color = Color.Gray
                 )
             }
-            
+
             Text(
-                text = "已结束",
+                text = duration,
                 fontSize = 12.sp,
                 color = Color.Gray
             )

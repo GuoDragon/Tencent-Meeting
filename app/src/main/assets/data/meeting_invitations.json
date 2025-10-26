@@ -1,0 +1,11 @@
+[
+  {
+    "invitationId": "invite001",
+    "meetingId": "meeting001",
+    "inviterId": "user001",
+    "inviteeId": "user002",
+    "status": "PENDING",
+    "invitedTime": 1700000000000,
+    "respondedTime": null
+  }
+]

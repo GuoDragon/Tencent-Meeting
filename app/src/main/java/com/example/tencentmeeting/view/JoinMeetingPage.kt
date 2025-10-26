@@ -200,6 +200,44 @@ fun JoinMeetingPage(
                             modifier = Modifier.padding(vertical = 8.dp)
                         )
 
+                        // 入会密码
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = "入会密码",
+                                fontSize = 16.sp,
+                                color = Color.Black,
+                                modifier = Modifier.width(80.dp)
+                            )
+                            OutlinedTextField(
+                                value = password,
+                                onValueChange = { password = it },
+                                placeholder = {
+                                    Text(
+                                        text = "请输入入会密码(选填)",
+                                        color = Color.Gray,
+                                        fontSize = 14.sp
+                                    )
+                                },
+                                singleLine = true,
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = Color.Transparent,
+                                    unfocusedBorderColor = Color.Transparent,
+                                    cursorColor = Color(0xFF1976D2)
+                                ),
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+
+                        Divider(
+                            color = Color(0xFFEEEEEE),
+                            thickness = 1.dp,
+                            modifier = Modifier.padding(vertical = 8.dp)
+                        )
+
                         // 当前设备始终使用此名称入会
                         Row(
                             modifier = Modifier

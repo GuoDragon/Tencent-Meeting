@@ -12,6 +12,11 @@ interface MembersManageContract {
         fun showError(message: String)
         fun showMuteAllSuccess()
         fun showUnmuteAllSuccess()
+        // 新增邀请相关方法
+        fun showInviteDialog(availableContacts: List<User>)
+        fun hideInviteDialog()
+        fun showInviteSuccess(invitedCount: Int)
+        fun showInviteFailed(message: String)
     }
 
     interface Presenter {
@@ -22,5 +27,8 @@ interface MembersManageContract {
         fun unmuteAll()
         fun inviteMember()
         fun searchMember(query: String)
+        // 新增邀请相关方法
+        fun loadAvailableContacts()
+        fun sendInvitations(selectedUserIds: List<String>)
     }
 }

@@ -28,6 +28,7 @@ import com.example.tencentmeeting.view.JoinMeetingPage
 import com.example.tencentmeeting.view.QuickMeetingPage
 import com.example.tencentmeeting.view.MeetingDetailsPage
 import com.example.tencentmeeting.view.MeetingChatPage
+import com.example.tencentmeeting.view.MeetingReplayPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -53,9 +54,11 @@ fun MainScreen() {
     var showQuickMeetingPage by remember { mutableStateOf(false) }
     var showMeetingDetailsPage by remember { mutableStateOf(false) }
     var showMeetingChatPage by remember { mutableStateOf(false) }
+    var showMeetingReplayPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
+    var replayMeetingId by remember { mutableStateOf("") }
     var initialMicEnabled by remember { mutableStateOf(true) }
     var initialVideoEnabled by remember { mutableStateOf(false) }
     var initialSpeakerEnabled by remember { mutableStateOf(true) }
@@ -116,6 +119,12 @@ fun MainScreen() {
                 showMeetingDetailsPage = true
             }
         )
+    } else if (showMeetingReplayPage) {
+        // 显示会议回放页面
+        MeetingReplayPage(
+            meetingId = replayMeetingId,
+            onNavigateBack = { showMeetingReplayPage = false }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
@@ -162,7 +171,12 @@ fun MainScreen() {
                             showFriendsDetailsPage = true
                         }
                     )
-                    2 -> MePage()
+                    2 -> MePage(
+                        onMeetingClick = { meetingId ->
+                            replayMeetingId = meetingId
+                            showMeetingReplayPage = true
+                        }
+                    )
                 }
             }
         }

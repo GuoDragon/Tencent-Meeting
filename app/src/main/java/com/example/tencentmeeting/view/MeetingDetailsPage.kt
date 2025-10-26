@@ -45,6 +45,7 @@ fun MeetingDetailsPage(
     var videoEnabled by remember { mutableStateOf(initialVideoEnabled) }
     var speakerEnabled by remember { mutableStateOf(initialSpeakerEnabled) }
     var isScreenSharing by remember { mutableStateOf(false) }
+    var isRecording by remember { mutableStateOf(false) }
     var danmuText by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
@@ -124,8 +125,10 @@ fun MeetingDetailsPage(
                 meetingTopic = meetingTopic,
                 meetingDuration = meetingDuration,
                 speakerEnabled = speakerEnabled,
+                isRecording = isRecording,
                 onExitClick = { presenter.endMeeting() },
                 onSpeakerClick = { presenter.toggleSpeaker() },
+                onRecordingClick = { isRecording = !isRecording },
                 onEndMeetingClick = { presenter.endMeeting() }
             )
 
@@ -193,8 +196,10 @@ private fun TopBar(
     meetingTopic: String,
     meetingDuration: String,
     speakerEnabled: Boolean,
+    isRecording: Boolean,
     onExitClick: () -> Unit,
     onSpeakerClick: () -> Unit,
+    onRecordingClick: () -> Unit,
     onEndMeetingClick: () -> Unit
 ) {
     Row(
@@ -205,13 +210,28 @@ private fun TopBar(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // 左侧声音按钮
-        IconButton(onClick = onSpeakerClick) {
-            Icon(
-                imageVector = if (speakerEnabled) Icons.Default.VolumeUp else Icons.Default.VolumeOff,
-                contentDescription = "声音",
-                tint = Color.White
-            )
+        // 左侧按钮组（扬声器和录制）
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            // 扬声器按钮
+            IconButton(onClick = onSpeakerClick) {
+                Icon(
+                    imageVector = if (speakerEnabled) Icons.Default.VolumeUp else Icons.Default.VolumeOff,
+                    contentDescription = "声音",
+                    tint = Color.White
+                )
+            }
+
+            // 录制按钮
+            IconButton(onClick = onRecordingClick) {
+                Icon(
+                    imageVector = if (isRecording) Icons.Default.FiberManualRecord else Icons.Default.RadioButtonUnchecked,
+                    contentDescription = if (isRecording) "停止录制" else "开始录制",
+                    tint = if (isRecording) Color.Red else Color.Gray
+                )
+            }
         }
 
         // 中间标题和时间

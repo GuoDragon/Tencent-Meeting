@@ -2,10 +2,13 @@ package com.example.tencentmeeting.presenter
 
 import com.example.tencentmeeting.contract.MembersManageContract
 import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.InvitationStatus
+import com.example.tencentmeeting.model.MeetingInvitation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 class MembersManagePresenter(
     private val dataRepository: DataRepository
@@ -67,10 +70,60 @@ class MembersManagePresenter(
     override fun inviteMember() {
         presenterScope.launch {
             try {
-                // 模拟邀请成员操作
-                view?.showError("邀请成员功能")
+                view?.showLoading()
+
+                // 获取可邀请的联系人
+                val availableContacts = dataRepository.getAvailableUsersToInvite("meeting001", "user001")
+
+                if (availableContacts.isEmpty()) {
+                    view?.showError("暂无可邀请的联系人")
+                    view?.hideLoading()
+                } else {
+                    view?.hideLoading()
+                    view?.showInviteDialog(availableContacts)
+                }
             } catch (e: Exception) {
-                view?.showError("邀请失败: ${e.message}")
+                view?.hideLoading()
+                view?.showError("加载联系人失败: ${e.message}")
+            }
+        }
+    }
+
+    override fun loadAvailableContacts() {
+        presenterScope.launch {
+            try {
+                view?.showLoading()
+                val availableContacts = dataRepository.getAvailableUsersToInvite("meeting001", "user001")
+                view?.hideLoading()
+                view?.showInviteDialog(availableContacts)
+            } catch (e: Exception) {
+                view?.hideLoading()
+                view?.showInviteFailed("获取联系人失败: ${e.message}")
+            }
+        }
+    }
+
+    override fun sendInvitations(selectedUserIds: List<String>) {
+        presenterScope.launch {
+            try {
+                val currentTime = System.currentTimeMillis()
+
+                // 为每个选中的用户创建邀请
+                selectedUserIds.forEach { userId ->
+                    val invitation = MeetingInvitation(
+                        invitationId = UUID.randomUUID().toString(),
+                        meetingId = "meeting001",
+                        inviterId = "user001", // 主持人ID
+                        inviteeId = userId,
+                        status = InvitationStatus.PENDING,
+                        invitedTime = currentTime
+                    )
+                    dataRepository.addInvitation(invitation)
+                }
+
+                view?.showInviteSuccess(selectedUserIds.size)
+            } catch (e: Exception) {
+                view?.showInviteFailed("发送邀请失败: ${e.message}")
             }
         }
     }

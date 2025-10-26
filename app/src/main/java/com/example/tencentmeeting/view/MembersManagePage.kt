@@ -1,6 +1,7 @@
 package com.example.tencentmeeting.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +23,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.tencentmeeting.contract.MembersManageContract
 import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.InvitationStatus
 import com.example.tencentmeeting.model.User
 import com.example.tencentmeeting.presenter.MembersManagePresenter
 
@@ -41,6 +43,15 @@ fun MembersManagePage(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var allMicsMuted by remember { mutableStateOf(false) }
+
+    // 邀请对话框相关状态
+    var showInviteDialog by remember { mutableStateOf(false) }
+    var availableContacts by remember { mutableStateOf<List<User>>(emptyList()) }
+    var selectedContacts by remember { mutableStateOf<Set<String>>(emptySet()) }
+    var inviteLoading by remember { mutableStateOf(false) }
+
+    // 已邀请但未入��的成员列表
+    var invitedMembers by remember { mutableStateOf<List<User>>(emptyList()) }
 
     // MVP View实现
     val view = remember {
@@ -76,12 +87,67 @@ fun MembersManagePage(
             override fun showUnmuteAllSuccess() {
                 errorMessage = "已解除全员静音"
             }
+
+            // 新增邀请相关方法实现
+            override fun showInviteDialog(availableContactsList: List<User>) {
+                availableContacts = availableContactsList
+                selectedContacts = emptySet()
+                showInviteDialog = true
+            }
+
+            override fun hideInviteDialog() {
+                showInviteDialog = false
+                selectedContacts = emptySet()
+            }
+
+            override fun showInviteSuccess(invitedCount: Int) {
+                errorMessage = "已成功邀请 $invitedCount 位成员"
+                showInviteDialog = false
+                inviteLoading = false
+
+                // 重新加载已邀请成员列表
+                try {
+                    val invitations = dataRepository.getInvitationsByMeetingId("meeting001")
+                        .filter { it.status == InvitationStatus.PENDING }
+
+                    val allUsers = dataRepository.getUsers()
+                    val invitedUsers = allUsers.filter { user ->
+                        invitations.any { it.inviteeId == user.userId }
+                    }
+                    updateInvitedMembers(invitedUsers)
+                } catch (e: Exception) {
+                    // 忽略错误，不影响主要功能
+                }
+            }
+
+            override fun showInviteFailed(message: String) {
+                errorMessage = "邀请失败: $message"
+                inviteLoading = false
+            }
+
+            fun updateInvitedMembers(invitedList: List<User>) {
+                invitedMembers = invitedList
+            }
         }
     }
 
     LaunchedEffect(Unit) {
         presenter.attachView(view)
         presenter.loadMembers()
+
+        // 加载已邀请但未入会的成员
+        try {
+            val invitations = dataRepository.getInvitationsByMeetingId("meeting001")
+                .filter { it.status == InvitationStatus.PENDING }
+
+            val allUsers = dataRepository.getUsers()
+            val invitedUsers = allUsers.filter { user ->
+                invitations.any { it.inviteeId == user.userId }
+            }
+            view.updateInvitedMembers(invitedUsers)
+        } catch (e: Exception) {
+            // 忽略错误，不影响主要功能
+        }
     }
 
     DisposableEffect(Unit) {
@@ -137,7 +203,10 @@ fun MembersManagePage(
                         modifier = Modifier.weight(1f)
                     )
                 } else {
-                    EmptyMembersList(modifier = Modifier.weight(1f))
+                    InvitedMembersList(
+                        invitedMembers = invitedMembers,
+                        modifier = Modifier.weight(1f)
+                    )
                 }
 
                 // 底部按钮
@@ -159,6 +228,31 @@ fun MembersManagePage(
                     kotlinx.coroutines.delay(2000)
                     errorMessage = null
                 }
+            }
+
+            // 邀请对话框
+            if (showInviteDialog) {
+                InviteContactDialog(
+                    contacts = availableContacts,
+                    selectedContacts = selectedContacts,
+                    onContactToggle = { contactId ->
+                        selectedContacts = if (selectedContacts.contains(contactId)) {
+                            selectedContacts - contactId
+                        } else {
+                            selectedContacts + contactId
+                        }
+                    },
+                    onInvite = {
+                        if (selectedContacts.isNotEmpty()) {
+                            inviteLoading = true
+                            presenter.sendInvitations(selectedContacts.toList())
+                        }
+                    },
+                    onDismiss = {
+                        showInviteDialog = false
+                    },
+                    isLoading = inviteLoading
+                )
             }
         }
     }
@@ -401,15 +495,92 @@ private fun MemberItem(
 }
 
 @Composable
-private fun EmptyMembersList(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxWidth(),
-        contentAlignment = Alignment.Center
+private fun InvitedMembersList(
+    invitedMembers: List<User>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp)
     ) {
+        if (invitedMembers.isEmpty()) {
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 32.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "暂无邀请记录",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+            }
+        } else {
+            items(invitedMembers) { member ->
+                InvitedMemberItem(member = member)
+            }
+        }
+    }
+}
+
+@Composable
+private fun InvitedMemberItem(member: User) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // 头像
+        Box(
+            modifier = Modifier
+                .size(48.dp)
+                .clip(CircleShape)
+                .background(Color(0xFF4A5568)),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = member.username.take(1),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+
+        Spacer(modifier = Modifier.width(12.dp))
+
+        // 姓名和标签
+        Column(
+            modifier = Modifier.weight(1f)
+        ) {
+            Text(
+                text = member.username,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.Black
+            )
+            Text(
+                text = "已邀请",
+                fontSize = 12.sp,
+                color = Color(0xFF4CAF50)
+            )
+        }
+
+        // 邀请状态
         Text(
-            text = "暂无未入会成员",
-            fontSize = 14.sp,
-            color = Color.Gray
+            text = "待响应",
+            fontSize = 12.sp,
+            color = Color.Gray,
+            modifier = Modifier
+                .background(
+                    Color(0xFFF5F5F5),
+                    RoundedCornerShape(4.dp)
+                )
+                .padding(horizontal = 8.dp, vertical = 4.dp)
         )
     }
 }
@@ -451,6 +622,189 @@ private fun BottomButtons(
                 text = "解除全体静音",
                 fontSize = 14.sp
             )
+        }
+    }
+}
+
+@Composable
+private fun InviteContactDialog(
+    contacts: List<User>,
+    selectedContacts: Set<String>,
+    onContactToggle: (String) -> Unit,
+    onInvite: () -> Unit,
+    onDismiss: () -> Unit,
+    isLoading: Boolean = false
+) {
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.5f)),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(0.9f)
+                    .fillMaxHeight(0.7f)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(Color.White)
+            ) {
+                // 顶部标题栏
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "邀请新成员",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    IconButton(onClick = onDismiss) {
+                        Icon(
+                            imageVector = Icons.Default.Close,
+                            contentDescription = "关闭",
+                            tint = Color.Gray
+                        )
+                    }
+                }
+
+                // 联系人列表
+                LazyColumn(
+                    modifier = Modifier.weight(1f),
+                    contentPadding = PaddingValues(horizontal = 16.dp)
+                ) {
+                    items(contacts) { contact ->
+                        ContactSelectionItem(
+                            contact = contact,
+                            isSelected = selectedContacts.contains(contact.userId),
+                            onToggle = { onContactToggle(contact.userId) }
+                        )
+                    }
+                }
+
+                // 底部按钮
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    // 取消按钮
+                    OutlinedButton(
+                        onClick = onDismiss,
+                        modifier = Modifier.weight(1f),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = Color.Black
+                        )
+                    ) {
+                        Text(
+                            text = "取消",
+                            fontSize = 16.sp
+                        )
+                    }
+
+                    // 邀请按钮
+                    Button(
+                        onClick = onInvite,
+                        enabled = selectedContacts.isNotEmpty() && !isLoading,
+                        modifier = Modifier.weight(1f),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFF1976D2)
+                        )
+                    ) {
+                        if (isLoading) {
+                            CircularProgressIndicator(
+                                color = Color.White,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        } else {
+                            Text(
+                                text = "邀请 (${selectedContacts.size})",
+                                fontSize = 16.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ContactSelectionItem(
+    contact: User,
+    isSelected: Boolean,
+    onToggle: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+            .clickable { onToggle() },
+        colors = CardDefaults.cardColors(
+            containerColor = if (isSelected) Color(0xFFE3F2FD) else Color.White
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // 选择框
+            Checkbox(
+                checked = isSelected,
+                onCheckedChange = { onToggle() },
+                colors = CheckboxDefaults.colors(
+                    checkedColor = Color(0xFF1976D2)
+                )
+            )
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            // 头像
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(Color(0xFF1976D2)),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = contact.username.firstOrNull()?.toString() ?: "U",
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            // 联系人信息
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = contact.username,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.Black
+                )
+                contact.phone?.let { phone ->
+                    Text(
+                        text = phone,
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
+            }
         }
     }
 }
