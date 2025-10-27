@@ -42,6 +42,7 @@ fun ScheduledMeetingPage(
     var selectedParticipants by remember { mutableStateOf<List<User>>(emptyList()) }
     var passwordEnabled by remember { mutableStateOf(false) }
     var password by remember { mutableStateOf("") }
+    var recordingEnabled by remember { mutableStateOf(false) }
     var showDatePicker by remember { mutableStateOf(false) }
     var showTimePicker by remember { mutableStateOf(false) }
     var showDurationPicker by remember { mutableStateOf(false) }
@@ -189,6 +190,13 @@ fun ScheduledMeetingPage(
                         password = ""
                     }
                 }
+            )
+
+            // 会议录制
+            SwitchSettingItem(
+                title = "会议录制",
+                checked = recordingEnabled,
+                onCheckedChange = { recordingEnabled = it }
             )
         }
 

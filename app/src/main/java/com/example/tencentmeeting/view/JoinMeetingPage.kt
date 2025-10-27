@@ -38,6 +38,7 @@ fun JoinMeetingPage(
     var micEnabled by remember { mutableStateOf(false) }
     var speakerEnabled by remember { mutableStateOf(true) }
     var videoEnabled by remember { mutableStateOf(false) }
+    var recordingEnabled by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var showSuccessMessage by remember { mutableStateOf(false) }
@@ -308,6 +309,19 @@ fun JoinMeetingPage(
                             title = "开启视频",
                             checked = videoEnabled,
                             onCheckedChange = { videoEnabled = it }
+                        )
+
+                        Divider(
+                            color = Color(0xFFEEEEEE),
+                            thickness = 1.dp,
+                            modifier = Modifier.padding(vertical = 8.dp)
+                        )
+
+                        // 会议录制
+                        SwitchSettingItem(
+                            title = "会议录制",
+                            checked = recordingEnabled,
+                            onCheckedChange = { recordingEnabled = it }
                         )
                     }
                 }

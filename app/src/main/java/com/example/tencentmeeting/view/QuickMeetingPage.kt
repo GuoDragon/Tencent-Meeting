@@ -34,6 +34,7 @@ fun QuickMeetingPage(
     var videoEnabled by remember { mutableStateOf(false) }
     var micEnabled by remember { mutableStateOf(true) }
     var speakerEnabled by remember { mutableStateOf(true) }
+    var recordingEnabled by remember { mutableStateOf(false) }
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var showSuccessMessage by remember { mutableStateOf(false) }
@@ -182,6 +183,19 @@ fun QuickMeetingPage(
                             title = "扬声器是否开启",
                             checked = speakerEnabled,
                             onCheckedChange = { speakerEnabled = it }
+                        )
+
+                        Divider(
+                            color = Color(0xFFEEEEEE),
+                            thickness = 1.dp,
+                            modifier = Modifier.padding(vertical = 8.dp)
+                        )
+
+                        // 会议录制
+                        SwitchSettingItem(
+                            title = "会议录制",
+                            checked = recordingEnabled,
+                            onCheckedChange = { recordingEnabled = it }
                         )
                     }
                 }

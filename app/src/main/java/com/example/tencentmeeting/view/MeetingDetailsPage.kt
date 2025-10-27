@@ -50,6 +50,8 @@ fun MeetingDetailsPage(
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
     var showMembersManage by remember { mutableStateOf(false) }
+    var isHandRaised by remember { mutableStateOf(false) }
+    var raisedHandUsers by remember { mutableStateOf<List<User>>(emptyList()) }
 
     // MVP View实现
     val view = remember {
@@ -164,13 +166,72 @@ fun MeetingDetailsPage(
             )
         }
 
-        // 左下角聊天入口
+        // 左下角聊天入口和举手功能
         DanmuInputArea(
             modifier = Modifier
                 .align(Alignment.BottomStart)
                 .padding(start = 16.dp, bottom = 120.dp),
-            onClick = onNavigateToChatPage
+            onClick = onNavigateToChatPage,
+            isHandRaised = isHandRaised,
+            onHandRaiseClick = { isHandRaised = !isHandRaised }
         )
+
+        // 主持人视角：显示举手提示和解除静音按钮
+        if (raisedHandUsers.isNotEmpty()) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(start = 16.dp, bottom = 180.dp)
+            ) {
+                raisedHandUsers.forEach { user ->
+                    Card(
+                        modifier = Modifier
+                            .padding(bottom = 8.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color(0xFF3C4148)
+                        ),
+                        shape = MaterialTheme.shapes.medium
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.PanTool,
+                                contentDescription = "举手",
+                                tint = Color(0xFFFFA726),
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Text(
+                                text = "${user.username}举手了",
+                                fontSize = 13.sp,
+                                color = Color.White
+                            )
+                            Button(
+                                onClick = {
+                                    // 解除该用户的静音
+                                    presenter.toggleMic()
+                                    raisedHandUsers = raisedHandUsers - user
+                                },
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(0xFF4CAF50)
+                                ),
+                                modifier = Modifier.height(28.dp),
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
+                            ) {
+                                Text(
+                                    text = "解除静音",
+                                    fontSize = 11.sp,
+                                    color = Color.White
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         // 错误提示
         errorMessage?.let { message ->
@@ -327,39 +388,64 @@ private fun ParticipantView(
 @Composable
 private fun DanmuInputArea(
     modifier: Modifier = Modifier,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    isHandRaised: Boolean = false,
+    onHandRaiseClick: () -> Unit = {}
 ) {
     Row(
         modifier = modifier
-            .width(280.dp)
+            .width(380.dp)
             .height(48.dp)
             .clip(MaterialTheme.shapes.medium)
-            .background(Color(0xFF3C4148))
-            .padding(horizontal = 12.dp)
-            .clickable { onClick() },
+            .background(Color(0xFF3C4148)),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Icon(
-            imageVector = Icons.Default.Chat,
-            contentDescription = "聊天",
-            tint = Color.White,
-            modifier = Modifier.size(20.dp)
-        )
+        // 左侧聊天输入区
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .padding(horizontal = 12.dp)
+                .clickable { onClick() },
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.Chat,
+                contentDescription = "聊天",
+                tint = Color.White,
+                modifier = Modifier.size(20.dp)
+            )
 
-        Icon(
-            imageVector = Icons.Default.EmojiEmotions,
-            contentDescription = "表情",
-            tint = Color.White,
-            modifier = Modifier.size(20.dp)
-        )
+            Icon(
+                imageVector = Icons.Default.EmojiEmotions,
+                contentDescription = "表情",
+                tint = Color.White,
+                modifier = Modifier.size(20.dp)
+            )
 
-        Text(
-            text = "说点什么...",
-            fontSize = 14.sp,
-            color = Color.Gray,
-            modifier = Modifier.weight(1f)
-        )
+            Text(
+                text = "说点什么...",
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+        }
+
+        // 右侧举手按钮
+        IconButton(
+            onClick = onHandRaiseClick,
+            modifier = Modifier
+                .padding(end = 4.dp)
+                .size(40.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.PanTool,
+                contentDescription = if (isHandRaised) "取消举手" else "举手",
+                tint = if (isHandRaised) Color(0xFFFFA726) else Color.Gray,
+                modifier = Modifier.size(24.dp)
+            )
+        }
     }
 }
 

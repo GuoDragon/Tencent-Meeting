@@ -23,7 +23,8 @@
       "Bash(cmd /c \"where java\")",
       "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat build\")",
       "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && gradlew.bat compileDebugKotlin --stacktrace 2>&1 | findstr /i /C:\"\"error\"\" /C:\"\"success\"\" /C:\"\"fail\"\" /C:\"\"BUILD\"\"\")",
-      "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat compileDebugKotlin\")"
+      "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat compileDebugKotlin\")",
+      "Bash(cmd /c \"set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && cd /d D:\\android_template\\Tencent-Meeting && gradlew.bat build 2>&1 | findstr /i /C:\"BUILD\" /C:\"error\" /C:\"success\" /C:\"fail\"\")"
     ],
     "deny": [],
     "ask": []
