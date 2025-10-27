@@ -393,6 +393,22 @@ app/src/main/java/com/example/tencentmeeting/
   - [x] JoinMeetingPage添加会议录制开关
     - [x] 在"开启视频"选项后新增一行
     - [x] 添加"会议录制"开关（默认关闭）
+- [x] 微调3：会议录制状态传递功能
+  - [x] MeetingDetailsPage添加initialRecordingEnabled参数
+    - [x] 在函数参数中添加initialRecordingEnabled参数
+    - [x] 使用该参数初始化isRecording状态
+  - [x] QuickMeetingPage传递录制状态
+    - [x] 修改onNavigateToMeetingDetails函数签名，添加第5个Boolean参数
+    - [x] 在导航回调中传递recordingEnabled状态
+  - [x] JoinMeetingPage传递录制状态
+    - [x] 修改onNavigateToMeetingDetails函数签名，添加第5个Boolean参数
+    - [x] 在导航回调中传递recordingEnabled状态
+  - [x] MainActivity导航调用更新
+    - [x] 添加initialRecordingEnabled状态变量
+    - [x] 更新QuickMeetingPage的导航lambda，接收并保存录制状态
+    - [x] 更新JoinMeetingPage的导航lambda，接收并保存录制状态
+    - [x] 在MeetingDetailsPage调用中传递initialRecordingEnabled参数
+  - [x] 实现效果：用户在快速会议或加入会议页面开启"会议录制"后，进入会议详情页时左上角的录制按钮会显示为红色（录制中状态）
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

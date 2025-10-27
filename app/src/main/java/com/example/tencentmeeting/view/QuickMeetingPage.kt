@@ -24,7 +24,7 @@ import com.example.tencentmeeting.presenter.QuickMeetingPresenter
 @Composable
 fun QuickMeetingPage(
     onNavigateBack: () -> Unit,
-    onNavigateToMeetingDetails: (String, Boolean, Boolean, Boolean) -> Unit = { _, _, _, _ -> }
+    onNavigateToMeetingDetails: (String, Boolean, Boolean, Boolean, Boolean) -> Unit = { _, _, _, _, _ -> }
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -59,7 +59,7 @@ fun QuickMeetingPage(
             }
 
             override fun showStartMeetingSuccess(meetingId: String, micEnabled: Boolean, videoEnabled: Boolean, speakerEnabled: Boolean) {
-                onNavigateToMeetingDetails(meetingId, micEnabled, videoEnabled, speakerEnabled)
+                onNavigateToMeetingDetails(meetingId, micEnabled, videoEnabled, speakerEnabled, recordingEnabled)
             }
         }
     }

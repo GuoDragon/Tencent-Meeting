@@ -25,7 +25,7 @@ import com.example.tencentmeeting.presenter.JoinMeetingPresenter
 @Composable
 fun JoinMeetingPage(
     onNavigateBack: () -> Unit,
-    onNavigateToMeetingDetails: (String, Boolean, Boolean, Boolean) -> Unit = { _, _, _, _ -> }
+    onNavigateToMeetingDetails: (String, Boolean, Boolean, Boolean, Boolean) -> Unit = { _, _, _, _, _ -> }
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -63,7 +63,7 @@ fun JoinMeetingPage(
             }
 
             override fun showJoinSuccess(meetingId: String, micEnabled: Boolean, videoEnabled: Boolean, speakerEnabled: Boolean) {
-                onNavigateToMeetingDetails(meetingId, micEnabled, videoEnabled, speakerEnabled)
+                onNavigateToMeetingDetails(meetingId, micEnabled, videoEnabled, speakerEnabled, recordingEnabled)
             }
         }
     }

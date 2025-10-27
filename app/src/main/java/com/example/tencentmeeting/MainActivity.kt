@@ -62,6 +62,7 @@ fun MainScreen() {
     var initialMicEnabled by remember { mutableStateOf(true) }
     var initialVideoEnabled by remember { mutableStateOf(false) }
     var initialSpeakerEnabled by remember { mutableStateOf(true) }
+    var initialRecordingEnabled by remember { mutableStateOf(false) }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -88,11 +89,12 @@ fun MainScreen() {
         // 显示加入会议页面
         JoinMeetingPage(
             onNavigateBack = { showJoinMeetingPage = false },
-            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled ->
+            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled, recordingEnabled ->
                 currentMeetingId = meetingId
                 initialMicEnabled = micEnabled
                 initialVideoEnabled = videoEnabled
                 initialSpeakerEnabled = speakerEnabled
+                initialRecordingEnabled = recordingEnabled
                 showJoinMeetingPage = false
                 showMeetingDetailsPage = true
             }
@@ -101,11 +103,12 @@ fun MainScreen() {
         // 显示快速会议页面
         QuickMeetingPage(
             onNavigateBack = { showQuickMeetingPage = false },
-            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled ->
+            onNavigateToMeetingDetails = { meetingId, micEnabled, videoEnabled, speakerEnabled, recordingEnabled ->
                 currentMeetingId = meetingId
                 initialMicEnabled = micEnabled
                 initialVideoEnabled = videoEnabled
                 initialSpeakerEnabled = speakerEnabled
+                initialRecordingEnabled = recordingEnabled
                 showQuickMeetingPage = false
                 showMeetingDetailsPage = true
             }
@@ -132,6 +135,7 @@ fun MainScreen() {
             initialMicEnabled = initialMicEnabled,
             initialVideoEnabled = initialVideoEnabled,
             initialSpeakerEnabled = initialSpeakerEnabled,
+            initialRecordingEnabled = initialRecordingEnabled,
             onNavigateBack = { showMeetingDetailsPage = false },
             onNavigateToChatPage = {
                 currentChatMeetingId = currentMeetingId
