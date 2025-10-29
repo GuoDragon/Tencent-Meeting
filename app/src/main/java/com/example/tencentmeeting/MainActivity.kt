@@ -31,6 +31,7 @@ import com.example.tencentmeeting.view.MeetingChatPage
 import com.example.tencentmeeting.view.MeetingReplayPage
 import com.example.tencentmeeting.view.ScheduledMeetingDetailsPage
 import com.example.tencentmeeting.view.HistoryMeetingsPage
+import com.example.tencentmeeting.view.ShareScreenInputPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -59,6 +60,7 @@ fun MainScreen() {
     var showMeetingReplayPage by remember { mutableStateOf(false) }
     var showScheduledMeetingDetailsPage by remember { mutableStateOf(false) }
     var showHistoryMeetingsPage by remember { mutableStateOf(false) }
+    var showShareScreenInputPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
@@ -68,6 +70,7 @@ fun MainScreen() {
     var initialVideoEnabled by remember { mutableStateOf(false) }
     var initialSpeakerEnabled by remember { mutableStateOf(true) }
     var initialRecordingEnabled by remember { mutableStateOf(false) }
+    var initialScreenSharing by remember { mutableStateOf(false) }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -154,6 +157,17 @@ fun MainScreen() {
                 showMeetingReplayPage = true
             }
         )
+    } else if (showShareScreenInputPage) {
+        // 显示共享屏幕输入页面
+        ShareScreenInputPage(
+            onNavigateBack = { showShareScreenInputPage = false },
+            onNavigateToMeetingDetails = { meetingId, enableScreenSharing ->
+                currentMeetingId = meetingId
+                initialScreenSharing = enableScreenSharing
+                showShareScreenInputPage = false
+                showMeetingDetailsPage = true
+            }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
@@ -162,7 +176,12 @@ fun MainScreen() {
             initialVideoEnabled = initialVideoEnabled,
             initialSpeakerEnabled = initialSpeakerEnabled,
             initialRecordingEnabled = initialRecordingEnabled,
-            onNavigateBack = { showMeetingDetailsPage = false },
+            initialScreenSharing = initialScreenSharing,
+            onNavigateBack = {
+                showMeetingDetailsPage = false
+                // 重置屏幕共享状态
+                initialScreenSharing = false
+            },
             onNavigateToChatPage = {
                 currentChatMeetingId = currentMeetingId
                 showMeetingDetailsPage = false
@@ -197,7 +216,8 @@ fun MainScreen() {
                             scheduledMeetingId = meetingId
                             showScheduledMeetingDetailsPage = true
                         },
-                        onNavigateToHistoryMeetings = { showHistoryMeetingsPage = true }
+                        onNavigateToHistoryMeetings = { showHistoryMeetingsPage = true },
+                        onNavigateToShareScreen = { showShareScreenInputPage = true }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },

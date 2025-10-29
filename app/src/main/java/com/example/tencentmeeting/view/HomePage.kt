@@ -36,7 +36,8 @@ fun HomePage(
     onNavigateToQuickMeeting: () -> Unit = {},
     onNavigateToMeetingDetails: (String) -> Unit = {},
     onNavigateToScheduledMeetingDetails: (String) -> Unit = {},
-    onNavigateToHistoryMeetings: () -> Unit = {}
+    onNavigateToHistoryMeetings: () -> Unit = {},
+    onNavigateToShareScreen: () -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -127,7 +128,8 @@ fun HomePage(
         FunctionButtonsSection(
             onJoinMeetingClick = { presenter.onJoinMeetingClicked() },
             onQuickMeetingClick = { presenter.onQuickMeetingClicked() },
-            onScheduledMeetingClick = { presenter.onScheduledMeetingClicked() }
+            onScheduledMeetingClick = { presenter.onScheduledMeetingClicked() },
+            onShareScreenClick = onNavigateToShareScreen
         )
 
         // 会议列表区域
@@ -220,7 +222,8 @@ private fun UserInfoSection(user: User) {
 private fun FunctionButtonsSection(
     onJoinMeetingClick: () -> Unit,
     onQuickMeetingClick: () -> Unit,
-    onScheduledMeetingClick: () -> Unit
+    onScheduledMeetingClick: () -> Unit,
+    onShareScreenClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -246,7 +249,7 @@ private fun FunctionButtonsSection(
         FunctionButton(
             icon = Icons.Default.ScreenShare,
             text = "共享屏幕",
-            onClick = { /* 暂时不做任何操作 */ }
+            onClick = onShareScreenClick
         )
     }
 }

@@ -272,6 +272,29 @@
   - 从HomePage点击"历史会议"按钮进入
 - MVP架构实现，加载status为ENDED的会议，按时间倒序排列
 
+### ShareScreenInputPage（共享屏幕输入页面）
+- 页面设计：
+  - 浅蓝到灰白渐变背景
+  - 顶部间距24dp（避免覆盖系统状态栏）
+  - 左上角"取消"按钮
+- 内容区域：
+  - 标题："共享屏幕"（28sp粗体，居中）
+  - 副标题："请输入 Rooms共享码 或 会议号"（14sp灰色，居中）
+  - 会议号输入框：
+    - 白色背景，圆角边框
+    - 单行输入
+  - "开始共享"按钮：
+    - 输入框为空时：浅蓝色（#90CAF9），禁用状态
+    - 输入框有内容时：深蓝色（#1976D2），可点击
+    - 点击后导航到MeetingDetailsPage并自动开启屏幕共享
+- 底部帮助文本：
+  - "如何共享屏幕?"蓝色文本链接（仅显示）
+- 导航来源：
+  - 从HomePage点击"共享屏幕"按钮进入
+- 导航目标：
+  - 输入会议号后进入MeetingDetailsPage，屏幕共享视图自动开启
+- MVP架构实现
+
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
 - **UI框架**: Jetpack Compose + Material 3
@@ -306,7 +329,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MembersManageContract.kt
 │   ├── MeetingChatContract.kt
 │   ├── ScheduledMeetingDetailsContract.kt   # 预定会议详情（新增）
-│   └── HistoryMeetingsContract.kt           # 历史会议列表（新增）
+│   ├── HistoryMeetingsContract.kt           # 历史会议列表（新增）
+│   └── ShareScreenInputContract.kt          # 共享屏幕输入（新增）
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -320,7 +344,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MembersManagePresenter.kt
 │   ├── MeetingChatPresenter.kt
 │   ├── ScheduledMeetingDetailsPresenter.kt  # 预定会议详情（新增）
-│   └── HistoryMeetingsPresenter.kt          # 历史会议列表（新增）
+│   ├── HistoryMeetingsPresenter.kt          # 历史会议列表（新增）
+│   └── ShareScreenInputPresenter.kt         # 共享屏幕输入（新增）
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -334,7 +359,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MembersManagePage.kt
 │   ├── MeetingChatPage.kt
 │   ├── ScheduledMeetingDetailsPage.kt       # 预定会议详情（新增）
-│   └── HistoryMeetingsPage.kt               # 历史会议列表（新增）
+│   ├── HistoryMeetingsPage.kt               # 历史会议列表（新增）
+│   └── ShareScreenInputPage.kt              # 共享屏幕输入（新增）
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -525,6 +551,24 @@ app/src/main/java/com/example/tencentmeeting/
   - [x] 布局微调：修复系统状态栏遮挡问题
     - [x] ScheduledMeetingDetailsPage添加顶部间距24dp
     - [x] HistoryMeetingsPage添加顶部间距24dp
+- [x] 功能扩展8：共享屏幕输入页面
+  - [x] 创建ShareScreenInputPage（共享屏幕输入页）
+    - [x] 创建ShareScreenInputContract.kt和Presenter
+    - [x] 浅蓝到灰白渐变背景设计
+    - [x] 顶部"取消"按钮和标题"共享屏幕"
+    - [x] 会议号输入框（白色背景，圆角边框）
+    - [x] 动态按钮状态：输入为空时浅蓝色禁用，有内容时深蓝色可点击
+    - [x] 底部"如何共享屏幕?"帮助链接
+  - [x] 更新HomePage添加共享屏幕导航回调
+    - [x] 点击"共享屏幕"按钮 → 导航到ShareScreenInputPage
+  - [x] 更新MeetingDetailsPage支持初始屏幕共享状态
+    - [x] 添加initialScreenSharing参数
+    - [x] 根据参数自动开启屏幕共享视图
+  - [x] 更新MainActivity完整导航流程
+    - [x] 添加showShareScreenInputPage状态变量
+    - [x] 添加initialScreenSharing状态管理
+    - [x] 配置ShareScreenInputPage导航逻辑
+    - [x] 传递屏幕共享状态到MeetingDetailsPage
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

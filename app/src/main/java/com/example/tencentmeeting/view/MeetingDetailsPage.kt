@@ -32,6 +32,7 @@ fun MeetingDetailsPage(
     initialVideoEnabled: Boolean = false,
     initialSpeakerEnabled: Boolean = true,
     initialRecordingEnabled: Boolean = false,
+    initialScreenSharing: Boolean = false,
     onNavigateBack: () -> Unit,
     onNavigateToChatPage: () -> Unit = {}
 ) {
@@ -45,7 +46,7 @@ fun MeetingDetailsPage(
     var micEnabled by remember { mutableStateOf(initialMicEnabled) }
     var videoEnabled by remember { mutableStateOf(initialVideoEnabled) }
     var speakerEnabled by remember { mutableStateOf(initialSpeakerEnabled) }
-    var isScreenSharing by remember { mutableStateOf(false) }
+    var isScreenSharing by remember { mutableStateOf(initialScreenSharing) }
     var isRecording by remember { mutableStateOf(initialRecordingEnabled) }
     var danmuText by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
