@@ -6,11 +6,19 @@
 
 ## 已实现功能
 ### HomePage（会议首页）
+- 用户信息区域（与MePage样式一致）：
+  - 白色卡片样式，带阴影效果
+  - 圆形头像显示"刘"字（80dp，蓝色背景）
+  - 显示用户姓名"刘承龙"（22sp，粗体）
+  - 显示手机号和邮箱信息
 - 功能按钮区域：
   - 加入会议
   - 快速会议
   - 预定会议
-- 会议列表：显示进行中和待开始的会议
+  - 共享屏幕
+- 会议列表：
+  - 显示进行中和待开始的会议
+  - 右上角历史会议按钮，点击查看历史会议列表
 - 底部导航栏：会议、通讯录、我的三个Tab
 - 支持跳转到预定会议页面
 
@@ -213,8 +221,56 @@
 - 功能特性：
   - 仅界面示意，不实际播放视频
   - 所有控制按钮可点击但不执行真实播放
-  - 从MePage历史会议列表点击进入
+  - 从HistoryMeetingsPage历史会议列表点击进入
   - MVP架构实现，数据从meetings.json加载
+
+### ScheduledMeetingDetailsPage（预定会议详情页面）
+- 顶部信息栏：
+  - 白色背景
+  - 顶部间距24dp（避免覆盖系统状态栏）
+  - 左侧：返回按钮
+  - 中间："会议详情"标题（居中显示，粗体18sp）
+- 会议信息展示：
+  - 会议主题（24sp粗体）
+  - 时间信息卡片：
+    - 左侧：开始时间（HH:mm格式，32sp粗体）和日期
+    - 中间：状态"待开始"和会议时长
+    - 右侧：结束时间（HH:mm格式，32sp粗体）和日期
+  - 会议号
+  - 发起人（显示"刘承龙"）
+  - 电话入会（显示固定电话号码）
+  - 应用按钮（点击无反应）
+  - 会议资料按钮（点击无反应）
+- 底部按钮区：
+  - 左侧：AI托管按钮（OutlinedButton，点击无反应）
+  - 右侧：进入会议按钮（蓝色，点击进入MeetingDetailsPage）
+- 导航来源：
+  - 从HomePage点击UPCOMING状态的会议进入
+- MVP架构实现，数据从meetings.json加载
+
+### HistoryMeetingsPage（历史会议列表页面）
+- 顶部信息栏：
+  - 白色背景
+  - 顶部间距24dp（避免覆盖系统状态栏）
+  - 左侧：返回按钮
+  - 中间："历史会议"标题（居中显示，粗体18sp）
+  - 右侧：三点菜单图标（仅显示）
+- 搜索框：
+  - 提示文字："会议名称、会议备注、会议号、发起人"
+  - 支持实时搜索过滤会议列表
+- 会议列表展示：
+  - 按日期分组（"10月25日 周六"格式）
+  - 每个会议卡片显示：
+    - 会议号（灰色小字）
+    - 会议主题（16sp粗体）
+    - 时间和发起人信息
+    - 右侧箭头图标
+  - 点击会议卡片 → 导航到MeetingReplayPage
+- 空状态：
+  - 显示History图标和"暂无历史会议"提示
+- 导航来源：
+  - 从HomePage点击"历史会议"按钮进入
+- MVP架构实现，加载status为ENDED的会议，按时间倒序排列
 
 ## 技术架构
 - **架构模式**: MVP (Model-View-Presenter)
@@ -248,7 +304,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── QuickMeetingContract.kt
 │   ├── MeetingDetailsContract.kt
 │   ├── MembersManageContract.kt
-│   └── MeetingChatContract.kt
+│   ├── MeetingChatContract.kt
+│   ├── ScheduledMeetingDetailsContract.kt   # 预定会议详情（新增）
+│   └── HistoryMeetingsContract.kt           # 历史会议列表（新增）
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -260,7 +318,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── QuickMeetingPresenter.kt
 │   ├── MeetingDetailsPresenter.kt
 │   ├── MembersManagePresenter.kt
-│   └── MeetingChatPresenter.kt
+│   ├── MeetingChatPresenter.kt
+│   ├── ScheduledMeetingDetailsPresenter.kt  # 预定会议详情（新增）
+│   └── HistoryMeetingsPresenter.kt          # 历史会议列表（新增）
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -272,7 +332,9 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── QuickMeetingPage.kt
 │   ├── MeetingDetailsPage.kt
 │   ├── MembersManagePage.kt
-│   └── MeetingChatPage.kt
+│   ├── MeetingChatPage.kt
+│   ├── ScheduledMeetingDetailsPage.kt       # 预定会议详情（新增）
+│   └── HistoryMeetingsPage.kt               # 历史会议列表（新增）
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -409,6 +471,60 @@ app/src/main/java/com/example/tencentmeeting/
     - [x] 更新JoinMeetingPage的导航lambda，接收并保存录制状态
     - [x] 在MeetingDetailsPage调用中传递initialRecordingEnabled参数
   - [x] 实现效果：用户在快速会议或加入会议页面开启"会议录制"后，进入会议详情页时左上角的录制按钮会显示为红色（录制中状态）
+- [x] 微调4：HomePage页面优化
+  - [x] 添加顶部用户信息区域
+    - [x] 显示当前用户头像（圆形图标）
+    - [x] 显示用户姓名"刘承龙"
+  - [x] 功能按钮区域扩展
+    - [x] 在右侧新增"共享屏幕"按钮（第4个按钮）
+    - [x] 使用ScreenShare图标
+  - [x] 会议列表优化
+    - [x] 标题行右侧添加"历史会议"按钮
+    - [x] 点击按钮查看历史会议列表（status为ENDED的会议）
+    - [x] 按钮样式：灰色背景、小字体、右箭头图标
+  - [x] MVP架构扩展
+    - [x] HomeContract添加showUserInfo和showHistoryMeetings方法
+    - [x] HomePresenter添加loadCurrentUser和onHistoryMeetingsClicked方法
+    - [x] 从DataRepository加载刘承龙（user001）的用户信息
+    - [x] 支持切换显示当前会议和历史会议列表
+- [x] 微调5：HomePage用户信息区域样式统一
+  - [x] 将HomePage顶部用户信息区域改为与MePage完全一致的样式
+  - [x] 使用Card卡片样式（白色背景，2dp阴影）
+  - [x] 头像改为圆形80dp，显示文字"刘"（32sp粗体）
+  - [x] 姓名改为22sp粗体显示"刘承龙"
+  - [x] 添加手机号和邮箱信息显示
+  - [x] 保持视觉一致性，提升用户体验
+- [x] 微调6：HomePage布局间距优化
+  - [x] 参考截图比例调整页面垂直间距
+  - [x] 添加顶部间距24dp，让个人信息区域往下移动
+  - [x] 缩小用户信息和功能按钮之间的间距（从屏幕高度10%改为16dp）
+  - [x] 让功能区和会议列表区域往上移动
+  - [x] 移除不再使用的动态计算变量（configuration、screenHeight、topSpacing）
+  - [x] 页面布局更加紧凑，符合实际APP的视觉比例
+- [x] 功能扩展7：预定会议详情页和历史会议列表页
+  - [x] 创建ScheduledMeetingDetailsPage（预定会议详情页）
+    - [x] 创建ScheduledMeetingDetailsContract.kt和Presenter
+    - [x] 显示会议主题、时间信息卡片、会议号、发起人、电话入会
+    - [x] 应用和会议资料按钮（仅显示，点击无反应）
+    - [x] 底部AI托管和进入会议按钮
+    - [x] 点击进入会议导航到MeetingDetailsPage
+  - [x] 创建HistoryMeetingsPage（历史会议列表页）
+    - [x] 创建HistoryMeetingsContract.kt和Presenter
+    - [x] 顶部栏：返回、标题、三点菜单
+    - [x] 搜索框：支持实时搜索过滤
+    - [x] 按日期分组显示会议列表
+    - [x] 点击会议导航到MeetingReplayPage
+  - [x] 修改HomePage会议项点击逻辑
+    - [x] ONGOING状态 → 进入MeetingDetailsPage
+    - [x] UPCOMING状态 → 显示ScheduledMeetingDetailsPage
+    - [x] 历史会议按钮 → 导航到独立的HistoryMeetingsPage
+  - [x] 修改MainActivity添加新页面导航
+    - [x] 导入ScheduledMeetingDetailsPage和HistoryMeetingsPage
+    - [x] 添加导航状态变量
+    - [x] 配置完整的导航流程
+  - [x] 布局微调：修复系统状态栏遮挡问题
+    - [x] ScheduledMeetingDetailsPage添加顶部间距24dp
+    - [x] HistoryMeetingsPage添加顶部间距24dp
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

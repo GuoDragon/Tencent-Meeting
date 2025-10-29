@@ -29,6 +29,8 @@ import com.example.tencentmeeting.view.QuickMeetingPage
 import com.example.tencentmeeting.view.MeetingDetailsPage
 import com.example.tencentmeeting.view.MeetingChatPage
 import com.example.tencentmeeting.view.MeetingReplayPage
+import com.example.tencentmeeting.view.ScheduledMeetingDetailsPage
+import com.example.tencentmeeting.view.HistoryMeetingsPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -55,10 +57,13 @@ fun MainScreen() {
     var showMeetingDetailsPage by remember { mutableStateOf(false) }
     var showMeetingChatPage by remember { mutableStateOf(false) }
     var showMeetingReplayPage by remember { mutableStateOf(false) }
+    var showScheduledMeetingDetailsPage by remember { mutableStateOf(false) }
+    var showHistoryMeetingsPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
     var replayMeetingId by remember { mutableStateOf("") }
+    var scheduledMeetingId by remember { mutableStateOf("") }
     var initialMicEnabled by remember { mutableStateOf(true) }
     var initialVideoEnabled by remember { mutableStateOf(false) }
     var initialSpeakerEnabled by remember { mutableStateOf(true) }
@@ -128,6 +133,27 @@ fun MainScreen() {
             meetingId = replayMeetingId,
             onNavigateBack = { showMeetingReplayPage = false }
         )
+    } else if (showScheduledMeetingDetailsPage) {
+        // 显示预定会议详情页面
+        ScheduledMeetingDetailsPage(
+            meetingId = scheduledMeetingId,
+            onNavigateBack = { showScheduledMeetingDetailsPage = false },
+            onNavigateToMeetingDetails = { meetingId ->
+                currentMeetingId = meetingId
+                showScheduledMeetingDetailsPage = false
+                showMeetingDetailsPage = true
+            }
+        )
+    } else if (showHistoryMeetingsPage) {
+        // 显示历史会议列表页面
+        HistoryMeetingsPage(
+            onNavigateBack = { showHistoryMeetingsPage = false },
+            onNavigateToMeetingReplay = { meetingId ->
+                replayMeetingId = meetingId
+                showHistoryMeetingsPage = false
+                showMeetingReplayPage = true
+            }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
@@ -166,7 +192,12 @@ fun MainScreen() {
                         onNavigateToMeetingDetails = { meetingId ->
                             currentMeetingId = meetingId
                             showMeetingDetailsPage = true
-                        }
+                        },
+                        onNavigateToScheduledMeetingDetails = { meetingId ->
+                            scheduledMeetingId = meetingId
+                            showScheduledMeetingDetailsPage = true
+                        },
+                        onNavigateToHistoryMeetings = { showHistoryMeetingsPage = true }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },

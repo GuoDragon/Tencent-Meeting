@@ -34,61 +34,70 @@ fun HomePage(
     onNavigateToScheduledMeeting: () -> Unit = {},
     onNavigateToJoinMeeting: () -> Unit = {},
     onNavigateToQuickMeeting: () -> Unit = {},
-    onNavigateToMeetingDetails: (String) -> Unit = {}
+    onNavigateToMeetingDetails: (String) -> Unit = {},
+    onNavigateToScheduledMeetingDetails: (String) -> Unit = {},
+    onNavigateToHistoryMeetings: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    val configuration = LocalConfiguration.current
-    val screenHeight = configuration.screenHeightDp.dp
-    val topSpacing = screenHeight * 0.1f // 页面高度的十分之一
 
     val dataRepository = DataRepository.getInstance(context)
     val presenter = remember { HomePresenter(dataRepository) }
-    
+
+    var currentUser by remember { mutableStateOf<User?>(null) }
     var currentMeetings by remember { mutableStateOf<List<Meeting>>(emptyList()) }
     var isLoading by remember { mutableStateOf(false) }
     var showEmptyState by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
-    
+
     val view = remember {
         object : HomeContract.View {
             override fun showMeetings(meetings: List<Meeting>) {
                 currentMeetings = meetings
                 showEmptyState = false
             }
-            
+
             override fun showEmptyMeetings() {
                 currentMeetings = emptyList()
                 showEmptyState = true
             }
-            
+
             override fun showLoading() {
                 isLoading = true
             }
-            
+
             override fun hideLoading() {
                 isLoading = false
             }
-            
+
             override fun showError(message: String) {
                 errorMessage = message
             }
-            
+
             override fun navigateToJoinMeeting() {
                 onNavigateToJoinMeeting()
             }
-            
+
             override fun navigateToQuickMeeting() {
                 onNavigateToQuickMeeting()
             }
-            
+
             override fun navigateToScheduledMeeting() {
                 onNavigateToScheduledMeeting()
             }
+
+            override fun showUserInfo(user: User) {
+                currentUser = user
+            }
+
+            override fun showHistoryMeetings(meetings: List<Meeting>) {
+                // 不再在HomePage显示历史会议，导航到独立页面
+            }
         }
     }
-    
+
     LaunchedEffect(Unit) {
         presenter.attachView(view)
+        presenter.loadCurrentUser()
         presenter.loadMeetings()
     }
     
@@ -103,29 +112,104 @@ fun HomePage(
             .fillMaxSize()
             .background(Color(0xFFF5F5F5))
     ) {
-        // 向下移动页面十分之一的空间
-        Spacer(modifier = Modifier.height(topSpacing))
-        
+        // 顶部间距，让个人信息区域往下移动一点
+        Spacer(modifier = Modifier.height(24.dp))
+
+        // 用户信息区域
+        currentUser?.let { user ->
+            UserInfoSection(user = user)
+        }
+
+        // 用户信息和功能按钮之间的间距（缩小间距，让功能区往上移动）
+        Spacer(modifier = Modifier.height(16.dp))
+
         // 功能按钮区域
         FunctionButtonsSection(
             onJoinMeetingClick = { presenter.onJoinMeetingClicked() },
             onQuickMeetingClick = { presenter.onQuickMeetingClicked() },
             onScheduledMeetingClick = { presenter.onScheduledMeetingClicked() }
         )
-        
+
         // 会议列表区域
         MeetingsSection(
             meetings = currentMeetings,
             showEmptyState = showEmptyState,
             isLoading = isLoading,
-            onNavigateToMeetingDetails = onNavigateToMeetingDetails
+            onNavigateToMeetingDetails = onNavigateToMeetingDetails,
+            onNavigateToScheduledMeetingDetails = onNavigateToScheduledMeetingDetails,
+            onHistoryMeetingsClick = onNavigateToHistoryMeetings
         )
-        
+
         // 错误提示
         errorMessage?.let { message ->
             LaunchedEffect(message) {
                 // 可以添加Snackbar显示错误
                 errorMessage = null
+            }
+        }
+    }
+}
+
+@Composable
+private fun UserInfoSection(user: User) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            // 顶部用户基本信息
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // 头像
+                Box(
+                    modifier = Modifier
+                        .size(80.dp)
+                        .clip(CircleShape)
+                        .background(Color(0xFF1976D2)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "刘",
+                        color = Color.White,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(16.dp))
+
+                // 用户信息
+                Column(
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Text(
+                        text = "刘承龙",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = user.phone ?: "未设置手机号",
+                        fontSize = 16.sp,
+                        color = Color.Gray
+                    )
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Text(
+                        text = "liuchenglong@example.com",
+                        fontSize = 14.sp,
+                        color = Color.Gray
+                    )
+                }
             }
         }
     }
@@ -158,6 +242,11 @@ private fun FunctionButtonsSection(
             icon = Icons.Default.Schedule,
             text = "预定会议",
             onClick = onScheduledMeetingClick
+        )
+        FunctionButton(
+            icon = Icons.Default.ScreenShare,
+            text = "共享屏幕",
+            onClick = { /* 暂时不做任何操作 */ }
         )
     }
 }
@@ -205,7 +294,9 @@ private fun MeetingsSection(
     meetings: List<Meeting>,
     showEmptyState: Boolean,
     isLoading: Boolean,
-    onNavigateToMeetingDetails: (String) -> Unit
+    onNavigateToMeetingDetails: (String) -> Unit,
+    onNavigateToScheduledMeetingDetails: (String) -> Unit,
+    onHistoryMeetingsClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -214,7 +305,8 @@ private fun MeetingsSection(
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
                 text = "会议列表",
@@ -222,8 +314,31 @@ private fun MeetingsSection(
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
+
+            // 历史会议按钮
+            Row(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color(0xFFF0F0F0))
+                    .clickable { onHistoryMeetingsClick() }
+                    .padding(horizontal = 12.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "历史会议",
+                    fontSize = 12.sp,
+                    color = Color.Gray
+                )
+                Spacer(modifier = Modifier.width(4.dp))
+                Icon(
+                    imageVector = Icons.Default.ChevronRight,
+                    contentDescription = "查看历史会议",
+                    tint = Color.Gray,
+                    modifier = Modifier.size(16.dp)
+                )
+            }
         }
-        
+
         Spacer(modifier = Modifier.height(16.dp))
         
         when {
@@ -245,7 +360,8 @@ private fun MeetingsSection(
                     items(meetings) { meeting ->
                         MeetingItem(
                             meeting = meeting,
-                            onNavigateToMeetingDetails = onNavigateToMeetingDetails
+                            onNavigateToMeetingDetails = onNavigateToMeetingDetails,
+                            onNavigateToScheduledMeetingDetails = onNavigateToScheduledMeetingDetails
                         )
                     }
                 }
@@ -281,16 +397,19 @@ private fun EmptyMeetingsState() {
 @Composable
 private fun MeetingItem(
     meeting: Meeting,
-    onNavigateToMeetingDetails: (String) -> Unit
+    onNavigateToMeetingDetails: (String) -> Unit,
+    onNavigateToScheduledMeetingDetails: (String) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 4.dp)
             .clickable {
-                // Only navigate to meeting details if status is ONGOING
-                if (meeting.status.name == "ONGOING") {
-                    onNavigateToMeetingDetails(meeting.meetingId)
+                // ONGOING状态 -> 进入会议详情
+                // UPCOMING状态 -> 显示预定会议详情
+                when (meeting.status.name) {
+                    "ONGOING" -> onNavigateToMeetingDetails(meeting.meetingId)
+                    "UPCOMING" -> onNavigateToScheduledMeetingDetails(meeting.meetingId)
                 }
             },
         colors = CardDefaults.cardColors(containerColor = Color.White),

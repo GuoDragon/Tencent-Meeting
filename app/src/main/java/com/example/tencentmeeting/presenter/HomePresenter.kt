@@ -31,11 +31,11 @@ class HomePresenter(
                 val meetings = withContext(Dispatchers.IO) {
                     dataRepository.getMeetings()
                 }
-                
-                val activeMeetings = meetings.filter { 
-                    it.status == MeetingStatus.ONGOING || it.status == MeetingStatus.UPCOMING 
+
+                val activeMeetings = meetings.filter {
+                    it.status == MeetingStatus.ONGOING || it.status == MeetingStatus.UPCOMING
                 }.take(5)
-                
+
                 if (activeMeetings.isNotEmpty()) {
                     view?.showMeetings(activeMeetings)
                 } else {
@@ -46,19 +46,54 @@ class HomePresenter(
             }
         }
     }
-    
+
+    override fun loadCurrentUser() {
+        presenterScope.launch {
+            try {
+                val users = withContext(Dispatchers.IO) {
+                    dataRepository.getUsers()
+                }
+                // 获取刘承龙的用户信息（user001）
+                val currentUser = users.firstOrNull { it.userId == "user001" }
+                currentUser?.let {
+                    view?.showUserInfo(it)
+                }
+            } catch (e: Exception) {
+                view?.showError("加载用户信息失败: ${e.message}")
+            }
+        }
+    }
+
     override fun onJoinMeetingClicked() {
         view?.navigateToJoinMeeting()
     }
-    
+
     override fun onQuickMeetingClicked() {
         view?.navigateToQuickMeeting()
     }
-    
+
     override fun onScheduledMeetingClicked() {
         view?.navigateToScheduledMeeting()
     }
-    
+
+    override fun onHistoryMeetingsClicked() {
+        presenterScope.launch {
+            try {
+                val meetings = withContext(Dispatchers.IO) {
+                    dataRepository.getMeetings()
+                }
+
+                val historyMeetings = meetings.filter {
+                    it.status == MeetingStatus.ENDED
+                }
+
+                view?.showHistoryMeetings(historyMeetings)
+            } catch (e: Exception) {
+                view?.showError("加载历史会议失败: ${e.message}")
+            }
+        }
+    }
+
     override fun onDestroy() {
         detachView()
     }
