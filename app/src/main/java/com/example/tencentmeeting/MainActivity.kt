@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.example.tencentmeeting.ui.theme.TencentMeetingTheme
 import com.example.tencentmeeting.view.HomePage
 import com.example.tencentmeeting.view.MePage
@@ -49,6 +50,15 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen() {
+    // 配置系统状态栏颜色
+    val systemUiController = rememberSystemUiController()
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = Color(0xFFE3F2FD),
+            darkIcons = true
+        )
+    }
+
     var selectedTab by remember { mutableStateOf(0) }
     var showScheduledMeetingPage by remember { mutableStateOf(false) }
     var showAddFriendsPage by remember { mutableStateOf(false) }

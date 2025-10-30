@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -95,7 +96,14 @@ fun ContactPage(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFFE3F2FD),
+                        Color(0xFFF5F5F5)
+                    )
+                )
+            )
     ) {
         // 顶部标题栏
         TopAppBar(
@@ -119,7 +127,7 @@ fun ContactPage(
                 }
             },
             colors = TopAppBarDefaults.topAppBarColors(
-                containerColor = Color.White
+                containerColor = Color(0xFFE3F2FD)
             )
         )
         

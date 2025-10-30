@@ -36,10 +36,22 @@
 
 ### MePage（我的页面）
 - 用户信息卡片：显示头像、昵称、手机号、邮箱
-- 历史会议列表：显示已结束的会议记录
-  - 显示会议主题和会议号
-  - 显示会议时长（自动计算小时和分钟）
-  - 支持点击查看会议回放
+- 功能网格区域（6个功能按钮，2行3列布局）：
+  - 个人会议室（仅显示，不可点击）
+  - 录制（可点击，跳转到录制会议列表）
+  - 我的笔记（仅显示，不可点击）
+  - AI 助手（仅显示，不可点击）
+  - 订单与服务（仅显示，不可点击）
+  - 控制Rooms（仅显示，不可点击）
+- 设置列表区域（6个独立卡片，带右箭头图标）：
+  - 积分中心（仅显示，不可点击）
+  - 账号与安全（仅显示，不可点击）
+  - 设置（仅显示，不可点击）
+  - 隐私（仅显示，不可点击）
+  - 帮助与客服（仅显示，不可点击）
+  - 关于我们（仅显示，不可点击）
+- 退出登录按钮（红色文字，居中显示，仅显示，不可点击）
+- 注：历史会议功能已全部迁移至HomePage
 
 ### ContactPage（通讯录页面）
 - 顶部标题栏：显示"通讯录"标题和添加好友按钮
@@ -569,6 +581,48 @@ app/src/main/java/com/example/tencentmeeting/
     - [x] 添加initialScreenSharing状态管理
     - [x] 配置ShareScreenInputPage导航逻辑
     - [x] 传递屏幕共享状态到MeetingDetailsPage
+- [x] UI样式优化：统一页面渐变背景
+  - [x] 为所有主要页面应用垂直渐变背景(淡蓝#E3F2FD → 主色)
+  - [x] 消除页面顶部与内容区域的颜色分界线
+  - [x] 更新页面列表：
+    - [x] HomePage - 淡蓝到灰白渐变
+    - [x] ScheduledMeetingPage - 淡蓝到灰白渐变
+    - [x] ScheduledMeetingDetailsPage - 淡蓝到灰白渐变
+    - [x] HistoryMeetingsPage - 淡蓝到灰白渐变
+    - [x] JoinMeetingPage - 淡蓝到灰白渐变
+    - [x] QuickMeetingPage - 淡蓝到灰白渐变
+    - [x] AddFriendsPage - 淡蓝到蓝灰渐变
+    - [x] ContactPage - 淡蓝到灰白渐变
+    - [x] MePage - 淡蓝到灰白渐变
+    - [x] MeetingChatPage - 淡蓝到灰白渐变
+    - [x] ShareScreenInputPage - 已有渐变(淡蓝到灰白)
+  - [x] 保持原样的页面：
+    - FriendsDetailsPage (已有灰蓝色Header设计)
+    - MeetingReplayPage (深色主题)
+    - MeetingDetailsPage (深色主题)
+- [x] UI优化：状态栏颜色统一
+  - [x] 添加Accompanist SystemUIController依赖库
+  - [x] 在MainActivity中配置系统状态栏颜色为淡蓝色(#E3F2FD)
+  - [x] 设置状态栏图标为深色，确保在浅色背景下可见
+  - [x] 消除状态栏与页面内容的颜色分界线
+- [x] MePage页面重构
+  - [x] 删除历史会议相关功能（已迁移至HomePage）
+  - [x] 保留用户信息卡片（个人信息）
+  - [x] 新增功能网格区域（2行3列，共6个功能按钮）
+  - [x] 新增设置列表区域（6个独立卡片，带右箭头）
+  - [x] 新增红色退出登录按钮（底部居中显示）
+  - [x] 参考ui/MeTab.jpg完成UI设计
+- [x] UI优化：修复页面顶部栏颜色分界线问题
+  - [x] 修复7个页面的TopAppBar颜色，统一为淡蓝色(#E3F2FD)
+  - [x] ContactPage、AddFriendsPage、JoinMeetingPage顶部栏颜色修复
+  - [x] QuickMeetingPage、ScheduledMeetingPage顶部栏颜色修复
+  - [x] HistoryMeetingsPage、MeetingChatPage顶部栏颜色修复
+  - [x] 所有页面顶部栏与系统状态栏颜色完全统一，无分界线
+- [x] MePage页面微调优化
+  - [x] 调整顶部间距从动态计算(10%屏幕高度)改为固定24.dp
+  - [x] 个人信息区域高度与HomePage保持一致
+  - [x] 优化功能网格布局对齐方式(使用SpaceAround + weight)
+  - [x] 确保功能网格上下左右对齐更加规范
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

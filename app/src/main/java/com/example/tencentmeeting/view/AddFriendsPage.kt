@@ -16,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -99,7 +100,7 @@ fun AddFriendsPage(
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color(0xFFB0BEC5)
+                    containerColor = Color(0xFFE3F2FD)
                 )
             )
         }
@@ -108,7 +109,14 @@ fun AddFriendsPage(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Color(0xFFECEFF1))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFFE3F2FD),
+                            Color(0xFFECEFF1)
+                        )
+                    )
+                )
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {

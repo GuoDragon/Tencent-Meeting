@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
@@ -111,7 +112,14 @@ fun HomePage(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF5F5F5))
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFFE3F2FD),
+                        Color(0xFFF5F5F5)
+                    )
+                )
+            )
     ) {
         // 顶部间距，让个人信息区域往下移动一点
         Spacer(modifier = Modifier.height(24.dp))

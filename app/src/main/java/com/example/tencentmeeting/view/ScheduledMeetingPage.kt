@@ -11,6 +11,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -132,7 +133,7 @@ fun ScheduledMeetingPage(
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color.White
+                    containerColor = Color(0xFFE3F2FD)
                 )
             )
         }
@@ -141,7 +142,14 @@ fun ScheduledMeetingPage(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(Color(0xFFF5F5F5))
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFFE3F2FD),
+                            Color(0xFFF5F5F5)
+                        )
+                    )
+                )
                 .verticalScroll(rememberScrollState())
         ) {
             // 会议主题
