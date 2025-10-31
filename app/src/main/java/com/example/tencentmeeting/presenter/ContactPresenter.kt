@@ -31,8 +31,9 @@ class ContactPresenter(
                 view?.showLoading()
                 val contacts = withContext(Dispatchers.IO) {
                     dataRepository.getUsers()
+                        .filter { it.userId != "user001" } // 过滤当前用户"刘承龙"
                 }
-                
+
                 allContacts = contacts
                 view?.showContacts(contacts)
             } catch (e: Exception) {
