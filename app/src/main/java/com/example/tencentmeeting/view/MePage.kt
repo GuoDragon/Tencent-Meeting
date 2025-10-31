@@ -28,7 +28,8 @@ import com.example.tencentmeeting.presenter.MePresenter
 
 @Composable
 fun MePage(
-    onMeetingClick: (String) -> Unit = {}
+    onMeetingClick: (String) -> Unit = {},
+    onPersonalMeetingRoomClick: () -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -98,7 +99,10 @@ fun MePage(
         Spacer(modifier = Modifier.height(16.dp))
 
         // 功能网格区域
-        FeatureGridSection(onRecordingClick = { onMeetingClick("") })
+        FeatureGridSection(
+            onRecordingClick = { onMeetingClick("") },
+            onPersonalMeetingRoomClick = onPersonalMeetingRoomClick
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -180,7 +184,10 @@ private fun UserInfoCard(user: User?) {
 }
 
 @Composable
-private fun FeatureGridSection(onRecordingClick: () -> Unit) {
+private fun FeatureGridSection(
+    onRecordingClick: () -> Unit,
+    onPersonalMeetingRoomClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -203,7 +210,7 @@ private fun FeatureGridSection(onRecordingClick: () -> Unit) {
                 FeatureGridItem(
                     icon = Icons.Default.Home,
                     label = "个人会议室",
-                    onClick = { /* 只显示，不需要功能 */ },
+                    onClick = onPersonalMeetingRoomClick,
                     modifier = Modifier.weight(1f)
                 )
                 FeatureGridItem(

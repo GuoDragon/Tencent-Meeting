@@ -33,6 +33,7 @@ import com.example.tencentmeeting.view.MeetingReplayPage
 import com.example.tencentmeeting.view.ScheduledMeetingDetailsPage
 import com.example.tencentmeeting.view.HistoryMeetingsPage
 import com.example.tencentmeeting.view.ShareScreenInputPage
+import com.example.tencentmeeting.view.PersonalMeetingRoomPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -52,12 +53,6 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     // 配置系统状态栏颜色
     val systemUiController = rememberSystemUiController()
-    SideEffect {
-        systemUiController.setStatusBarColor(
-            color = Color(0xFFE3F2FD),
-            darkIcons = true
-        )
-    }
 
     var selectedTab by remember { mutableStateOf(0) }
     var showScheduledMeetingPage by remember { mutableStateOf(false) }
@@ -71,6 +66,7 @@ fun MainScreen() {
     var showScheduledMeetingDetailsPage by remember { mutableStateOf(false) }
     var showHistoryMeetingsPage by remember { mutableStateOf(false) }
     var showShareScreenInputPage by remember { mutableStateOf(false) }
+    var showPersonalMeetingRoomPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
@@ -81,6 +77,22 @@ fun MainScreen() {
     var initialSpeakerEnabled by remember { mutableStateOf(true) }
     var initialRecordingEnabled by remember { mutableStateOf(false) }
     var initialScreenSharing by remember { mutableStateOf(false) }
+
+    // 根据是否在会议中动态设置状态栏颜色
+    val statusBarColor = if (showMeetingDetailsPage || showMeetingChatPage || showMeetingReplayPage) {
+        Color(0xFF1F2227) // 会议页面：深色状态栏
+    } else {
+        Color(0xFFE3F2FD) // 其他页面：淡蓝色状态栏
+    }
+
+    val darkIcons = !(showMeetingDetailsPage || showMeetingChatPage || showMeetingReplayPage)
+
+    SideEffect {
+        systemUiController.setStatusBarColor(
+            color = statusBarColor,
+            darkIcons = darkIcons
+        )
+    }
 
     if (showScheduledMeetingPage) {
         // 显示预定会议页面
@@ -178,6 +190,16 @@ fun MainScreen() {
                 showMeetingDetailsPage = true
             }
         )
+    } else if (showPersonalMeetingRoomPage) {
+        // 显示个人会议室页面
+        PersonalMeetingRoomPage(
+            onNavigateBack = { showPersonalMeetingRoomPage = false },
+            onNavigateToMeetingDetails = { meetingId ->
+                currentMeetingId = meetingId
+                showPersonalMeetingRoomPage = false
+                showMeetingDetailsPage = true
+            }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
@@ -240,7 +262,8 @@ fun MainScreen() {
                         onMeetingClick = { meetingId ->
                             replayMeetingId = meetingId
                             showMeetingReplayPage = true
-                        }
+                        },
+                        onPersonalMeetingRoomClick = { showPersonalMeetingRoomPage = true }
                     )
                 }
             }

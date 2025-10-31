@@ -37,7 +37,7 @@
 ### MePage（我的页面）
 - 用户信息卡片：显示头像、昵称、手机号、邮箱
 - 功能网格区域（6个功能按钮，2行3列布局）：
-  - 个人会议室（仅显示，不可点击）
+  - 个人会议室（可点击，跳转到个人会议室页面）
   - 录制（可点击，跳转到录制会议列表）
   - 我的笔记（仅显示，不可点击）
   - AI 助手（仅显示，不可点击）
@@ -52,6 +52,31 @@
   - 关于我们（仅显示，不可点击）
 - 退出登录按钮（红色文字，居中显示，仅显示，不可点击）
 - 注：历史会议功能已全部迁移至HomePage
+
+### PersonalMeetingRoomPage（个人会议室页面）
+- 顶部导航栏：
+  - 左上角返回按钮
+  - 右侧个人资料和分享图标
+- 会议室信息卡片（白色圆角卡片，带阴影）：
+  - 圆形头像显示用户姓名首字母（80dp蓝色背景）
+  - 会议室标题："XXX的个人会议室"
+  - 会议号：格式化显示（415 755 5988），带复制按钮
+  - 会议链接：完整链接地址，带复制按钮
+  - 编辑资料按钮和二维码按钮
+- 会议设置列表（白色圆角卡片，带阴影）：
+  - 入会密码：显示当前密码或"未设置"，点击打开密码编辑对话框
+  - 等候室：显示"关闭"或"开启"，点击打开选择对话框
+  - 允许成员在主持人前入会：显示"否"或"是"，点击打开选择对话框
+  - 会议水印：显示"未开启"或"开启"，点击打开选择对话框
+  - 成员入会时静音：显示静音规则，点击打开选择对话框（3个选项）
+  - 允许成员多端入会：显示"否"或"是"，点击打开选择对话框
+- 底部"进入会议室"按钮：蓝色大按钮，点击进入MeetingDetailsPage
+- 功能特性：
+  - 复制会议号和链接到剪贴板
+  - 所有设置可通过对话框修改，保存到内存
+  - MVP架构实现，数据从personal_meeting_rooms.json加载
+  - 密码对话框支持开关和6位数字密码输入
+  - 静音规则支持3种模式：关闭、超过6人后自动开启、始终开启
 
 ### ContactPage（通讯录页面）
 - 顶部标题栏：显示"通讯录"标题和添加好友按钮
@@ -325,6 +350,7 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingParticipant.kt
 │   ├── Message.kt
 │   ├── MeetingInvitation.kt         # 会议邀请数据模型（新增）
+│   ├── PersonalMeetingRoom.kt       # 个人会议室数据模型（新增）
 │   └── ...
 ├── data/                          # 数据层
 │   └── DataRepository.kt
@@ -342,7 +368,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingChatContract.kt
 │   ├── ScheduledMeetingDetailsContract.kt   # 预定会议详情（新增）
 │   ├── HistoryMeetingsContract.kt           # 历史会议列表（新增）
-│   └── ShareScreenInputContract.kt          # 共享屏幕输入（新增）
+│   ├── ShareScreenInputContract.kt          # 共享屏幕输入（新增）
+│   └── PersonalMeetingRoomContract.kt       # 个人会议室（新增）
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -357,7 +384,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingChatPresenter.kt
 │   ├── ScheduledMeetingDetailsPresenter.kt  # 预定会议详情（新增）
 │   ├── HistoryMeetingsPresenter.kt          # 历史会议列表（新增）
-│   └── ShareScreenInputPresenter.kt         # 共享屏幕输入（新增）
+│   ├── ShareScreenInputPresenter.kt         # 共享屏幕输入（新增）
+│   └── PersonalMeetingRoomPresenter.kt      # 个人会议室（新增）
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -372,7 +400,8 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingChatPage.kt
 │   ├── ScheduledMeetingDetailsPage.kt       # 预定会议详情（新增）
 │   ├── HistoryMeetingsPage.kt               # 历史会议列表（新增）
-│   └── ShareScreenInputPage.kt              # 共享屏幕输入（新增）
+│   ├── ShareScreenInputPage.kt              # 共享屏幕输入（新增）
+│   └── PersonalMeetingRoomPage.kt           # 个人会议室（新增）
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -387,6 +416,7 @@ app/src/main/java/com/example/tencentmeeting/
 - `messages.json` - 聊天消息
 - `hand_raise_records.json` - 举手记录
 - `meeting_invitations.json` - 会议邀请记录（新增）
+- `personal_meeting_rooms.json` - 个人会议室设置（新增）
 
 ## 运行说明
 1. 使用Android Studio打开项目
@@ -643,6 +673,51 @@ app/src/main/java/com/example/tencentmeeting/
   - [x] 新增15个联系人，包含真实的中文姓名、随机11位手机号、邮箱等信息
   - [x] 通讯录显示19个联系人（排除当前用户刘承龙）
   - [x] 所有新增联系人遵循现有数据格式和命名规范
+- [x] 功能扩展9：个人会议室页面
+  - [x] 创建PersonalMeetingRoom数据模型
+    - [x] userId、meetingId、meetingLink、password等字段
+    - [x] 6个会议设置选项的字段
+  - [x] 创建personal_meeting_rooms.json数据文件
+    - [x] 初始化user001（刘承龙）的个人会议室数据
+    - [x] 会议号：4157555988，密码：559706
+  - [x] 更新DataRepository添加会议室数据方法
+    - [x] getPersonalMeetingRoom()：获取个人会议室信息
+    - [x] savePersonalMeetingRoom()：保存会议室设置到内存
+  - [x] 创建PersonalMeetingRoomContract.kt和Presenter
+    - [x] MVP模式接口定义
+    - [x] 业务逻辑处理（加载数据、更新设置）
+  - [x] 创建PersonalMeetingRoomPage.kt UI
+    - [x] 顶部导航栏（返回、个人资料、分享图标）
+    - [x] 会议室信息卡片（头像、标题、会议号、链接、复制功能、编辑资料、二维码）
+    - [x] 会议设置列表（6个选项，每个可点击进入对话框）
+    - [x] 入会密码对话框（开关+密码输入）
+    - [x] 等候室对话框（关闭/开启）
+    - [x] 允许成员在主持人前入会对话框（否/是）
+    - [x] 会议水印对话框（关闭/开启）
+    - [x] 成员入会时静音对话框（关闭/超过6人后自动开启/始终开启）
+    - [x] 允许成员多端入会对话框（否/是）
+    - [x] 底部"进入会议室"按钮（进入MeetingDetailsPage）
+  - [x] 更新MePage添加导航回调
+    - [x] "个人会议室"按钮从仅显示改为可点击
+    - [x] 添加onPersonalMeetingRoomClick参数
+  - [x] 更新MainActivity完整导航流程
+    - [x] 添加showPersonalMeetingRoomPage状态
+    - [x] 配置PersonalMeetingRoomPage条件渲染
+    - [x] 连接MePage回调与PersonalMeetingRoomPage显示
+    - [x] 支持从个人会议室进入会议详情页
+- [x] UI微调10：个人会议室页面优化
+  - [x] 调整"编辑资料"和"二维码"按钮位置
+    - [x] 从会议室信息卡片底部移至头像/名字右侧
+    - [x] 两个按钮垂直堆叠，每个按钮包含图标和文字
+    - [x] 调整布局为左侧（头像+名字）+ 右侧（两个按钮）的Row结构
+  - [x] 修复状态栏遮挡问题
+    - [x] 增加顶部导航栏padding：从vertical 24.dp改为top 48.dp, bottom 12.dp
+    - [x] 确保返回按钮不被系统状态栏遮挡
+  - [x] 动态状态栏颜色切换
+    - [x] 在MainActivity中添加状态栏颜色逻辑
+    - [x] 会议中（MeetingDetailsPage/MeetingChatPage/MeetingReplayPage）：深色状态栏(#1F2227)，浅色图标
+    - [x] 其他页面：淡蓝色状态栏(#E3F2FD)，深色图标
+    - [x] 通过showMeetingDetailsPage等状态变量判断当前页面类型
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

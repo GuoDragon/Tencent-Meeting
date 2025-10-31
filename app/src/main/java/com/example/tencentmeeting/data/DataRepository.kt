@@ -18,6 +18,9 @@ class DataRepository(private val context: Context) {
     // 内存中的邀请列表（用于临时保存新发送的邀请）
     private val inMemoryInvitations = mutableListOf<MeetingInvitation>()
 
+    // 内存中的个人会议室信息（用于临时保存个人会议室设置）
+    private var inMemoryPersonalMeetingRooms = mutableMapOf<String, PersonalMeetingRoom>()
+
     fun getUsers(): List<User> {
         return try {
             val jsonString = readJsonFromAssets("data/users.json")
@@ -149,6 +152,38 @@ class DataRepository(private val context: Context) {
      */
     fun addInvitation(invitation: MeetingInvitation) {
         inMemoryInvitations.add(invitation)
+    }
+
+    /**
+     * 获取个人会议室信息
+     * @param userId 用户ID
+     * @return 个人会议室信息，如果不存在则返回null
+     */
+    fun getPersonalMeetingRoom(userId: String): PersonalMeetingRoom? {
+        // 先检查内存中是否有
+        inMemoryPersonalMeetingRooms[userId]?.let { return it }
+
+        // 从JSON文件加载
+        return try {
+            val jsonString = readJsonFromAssets("data/personal_meeting_rooms.json")
+            val type = object : TypeToken<List<PersonalMeetingRoom>>() {}.type
+            val rooms: List<PersonalMeetingRoom> = gson.fromJson(jsonString, type)
+            val room = rooms.find { it.userId == userId }
+            // 缓存到内存
+            room?.let { inMemoryPersonalMeetingRooms[userId] = it }
+            room
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    /**
+     * 保存个人会议室信息到内存
+     * 注意：这只会保存到内存中，不会写入JSON文件
+     * @param roomInfo 个人会议室信息
+     */
+    fun savePersonalMeetingRoom(roomInfo: PersonalMeetingRoom) {
+        inMemoryPersonalMeetingRooms[roomInfo.userId] = roomInfo
     }
 
     private fun readJsonFromAssets(fileName: String): String {

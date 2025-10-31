@@ -1,0 +1,14 @@
+[
+  {
+    "userId": "user001",
+    "meetingId": "4157555988",
+    "meetingLink": "meeting.tencent.com/p/4157555988",
+    "password": "559706",
+    "enablePassword": true,
+    "enableWaitingRoom": false,
+    "allowBeforeHost": false,
+    "enableWatermark": false,
+    "muteOnEntry": "超过6人后自动开启",
+    "allowMultiDevice": false
+  }
+]
