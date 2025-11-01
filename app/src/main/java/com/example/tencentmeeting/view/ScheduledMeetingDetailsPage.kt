@@ -1,5 +1,8 @@
 package com.example.tencentmeeting.view
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -75,7 +78,7 @@ fun ScheduledMeetingDetailsPage(
                     )
                 )
             )
-            .padding(top = 24.dp)
+            .padding(top = 32.dp)
     ) {
         // 顶部栏
         TopBar(onNavigateBack = onNavigateBack)
@@ -104,9 +107,10 @@ fun ScheduledMeetingDetailsPage(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // 会议号
-                InfoItem(
+                InfoItemWithCopy(
                     label = "会议号",
-                    value = mtg.meetingId
+                    value = mtg.meetingId,
+                    context = context
                 )
 
                 Divider(color = Color(0xFFE0E0E0))
@@ -165,7 +169,7 @@ private fun TopBar(onNavigateBack: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White)
+            .background(Color(0xFFE3F2FD))
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -276,17 +280,21 @@ private fun InfoItem(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
-            .padding(vertical = 16.dp),
+            .padding(vertical = 16.dp, horizontal = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = label,
             fontSize = 16.sp,
-            color = Color.Black
+            color = Color.Black,
+            modifier = Modifier.padding(start = 8.dp)
         )
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
             Text(
                 text = value,
                 fontSize = 14.sp,
@@ -316,11 +324,14 @@ private fun ClickableInfoItem(
             .fillMaxWidth()
             .background(Color.White)
             .clickable { onClick() }
-            .padding(vertical = 16.dp),
+            .padding(vertical = 16.dp, horizontal = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
             Text(
                 text = label,
                 fontSize = 16.sp,
@@ -337,7 +348,10 @@ private fun ClickableInfoItem(
             }
         }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
             Text(
                 text = hint,
                 fontSize = 14.sp,
@@ -383,6 +397,53 @@ private fun BottomButtons(onEnterMeeting: () -> Unit) {
             )
         ) {
             Text("进入会议")
+        }
+    }
+}
+
+@Composable
+private fun InfoItemWithCopy(
+    label: String,
+    value: String,
+    context: Context
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+            .padding(vertical = 16.dp, horizontal = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = label,
+            fontSize = 16.sp,
+            color = Color.Black,
+            modifier = Modifier.padding(start = 8.dp)
+        )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(end = 8.dp)
+        ) {
+            Text(
+                text = value,
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Icon(
+                imageVector = Icons.Default.ContentCopy,
+                contentDescription = "复制",
+                tint = Color.Gray,
+                modifier = Modifier
+                    .size(18.dp)
+                    .clickable {
+                        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                        val clip = ClipData.newPlainText("会议号", value)
+                        clipboard.setPrimaryClip(clip)
+                    }
+            )
         }
     }
 }

@@ -52,9 +52,10 @@ class MeetingDetailsPresenter(
                     view?.showMeetingInfo("快速会议", meetingId)
                 }
 
-                // 加载参会人列表
+                // 加载参会人列表（包含当前用户和前5位好友，共6人）
                 val users = dataRepository.getUsers()
-                view?.showParticipants(users.take(1)) // 暂时只显示当前用户
+                val defaultParticipants = users.take(6)
+                view?.showParticipants(defaultParticipants)
 
                 // 启动会议计时
                 startMeetingDuration()

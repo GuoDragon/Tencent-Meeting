@@ -38,7 +38,8 @@ fun HomePage(
     onNavigateToMeetingDetails: (String) -> Unit = {},
     onNavigateToScheduledMeetingDetails: (String) -> Unit = {},
     onNavigateToHistoryMeetings: () -> Unit = {},
-    onNavigateToShareScreen: () -> Unit = {}
+    onNavigateToShareScreen: () -> Unit = {},
+    onNavigateToMeTab: () -> Unit = {}
 ) {
     val context = LocalContext.current
 
@@ -126,7 +127,10 @@ fun HomePage(
 
         // 用户信息区域
         currentUser?.let { user ->
-            UserInfoSection(user = user)
+            UserInfoSection(
+                user = user,
+                onUserInfoClick = onNavigateToMeTab
+            )
         }
 
         // 用户信息和功能按钮之间的间距（缩小间距，让功能区往上移动）
@@ -161,11 +165,12 @@ fun HomePage(
 }
 
 @Composable
-private fun UserInfoSection(user: User) {
+private fun UserInfoSection(user: User, onUserInfoClick: () -> Unit = {}) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable { onUserInfoClick() },
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {

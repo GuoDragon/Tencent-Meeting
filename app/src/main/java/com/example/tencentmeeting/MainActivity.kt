@@ -34,6 +34,8 @@ import com.example.tencentmeeting.view.ScheduledMeetingDetailsPage
 import com.example.tencentmeeting.view.HistoryMeetingsPage
 import com.example.tencentmeeting.view.ShareScreenInputPage
 import com.example.tencentmeeting.view.PersonalMeetingRoomPage
+import com.example.tencentmeeting.view.PersonalInformationPage
+import com.example.tencentmeeting.view.RecordPage
 import com.example.tencentmeeting.model.User
 
 class MainActivity : ComponentActivity() {
@@ -67,6 +69,8 @@ fun MainScreen() {
     var showHistoryMeetingsPage by remember { mutableStateOf(false) }
     var showShareScreenInputPage by remember { mutableStateOf(false) }
     var showPersonalMeetingRoomPage by remember { mutableStateOf(false) }
+    var showPersonalInformationPage by remember { mutableStateOf(false) }
+    var showRecordPage by remember { mutableStateOf(false) }
     var selectedContact by remember { mutableStateOf<User?>(null) }
     var currentMeetingId by remember { mutableStateOf("") }
     var currentChatMeetingId by remember { mutableStateOf("") }
@@ -200,6 +204,16 @@ fun MainScreen() {
                 showMeetingDetailsPage = true
             }
         )
+    } else if (showPersonalInformationPage) {
+        // 显示个人信息页面
+        PersonalInformationPage(
+            onNavigateBack = { showPersonalInformationPage = false }
+        )
+    } else if (showRecordPage) {
+        // 显示录制页面
+        RecordPage(
+            onNavigateBack = { showRecordPage = false }
+        )
     } else if (showMeetingDetailsPage) {
         // 显示会议详情页面
         MeetingDetailsPage(
@@ -249,7 +263,8 @@ fun MainScreen() {
                             showScheduledMeetingDetailsPage = true
                         },
                         onNavigateToHistoryMeetings = { showHistoryMeetingsPage = true },
-                        onNavigateToShareScreen = { showShareScreenInputPage = true }
+                        onNavigateToShareScreen = { showShareScreenInputPage = true },
+                        onNavigateToMeTab = { selectedTab = 2 }
                     )
                     1 -> ContactPage(
                         onNavigateToAddFriends = { showAddFriendsPage = true },
@@ -263,7 +278,9 @@ fun MainScreen() {
                             replayMeetingId = meetingId
                             showMeetingReplayPage = true
                         },
-                        onPersonalMeetingRoomClick = { showPersonalMeetingRoomPage = true }
+                        onPersonalMeetingRoomClick = { showPersonalMeetingRoomPage = true },
+                        onPersonalInfoClick = { showPersonalInformationPage = true },
+                        onRecordClick = { showRecordPage = true }
                     )
                 }
             }

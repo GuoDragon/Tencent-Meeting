@@ -32,10 +32,9 @@ class MembersManagePresenter(
             try {
                 view?.showLoading()
 
-                // 获取会议成员列表（当前只显示主持人自己）
+                // 获取会议成员列表（当前用户和前5位好友，共6人）
                 val users = dataRepository.getUsers()
-                // 只取第一个用户（刘承龙）作为主持人
-                view?.showMembers(users.take(1))
+                view?.showMembers(users.take(6))
 
             } catch (e: Exception) {
                 view?.showError("加载成员失败: ${e.message}")

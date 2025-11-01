@@ -11,6 +11,7 @@
   - 圆形头像显示"刘"字（80dp，蓝色背景）
   - 显示用户姓名"刘承龙"（22sp，粗体）
   - 显示手机号和邮箱信息
+  - **点击用户信息卡片可跳转到MeTab（"我的"页面）**
 - 功能按钮区域：
   - 加入会议
   - 快速会议
@@ -35,10 +36,10 @@
 - 会议保存：将预定的会议保存到内存中
 
 ### MePage（我的页面）
-- 用户信息卡片：显示头像、昵称、手机号、邮箱
+- 用户信息卡片：显示头像、昵称、手机号、邮箱，点击可跳转到个人信息页
 - 功能网格区域（6个功能按钮，2行3列布局）：
   - 个人会议室（可点击，跳转到个人会议室页面）
-  - 录制（可点击，跳转到录制会议列表）
+  - 录制（可点击，跳转到录制页面）
   - 我的笔记（仅显示，不可点击）
   - AI 助手（仅显示，不可点击）
   - 订单与服务（仅显示，不可点击）
@@ -52,6 +53,49 @@
   - 关于我们（仅显示，不可点击）
 - 退出登录按钮（红色文字，居中显示，仅显示，不可点击）
 - 注：历史会议功能已全部迁移至HomePage
+
+### PersonalInformationPage（个人信息页面）
+- 顶部背景区域：
+  - 灰蓝色渐变背景（300dp高度）
+  - 左上角黑色箭头返回按钮（24dp，ArrowBack图标）
+  - 居中显示"点击设置背景图"文字提示
+- 头像区域：
+  - 圆形头像（120dp），灰色背景
+  - 使用AccountCircle图标占位
+  - 头像位置向上偏移60dp，与背景区域重叠
+- 信息卡片：
+  - 白色圆角卡片，带阴影效果
+  - 名称行：显示用户姓名（刘承龙），右侧有箭头图标，可点击但暂不处理
+  - 签名行：显示签名提示文字，右侧有箭头图标，可点击但暂不处理
+  - 两行之间用细分割线分隔
+- 注：不实现"认证"相关内容
+- 导航来源：从MePage点击用户信息卡片进入
+
+### RecordPage（录制页面）
+- 顶部导航栏：
+  - 白色背景，标准TopAppBar设计
+  - 左侧：返回按钮
+  - 中间："录制"标题（18sp粗体）
+  - 右侧：搜索图标按钮
+- 存储信息栏：
+  - 白色背景
+  - 显示存储使用情况："已使用 0MB/1GB (共0个云端存储文件)"
+  - "扩容 >"链接按钮（蓝色文字）
+- Tab栏：
+  - 三个标签：全部文件（默认选中）、最近浏览、我的录制
+  - 蓝色选中状态，白色背景
+- 过滤按钮：
+  - 右侧显示FilterList图标
+  - 灰色图标，可点击但暂不处理
+- 空状态区域：
+  - 浅灰色背景（#F5F5F5）
+  - 中央显示FolderOpen图标（120dp，灰蓝色）
+  - 下方显示"暂无录制文件"文字提示
+- 浮动操作按钮（FAB）：
+  - 右下角蓝色圆形按钮
+  - 白色麦克风图标（28dp）
+  - 点击可开始录制（功能暂不处理）
+- 导航来源：从MePage点击"录制"按钮进入
 
 ### PersonalMeetingRoomPage（个人会议室页面）
 - 顶部导航栏：
@@ -263,8 +307,8 @@
 
 ### ScheduledMeetingDetailsPage（预定会议详情页面）
 - 顶部信息栏：
-  - 白色背景
-  - 顶部间距24dp（避免覆盖系统状态栏）
+  - 淡蓝色背景（#E3F2FD），与系统状态栏颜色统一
+  - 顶部间距32dp（避免覆盖系统状态栏，比其他页面稍大）
   - 左侧：返回按钮
   - 中间："会议详情"标题（居中显示，粗体18sp）
 - 会议信息展示：
@@ -273,11 +317,14 @@
     - 左侧：开始时间（HH:mm格式，32sp粗体）和日期
     - 中间：状态"待开始"和会议时长
     - 右侧：结束时间（HH:mm格式，32sp粗体）和日期
-  - 会议号
+  - 会议号：右侧添加复制按钮（ContentCopy图标），点击复制到剪贴板
   - 发起人（显示"刘承龙"）
   - 电话入会（显示固定电话号码）
   - 应用按钮（点击无反应）
   - 会议资料按钮（点击无反应）
+- 中间五行信息调整：
+  - 左侧标题向右移动（增加8dp内边距）
+  - 右侧内容向内移动（增加8dp内边距）
 - 底部按钮区：
   - 左侧：AI托管按钮（OutlinedButton，点击无反应）
   - 右侧：进入会议按钮（蓝色，点击进入MeetingDetailsPage）
@@ -366,10 +413,12 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingDetailsContract.kt
 │   ├── MembersManageContract.kt
 │   ├── MeetingChatContract.kt
-│   ├── ScheduledMeetingDetailsContract.kt   # 预定会议详情（新增）
-│   ├── HistoryMeetingsContract.kt           # 历史会议列表（新增）
-│   ├── ShareScreenInputContract.kt          # 共享屏幕输入（新增）
-│   └── PersonalMeetingRoomContract.kt       # 个人会议室（新增）
+│   ├── ScheduledMeetingDetailsContract.kt   # 预定会议详情
+│   ├── HistoryMeetingsContract.kt           # 历史会议列表
+│   ├── ShareScreenInputContract.kt          # 共享屏幕输入
+│   ├── PersonalMeetingRoomContract.kt       # 个人会议室
+│   ├── PersonalInformationContract.kt       # 个人信息（新增）
+│   └── RecordContract.kt                    # 录制页面（新增）
 ├── presenter/                     # 业务逻辑层
 │   ├── HomePresenter.kt
 │   ├── MePresenter.kt
@@ -382,10 +431,12 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingDetailsPresenter.kt
 │   ├── MembersManagePresenter.kt
 │   ├── MeetingChatPresenter.kt
-│   ├── ScheduledMeetingDetailsPresenter.kt  # 预定会议详情（新增）
-│   ├── HistoryMeetingsPresenter.kt          # 历史会议列表（新增）
-│   ├── ShareScreenInputPresenter.kt         # 共享屏幕输入（新增）
-│   └── PersonalMeetingRoomPresenter.kt      # 个人会议室（新增）
+│   ├── ScheduledMeetingDetailsPresenter.kt  # 预定会议详情
+│   ├── HistoryMeetingsPresenter.kt          # 历史会议列表
+│   ├── ShareScreenInputPresenter.kt         # 共享屏幕输入
+│   ├── PersonalMeetingRoomPresenter.kt      # 个人会议室
+│   ├── PersonalInformationPresenter.kt      # 个人信息（新增）
+│   └── RecordPresenter.kt                   # 录制页面（新增）
 ├── view/                          # UI层
 │   ├── HomePage.kt
 │   ├── MePage.kt
@@ -398,10 +449,12 @@ app/src/main/java/com/example/tencentmeeting/
 │   ├── MeetingDetailsPage.kt
 │   ├── MembersManagePage.kt
 │   ├── MeetingChatPage.kt
-│   ├── ScheduledMeetingDetailsPage.kt       # 预定会议详情（新增）
-│   ├── HistoryMeetingsPage.kt               # 历史会议列表（新增）
-│   ├── ShareScreenInputPage.kt              # 共享屏幕输入（新增）
-│   └── PersonalMeetingRoomPage.kt           # 个人会议室（新增）
+│   ├── ScheduledMeetingDetailsPage.kt       # 预定会议详情
+│   ├── HistoryMeetingsPage.kt               # 历史会议列表
+│   ├── ShareScreenInputPage.kt              # 共享屏幕输入
+│   ├── PersonalMeetingRoomPage.kt           # 个人会议室
+│   ├── PersonalInformationPage.kt           # 个人信息（新增）
+│   └── RecordPage.kt                        # 录制页面（新增）
 └── ui/theme/                      # 主题样式
     ├── Color.kt
     ├── Theme.kt
@@ -718,6 +771,65 @@ app/src/main/java/com/example/tencentmeeting/
     - [x] 会议中（MeetingDetailsPage/MeetingChatPage/MeetingReplayPage）：深色状态栏(#1F2227)，浅色图标
     - [x] 其他页面：淡蓝色状态栏(#E3F2FD)，深色图标
     - [x] 通过showMeetingDetailsPage等状态变量判断当前页面类型
+- [x] 功能优化11：默认会议参与者设置
+  - [x] 修改MeetingDetailsPresenter和MembersManagePresenter参会人加载逻辑
+  - [x] 每次进入会议时自动包含当前用户和前5位好友作为默认参会人（共6人）
+  - [x] 默认参会人列表（按顺序）：
+    - user001 - 刘承龙（当前用户/主持人）
+    - user002 - 陈思远
+    - user003 - 林雨萱
+    - user004 - 王俊豪
+    - user005 - 张梦琪
+    - user006 - 赵晨阳
+  - [x] 适用于所有会议入口（快速会议、加入会议、预定会议、个人会议室、主页）
+  - [x] MeetingDetailsPage显示参会人头像和名字
+  - [x] MembersManagePage显示完整的6人成员列表
+  - [x] 参会人数按钮动态显示："管理成员(6)"
+- [x] UI微调12：ScheduledMeetingDetailsPage页面优化
+  - [x] 顶部栏背景色统一为淡蓝色(#E3F2FD)，与系统状态栏颜色一致
+  - [x] 顶部间距从24dp增加到32dp，留出更多呼吸空间
+  - [x] 中间五行信息左右内边距优化：
+    - [x] 左侧标题增加8dp左内边距+8dp横向内边距
+    - [x] 右侧内容增加8dp右内边距+8dp横向内边距
+  - [x] 会议号行新增复制按钮功能：
+    - [x] 在会议号右侧添加ContentCopy图标
+    - [x] 实现点击复制到剪贴板功能（使用ClipboardManager）
+  - [x] 修复导入语句，添加ClipData和ClipboardManager相关导入
+- [x] 功能扩展13：个人信息和录制页面
+  - [x] 创建PersonalInformationPage（个人信息页）
+    - [x] 创建PersonalInformationContract.kt和Presenter
+    - [x] 灰蓝色渐变背景顶部区域（300dp高度）
+    - [x] 圆形头像（120dp），向上偏移60dp与背景重叠
+    - [x] 白色信息卡片：名称行、签名行（可点击但暂不处理）
+    - [x] 跳过所有"认证"相关内容按需求不实现
+  - [x] 创建RecordPage（录制页）
+    - [x] 创建RecordContract.kt和Presenter
+    - [x] 标准TopAppBar：返回、标题"录制"、搜索图标
+    - [x] 存储信息栏：显示使用量0MB/1GB和文件数量
+    - [x] "扩容 >"链接按钮
+    - [x] 三个Tab标签：全部文件、最近浏览、我的录制
+    - [x] 过滤图标按钮
+    - [x] 空状态UI：FolderOpen图标+"暂无录制文件"提示
+    - [x] 蓝色麦克风FAB按钮
+  - [x] 更新MePage添加导航回调
+    - [x] 用户信息卡片改为可点击，添加onPersonalInfoClick参数
+    - [x] "录制"按钮从onMeetingClick改为onRecordClick独立回调
+  - [x] 更新MainActivity完整导航流程
+    - [x] 导入PersonalInformationPage和RecordPage
+    - [x] 添加showPersonalInformationPage和showRecordPage状态
+    - [x] 配置条件渲染和导航逻辑
+    - [x] 连接MePage回调与新页面显示
+- [x] UI微调14：PersonalInformationPage退出按钮优化
+  - [x] 将左上角文字按钮改为标准的黑色ArrowBack图标
+  - [x] 使用24dp图标大小，与其他页面保持一致
+  - [x] 保持原有的onNavigateBack()回调功能
+  - [x] 视觉风格与ScheduledMeetingDetailsPage等页面统一
+- [x] 功能扩展15：HomePage用户信息区域导航优化
+  - [x] 为HomePage添加onNavigateToMeTab回调参数
+  - [x] UserInfoSection组件添加点击处理逻辑
+  - [x] 点击用户信息卡片跳转到MeTab（底部导航Tab 2）
+  - [x] MainActivity中实现selectedTab状态切换
+  - [x] 提升用户体验，快速访问个人信息和设置
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

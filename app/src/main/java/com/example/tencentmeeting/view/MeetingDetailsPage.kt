@@ -161,6 +161,7 @@ fun MeetingDetailsPage(
             BottomFunctionBar(
                 micEnabled = micEnabled,
                 videoEnabled = videoEnabled,
+                participantCount = participants.size,
                 onMicClick = { presenter.toggleMic() },
                 onVideoClick = { presenter.toggleVideo() },
                 onShareScreenClick = { presenter.shareScreen() },
@@ -455,6 +456,7 @@ private fun DanmuInputArea(
 private fun BottomFunctionBar(
     micEnabled: Boolean,
     videoEnabled: Boolean,
+    participantCount: Int,
     onMicClick: () -> Unit,
     onVideoClick: () -> Unit,
     onShareScreenClick: () -> Unit,
@@ -491,7 +493,7 @@ private fun BottomFunctionBar(
 
         FunctionButton(
             icon = Icons.Default.People,
-            text = "管理成员(1)",
+            text = "管理成员($participantCount)",
             iconTint = Color.White,
             onClick = onManageMemberClick
         )
