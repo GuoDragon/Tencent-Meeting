@@ -161,6 +161,7 @@ fun MeetingDetailsPage(
             BottomFunctionBar(
                 micEnabled = micEnabled,
                 videoEnabled = videoEnabled,
+                isScreenSharing = isScreenSharing,
                 participantCount = participants.size,
                 onMicClick = { presenter.toggleMic() },
                 onVideoClick = { presenter.toggleVideo() },
@@ -456,6 +457,7 @@ private fun DanmuInputArea(
 private fun BottomFunctionBar(
     micEnabled: Boolean,
     videoEnabled: Boolean,
+    isScreenSharing: Boolean,
     participantCount: Int,
     onMicClick: () -> Unit,
     onVideoClick: () -> Unit,
@@ -487,7 +489,7 @@ private fun BottomFunctionBar(
         FunctionButton(
             icon = Icons.Default.ScreenShare,
             text = "共享屏幕",
-            iconTint = Color(0xFF4CAF50),
+            iconTint = if (isScreenSharing) Color(0xFF4CAF50) else Color.White,
             onClick = onShareScreenClick
         )
 
