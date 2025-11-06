@@ -1,19 +1,19 @@
 '''
-功能: 检查用户在会议中关闭麦克风时,数据库是否正确记录了"自身麦克风已静音"的状态
+功能: 检查开启手机屏幕共享后,数据库是否正确记录
 数据库位置: meeting_participants.json
 '''
 
 import json
 import subprocess
 
-def check_microphone_muted(userId='user001', meetingId='meeting001', expected_muted_status=True):
+def check_screen_sharing(userId='user002', meetingId='meeting002', expected_sharing_status=True):
     """
-    检查指定用户在指定会议中的麦克风静音状态
+    检查指定用户在指定会议中的屏幕共享状态
 
     参数:
         userId: 用户ID
         meetingId: 会议ID
-        expected_muted_status: 期望的静音状态 (True表示已静音, False表示未静音)
+        expected_sharing_status: 期望的屏幕共享状态 (True表示正在共享, False表示未共享)
 
     返回:
         bool: 如果实际状态与期望状态匹配则返回True, 否则返回False
@@ -52,8 +52,8 @@ def check_microphone_muted(userId='user001', meetingId='meeting001', expected_mu
     try:
         for participant in data:
             if participant['userId'] == userId and participant['meetingId'] == meetingId:
-                # 检查isMuted字段是否与期望状态匹配
-                if participant['isMuted'] == expected_muted_status:
+                # 检查isSharingScreen字段是否与期望状态匹配
+                if participant['isSharingScreen'] == expected_sharing_status:
                     return True
                 else:
                     return False
@@ -64,9 +64,9 @@ def check_microphone_muted(userId='user001', meetingId='meeting001', expected_mu
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user002在meeting001中是否已静音
-    print(check_microphone_muted(
+    # 测试示例: 检查user002在meeting002中是否正在共享屏幕
+    print(check_screen_sharing(
         userId='user002',
-        meetingId='meeting001',
-        expected_muted_status=True  # 期望麦克风已静音
+        meetingId='meeting002',
+        expected_sharing_status=True  # 期望正在共享屏幕
     ))
