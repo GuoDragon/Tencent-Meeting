@@ -54,6 +54,7 @@ class PersonalMeetingRoomPresenter(
             room.password = password
             room.enablePassword = enabled
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }
@@ -62,6 +63,7 @@ class PersonalMeetingRoomPresenter(
         currentRoomInfo?.let { room ->
             room.enableWaitingRoom = enabled
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }
@@ -70,6 +72,7 @@ class PersonalMeetingRoomPresenter(
         currentRoomInfo?.let { room ->
             room.allowBeforeHost = allowed
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }
@@ -78,6 +81,7 @@ class PersonalMeetingRoomPresenter(
         currentRoomInfo?.let { room ->
             room.enableWatermark = enabled
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }
@@ -86,6 +90,7 @@ class PersonalMeetingRoomPresenter(
         currentRoomInfo?.let { room ->
             room.muteOnEntry = rule
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }
@@ -94,6 +99,7 @@ class PersonalMeetingRoomPresenter(
         currentRoomInfo?.let { room ->
             room.allowMultiDevice = allowed
             repository.savePersonalMeetingRoom(room)
+            repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
     }

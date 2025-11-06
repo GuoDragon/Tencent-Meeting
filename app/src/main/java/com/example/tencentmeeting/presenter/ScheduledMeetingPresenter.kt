@@ -95,6 +95,7 @@ class ScheduledMeetingPresenter(
                 // 保存会议
                 withContext(Dispatchers.IO) {
                     dataRepository.saveMeeting(meeting)
+                    dataRepository.saveMeetingsToFile()
                 }
 
                 view?.hideLoading()

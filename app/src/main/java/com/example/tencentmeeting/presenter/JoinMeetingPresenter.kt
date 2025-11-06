@@ -2,6 +2,7 @@ package com.example.tencentmeeting.presenter
 
 import com.example.tencentmeeting.contract.JoinMeetingContract
 import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.MeetingParticipant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -54,6 +55,30 @@ class JoinMeetingPresenter(
         presenterScope.launch {
             try {
                 view?.showLoading()
+
+                // 获取当前用户ID
+                val users = withContext(Dispatchers.IO) {
+                    dataRepository.getUsers()
+                }
+                val currentUserId = if (users.isNotEmpty()) users.first().userId else "user001"
+
+                // 创建MeetingParticipant对象
+                val participant = MeetingParticipant(
+                    userId = currentUserId,
+                    meetingId = meetingId,
+                    isMuted = !micEnabled,
+                    isCameraOn = videoEnabled,
+                    isHandRaised = false,
+                    handRaisedTime = null,
+                    isSharingScreen = false,
+                    joinTime = System.currentTimeMillis()
+                )
+
+                // 保存参会人员状态
+                withContext(Dispatchers.IO) {
+                    dataRepository.addOrUpdateParticipant(participant)
+                }
+
                 // 模拟加入会议的过程
                 // 在实际应用中,这里会调用会议SDK的加入会议API
                 kotlinx.coroutines.delay(500)

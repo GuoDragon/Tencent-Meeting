@@ -2,10 +2,15 @@ package com.example.tencentmeeting.presenter
 
 import com.example.tencentmeeting.contract.QuickMeetingContract
 import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.Meeting
+import com.example.tencentmeeting.model.MeetingSettings
+import com.example.tencentmeeting.model.MeetingStatus
+import com.example.tencentmeeting.model.MeetingType
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 class QuickMeetingPresenter(
     private val dataRepository: DataRepository
@@ -57,8 +62,24 @@ class QuickMeetingPresenter(
                     generateRandomMeetingId()
                 }
 
-                // 这里可以保存会议设置到内存中
-                // 例如保存麦克风、摄像头、扬声器的状态
+                // 创建Meeting对象
+                val currentTime = System.currentTimeMillis()
+                val meeting = Meeting(
+                    meetingId = "meeting_${UUID.randomUUID().toString().substring(0, 8)}",
+                    topic = "快速会议",
+                    password = null,
+                    hostId = "user001", // 默认主持人
+                    startTime = currentTime,
+                    endTime = currentTime + (60 * 60 * 1000), // 默认1小时
+                    status = MeetingStatus.ONGOING,
+                    meetingType = MeetingType.INSTANT,
+                    participantIds = listOf("user001"),
+                    settings = MeetingSettings()
+                )
+
+                // 保存会议到数据库
+                dataRepository.saveMeeting(meeting)
+                dataRepository.saveMeetingsToFile()
 
                 view?.showStartMeetingSuccess(meetingId, micEnabled, videoEnabled, speakerEnabled)
             } catch (e: Exception) {

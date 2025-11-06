@@ -28,5 +28,7 @@ interface MeetingDetailsContract {
         fun manageMember()
         fun endMeeting()
         fun sendDanmu(message: String)
+        fun raiseHand(meetingId: String, userId: String, userName: String)
+        fun lowerHand(meetingId: String, userId: String, recordId: String)
     }
 }

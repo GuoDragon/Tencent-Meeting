@@ -56,8 +56,10 @@ def check_microphone_muted(userId='user001', meetingId='meeting_8f4a2b', expecte
                 if participant['isMuted'] == expected_muted_status:
                     return True
                 else:
+                    print("没开")
                     return False
         # 如果没有找到匹配的记录
+        print("没找到")
         return False
     except Exception as e:
         print(f"Error: {e}")
@@ -67,6 +69,6 @@ if __name__ == "__main__":
     # 测试示例: 检查user002在meeting_8f4a2b中是否已静音
     print(check_microphone_muted(
         userId='user002',
-        meetingId='meeting_8f4a2b',
+        meetingId='meeting_4581a36f',
         expected_muted_status=True  # 期望麦克风已静音
     ))

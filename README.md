@@ -886,6 +886,30 @@ app/src/main/java/com/example/tencentmeeting/
   - [x] 实现动态颜色逻辑：未共享时白色，共享时绿色
   - [x] 与麦克风、视频按钮的交互模式保持一致
   - [x] 更新README.md文档说明
+- [x] 功能扩展17：数据持久化实现
+  - [x] DataRepository添加文件写入功能
+    - [x] 添加writeJsonToFile通用方法
+    - [x] 添加initializeDataFiles初始化方法
+    - [x] 实现saveMeetingsToFile、saveMessagesToFile等7个持久化方法
+    - [x] 添加addOrUpdateParticipant、addHandRaiseRecord等数据操作方法
+    - [x] 使用GsonBuilder.setPrettyPrinting()格式化JSON输出
+  - [x] 修改所有Presenter添加持久化调用
+    - [x] QuickMeetingPresenter：创建快速会议时保存会议记录
+    - [x] ScheduledMeetingPresenter：预定会议后调用saveMeetingsToFile
+    - [x] JoinMeetingPresenter：加入会议时创建并保存参会人记录
+    - [x] MeetingChatPresenter：发送消息后调用saveMessagesToFile
+    - [x] MembersManagePresenter：发送邀请后调用saveInvitationsToFile
+    - [x] PersonalMeetingRoomPresenter：所有设置更新后调用savePersonalMeetingRoomsToFile
+    - [x] MeetingDetailsPresenter：添加updateParticipantStatus方法
+    - [x] MeetingDetailsPresenter：toggleMic/toggleVideo/shareScreen时更新参会人状态
+    - [x] MeetingDetailsPresenter：实现raiseHand/lowerHand举手功能
+  - [x] MainActivity添加数据初始化
+    - [x] onCreate中调用dataRepository.initializeDataFiles()
+    - [x] 首次启动时将assets数据复制到filesDir
+  - [x] 数据文件写入位置
+    - [x] 所有JSON文件写入context.filesDir目录
+    - [x] eval脚本通过ADB可以读取files/目录下的JSON文件
+    - [x] 用户操作后数据实时保存，支持GUI Agent测试验证
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议

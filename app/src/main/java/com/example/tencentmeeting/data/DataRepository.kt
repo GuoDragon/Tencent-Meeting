@@ -3,11 +3,13 @@ package com.example.tencentmeeting.data
 import android.content.Context
 import com.example.tencentmeeting.model.*
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.io.IOException
 
 class DataRepository(private val context: Context) {
-    private val gson = Gson()
+    private val gson = GsonBuilder().setPrettyPrinting().create()
 
     // 内存中的会议列表（用于临时保存新创建的会议）
     private val inMemoryMeetings = mutableListOf<Meeting>()
@@ -20,6 +22,12 @@ class DataRepository(private val context: Context) {
 
     // 内存中的个人会议室信息（用于临时保存个人会议室设置）
     private var inMemoryPersonalMeetingRooms = mutableMapOf<String, PersonalMeetingRoom>()
+
+    // 内存中的举手记录列表
+    private val inMemoryHandRaiseRecords = mutableListOf<HandRaiseRecord>()
+
+    // 内存中的参会人列表
+    private val inMemoryParticipants = mutableListOf<MeetingParticipant>()
 
     fun getUsers(): List<User> {
         return try {
@@ -55,9 +63,11 @@ class DataRepository(private val context: Context) {
         return try {
             val jsonString = readJsonFromAssets("data/meeting_participants.json")
             val type = object : TypeToken<List<MeetingParticipant>>() {}.type
-            gson.fromJson(jsonString, type)
+            val jsonParticipants: List<MeetingParticipant> = gson.fromJson(jsonString, type)
+            // 合并JSON文件中的参会人和内存中的参会人
+            jsonParticipants + inMemoryParticipants
         } catch (e: Exception) {
-            emptyList()
+            inMemoryParticipants.toList()
         }
     }
 
@@ -97,9 +107,11 @@ class DataRepository(private val context: Context) {
         return try {
             val jsonString = readJsonFromAssets("data/hand_raise_records.json")
             val type = object : TypeToken<List<HandRaiseRecord>>() {}.type
-            gson.fromJson(jsonString, type)
+            val jsonRecords: List<HandRaiseRecord> = gson.fromJson(jsonString, type)
+            // 合并JSON文件中的记录和内存中的记录
+            jsonRecords + inMemoryHandRaiseRecords
         } catch (e: Exception) {
-            emptyList()
+            inMemoryHandRaiseRecords.toList()
         }
     }
 
@@ -184,6 +196,136 @@ class DataRepository(private val context: Context) {
      */
     fun savePersonalMeetingRoom(roomInfo: PersonalMeetingRoom) {
         inMemoryPersonalMeetingRooms[roomInfo.userId] = roomInfo
+    }
+
+    // ==================== 文件写入方法 ====================
+
+    /**
+     * 初始化数据文件：首次启动时将assets中的JSON复制到filesDir
+     */
+    fun initializeDataFiles() {
+        val fileNames = listOf(
+            "users.json", "meetings.json", "meeting_participants.json",
+            "messages.json", "hand_raise_records.json",
+            "meeting_invitations.json", "personal_meeting_rooms.json"
+        )
+        fileNames.forEach { fileName ->
+            val file = File(context.filesDir, fileName)
+            if (!file.exists()) {
+                try {
+                    val assetsData = readJsonFromAssets("data/$fileName")
+                    file.writeText(assetsData)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    /**
+     * 通用JSON写入方法：将数据序列化并写入filesDir
+     */
+    private fun writeJsonToFile(fileName: String, data: Any) {
+        try {
+            val file = File(context.filesDir, fileName)
+            val json = gson.toJson(data)
+            file.writeText(json)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    /**
+     * 从filesDir读取JSON文件，如果不存在则从assets读取
+     */
+    private fun readJsonFromFilesDir(fileName: String, assetsPath: String): String {
+        val file = File(context.filesDir, fileName)
+        return if (file.exists()) {
+            file.readText()
+        } else {
+            readJsonFromAssets(assetsPath)
+        }
+    }
+
+    /**
+     * 保存会议列表到文件
+     */
+    fun saveMeetingsToFile() {
+        val allMeetings = getMeetings()
+        writeJsonToFile("meetings.json", allMeetings)
+    }
+
+    /**
+     * 保存参会人列表到文件
+     */
+    fun saveMeetingParticipantsToFile(participants: List<MeetingParticipant>) {
+        writeJsonToFile("meeting_participants.json", participants)
+    }
+
+    /**
+     * 添加或更新参会人信息并保存到文件
+     */
+    fun addOrUpdateParticipant(participant: MeetingParticipant) {
+        // 从内存中找
+        val index = inMemoryParticipants.indexOfFirst {
+            it.userId == participant.userId && it.meetingId == participant.meetingId
+        }
+        if (index >= 0) {
+            inMemoryParticipants[index] = participant
+        } else {
+            inMemoryParticipants.add(participant)
+        }
+
+        // 合并所有数据并保存
+        val allParticipants = getMeetingParticipants() + inMemoryParticipants
+        // 去重
+        val uniqueParticipants = allParticipants.distinctBy { "${it.userId}_${it.meetingId}" }
+        saveMeetingParticipantsToFile(uniqueParticipants)
+    }
+
+    /**
+     * 保存消息列表到文件
+     */
+    fun saveMessagesToFile() {
+        val allMessages = getMessages()
+        writeJsonToFile("messages.json", allMessages)
+    }
+
+    /**
+     * 添加举手记录并保存到文件
+     */
+    fun addHandRaiseRecord(record: HandRaiseRecord) {
+        inMemoryHandRaiseRecords.add(record)
+        val allRecords = getHandRaiseRecords() + inMemoryHandRaiseRecords
+        writeJsonToFile("hand_raise_records.json", allRecords)
+    }
+
+    /**
+     * 更新举手记录的lowerTime（放下手）
+     */
+    fun updateHandRaiseLowerTime(recordId: String, lowerTime: Long) {
+        val allRecords = (getHandRaiseRecords() + inMemoryHandRaiseRecords).toMutableList()
+        val index = allRecords.indexOfFirst { it.recordId == recordId }
+        if (index >= 0) {
+            allRecords[index] = allRecords[index].copy(lowerTime = lowerTime)
+            writeJsonToFile("hand_raise_records.json", allRecords)
+        }
+    }
+
+    /**
+     * 保存邀请列表到文件
+     */
+    fun saveInvitationsToFile() {
+        val allInvitations = getMeetingInvitations()
+        writeJsonToFile("meeting_invitations.json", allInvitations)
+    }
+
+    /**
+     * 保存个人会议室列表到文件
+     */
+    fun savePersonalMeetingRoomsToFile() {
+        val rooms = inMemoryPersonalMeetingRooms.values.toList()
+        writeJsonToFile("personal_meeting_rooms.json", rooms)
     }
 
     private fun readJsonFromAssets(fileName: String): String {

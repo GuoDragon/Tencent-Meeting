@@ -69,6 +69,9 @@ class MeetingChatPresenter(
                 // 添加消息到数据仓库
                 dataRepository.addMessage(newMessage)
 
+                // 保存消息到文件
+                dataRepository.saveMessagesToFile()
+
                 // 通知View更新UI
                 view?.addNewMessage(newMessage)
                 view?.clearInput()

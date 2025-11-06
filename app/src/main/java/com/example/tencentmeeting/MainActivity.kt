@@ -37,11 +37,17 @@ import com.example.tencentmeeting.view.PersonalMeetingRoomPage
 import com.example.tencentmeeting.view.PersonalInformationPage
 import com.example.tencentmeeting.view.RecordPage
 import com.example.tencentmeeting.model.User
+import com.example.tencentmeeting.data.DataRepository
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // 初始化数据文件：将assets中的数据复制到filesDir
+        val dataRepository = DataRepository.getInstance(this)
+        dataRepository.initializeDataFiles()
+
         setContent {
             TencentMeetingTheme {
                 MainScreen()

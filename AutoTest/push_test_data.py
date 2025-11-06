@@ -31,15 +31,16 @@ def push_json_file(local_file, remote_filename):
         with open(local_file, 'r', encoding='utf-8') as f:
             json_content = f.read()
 
-        # 压缩JSON (去除不必要的空格和换行)
+        # 格式化JSON (保持缩进和换行)
         json_data = json.loads(json_content)
-        compact_json = json.dumps(json_data, ensure_ascii=False, separators=(',', ':'))
+        formatted_json = json.dumps(json_data, ensure_ascii=False, indent=2)
 
-        # 转义引号和特殊字符
-        escaped_json = compact_json.replace('\\', '\\\\').replace('"', '\\"').replace('$', '\\$')
+        # 转义特殊字符（包括换行符）
+        # 先转义反斜杠和引号，然后将换行符转换为\n
+        escaped_json = formatted_json.replace('\\', '\\\\').replace('"', '\\"').replace('$', '\\$').replace('\n', '\\n')
 
-        # 通过echo命令写入文件
-        shell_cmd = f'run-as {PACKAGE_NAME} sh -c \'echo "{escaped_json}" > files/{remote_filename}\''
+        # 通过printf命令写入文件（支持\n换行）
+        shell_cmd = f'run-as {PACKAGE_NAME} sh -c \'printf "%b" "{escaped_json}" > files/{remote_filename}\''
 
         print(f"正在推送 {remote_filename}...", end='')
 

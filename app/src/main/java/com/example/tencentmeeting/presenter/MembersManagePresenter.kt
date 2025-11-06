@@ -120,6 +120,9 @@ class MembersManagePresenter(
                     dataRepository.addInvitation(invitation)
                 }
 
+                // 保存邀请到文件
+                dataRepository.saveInvitationsToFile()
+
                 view?.showInviteSuccess(selectedUserIds.size)
             } catch (e: Exception) {
                 view?.showInviteFailed("发送邀请失败: ${e.message}")

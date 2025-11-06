@@ -2,6 +2,8 @@ package com.example.tencentmeeting.presenter
 
 import com.example.tencentmeeting.contract.MeetingDetailsContract
 import com.example.tencentmeeting.data.DataRepository
+import com.example.tencentmeeting.model.HandRaiseRecord
+import com.example.tencentmeeting.model.MeetingParticipant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -27,6 +29,10 @@ class MeetingDetailsPresenter(
     private var durationJob: Job? = null
     private var durationSeconds = 0
 
+    // 保存当前会议ID和用户ID，用于数据持久化
+    private var currentMeetingId: String = ""
+    private var currentUserId: String = "user001"
+
     override fun attachView(view: MeetingDetailsContract.View) {
         this.view = view
     }
@@ -42,6 +48,15 @@ class MeetingDetailsPresenter(
             try {
                 view?.showLoading()
 
+                // 保存当前会议ID
+                currentMeetingId = meetingId
+
+                // 加载当前用户ID
+                val users = dataRepository.getUsers()
+                if (users.isNotEmpty()) {
+                    currentUserId = users.first().userId
+                }
+
                 // 加载会议信息
                 val meetings = dataRepository.getMeetings()
                 val meeting = meetings.find { it.meetingId == meetingId }
@@ -53,7 +68,6 @@ class MeetingDetailsPresenter(
                 }
 
                 // 加载参会人列表（包含当前用户和前5位好友，共6人）
-                val users = dataRepository.getUsers()
                 val defaultParticipants = users.take(6)
                 view?.showParticipants(defaultParticipants)
 
@@ -85,11 +99,21 @@ class MeetingDetailsPresenter(
     override fun toggleMic() {
         micEnabled = !micEnabled
         view?.updateMicStatus(micEnabled)
+
+        // 保存静音状态到数据库
+        updateParticipantStatus(currentMeetingId, currentUserId) { participant ->
+            participant.copy(isMuted = !micEnabled)
+        }
     }
 
     override fun toggleVideo() {
         videoEnabled = !videoEnabled
         view?.updateVideoStatus(videoEnabled)
+
+        // 保存摄像头状态到数据库
+        updateParticipantStatus(currentMeetingId, currentUserId) { participant ->
+            participant.copy(isCameraOn = videoEnabled)
+        }
     }
 
     override fun toggleSpeaker() {
@@ -101,6 +125,11 @@ class MeetingDetailsPresenter(
         // 切换屏幕共享状态
         isScreenSharing = !isScreenSharing
         view?.updateScreenShareStatus(isScreenSharing)
+
+        // 保存屏幕共享状态到数据库
+        updateParticipantStatus(currentMeetingId, currentUserId) { participant ->
+            participant.copy(isSharingScreen = isScreenSharing)
+        }
     }
 
     override fun manageMember() {
@@ -121,6 +150,49 @@ class MeetingDetailsPresenter(
             if (message.isNotBlank()) {
                 view?.showError("已发送: $message")
             }
+        }
+    }
+
+    override fun raiseHand(meetingId: String, userId: String, userName: String) {
+        val recordId = "hr_${System.currentTimeMillis()}"
+        val record = HandRaiseRecord(
+            recordId = recordId,
+            meetingId = meetingId,
+            userId = userId,
+            userName = userName,
+            raiseTime = System.currentTimeMillis(),
+            lowerTime = null
+        )
+        dataRepository.addHandRaiseRecord(record)
+
+        // 同时更新participant的举手状态
+        updateParticipantStatus(meetingId, userId) { participant ->
+            participant.copy(isHandRaised = true, handRaisedTime = record.raiseTime)
+        }
+    }
+
+    override fun lowerHand(meetingId: String, userId: String, recordId: String) {
+        dataRepository.updateHandRaiseLowerTime(recordId, System.currentTimeMillis())
+
+        // 更新participant的举手状态
+        updateParticipantStatus(meetingId, userId) { participant ->
+            participant.copy(isHandRaised = false, handRaisedTime = null)
+        }
+    }
+
+    /**
+     * 更新参会人员状态的辅助方法
+     */
+    private fun updateParticipantStatus(
+        meetingId: String,
+        userId: String,
+        updateFn: (MeetingParticipant) -> MeetingParticipant
+    ) {
+        val participants = dataRepository.getMeetingParticipants()
+        val participant = participants.find { it.meetingId == meetingId && it.userId == userId }
+        if (participant != null) {
+            val updated = updateFn(participant)
+            dataRepository.addOrUpdateParticipant(updated)
         }
     }
 }
