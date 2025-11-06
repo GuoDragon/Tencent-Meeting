@@ -471,6 +471,56 @@ app/src/main/java/com/example/tencentmeeting/
 - `meeting_invitations.json` - 会议邀请记录（新增）
 - `personal_meeting_rooms.json` - 个人会议室设置（新增）
 
+## 自动化测试（AutoTest）
+项目包含GUI自动化测试脚本，用于验证APP中各种操作的正确性。
+
+### 数据流程说明
+1. **数据源位置**：`app/src/main/assets/data/`
+   - 这是APP的数据源，包含所有7个JSON文件
+   - 当APP编译运行时，这些数据会被打包到APK中
+
+2. **推送测试数据到虚拟机**：
+   - 使用`AutoTest/push_test_data.py`脚本
+   - 将assets/data中的JSON文件推送到Android虚拟机的内部存储
+   - 目标路径：虚拟机中的`files/`目录
+
+3. **APP运行时数据读写**：
+   - APP运行时从虚拟机内部存储读取和写入数据
+   - 用户在APP中的操作会更新虚拟机中的JSON文件
+
+4. **自动化测试验证**：
+   - 运行`AutoTest/eval_*.py`脚本进行验证
+   - 脚本通过ADB从虚拟机拉取最新的JSON数据
+   - 脚本检查数据是否符合预期，验证GUI操作是否正确执行
+
+### 测试脚本列表
+- eval_1.py - 检测麦克风静音状态记录
+- eval_2.py - 检测摄像头开启状态记录
+- eval_3.py - 检测最近结束的会议记录
+- eval_4.py - 检测参会者麦克风静音控制记录
+- eval_5.py - 检测会议中消息发送记录
+- eval_6.py - 检测快速会议创建和进入记录
+- eval_7.py - 检测预定会议记录
+- eval_8.py - 检测历史会议回放功能
+- eval_9.py - 检测通过会议号和密码加入会议
+- eval_10.py - 检测通过邀请链接加入会议
+- eval_11.py - 检测屏幕共享记录
+- eval_12.py - 检测举手功能
+- eval_13.py - 检测会议记录和时长
+- eval_14.py - 检测参会者列表和发送消息
+- eval_15.py - 检测快速会议与参会者
+- eval_16.py - 检测预定会议与邀请
+- eval_17.py - 检测用户搜索和添加好友
+- eval_18.py - 检测预定会议录制功能
+- eval_19.py - 检测查看未参会邀请者并重新邀请
+- eval_20.py - 检测通讯录列表和复制邀请链接
+
+### 重要说明
+- JSON数据文件应该只存在于`app/src/main/assets/data/`目录
+- 根目录和AutoTest目录下的JSON文件是临时文件（已添加到.gitignore）
+- AutoTest目录下的JSON文件是eval脚本运行时从虚拟机拉取的临时数据
+- 所有JSON文件均使用UTF-8编码，格式化为易读格式（缩进和换行）
+
 ## 运行说明
 1. 使用Android Studio打开项目
 2. 等待Gradle同步完成

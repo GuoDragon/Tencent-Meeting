@@ -13,3 +13,10 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Ignore JSON data files in root directory (data should be in app/src/main/assets/data)
+/*.json
+
+# Ignore temporary JSON files in AutoTest directory (created by eval scripts)
+/AutoTest/*.json
+!/AutoTest/demo.py

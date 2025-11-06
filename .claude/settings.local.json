@@ -33,7 +33,12 @@
       "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat build 2>&1 | findstr /i /C:\"\"BUILD\"\" /C:\"\"error\"\" /C:\"\"success\"\" /C:\"\"fail\"\" /C:\"\"FAILED\"\"\")",
       "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat compileDebugKotlin --stacktrace 2>&1 | findstr /i /C:\"\"error\"\" /C:\"\"success\"\" /C:\"\"BUILD\"\" /C:\"\"fail\"\"\")",
       "Bash(cmd /c \"cd /d D:\\android_template\\Tencent-Meeting && set JAVA_HOME=C:\\Program Files\\Java\\jdk-17 && gradlew.bat compileDebugKotlin 2>&1 | findstr /i /C:\"\"error\"\" /C:\"\"success\"\" /C:\"\"BUILD\"\" /C:\"\"FAILED\"\"\")",
-      "Bash(cmd /c:*)"
+      "Bash(cmd /c:*)",
+      "Bash(cat:*)",
+      "Bash(for:*)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(head:*)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
