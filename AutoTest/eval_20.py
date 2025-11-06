@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_contact_and_invitation_link(meetingId='341234546'):
+def check_contact_and_invitation_link(meetingId='4157555988'):
     """
     获取会议的邀请链接
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
     print(f"通讯录中有 {len(contacts)} 个联系人")
 
     # 获取会议邀请链接
-    link = check_contact_and_invitation_link('341234546')
+    link = check_contact_and_invitation_link('4157555988')
     if link:
         print(f"会议邀请链接: {link}")
     else:

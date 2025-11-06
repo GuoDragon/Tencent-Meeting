@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_search_user_by_phone(phone_number='13800001001'):
+def check_search_user_by_phone(phone_number='15823467912'):
     """
     通过手机号搜索用户
 
@@ -77,8 +77,8 @@ def verify_search_result(phone_number, expected_user_id):
     return False
 
 if __name__ == "__main__":
-    # 测试示例: 搜索手机号138xxxxxx
-    user = check_search_user_by_phone('13800001001')
+    # 测试示例: 搜索手机号15823467912
+    user = check_search_user_by_phone('15823467912')
     if user:
         print(f"找到用户: {user['username']}, ID: {user['userId']}")
     else:

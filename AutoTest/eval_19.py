@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_uninvited_participants(meetingId='meeting003'):
+def check_uninvited_participants(meetingId='meeting_5c2f84'):
     """
     查找已邀请但未加入会议的人员
 
@@ -119,6 +119,6 @@ def verify_reinvitation(meetingId, user_id):
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 查看meeting003中未加入的人员
-    uninvited = check_uninvited_participants('meeting003')
+    # 测试示例: 查看meeting_5c2f84中未加入的人员
+    uninvited = check_uninvited_participants('meeting_5c2f84')
     print(f"未加入会议的人员: {uninvited}")

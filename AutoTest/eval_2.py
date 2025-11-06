@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_camera_on(userId='user001', meetingId='meeting001', expected_camera_status=True):
+def check_camera_on(userId='user001', meetingId='meeting_8f4a2b', expected_camera_status=True):
     """
     检查指定用户在指定会议中的摄像头开启状态
 
@@ -64,9 +64,9 @@ def check_camera_on(userId='user001', meetingId='meeting001', expected_camera_st
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user001在meeting001中摄像头是否已开启
+    # 测试示例: 检查user001在meeting_8f4a2b中摄像头是否已开启
     print(check_camera_on(
         userId='user001',
-        meetingId='meeting001',
+        meetingId='meeting_8f4a2b',
         expected_camera_status=True  # 期望摄像头已开启
     ))

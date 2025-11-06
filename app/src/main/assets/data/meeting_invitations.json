@@ -1,7 +1,7 @@
 [
   {
     "invitationId": "invite001",
-    "meetingId": "meeting001",
+    "meetingId": "meeting_8f4a2b",
     "inviterId": "user001",
     "inviteeId": "user002",
     "status": "PENDING",

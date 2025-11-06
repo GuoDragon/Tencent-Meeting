@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_join_meeting_by_link(meetingLink='https://meeting.tencent.com/dm/abc123def456', userId='user001'):
+def check_join_meeting_by_link(meetingLink='meeting.tencent.com/p/4157555988', userId='user001'):
     """
     检查用户是否通过邀请链接成功加入会议
 
@@ -86,6 +86,6 @@ def check_join_meeting_by_link(meetingLink='https://meeting.tencent.com/dm/abc12
 if __name__ == "__main__":
     # 测试示例: 检查用户是否通过链接加入会议
     print(check_join_meeting_by_link(
-        meetingLink='https://meeting.tencent.com/dm/abc123def456',
+        meetingLink='meeting.tencent.com/p/4157555988',
         userId='user001'
     ))

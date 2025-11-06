@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_instant_meeting_created(meetingId='meeting001', hostId='user001'):
+def check_instant_meeting_created(meetingId='meeting_8f4a2b', hostId='user001'):
     """
     检查是否成功创建了快速会议(即时会议)并且状态为进行中
 
@@ -62,8 +62,8 @@ def check_instant_meeting_created(meetingId='meeting001', hostId='user001'):
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user001是否创建了meeting001快速会议
+    # 测试示例: 检查user001是否创建了meeting_8f4a2b快速会议
     print(check_instant_meeting_created(
-        meetingId='meeting001',
+        meetingId='meeting_8f4a2b',
         hostId='user001'
     ))

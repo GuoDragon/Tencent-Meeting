@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_hand_raise(userId='user003', meetingId='meeting002'):
+def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
     """
     检查用户是否举手申请发言
 
@@ -85,8 +85,8 @@ def check_hand_raise(userId='user003', meetingId='meeting002'):
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user003在meeting002中是否举手
+    # 测试示例: 检查user003在meeting_3d7e91中是否举手
     print(check_hand_raise(
         userId='user003',
-        meetingId='meeting002'
+        meetingId='meeting_3d7e91'
     ))

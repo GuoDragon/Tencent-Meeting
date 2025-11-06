@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_scheduled_meeting_with_recording(meetingId='meeting003', hostId='user001', invitee_ids=['user002', 'user003']):
+def check_scheduled_meeting_with_recording(meetingId='meeting_5c2f84', hostId='user001', invitee_ids=['user002', 'user003']):
     """
     检查是否成功预约会议、发送邀请并设置录制
     注意: 当前数据结构中可能没有录制相关字段,此函数主要检查会议和邀请
@@ -96,7 +96,7 @@ def check_scheduled_meeting_with_recording(meetingId='meeting003', hostId='user0
 if __name__ == "__main__":
     # 测试示例: 检查user001预约会议并邀请多人,设置录制
     print(check_scheduled_meeting_with_recording(
-        meetingId='meeting003',
+        meetingId='meeting_5c2f84',
         hostId='user001',
         invitee_ids=['user002', 'user003']
     ))

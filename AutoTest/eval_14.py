@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_message_to_participant(meetingId='meeting001', senderId='user001', receiverId='user002', message_content='你好'):
+def check_message_to_participant(meetingId='meeting_3d7e91', senderId='user001', receiverId='user002', message_content='你好'):
     """
     检查是否成功给指定参会人发送了消息
     注意: 此处假设私聊功能,实际数据结构可能是会议内公开消息
@@ -63,9 +63,9 @@ def check_message_to_participant(meetingId='meeting001', senderId='user001', rec
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user001在meeting001中给其他人发消息
+    # 测试示例: 检查user001在meeting_3d7e91中给其他人发消息
     print(check_message_to_participant(
-        meetingId='meeting001',
+        meetingId='meeting_3d7e91',
         senderId='user001',
         receiverId='user002',  # 目标参会人
         message_content='你好'

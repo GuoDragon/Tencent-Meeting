@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_participant_mute_control(target_userId='user002', meetingId='meeting001', expected_muted_status=True):
+def check_participant_mute_control(target_userId='user002', meetingId='meeting_8f4a2b', expected_muted_status=True):
     """
     检查对指定参会人的麦克风静音控制是否正确记录
 
@@ -64,9 +64,9 @@ def check_participant_mute_control(target_userId='user002', meetingId='meeting00
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user002在meeting001中是否被静音
+    # 测试示例: 检查user002在meeting_8f4a2b中是否被静音
     print(check_participant_mute_control(
         target_userId='user002',
-        meetingId='meeting001',
+        meetingId='meeting_8f4a2b',
         expected_muted_status=True  # 期望该用户已被静音
     ))

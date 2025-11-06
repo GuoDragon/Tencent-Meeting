@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_scheduled_meeting_with_invitation(meetingId='meeting003', hostId='user001', invitee_ids=['user002']):
+def check_scheduled_meeting_with_invitation(meetingId='meeting_5c2f84', hostId='user001', invitee_ids=['user002']):
     """
     检查是否成功预约会议并向指定人发送了邀请
 
@@ -91,7 +91,7 @@ def check_scheduled_meeting_with_invitation(meetingId='meeting003', hostId='user
 if __name__ == "__main__":
     # 测试示例: 检查user001预约会议并邀请user002
     print(check_scheduled_meeting_with_invitation(
-        meetingId='meeting003',
+        meetingId='meeting_5c2f84',
         hostId='user001',
         invitee_ids=['user002']
     ))

@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_instant_meeting_with_participants(meetingId='meeting001', hostId='user001', participant_ids=['user001', 'user002', 'user003']):
+def check_instant_meeting_with_participants(meetingId='meeting_3d7e91', hostId='user001', participant_ids=['user001', 'user002', 'user003']):
     """
     检查是否成功创建快速会议并且指定的参会人都已加入
 
@@ -91,7 +91,7 @@ def check_instant_meeting_with_participants(meetingId='meeting001', hostId='user
 if __name__ == "__main__":
     # 测试示例: 检查user001与user002、user003创建快速会议
     print(check_instant_meeting_with_participants(
-        meetingId='meeting001',
+        meetingId='meeting_3d7e91',
         hostId='user001',
         participant_ids=['user001', 'user002', 'user003']  # 包含主持人和邀请的参会人
     ))

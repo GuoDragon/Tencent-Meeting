@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_screen_sharing(userId='user002', meetingId='meeting002', expected_sharing_status=True):
+def check_screen_sharing(userId='user002', meetingId='meeting_3d7e91', expected_sharing_status=True):
     """
     检查指定用户在指定会议中的屏幕共享状态
 
@@ -64,9 +64,9 @@ def check_screen_sharing(userId='user002', meetingId='meeting002', expected_shar
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user002在meeting002中是否正在共享屏幕
+    # 测试示例: 检查user002在meeting_3d7e91中是否正在共享屏幕
     print(check_screen_sharing(
         userId='user002',
-        meetingId='meeting002',
+        meetingId='meeting_3d7e91',
         expected_sharing_status=True  # 期望正在共享屏幕
     ))

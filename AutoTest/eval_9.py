@@ -6,7 +6,7 @@
 import json
 import subprocess
 
-def check_join_meeting_with_password(meetingId='meeting002', password='654321', userId='user002'):
+def check_join_meeting_with_password(meetingId='meeting_8f4a2b', password='742983', userId='user002'):
     """
     检查用户是否通过正确的会议号和密码成功加入会议
 
@@ -91,9 +91,9 @@ def check_join_meeting_with_password(meetingId='meeting002', password='654321', 
         return False
 
 if __name__ == "__main__":
-    # 测试示例: 检查user002是否用正确密码加入了meeting002
+    # 测试示例: 检查user002是否用正确密码加入了meeting_8f4a2b
     print(check_join_meeting_with_password(
-        meetingId='meeting002',
-        password='654321',
+        meetingId='meeting_8f4a2b',
+        password='742983',
         userId='user002'
     ))
