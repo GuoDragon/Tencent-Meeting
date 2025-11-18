@@ -248,6 +248,17 @@ class DataRepository(private val context: Context) {
     }
 
     /**
+     * 更新会议信息并保存到文件
+     */
+    fun updateMeeting(meetingId: String, updateFn: (Meeting) -> Meeting) {
+        val index = inMemoryMeetings.indexOfFirst { it.meetingId == meetingId }
+        if (index >= 0) {
+            inMemoryMeetings[index] = updateFn(inMemoryMeetings[index])
+        }
+        saveMeetingsToFile()
+    }
+
+    /**
      * 保存会议列表到文件
      */
     fun saveMeetingsToFile() {

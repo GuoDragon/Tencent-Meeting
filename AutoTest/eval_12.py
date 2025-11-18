@@ -87,6 +87,6 @@ def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
 if __name__ == "__main__":
     # 测试示例: 检查user003在meeting_3d7e91中是否举手
     print(check_hand_raise(
-        userId='user003',
+        userId='user001',
         meetingId='meeting_3d7e91'
     ))

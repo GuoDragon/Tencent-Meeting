@@ -64,7 +64,7 @@ def check_message_sent(meetingId='meeting_8f4a2b', senderId='user001', message_c
 if __name__ == "__main__":
     # 测试示例: 检查user001在meeting_8f4a2b中是否发送了"大家好"
     print(check_message_sent(
-        meetingId='meeting_8f4a2b',
+        meetingId='meeting_4581a36f',
         senderId='user001',
-        message_content='大家好'
+        message_content='hello'
     ))

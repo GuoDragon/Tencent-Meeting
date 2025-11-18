@@ -3,6 +3,7 @@ package com.example.tencentmeeting.presenter
 import com.example.tencentmeeting.contract.QuickMeetingContract
 import com.example.tencentmeeting.data.DataRepository
 import com.example.tencentmeeting.model.Meeting
+import com.example.tencentmeeting.model.MeetingParticipant
 import com.example.tencentmeeting.model.MeetingSettings
 import com.example.tencentmeeting.model.MeetingStatus
 import com.example.tencentmeeting.model.MeetingType
@@ -80,6 +81,19 @@ class QuickMeetingPresenter(
                 // 保存会议到数据库
                 dataRepository.saveMeeting(meeting)
                 dataRepository.saveMeetingsToFile()
+
+                // 创建主持人的参会人记录（修复：确保主持人的操作可以被保存）
+                val hostParticipant = MeetingParticipant(
+                    userId = "user001",  // 主持人ID
+                    meetingId = meeting.meetingId,
+                    isMuted = !micEnabled,
+                    isCameraOn = videoEnabled,
+                    isHandRaised = false,
+                    handRaisedTime = null,
+                    isSharingScreen = false,
+                    joinTime = currentTime
+                )
+                dataRepository.addOrUpdateParticipant(hostParticipant)
 
                 view?.showStartMeetingSuccess(meetingId, micEnabled, videoEnabled, speakerEnabled)
             } catch (e: Exception) {

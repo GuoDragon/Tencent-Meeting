@@ -4,6 +4,7 @@ import com.example.tencentmeeting.contract.MeetingDetailsContract
 import com.example.tencentmeeting.data.DataRepository
 import com.example.tencentmeeting.model.HandRaiseRecord
 import com.example.tencentmeeting.model.MeetingParticipant
+import com.example.tencentmeeting.model.MeetingStatus
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -140,8 +141,24 @@ class MeetingDetailsPresenter(
     }
 
     override fun endMeeting() {
-        durationJob?.cancel()
-        view?.navigateBack()
+        presenterScope.launch {
+            try {
+                // 更新会议状态为已结束，并设置结束时间
+                dataRepository.updateMeeting(currentMeetingId) { meeting ->
+                    meeting.copy(
+                        status = MeetingStatus.ENDED,
+                        endTime = System.currentTimeMillis()
+                    )
+                }
+                durationJob?.cancel()
+                view?.navigateBack()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                // 即使失败也要返回，避免用户卡住
+                durationJob?.cancel()
+                view?.navigateBack()
+            }
+        }
     }
 
     override fun sendDanmu(message: String) {
@@ -182,6 +199,7 @@ class MeetingDetailsPresenter(
 
     /**
      * 更新参会人员状态的辅助方法
+     * 修复：如果参会人记录不存在，自动创建一个新的
      */
     private fun updateParticipantStatus(
         meetingId: String,
@@ -189,10 +207,24 @@ class MeetingDetailsPresenter(
         updateFn: (MeetingParticipant) -> MeetingParticipant
     ) {
         val participants = dataRepository.getMeetingParticipants()
-        val participant = participants.find { it.meetingId == meetingId && it.userId == userId }
-        if (participant != null) {
-            val updated = updateFn(participant)
-            dataRepository.addOrUpdateParticipant(updated)
+        var participant = participants.find { it.meetingId == meetingId && it.userId == userId }
+
+        // 如果参会人记录不存在，创建一个默认的
+        if (participant == null) {
+            participant = MeetingParticipant(
+                userId = userId,
+                meetingId = meetingId,
+                isMuted = !micEnabled,  // 使用当前状态
+                isCameraOn = videoEnabled,
+                isHandRaised = false,
+                handRaisedTime = null,
+                isSharingScreen = false,
+                joinTime = System.currentTimeMillis()
+            )
         }
+
+        // 应用更新函数
+        val updated = updateFn(participant)
+        dataRepository.addOrUpdateParticipant(updated)
     }
 }

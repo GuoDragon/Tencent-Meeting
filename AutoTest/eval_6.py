@@ -64,6 +64,6 @@ def check_instant_meeting_created(meetingId='meeting_8f4a2b', hostId='user001'):
 if __name__ == "__main__":
     # 测试示例: 检查user001是否创建了meeting_8f4a2b快速会议
     print(check_instant_meeting_created(
-        meetingId='meeting_8f4a2b',
+        meetingId='meeting_731c6be9',
         hostId='user001'
     ))

@@ -910,6 +910,17 @@ app/src/main/java/com/example/tencentmeeting/
     - [x] 所有JSON文件写入context.filesDir目录
     - [x] eval脚本通过ADB可以读取files/目录下的JSON文件
     - [x] 用户操作后数据实时保存，支持GUI Agent测试验证
+- [x] 功能修复18：会议结束功能完善
+  - [x] DataRepository添加updateMeeting()方法
+    - [x] 支持更新会议信息并自动保存到文件
+    - [x] 使用lambda函数式编程风格进行数据更新
+  - [x] MeetingDetailsPresenter.endMeeting()方法完善
+    - [x] 点击"结束"按钮时更新会议状态为ENDED
+    - [x] 设置会议结束时间(endTime)为当前时间戳
+    - [x] 自动调用saveMeetingsToFile()持久化数据
+    - [x] 异常处理确保即使保存失败也能正常返回
+  - [x] 修复问题：快速会议点击"结束"后会议状态正确更新，不再在首页显示"进行中"
+  - [x] 修复问题：结束会议后数据正确写入JSON文件，eval脚本可以检测到会议已结束
 
 ## 界面设计说明
 - **会议页面**：专注于会议功能，显示进行中和待开始的会议
