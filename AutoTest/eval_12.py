@@ -26,19 +26,18 @@ def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
             'com.example.tencentmeeting',
             'cat',
             'files/meeting_participants.json'
-        ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败(participants): {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败(participants): {result.stderr}")
             return False
 
-        # 检查meeting_participants中的举手状态
-        with open('meeting_participants.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: meeting_participants.json文件为空")
-                return False
-            participants = json.loads(content)
+        # 直接从stdout检查meeting_participants中的举手状态
+        content = result.stdout
+        if not content.strip():
+            print("错误: meeting_participants.json输出为空")
+            return False
+        participants = json.loads(content)
 
         participant_raised = False
         for participant in participants:
@@ -55,19 +54,18 @@ def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
             'com.example.tencentmeeting',
             'cat',
             'files/hand_raise_records.json'
-        ], stdout=open('hand_raise_records.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败(hand_raise): {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败(hand_raise): {result.stderr}")
             return False
 
-        # 检查hand_raise_records中是否有记录
-        with open('hand_raise_records.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: hand_raise_records.json文件为空")
-                return False
-            records = json.loads(content)
+        # 直接从stdout检查hand_raise_records中是否有记录
+        content = result.stdout
+        if not content.strip():
+            print("错误: hand_raise_records.json输出为空")
+            return False
+        records = json.loads(content)
 
         record_exists = False
         for record in records:

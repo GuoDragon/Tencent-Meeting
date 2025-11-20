@@ -260,7 +260,7 @@ fun ScheduledMeetingPage(
         // 参会人选择器
         if (showParticipantPicker) {
             ParticipantPickerDialog(
-                availableUsers = availableUsers,
+                availableUsers = availableUsers.filter { it.userId != "user001" }, // 过滤掉当前用户"刘承龙"
                 selectedUsers = selectedParticipants,
                 onConfirm = { selected ->
                     selectedParticipants = selected
@@ -472,13 +472,51 @@ private fun ParticipantPickerDialog(
 ) {
     var selectedList by remember { mutableStateOf(selectedUsers) }
 
+    // 检查是否全选
+    val isAllSelected = remember(selectedList, availableUsers) {
+        selectedList.size == availableUsers.size && availableUsers.all { selectedList.contains(it) }
+    }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text("选择参会人") },
         text = {
             Column(
-                modifier = Modifier.height(300.dp)
+                modifier = Modifier
+                    .height(300.dp)
+                    .verticalScroll(rememberScrollState()) // 添加滚动功能
             ) {
+                // 全选按钮
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            selectedList = if (isAllSelected) {
+                                emptyList()
+                            } else {
+                                availableUsers
+                            }
+                        }
+                        .padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Checkbox(
+                        checked = isAllSelected,
+                        onCheckedChange = { checked ->
+                            selectedList = if (checked) {
+                                availableUsers
+                            } else {
+                                emptyList()
+                            }
+                        }
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text("全选", fontWeight = FontWeight.Medium)
+                }
+
+                Divider(color = Color(0xFFEEEEEE), thickness = 1.dp)
+
+                // 用户列表
                 availableUsers.forEach { user ->
                     val isSelected = selectedList.contains(user)
                     Row(

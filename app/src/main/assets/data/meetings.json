@@ -117,5 +117,22 @@
       "cameraOffOnEntry": true,
       "enableWaitingRoom": true
     }
+  },
+  {
+    "meetingId": "341234546",
+    "topic": "跨部门协作会议",
+    "password": "312435",
+    "hostId": "user001",
+    "startTime": 1697760000000,
+    "endTime": null,
+    "status": "UPCOMING",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": false
+    }
   }
 ]

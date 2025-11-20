@@ -26,26 +26,23 @@ def check_screen_sharing(userId='user002', meetingId='meeting_3d7e91', expected_
         'com.example.tencentmeeting',
         'cat',
         'files/meeting_participants.json'
-    ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)
+    ], capture_output=True, text=True)
 
     # 检查ADB命令是否成功
     if result.returncode != 0:
-        print(f"ADB命令执行失败: {result.stderr.decode('utf-8', errors='ignore')}")
+        print(f"ADB命令执行失败: {result.stderr}")
         return False
 
-    # 读取文件
+    # 直接从stdout读取内容
     try:
-        with open('meeting_participants.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: 文件为空,可能ADB命令未正确执行或文件在模拟器中不存在")
-                return False
-            data = json.loads(content)
+        content = result.stdout
+        if not content.strip():
+            print("错误: 输出为空,可能ADB命令未正确执行或文件在模拟器中不存在")
+            return False
+        data = json.loads(content)
     except json.JSONDecodeError as e:
         print(f"JSON解析错误: {e}")
-        return False
-    except FileNotFoundError:
-        print("错误: 文件未找到")
+        print(f"原始内容前200字符: {content[:200]}")
         return False
 
     # 查找匹配的用户和会议记录

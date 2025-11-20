@@ -36,7 +36,7 @@
     "isCameraOn": true,
     "isHandRaised": false,
     "handRaisedTime": null,
-    "isSharingScreen": true,
+    "isSharingScreen": false,
     "joinTime": 1697587200000
   },
   {
@@ -44,8 +44,8 @@
     "meetingId": "meeting_3d7e91",
     "isMuted": true,
     "isCameraOn": true,
-    "isHandRaised": true,
-    "handRaisedTime": 1697587800000,
+    "isHandRaised": false,
+    "handRaisedTime": null,
     "isSharingScreen": false,
     "joinTime": 1697587260000
   },

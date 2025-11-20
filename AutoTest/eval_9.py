@@ -27,19 +27,18 @@ def check_join_meeting_with_password(meetingId='meeting_8f4a2b', password='74298
             'com.example.tencentmeeting',
             'cat',
             'files/meetings.json'
-        ], stdout=open('meetings.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败(meetings): {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败(meetings): {result.stderr}")
             return False
 
-        # 读取会议信息
-        with open('meetings.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: meetings.json文件为空")
-                return False
-            meetings = json.loads(content)
+        # 直接从stdout读取会议信息
+        content = result.stdout
+        if not content.strip():
+            print("错误: meetings.json输出为空")
+            return False
+        meetings = json.loads(content)
 
         # 验证会议是否存在且密码正确
         meeting_found = False
@@ -64,19 +63,18 @@ def check_join_meeting_with_password(meetingId='meeting_8f4a2b', password='74298
             'com.example.tencentmeeting',
             'cat',
             'files/meeting_participants.json'
-        ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败(participants): {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败(participants): {result.stderr}")
             return False
 
-        # 读取参会人信息
-        with open('meeting_participants.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: meeting_participants.json文件为空")
-                return False
-            participants = json.loads(content)
+        # 直接从stdout读取参会人信息
+        content = result.stdout
+        if not content.strip():
+            print("错误: meeting_participants.json输出为空")
+            return False
+        participants = json.loads(content)
 
         # 检查用户是否在参会人列表中
         for participant in participants:

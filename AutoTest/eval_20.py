@@ -25,19 +25,18 @@ def check_contact_and_invitation_link(meetingId='4157555988'):
             'com.example.tencentmeeting',
             'cat',
             'files/personal_meeting_rooms.json'
-        ], stdout=open('personal_meeting_rooms.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败: {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败: {result.stderr}")
             return None
 
-        # 从个人会议室中查找邀请链接
-        with open('personal_meeting_rooms.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: personal_meeting_rooms.json文件为空")
-                return None
-            rooms = json.loads(content)
+        # 直接从stdout查找邀请链接
+        content = result.stdout
+        if not content.strip():
+            print("错误: personal_meeting_rooms.json输出为空")
+            return None
+        rooms = json.loads(content)
 
         for room in rooms:
             if room['meetingId'] == meetingId:
@@ -65,18 +64,18 @@ def check_contacts_list():
             'com.example.tencentmeeting',
             'cat',
             'files/users.json'
-        ], stdout=open('users.json', 'w'), stderr=subprocess.PIPE)
+        ], capture_output=True, text=True)
 
         if result.returncode != 0:
-            print(f"ADB命令执行失败: {result.stderr.decode('utf-8', errors='ignore')}")
+            print(f"ADB命令执行失败: {result.stderr}")
             return []
 
-        with open('users.json', 'r', encoding='utf-8') as f:
-            content = f.read()
-            if not content.strip():
-                print("错误: users.json文件为空")
-                return []
-            users = json.loads(content)
+        # 直接从stdout读取用户列表
+        content = result.stdout
+        if not content.strip():
+            print("错误: users.json输出为空")
+            return []
+        users = json.loads(content)
 
         contacts = [{'userId': u['userId'], 'username': u['username']} for u in users]
         return contacts
