@@ -471,6 +471,324 @@ app/src/main/java/com/example/tencentmeeting/
 - `meeting_invitations.json` - 会议邀请记录（新增）
 - `personal_meeting_rooms.json` - 个人会议室设置（新增）
 
+## 数据存储详解
+
+### 数据存储位置
+APP运行时的数据存储采用双重路径设计：
+
+**1. 开发环境（初始数据源）**
+- 路径：`app/src/main/assets/data/`
+- 用途：存放初始数据，打包到APK中
+- 特点：只读，用于首次安装时初始化数据
+
+**2. Android虚拟机/设备（运行时数据）**
+- 路径：`/data/data/com.example.tencentmeeting/files/`
+- 用途：APP运行时读写数据的实际位置
+- 特点：可读写，所有用户操作会实时写入此目录
+- 访问方式：通过ADB命令访问
+  ```bash
+  # 查看文件列表
+  adb shell run-as com.example.tencentmeeting ls files/
+
+  # 读取文件内容
+  adb shell run-as com.example.tencentmeeting cat files/meetings.json
+
+  # 拉取文件到本地
+  adb exec-out run-as com.example.tencentmeeting cat files/meetings.json > meetings.json
+  ```
+
+### JSON文件详细说明
+
+#### 1. users.json - 用户信息
+**用途**：存储所有用户的账号信息（只读参考数据）
+
+**修改操作**：无（此文件为只读基础数据，不会被APP操作修改）
+
+**数据结构**：
+```json
+[
+  {
+    "userId": "user001",
+    "username": "刘承龙",
+    "avatar": "https://example.com/avatars/liuchenglong.jpg",
+    "phone": "13912847563",
+    "email": "liuchenglong@example.com"
+  }
+]
+```
+
+**字段说明**：
+- `userId`: 用户唯一标识
+- `username`: 用户姓名
+- `avatar`: 头像URL
+- `phone`: 手机号
+- `email`: 邮箱地址
+
+---
+
+#### 2. meetings.json - 会议信息
+**用途**：存储所有会议的完整信息，包括进行中、待开始、已结束的会议
+
+**修改操作**：
+- ✅ 预定会议（ScheduledMeetingPresenter.saveMeeting）
+- ✅ 创建快速会议（QuickMeetingPresenter.startQuickMeeting）
+- ✅ 结束会议（MeetingDetailsPresenter.endMeeting）
+
+**数据结构**：
+```json
+[
+  {
+    "meetingId": "meeting_8f4a2b",
+    "topic": "项目启动会议",
+    "password": "742983",
+    "hostId": "user001",
+    "startTime": 1697500800000,
+    "endTime": 1697504400000,
+    "status": "ENDED",
+    "meetingType": "SCHEDULED",
+    "participantIds": ["user001", "user002", "user003"],
+    "settings": {
+      "allowParticipantUnmute": true,
+      "muteOnEntry": true,
+      "cameraOffOnEntry": true,
+      "enableWaitingRoom": false
+    }
+  }
+]
+```
+
+**字段说明**：
+- `meetingId`: 会议唯一标识
+- `topic`: 会议主题
+- `password`: 入会密码（可选）
+- `hostId`: 主持人用户ID
+- `startTime`: 开始时间（Unix时间戳，毫秒）
+- `endTime`: 结束时间（Unix时间戳，毫秒）
+- `status`: 会议状态（ONGOING/UPCOMING/ENDED）
+- `meetingType`: 会议类型（QUICK/SCHEDULED/JOIN）
+- `participantIds`: 参会人ID列表
+- `settings`: 会议设置项
+
+---
+
+#### 3. meeting_participants.json - 参会人员状态
+**用途**：跟踪每个参会人在会议中的实时状态
+
+**修改操作**：
+- ✅ 加入会议（JoinMeetingPresenter.joinMeeting）
+- ✅ 开启快速会议（QuickMeetingPresenter添加主持人）
+- ✅ 切换麦克风（MeetingDetailsPresenter.toggleMic）
+- ✅ 切换摄像头（MeetingDetailsPresenter.toggleVideo）
+- ✅ 共享屏幕（MeetingDetailsPresenter.shareScreen）
+- ✅ 举手/放下手（MeetingDetailsPresenter.raiseHand/lowerHand）
+
+**数据结构**：
+```json
+[
+  {
+    "userId": "user001",
+    "meetingId": "meeting_8f4a2b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697500800000
+  }
+]
+```
+
+**字段说明**：
+- `userId`: 参会人用户ID
+- `meetingId`: 所属会议ID
+- `isMuted`: 是否静音
+- `isCameraOn`: 摄像头是否开启
+- `isHandRaised`: 是否举手
+- `handRaisedTime`: 举手时间（Unix时间戳）
+- `isSharingScreen`: 是否正在共享屏幕
+- `joinTime`: 加入会议时间
+
+---
+
+#### 4. messages.json - 会议聊天消息
+**用途**：存储会议中发送的所有聊天消息
+
+**修改操作**：
+- ✅ 发送消息（MeetingChatPresenter.sendMessage）
+
+**数据结构**：
+```json
+[
+  {
+    "messageId": "msg001",
+    "meetingId": "meeting_8f4a2b",
+    "senderId": "user001",
+    "senderName": "刘承龙",
+    "content": "欢迎参加项目启动会议",
+    "timestamp": 1697500900000
+  }
+]
+```
+
+**字段说明**：
+- `messageId`: 消息唯一标识
+- `meetingId`: 所属会议ID
+- `senderId`: 发送者用户ID
+- `senderName`: 发送者姓名
+- `content`: 消息内容
+- `timestamp`: 发送时间（Unix时间戳）
+
+---
+
+#### 5. hand_raise_records.json - 举手记录
+**用途**：记录参会人的举手动作历史（包括举手和放下的时间）
+
+**修改操作**：
+- ✅ 举手（MeetingDetailsPresenter.raiseHand）
+- ✅ 放下手（MeetingDetailsPresenter.lowerHand）
+
+**数据结构**：
+```json
+[
+  {
+    "recordId": "hr001",
+    "meetingId": "meeting_8f4a2b",
+    "userId": "user002",
+    "userName": "陈思远",
+    "raiseTime": 1697501800000,
+    "lowerTime": 1697502100000
+  }
+]
+```
+
+**字段说明**：
+- `recordId`: 记录唯一标识
+- `meetingId`: 所属会议ID
+- `userId`: 举手用户ID
+- `userName`: 举手用户姓名
+- `raiseTime`: 举手时间
+- `lowerTime`: 放下手时间（null表示仍在举手中）
+
+---
+
+#### 6. meeting_invitations.json - 会议邀请记录
+**用途**：存储会议邀请的发送和响应状态
+
+**修改操作**：
+- ✅ 邀请成员（MembersManagePresenter.sendInvitations）
+
+**数据结构**：
+```json
+[
+  {
+    "invitationId": "invite001",
+    "meetingId": "meeting_8f4a2b",
+    "inviterId": "user001",
+    "inviteeId": "user002",
+    "status": "PENDING",
+    "invitedTime": 1700000000000,
+    "respondedTime": null
+  }
+]
+```
+
+**字段说明**：
+- `invitationId`: 邀请唯一标识
+- `meetingId`: 所属会议ID
+- `inviterId`: 邀请人用户ID
+- `inviteeId`: 被邀请人用户ID
+- `status`: 邀请状态（PENDING/ACCEPTED/DECLINED/EXPIRED）
+- `invitedTime`: 邀请发送时间
+- `respondedTime`: 响应时间（null表示未响应）
+
+---
+
+#### 7. personal_meeting_rooms.json - 个人会议室设置
+**用途**：存储每个用户的个人会议室配置信息
+
+**修改操作**：
+- ✅ 更新入会密码（PersonalMeetingRoomPresenter.updatePassword）
+- ✅ 更新等候室设置（PersonalMeetingRoomPresenter.updateWaitingRoom）
+- ✅ 更新主持人前入会（PersonalMeetingRoomPresenter.updateAllowBeforeHost）
+- ✅ 更新会议水印（PersonalMeetingRoomPresenter.updateWatermark）
+- ✅ 更新入会静音规则（PersonalMeetingRoomPresenter.updateMuteOnEntry）
+- ✅ 更新多端入会（PersonalMeetingRoomPresenter.updateMultiDevice）
+
+**数据结构**：
+```json
+[
+  {
+    "userId": "user001",
+    "meetingId": "4157555988",
+    "meetingLink": "meeting.tencent.com/p/4157555988",
+    "password": "559706",
+    "enablePassword": true,
+    "enableWaitingRoom": false,
+    "allowBeforeHost": false,
+    "enableWatermark": false,
+    "muteOnEntry": "关闭",
+    "allowMultiDevice": false
+  }
+]
+```
+
+**字段说明**：
+- `userId`: 用户ID
+- `meetingId`: 个人会议号
+- `meetingLink`: 个人会议室链接
+- `password`: 入会密码
+- `enablePassword`: 是否启用密码
+- `enableWaitingRoom`: 是否启用等候室
+- `allowBeforeHost`: 是否允许成员在主持人前入会
+- `enableWatermark`: 是否启用会议水印
+- `muteOnEntry`: 入会静音规则（关闭/超过6人后自动开启/始终开启）
+- `allowMultiDevice`: 是否允许成员多端入会
+
+---
+
+### 数据持久化机制
+
+#### 存储策略
+APP采用混合存储架构，确保数据的实时性和持久性：
+
+1. **内存缓存**：DataRepository维护内存中的数据列表，提供快速读取
+2. **文件持久化**：每次数据修改后立即写入JSON文件
+3. **初始化流程**：首次启动时从assets复制数据到filesDir
+
+#### Gson配置
+所有JSON文件使用Gson库进行序列化/反序列化：
+```kotlin
+private val gson = GsonBuilder().setPrettyPrinting().create()
+```
+
+**特点**：
+- ✅ Pretty Printing启用：自动格式化输出
+- ✅ 2空格缩进：提高可读性
+- ✅ UTF-8编码：支持中文字符
+- ✅ 每个属性独占一行：便于人工查看和调试
+
+#### 数据写入时机
+所有用户操作都会**实时触发数据持久化**，无需手动保存：
+
+| 用户操作 | 触发时机 | 写入文件 |
+|---------|---------|---------|
+| 预定会议 | 点击"完成"按钮 | meetings.json |
+| 发送消息 | 点击"发送"按钮 | messages.json |
+| 创建快速会议 | 点击"开始会议" | meetings.json + meeting_participants.json |
+| 加入会议 | 点击"加入" | meeting_participants.json |
+| 结束会议 | 点击"结束"按钮 | meetings.json（更新status和endTime） |
+| 邀请成员 | 选择联系人确认 | meeting_invitations.json |
+| 切换麦克风 | 点击麦克风按钮 | meeting_participants.json |
+| 切换摄像头 | 点击视频按钮 | meeting_participants.json |
+| 共享屏幕 | 点击共享按钮 | meeting_participants.json |
+| 举手/放下手 | 点击举手按钮 | hand_raise_records.json + meeting_participants.json |
+| 修改个人会议室 | 修改任意设置 | personal_meeting_rooms.json |
+
+#### 数据完整性保证
+- **去重处理**：使用`distinctBy()`避免重复记录
+- **异常捕获**：所有文件操作包裹在try-catch中
+- **原子操作**：先更新内存，再写入文件，确保一致性
+
 ## 自动化测试（AutoTest）
 项目包含GUI自动化测试脚本，用于验证APP中各种操作的正确性。
 
