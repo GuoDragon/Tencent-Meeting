@@ -1,0 +1,39 @@
+package com.appsim.tencent_meeting_sim.presentation.meeting
+
+import com.appsim.tencent_meeting_sim.data.model.User
+
+interface MeetingDetailsContract {
+    interface View {
+        fun showMeetingInfo(meetingTopic: String, meetingId: String)
+        fun showParticipants(participants: List<User>)
+        fun updateMicStatus(enabled: Boolean)
+        fun updateVideoStatus(enabled: Boolean)
+        fun updateSpeakerStatus(enabled: Boolean)
+        fun updateScreenShareStatus(isSharing: Boolean)
+        fun showMeetingDuration(duration: String)
+        fun showLoading()
+        fun hideLoading()
+        fun showError(message: String)
+        fun navigateBack()
+    }
+
+    interface Presenter {
+        fun attachView(view: View)
+        fun onDestroy()
+        fun loadMeetingDetails(meetingId: String)
+        fun toggleMic()
+        fun toggleVideo()
+        fun toggleSpeaker()
+        fun shareScreen()
+        fun manageMember()
+        fun endMeeting()
+        fun sendDanmu(message: String)
+        fun raiseHand(meetingId: String, userId: String, userName: String)
+        fun lowerHand(meetingId: String, userId: String, recordId: String)
+        fun lockMeeting()
+        fun unlockMeeting()
+        fun setAllowUnmute(allow: Boolean)
+        fun startRecording()
+        fun stopRecording()
+    }
+}

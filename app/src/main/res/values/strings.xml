@@ -1,3 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Name -->
     <string name="app_name">TencentMeeting</string>
+
+    <!-- Common Buttons -->
+    <string name="btn_confirm">Confirm</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_ok">OK</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btn_loading">Loading…</string>
+    <string name="btn_close">Close</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_previous">Previous</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_exit">Exit</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_create">Create</string>
+    <string name="btn_invite">Invite</string>
+    <string name="btn_copy_success">Copied</string>
+    <string name="btn_copy_link">Copy Link</string>
+    <string name="btn_share_wechat">Share to WeChat</string>
+    <string name="btn_reset">Reset</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_ai_hosting">AI Hosting</string>
+    <string name="btn_start_share">Start Sharing</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_mute_all">Mute All</string>
+    <string name="btn_unmute_all">Unmute All</string>
+    <string name="btn_invite_new_member">Invite New Member</string>
+    <string name="btn_invite_count">Invite (%d)</string>
+
+    <!-- Meeting Module -->
+    <string name="meeting_list">Meeting List</string>
+    <string name="meeting_history">Historical Meetings</string>
+    <string name="meeting_quick">Quick Meeting</string>
+    <string name="meeting_scheduled">Scheduled Meeting</string>
+    <string name="meeting_join">Join Meeting</string>
+    <string name="meeting_start">Start Meeting</string>
+    <string name="meeting_end">End</string>
+    <string name="meeting_duration">Duration</string>
+    <string name="meeting_number">Meeting ID</string>
+    <string name="meeting_password">Password</string>
+    <string name="meeting_topic">Topic</string>
+    <string name="meeting_status_ongoing">Ongoing</string>
+    <string name="meeting_status_upcoming">Upcoming</string>
+    <string name="meeting_status_completed">Completed</string>
+    <string name="meeting_participants">Participants</string>
+    <string name="meeting_manage_members">Manage Members</string>
+    <string name="meeting_manage_members_count">Manage Members(%d)</string>
+    <string name="meeting_default_name">Tencent Meeting</string>
+    <string name="meeting_chat">Meeting Chat</string>
+    <string name="meeting_replay">Meeting Replay</string>
+    <string name="meeting_share_screen">Share Screen</string>
+    <string name="meeting_id_label">Meeting ID</string>
+    <string name="meeting_scheduled_by">%s\'s scheduled meeting</string>
+    <string name="meeting_details">Meeting Details</string>
+    <string name="meeting_phone_entry">Phone Entry</string>
+    <string name="meeting_materials">Meeting Materials</string>
+    <string name="meeting_enter">Enter Meeting</string>
+    <string name="label_host">Host</string>
+    <string name="label_me">Me</string>
+    <string name="label_time_with_value">Time: %s</string>
+    <string name="label_host_with_value">Host: %s</string>
+    <string name="label_duration_minutes">%d minutes</string>
+    <string name="label_application">Application</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_meeting_info">Meeting Info</string>
+    <string name="label_start_time">Start Time</string>
+    <string name="label_participants_count">Participants</string>
+    <string name="label_hours">hour(s)</string>
+    <string name="label_minutes_unit">minute(s)</string>
+    <string name="label_less_than_minute">Less than 1 minute</string>
+    <string name="label_person_unit">person</string>
+    <string name="phone_number_china_mainland">+86 (0)755 36550000 (China Mainland)</string>
+    <string name="setting_always_use_name">Always use this name on current device</string>
+    <string name="help_how_to_share_screen">How to share screen?</string>
+
+    <!-- Meeting Placeholders -->
+    <string name="placeholder_meeting_id">Enter meeting ID</string>
+    <string name="placeholder_password">Enter password (optional)</string>
+    <string name="placeholder_your_name">Your name</string>
+    <string name="placeholder_chat_input">Say something…</string>
+    <string name="placeholder_password_optional">Enter password (optional)</string>
+    <string name="placeholder_enter_message">Enter message…</string>
+    <string name="placeholder_meeting_search">Meeting name, notes, ID, host</string>
+    <string name="placeholder_search_members">Search Members</string>
+
+    <!-- Device Settings -->
+    <string name="device_mic">Microphone</string>
+    <string name="device_mic_enable">Enable Microphone</string>
+    <string name="device_mic_disable">Disable Microphone</string>
+    <string name="device_mic_mute">Mute</string>
+    <string name="device_mic_unmute">Unmute</string>
+    <string name="device_video">Camera</string>
+    <string name="device_video_enable">Enable Video</string>
+    <string name="device_video_disable">Disable Video</string>
+    <string name="device_camera_enable">Enable Video</string>
+    <string name="device_camera_disable">Disable Video</string>
+    <string name="device_speaker">Speaker</string>
+    <string name="device_speaker_enable">Enable Speaker</string>
+    <string name="device_speaker_disable">Disable Speaker</string>
+    <string name="device_screen_share">Share Screen</string>
+    <string name="device_recording">Recording</string>
+    <string name="device_recording_start">Start Recording</string>
+    <string name="device_recording_stop">Stop Recording</string>
+    <string name="device_volume">Volume</string>
+    <string name="device_mic_enabled_question">Enable microphone?</string>
+    <string name="device_camera_enabled_question">Enable camera?</string>
+    <string name="device_speaker_enabled_question">Enable speaker?</string>
+
+    <!-- User Module -->
+    <string name="user_name">Name</string>
+    <string name="user_phone">Phone</string>
+    <string name="user_email">Email</string>
+    <string name="user_signature">Signature</string>
+    <string name="user_avatar">Avatar</string>
+    <string name="user_info">User Info</string>
+    <string name="user_personal_room">Personal Room</string>
+    <string name="user_personal_info">Personal Info</string>
+    <string name="user_not_set_phone">Phone not set</string>
+    <string name="user_default_signature">Click to set signature, visible to everyone</string>
+    <string name="user_set_background">Click to set background</string>
+    <string name="user_online">Online</string>
+    <string name="user_offline">Offline</string>
+    <string name="user_entry_name">Name for entry</string>
+    <string name="user_use_name_always">Always use this name on this device</string>
+    <string name="user_your_name">Your Name</string>
+
+    <!-- Contact Module -->
+    <string name="contact_title">Contacts</string>
+    <string name="contact_add">Add Contact</string>
+    <string name="contact_search">Search</string>
+    <string name="contact_my_contacts">My Contacts</string>
+    <string name="contact_invite">Invite Contacts</string>
+    <string name="contact_clear">Clear</string>
+    <string name="contact_add_friend">Add Friend</string>
+    <string name="label_free_version">Free Version</string>
+    <string name="msg_max_contacts_limit">Up to 100 contacts can be added to the address book</string>
+    <string name="contact_invite_template">I am %s, applying to add you as a Tencent Meeting contact, click the link to view: %s</string>
+    <string name="label_source">Source</string>
+    <string name="label_contact_method">Contact Method</string>
+    <string name="label_email">Email</string>
+    <string name="btn_call">Call</string>
+    <string name="msg_calling">Calling %s…</string>
+    <string name="msg_added_via_meeting">Added via meeting</string>
+    <string name="msg_link_copied">Link copied to clipboard</string>
+
+    <!-- Profile Module (Me) -->
+    <string name="me_recording">Recording</string>
+    <string name="me_notes">My Notes</string>
+    <string name="me_ai_assistant">AI Assistant</string>
+    <string name="me_orders_service">Orders &amp; Service</string>
+    <string name="me_control_rooms">Control Rooms</string>
+    <string name="me_points_center">Points Center</string>
+    <string name="me_account_security">Account &amp; Security</string>
+    <string name="me_settings">Settings</string>
+    <string name="me_privacy">Privacy</string>
+    <string name="me_help">Help &amp; Support</string>
+    <string name="me_about">About Us</string>
+
+    <!-- Common Messages -->
+    <string name="msg_empty_state">No data</string>
+    <string name="msg_empty_meetings">No meetings</string>
+    <string name="msg_empty_contacts">No contacts</string>
+    <string name="msg_empty_search_result">No search results</string>
+    <string name="msg_empty_history_meetings">No historical meetings</string>
+    <string name="msg_empty_messages">No messages</string>
+    <string name="msg_loading">Loading…</string>
+    <string name="msg_success">Success</string>
+    <string name="msg_failure">Failed</string>
+    <string name="msg_error">Error</string>
+    <string name="msg_copy_success">Copied successfully</string>
+    <string name="msg_starting_meeting">Starting meeting…</string>
+    <string name="msg_joining_meeting">Joining meeting…</string>
+    <string name="msg_invited_contact">Invited %s to join meeting</string>
+    <string name="msg_invited_all_contacts">Invited all contacts to join meeting</string>
+    <string name="msg_network_error">Network error, please check your connection</string>
+    <string name="msg_unknown_error">An unknown error occurred</string>
+    <string name="msg_no_content_add">No content, go add</string>
+    <string name="msg_enter_meeting_code">Enter Rooms code or meeting ID</string>
+    <string name="msg_all_muted">All members muted</string>
+    <string name="msg_all_unmuted">All members unmuted</string>
+    <string name="msg_invited_members_count">Successfully invited %d member(s)</string>
+    <string name="msg_invite_failed">Invitation failed: %s</string>
+    <string name="msg_in_meeting_count">In Meeting(%d)</string>
+    <string name="msg_not_joined">Not Joined</string>
+    <string name="msg_no_invitation_records">No invitation records</string>
+    <string name="msg_invited">Invited</string>
+    <string name="msg_waiting_response">Waiting Response</string>
+
+    <!-- Action Labels -->
+    <string name="action_hand_raise">Raise Hand</string>
+    <string name="action_hand_lower">Lower Hand</string>
+    <string name="action_chat">Chat</string>
+    <string name="action_emoji">Emoji</string>
+    <string name="action_view_history">View Historical Meetings</string>
+    <string name="action_enter">Enter</string>
+
+    <!-- Icon Descriptions (ContentDescription) -->
+    <string name="icon_desc_back">Back</string>
+    <string name="icon_desc_close">Close</string>
+    <string name="icon_desc_search">Search</string>
+    <string name="icon_desc_clear">Clear</string>
+    <string name="icon_desc_add">Add</string>
+    <string name="icon_desc_avatar">Avatar</string>
+    <string name="icon_desc_volume">Volume</string>
+    <string name="icon_desc_recording">Recording</string>
+    <string name="icon_desc_hand_raise">Raise Hand</string>
+    <string name="icon_desc_hand_lower">Lower Hand</string>
+    <string name="icon_desc_more">More</string>
+    <string name="icon_desc_view_details">View Details</string>
+    <string name="icon_desc_send">Send</string>
+    <string name="icon_desc_copy">Copy</string>
+    <string name="icon_desc_decrease_year">Decrease year</string>
+    <string name="icon_desc_increase_year">Increase year</string>
+    <string name="icon_desc_decrease_month">Decrease month</string>
+    <string name="icon_desc_increase_month">Increase month</string>
+    <string name="icon_desc_decrease_day">Decrease day</string>
+    <string name="icon_desc_increase_day">Increase day</string>
+    <string name="icon_desc_decrease_hour">Decrease hour</string>
+    <string name="icon_desc_increase_hour">Increase hour</string>
+    <string name="icon_desc_decrease_minute">Decrease minute</string>
+    <string name="icon_desc_increase_minute">Increase minute</string>
+
+    <!-- Scheduled Meeting Module -->
+    <string name="meeting_recurrence_freq">Recurrence</string>
+    <string name="dialog_select_duration">Select Duration</string>
+    <string name="dialog_select_recurrence">Select Recurrence</string>
+    <string name="dialog_select_participants">Select Participants</string>
+    <string name="dialog_set_password">Set Meeting Password</string>
+    <string name="dialog_select_date">Select Date</string>
+    <string name="dialog_select_time">Select Time</string>
+    <string name="label_select_all">Select All</string>
+    <string name="msg_enter_6_digit_password">Please enter 6-digit password</string>
+    <string name="placeholder_6_digits">6 digits</string>
+    <string name="label_year">Year</string>
+    <string name="label_month">Month</string>
+    <string name="label_day">Day</string>
+    <string name="label_year_with_value">%d Year</string>
+    <string name="label_month_with_value">%d Month</string>
+    <string name="label_day_with_value">%d Day</string>
+    <string name="label_minutes_with_value">%d minutes</string>
+    <string name="label_people_count">%d people</string>
+    <string name="btn_done">Done</string>
+
+    <!-- Personal Meeting Room Module -->
+    <string name="label_personal_meeting_room_with_name">%s\'s Personal Meeting Room</string>
+    <string name="btn_edit_profile">Edit Profile</string>
+    <string name="btn_qr_code">QR Code</string>
+    <string name="label_meeting_link">Meeting Link</string>
+    <string name="msg_meeting_id_copied">Meeting ID copied</string>
+    <string name="msg_link_already_copied">Link copied</string>
+    <string name="label_not_set">Not set</string>
+    <string name="label_waiting_room">Waiting Room</string>
+    <string name="label_on">On</string>
+    <string name="label_off">Off</string>
+    <string name="label_allow_before_host">Allow members before host</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="label_meeting_watermark">Meeting Watermark</string>
+    <string name="label_not_enabled">Not enabled</string>
+    <string name="label_mute_on_entry">Mute on entry</string>
+    <string name="label_allow_multi_device">Allow multi-device</string>
+    <string name="btn_enter_meeting_room">Enter Meeting Room</string>
+    <string name="label_password_6_digits">Password (6 digits)</string>
+    <string name="label_selected">Selected</string>
+    <string name="label_mute_off">Off</string>
+    <string name="label_mute_auto_6">Auto when > 6 people</string>
+    <string name="label_mute_always">Always on</string>
+    <string name="icon_desc_share">Share</string>
+
+    <!-- Recording Module -->
+    <string name="btn_start_recording">Start Recording</string>
+    <string name="label_all_files">All Files</string>
+    <string name="label_recent_viewed">Recently Viewed</string>
+    <string name="label_my_recordings">My Recordings</string>
+    <string name="icon_desc_filter">Filter</string>
+    <string name="label_storage_used">Used %1$dMB/%2$dGB (%3$d cloud files)</string>
+    <string name="btn_expand">Expand</string>
+    <string name="msg_no_recording_files">No recording files</string>
 </resources>

@@ -58,5 +58,5115 @@
     "handRaisedTime": null,
     "isSharingScreen": false,
     "joinTime": 1697587320000
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_5c2f84",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697673802333
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_5c2f84",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697675015529,
+    "isSharingScreen": false,
+    "joinTime": 1697673861391
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_5c2f84",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697673428107
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_5c2f84",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697675747960,
+    "isSharingScreen": false,
+    "joinTime": 1697673884452
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_5c2f84",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697674856276,
+    "isSharingScreen": false,
+    "joinTime": 1697673335007
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_9b1a6c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697330173896,
+    "isSharingScreen": false,
+    "joinTime": 1697327915057
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_9b1a6c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697330597307,
+    "isSharingScreen": false,
+    "joinTime": 1697328064328
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_9b1a6c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697328004103
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_9b1a6c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697328076268
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_4e8d73",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697244034214,
+    "isSharingScreen": true,
+    "joinTime": 1697241766365
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_4e8d73",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697242477329,
+    "isSharingScreen": true,
+    "joinTime": 1697241379884
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_4e8d73",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697243571147,
+    "isSharingScreen": true,
+    "joinTime": 1697241380900
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_7a3b95",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697155044108
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_7a3b95",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697158033133,
+    "isSharingScreen": false,
+    "joinTime": 1697155426298
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_7a3b95",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697155190807
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_7a3b95",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697156120844,
+    "isSharingScreen": false,
+    "joinTime": 1697154945537
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_7a3b95",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697156544755,
+    "isSharingScreen": false,
+    "joinTime": 1697155435447
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_2f6c48",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697068622723
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_2f6c48",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697068600236
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_2f6c48",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697069253666,
+    "isSharingScreen": false,
+    "joinTime": 1697069045948
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_2f6c48",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697069029501
+  },
+  {
+    "userId": "user001",
+    "meetingId": "341234546",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697760272454
+  },
+  {
+    "userId": "user002",
+    "meetingId": "341234546",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697759972806
+  },
+  {
+    "userId": "user003",
+    "meetingId": "341234546",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697760042872
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1709377527849
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709380344370,
+    "isSharingScreen": true,
+    "joinTime": 1709377511756
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709380840723,
+    "isSharingScreen": true,
+    "joinTime": 1709377522351
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1709379850865,
+    "isSharingScreen": false,
+    "joinTime": 1709377055990
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1709377877378,
+    "isSharingScreen": true,
+    "joinTime": 1709377253792
+  },
+  {
+    "userId": "user040",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709377776301,
+    "isSharingScreen": false,
+    "joinTime": 1709377275192
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1709377341327
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1709380219251,
+    "isSharingScreen": false,
+    "joinTime": 1709377456648
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1709377493195,
+    "isSharingScreen": false,
+    "joinTime": 1709377544977
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1709377214507
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1709377070545
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709379174937,
+    "isSharingScreen": false,
+    "joinTime": 1709377286831
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709379321303,
+    "isSharingScreen": true,
+    "joinTime": 1709377537076
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709380598915,
+    "isSharingScreen": true,
+    "joinTime": 1709377268015
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1709380858957,
+    "isSharingScreen": true,
+    "joinTime": 1709377332174
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709378273736,
+    "isSharingScreen": true,
+    "joinTime": 1709377316757
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1709377041465
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1709379437776,
+    "isSharingScreen": false,
+    "joinTime": 1709377300789
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_097f3b99",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1709377272671
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1759112628563
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112526991
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759114196843,
+    "isSharingScreen": false,
+    "joinTime": 1759112801335
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112472707
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112711490
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759113863454,
+    "isSharingScreen": true,
+    "joinTime": 1759112678165
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1759115016777,
+    "isSharingScreen": false,
+    "joinTime": 1759112566612
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759116115953,
+    "isSharingScreen": true,
+    "joinTime": 1759112549612
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112661021
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759113257159,
+    "isSharingScreen": true,
+    "joinTime": 1759112691802
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112242859
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759112712226,
+    "isSharingScreen": false,
+    "joinTime": 1759112683177
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1759112821021
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1759113329259,
+    "isSharingScreen": false,
+    "joinTime": 1759112459294
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759113166761,
+    "isSharingScreen": true,
+    "joinTime": 1759112822995
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_7699737b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759113798233,
+    "isSharingScreen": true,
+    "joinTime": 1759112516252
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1759112259257
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1759112362208
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_7699737b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1759115774962,
+    "isSharingScreen": true,
+    "joinTime": 1759112622000
+  },
+  {
+    "userId": "user012",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798027924848
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798028207959
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798029993162,
+    "isSharingScreen": true,
+    "joinTime": 1798027790946
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798027810796
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798031227212,
+    "isSharingScreen": false,
+    "joinTime": 1798027922509
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798027887130
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798028198249,
+    "isSharingScreen": true,
+    "joinTime": 1798028041652
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798027880869
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798027797611
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798028135835,
+    "isSharingScreen": true,
+    "joinTime": 1798028159656
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798029385280,
+    "isSharingScreen": false,
+    "joinTime": 1798028205816
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798028025791,
+    "isSharingScreen": true,
+    "joinTime": 1798027838672
+  },
+  {
+    "userId": "user024",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798031354406,
+    "isSharingScreen": true,
+    "joinTime": 1798027715874
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798028045612
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798030737445,
+    "isSharingScreen": true,
+    "joinTime": 1798027852073
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798028035144
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798027851485
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798028476740,
+    "isSharingScreen": false,
+    "joinTime": 1798028235714
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798028085015
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798027985485,
+    "isSharingScreen": false,
+    "joinTime": 1798028147529
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798028605917,
+    "isSharingScreen": false,
+    "joinTime": 1798027661290
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_e3f7a193",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798027968400
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836906030
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839051463,
+    "isSharingScreen": false,
+    "joinTime": 1741836606867
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837881047,
+    "isSharingScreen": false,
+    "joinTime": 1741837114222
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836741073
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837319395,
+    "isSharingScreen": false,
+    "joinTime": 1741837042472
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836922803
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837726921,
+    "isSharingScreen": true,
+    "joinTime": 1741837071413
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837679088,
+    "isSharingScreen": false,
+    "joinTime": 1741836931012
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836658785
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836833763
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837581614,
+    "isSharingScreen": true,
+    "joinTime": 1741836707618
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836758786
+  },
+  {
+    "userId": "user040",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836686618
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741837023460
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741837139379
+  },
+  {
+    "userId": "user024",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741838641986,
+    "isSharingScreen": false,
+    "joinTime": 1741836853832
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836614558
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741838136166,
+    "isSharingScreen": false,
+    "joinTime": 1741836939217
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839271948,
+    "isSharingScreen": false,
+    "joinTime": 1741836581382
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836839406
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836786930
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741837125426
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836587583
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839614462,
+    "isSharingScreen": true,
+    "joinTime": 1741836728881
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741837033906
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836733993
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741840337454,
+    "isSharingScreen": false,
+    "joinTime": 1741836607052
+  },
+  {
+    "userId": "user012",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839894664,
+    "isSharingScreen": true,
+    "joinTime": 1741837118259
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836774339
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839619580,
+    "isSharingScreen": false,
+    "joinTime": 1741836870808
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741838181185,
+    "isSharingScreen": false,
+    "joinTime": 1741836623610
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741839778622,
+    "isSharingScreen": false,
+    "joinTime": 1741836856273
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836641283
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837422590,
+    "isSharingScreen": true,
+    "joinTime": 1741836699621
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837139657,
+    "isSharingScreen": true,
+    "joinTime": 1741836783044
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741837118974
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741836941912
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1741836943595
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1741837030787
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_5feaf8e8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1741837729437,
+    "isSharingScreen": true,
+    "joinTime": 1741836896390
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790511582438,
+    "isSharingScreen": true,
+    "joinTime": 1790511662256
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790514031279,
+    "isSharingScreen": true,
+    "joinTime": 1790511258988
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790511783372,
+    "isSharingScreen": true,
+    "joinTime": 1790511215824
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1790514620157,
+    "isSharingScreen": false,
+    "joinTime": 1790511262939
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790515013326,
+    "isSharingScreen": true,
+    "joinTime": 1790511143051
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790511234640
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1790511393452
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790513010793,
+    "isSharingScreen": false,
+    "joinTime": 1790511528995
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1790511520019
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790511707862
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1790515012149,
+    "isSharingScreen": false,
+    "joinTime": 1790511439851
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_3c1332f8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790514843777,
+    "isSharingScreen": true,
+    "joinTime": 1790511651355
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1731148572108
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1731150492684,
+    "isSharingScreen": true,
+    "joinTime": 1731148533841
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1731150617959,
+    "isSharingScreen": false,
+    "joinTime": 1731148077520
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1731148091349
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1731148519011
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1731150675372,
+    "isSharingScreen": false,
+    "joinTime": 1731148145982
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1731149171071,
+    "isSharingScreen": true,
+    "joinTime": 1731148377466
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1731148539445
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1731148599242
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_16565d0a",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1731150828688,
+    "isSharingScreen": false,
+    "joinTime": 1731148400674
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769474735244,
+    "isSharingScreen": true,
+    "joinTime": 1769473712895
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769474272128,
+    "isSharingScreen": false,
+    "joinTime": 1769473589293
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769474798955,
+    "isSharingScreen": false,
+    "joinTime": 1769473439974
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473324391
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769476978136,
+    "isSharingScreen": false,
+    "joinTime": 1769473502349
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769473767072,
+    "isSharingScreen": false,
+    "joinTime": 1769473289541
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769473888540,
+    "isSharingScreen": true,
+    "joinTime": 1769473211728
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473549509
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769474835828,
+    "isSharingScreen": true,
+    "joinTime": 1769473494358
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473419980
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1769476382263,
+    "isSharingScreen": false,
+    "joinTime": 1769473393101
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473614423
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769475451537,
+    "isSharingScreen": true,
+    "joinTime": 1769473304704
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1769474418033,
+    "isSharingScreen": false,
+    "joinTime": 1769473470276
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473245631
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1769476494618,
+    "isSharingScreen": true,
+    "joinTime": 1769473158411
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473137589
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769475016681,
+    "isSharingScreen": true,
+    "joinTime": 1769473189384
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473280773
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473726374
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1769476625112,
+    "isSharingScreen": false,
+    "joinTime": 1769473278285
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1769476677539,
+    "isSharingScreen": false,
+    "joinTime": 1769473365658
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473209899
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473524642
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473479103
+  },
+  {
+    "userId": "user040",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769477025146,
+    "isSharingScreen": true,
+    "joinTime": 1769473156049
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473218296
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473169541
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473217927
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473315271
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1769475026370,
+    "isSharingScreen": true,
+    "joinTime": 1769473207480
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473424297
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1769473299092
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_da7f1073",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1769473188723
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798316984836,
+    "isSharingScreen": false,
+    "joinTime": 1798314354626
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314816479
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798316057108,
+    "isSharingScreen": true,
+    "joinTime": 1798314340836
+  },
+  {
+    "userId": "user012",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798317551918,
+    "isSharingScreen": true,
+    "joinTime": 1798314807349
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798314692807,
+    "isSharingScreen": false,
+    "joinTime": 1798314550768
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315819495,
+    "isSharingScreen": false,
+    "joinTime": 1798314467912
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315040388,
+    "isSharingScreen": true,
+    "joinTime": 1798314399264
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314816365
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798314476900
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314833260
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314509867
+  },
+  {
+    "userId": "user040",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798318130576,
+    "isSharingScreen": true,
+    "joinTime": 1798314616707
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798314851227
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315053801,
+    "isSharingScreen": false,
+    "joinTime": 1798314380066
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314539434
+  },
+  {
+    "userId": "user024",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798317069211,
+    "isSharingScreen": false,
+    "joinTime": 1798314563152
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798314530192
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315038636,
+    "isSharingScreen": true,
+    "joinTime": 1798314762972
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798317641806,
+    "isSharingScreen": false,
+    "joinTime": 1798314670418
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798314807238,
+    "isSharingScreen": true,
+    "joinTime": 1798314567501
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315708949,
+    "isSharingScreen": false,
+    "joinTime": 1798314916832
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798317296708,
+    "isSharingScreen": false,
+    "joinTime": 1798314726372
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314768032
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798316761922,
+    "isSharingScreen": true,
+    "joinTime": 1798314735549
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1798314576634
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_7699c058",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1798315733020,
+    "isSharingScreen": false,
+    "joinTime": 1798314600593
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798314766452
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1798314902540
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_7699c058",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1798316573761,
+    "isSharingScreen": true,
+    "joinTime": 1798314508976
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782953161894
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782956525831,
+    "isSharingScreen": true,
+    "joinTime": 1782953441976
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782953868307,
+    "isSharingScreen": true,
+    "joinTime": 1782953281074
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782954457585,
+    "isSharingScreen": false,
+    "joinTime": 1782953260416
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782954286408,
+    "isSharingScreen": false,
+    "joinTime": 1782953369795
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782954799471,
+    "isSharingScreen": true,
+    "joinTime": 1782953631227
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782956286083,
+    "isSharingScreen": true,
+    "joinTime": 1782953486136
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782953674057,
+    "isSharingScreen": false,
+    "joinTime": 1782953313313
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782953362076
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_0b5840fe",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782956301725,
+    "isSharingScreen": true,
+    "joinTime": 1782953309396
+  },
+  {
+    "userId": "user013",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1786420128695
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1786420406608
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1786423854786,
+    "isSharingScreen": true,
+    "joinTime": 1786420431319
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1786420422096
+  },
+  {
+    "userId": "user040",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1786420288509
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1786422132515,
+    "isSharingScreen": true,
+    "joinTime": 1786420209664
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1786420793987,
+    "isSharingScreen": true,
+    "joinTime": 1786420614554
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1786420359326
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1786422181739,
+    "isSharingScreen": false,
+    "joinTime": 1786420512206
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1786420974410,
+    "isSharingScreen": true,
+    "joinTime": 1786420157386
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1786420619884
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1786420293302
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1786421146797,
+    "isSharingScreen": false,
+    "joinTime": 1786420559507
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_e3f94e15",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1786421560733,
+    "isSharingScreen": false,
+    "joinTime": 1786420626058
+  },
+  {
+    "userId": "user045",
+    "meetingId": "meeting_ba2dd9eb",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1755886749184,
+    "isSharingScreen": true,
+    "joinTime": 1755884799592
+  },
+  {
+    "userId": "user077",
+    "meetingId": "meeting_ba2dd9eb",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1755887096107,
+    "isSharingScreen": true,
+    "joinTime": 1755884690292
+  },
+  {
+    "userId": "user073",
+    "meetingId": "meeting_ba2dd9eb",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1755885284388,
+    "isSharingScreen": true,
+    "joinTime": 1755884366920
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1673717580806
+  },
+  {
+    "userId": "user049",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1673717862361
+  },
+  {
+    "userId": "user066",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1673720051718,
+    "isSharingScreen": false,
+    "joinTime": 1673717800528
+  },
+  {
+    "userId": "user050",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1673719783104,
+    "isSharingScreen": true,
+    "joinTime": 1673717767955
+  },
+  {
+    "userId": "user045",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1673717653670
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1673719936661,
+    "isSharingScreen": false,
+    "joinTime": 1673717622136
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1673721242781,
+    "isSharingScreen": true,
+    "joinTime": 1673717589544
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_fe4a31f2",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1673717725207
+  },
+  {
+    "userId": "user067",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782046528949
+  },
+  {
+    "userId": "user052",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782046755796
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782047037472,
+    "isSharingScreen": true,
+    "joinTime": 1782046687744
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782046645663
+  },
+  {
+    "userId": "user069",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782046963900
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782046728556
+  },
+  {
+    "userId": "user080",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782046618838
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782049689854,
+    "isSharingScreen": false,
+    "joinTime": 1782046722882
+  },
+  {
+    "userId": "user044",
+    "meetingId": "meeting_05bb867a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782046726648
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782355709055,
+    "isSharingScreen": true,
+    "joinTime": 1782354866250
+  },
+  {
+    "userId": "user043",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782355107995
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782358232398,
+    "isSharingScreen": true,
+    "joinTime": 1782354885144
+  },
+  {
+    "userId": "user056",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782355152586
+  },
+  {
+    "userId": "user049",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782355033332,
+    "isSharingScreen": true,
+    "joinTime": 1782354844314
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782354809834
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782356349177,
+    "isSharingScreen": true,
+    "joinTime": 1782354904001
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_73a596a0",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782355904908,
+    "isSharingScreen": false,
+    "joinTime": 1782355051277
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_2b57926e",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1795951097993,
+    "isSharingScreen": true,
+    "joinTime": 1795950204733
+  },
+  {
+    "userId": "user063",
+    "meetingId": "meeting_2b57926e",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1795950935597,
+    "isSharingScreen": false,
+    "joinTime": 1795950254100
+  },
+  {
+    "userId": "user048",
+    "meetingId": "meeting_7f4b70b0",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1689995174117,
+    "isSharingScreen": false,
+    "joinTime": 1689994437815
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_7f4b70b0",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1689994310672,
+    "isSharingScreen": true,
+    "joinTime": 1689994258105
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790110688476
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790110574067
+  },
+  {
+    "userId": "user055",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1790112579595,
+    "isSharingScreen": false,
+    "joinTime": 1790110825792
+  },
+  {
+    "userId": "user075",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790110331217
+  },
+  {
+    "userId": "user052",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790110746346
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1790110400505
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1790110671370
+  },
+  {
+    "userId": "user058",
+    "meetingId": "meeting_54ba7e71",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1790113883440,
+    "isSharingScreen": false,
+    "joinTime": 1790110331229
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675719144773,
+    "isSharingScreen": true,
+    "joinTime": 1675716652144
+  },
+  {
+    "userId": "user050",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675720017802,
+    "isSharingScreen": false,
+    "joinTime": 1675716750220
+  },
+  {
+    "userId": "user025",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675718157888,
+    "isSharingScreen": false,
+    "joinTime": 1675717028979
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1675718974974,
+    "isSharingScreen": true,
+    "joinTime": 1675716715864
+  },
+  {
+    "userId": "user014",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675717016748,
+    "isSharingScreen": false,
+    "joinTime": 1675716446859
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1675717517119,
+    "isSharingScreen": true,
+    "joinTime": 1675716689411
+  },
+  {
+    "userId": "user045",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675717859929,
+    "isSharingScreen": false,
+    "joinTime": 1675716480291
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1675716625495
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675717395171,
+    "isSharingScreen": false,
+    "joinTime": 1675716449160
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1675718498567,
+    "isSharingScreen": false,
+    "joinTime": 1675716943062
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_eb56815c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1675720285561,
+    "isSharingScreen": false,
+    "joinTime": 1675716599706
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782401975153,
+    "isSharingScreen": true,
+    "joinTime": 1782399247500
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1782399324305
+  },
+  {
+    "userId": "user053",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1782402274864,
+    "isSharingScreen": false,
+    "joinTime": 1782399161374
+  },
+  {
+    "userId": "user045",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782399654723,
+    "isSharingScreen": false,
+    "joinTime": 1782398889389
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1782401123676,
+    "isSharingScreen": true,
+    "joinTime": 1782399243913
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_acbb790a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1782399264052
+  },
+  {
+    "userId": "user068",
+    "meetingId": "meeting_9c690512",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1745918166066,
+    "isSharingScreen": true,
+    "joinTime": 1745917588623
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_9c690512",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1745919448861,
+    "isSharingScreen": true,
+    "joinTime": 1745917931696
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_9c690512",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1745917569134
+  },
+  {
+    "userId": "user080",
+    "meetingId": "meeting_9c690512",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1745919114330,
+    "isSharingScreen": false,
+    "joinTime": 1745917929622
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_9c690512",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1745921112845,
+    "isSharingScreen": true,
+    "joinTime": 1745917778740
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1740206520133,
+    "isSharingScreen": false,
+    "joinTime": 1740203222844
+  },
+  {
+    "userId": "user073",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1740204546956,
+    "isSharingScreen": true,
+    "joinTime": 1740202863090
+  },
+  {
+    "userId": "user062",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1740202803460
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1740203833898,
+    "isSharingScreen": false,
+    "joinTime": 1740203113424
+  },
+  {
+    "userId": "user046",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1740203265326
+  },
+  {
+    "userId": "user020",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1740202889335
+  },
+  {
+    "userId": "user059",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1740202855954
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1740203223367
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_0ba6e7ad",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1740205013041,
+    "isSharingScreen": true,
+    "joinTime": 1740203276207
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730471308106,
+    "isSharingScreen": true,
+    "joinTime": 1730470059393
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730470905500,
+    "isSharingScreen": true,
+    "joinTime": 1730470004321
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1730472269307,
+    "isSharingScreen": false,
+    "joinTime": 1730469558761
+  },
+  {
+    "userId": "user072",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730470003257,
+    "isSharingScreen": true,
+    "joinTime": 1730469822068
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730470062797
+  },
+  {
+    "userId": "user069",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730471746045,
+    "isSharingScreen": true,
+    "joinTime": 1730470021487
+  },
+  {
+    "userId": "user042",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1730470021579
+  },
+  {
+    "userId": "user053",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730470005084
+  },
+  {
+    "userId": "user010",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730469703491
+  },
+  {
+    "userId": "user060",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730470057292
+  },
+  {
+    "userId": "user018",
+    "meetingId": "meeting_05ac52ea",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730471737079,
+    "isSharingScreen": true,
+    "joinTime": 1730469915759
+  },
+  {
+    "userId": "user057",
+    "meetingId": "meeting_6f104429",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1734313450028,
+    "isSharingScreen": false,
+    "joinTime": 1734313117583
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_6f104429",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1734313057359
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_6f104429",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1734312945234
+  },
+  {
+    "userId": "user059",
+    "meetingId": "meeting_6f104429",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1734313055101,
+    "isSharingScreen": false,
+    "joinTime": 1734313160680
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_6f104429",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1734313095167
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_6f104429",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1734312936661
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_6f104429",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1734313349514,
+    "isSharingScreen": false,
+    "joinTime": 1734313051069
+  },
+  {
+    "userId": "user038",
+    "meetingId": "meeting_6f104429",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1734316316029,
+    "isSharingScreen": false,
+    "joinTime": 1734312968464
+  },
+  {
+    "userId": "user071",
+    "meetingId": "meeting_6f104429",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1734313133325
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1723562547669,
+    "isSharingScreen": true,
+    "joinTime": 1723562087314
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1723563007798,
+    "isSharingScreen": false,
+    "joinTime": 1723561967244
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1723562028609
+  },
+  {
+    "userId": "user058",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1723562287843
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1723562251863,
+    "isSharingScreen": true,
+    "joinTime": 1723562145434
+  },
+  {
+    "userId": "user066",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1723561959763
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1723561925466
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1723562122143
+  },
+  {
+    "userId": "user008",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1723561965975
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1723562457513,
+    "isSharingScreen": true,
+    "joinTime": 1723562009850
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_2e7c3a7b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1723561954150
+  },
+  {
+    "userId": "user052",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730569521430,
+    "isSharingScreen": false,
+    "joinTime": 1730568092225
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1730571257653,
+    "isSharingScreen": false,
+    "joinTime": 1730567987080
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730567961471
+  },
+  {
+    "userId": "user069",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730567835157
+  },
+  {
+    "userId": "user072",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1730570405988,
+    "isSharingScreen": false,
+    "joinTime": 1730568090737
+  },
+  {
+    "userId": "user059",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730568283030
+  },
+  {
+    "userId": "user063",
+    "meetingId": "meeting_283a90d5",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1730568315240
+  },
+  {
+    "userId": "user058",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1764450344932,
+    "isSharingScreen": false,
+    "joinTime": 1764450275718
+  },
+  {
+    "userId": "user044",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1764450121713
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1764453759897,
+    "isSharingScreen": false,
+    "joinTime": 1764450198254
+  },
+  {
+    "userId": "user048",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1764452449043,
+    "isSharingScreen": true,
+    "joinTime": 1764450090475
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1764453235606,
+    "isSharingScreen": true,
+    "joinTime": 1764450191975
+  },
+  {
+    "userId": "user003",
+    "meetingId": "meeting_bfb4f21d",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1764450457125
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1763329059484,
+    "isSharingScreen": true,
+    "joinTime": 1763325731081
+  },
+  {
+    "userId": "user052",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1763327983873,
+    "isSharingScreen": true,
+    "joinTime": 1763325548290
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1763325628141
+  },
+  {
+    "userId": "user007",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1763325835074
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1763325897682
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_9fa3d474",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1763325754470
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_c6a65a09",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1793147095836
+  },
+  {
+    "userId": "user048",
+    "meetingId": "meeting_c6a65a09",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1793147588052
+  },
+  {
+    "userId": "user059",
+    "meetingId": "meeting_c6a65a09",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1793149001529,
+    "isSharingScreen": true,
+    "joinTime": 1793147168507
+  },
+  {
+    "userId": "user022",
+    "meetingId": "meeting_c6a65a09",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1793147181070
+  },
+  {
+    "userId": "user028",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697054102242,
+    "isSharingScreen": false,
+    "joinTime": 1697053260698
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697053085110
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697056229245,
+    "isSharingScreen": false,
+    "joinTime": 1697053164047
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697053284889
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1697055194150,
+    "isSharingScreen": false,
+    "joinTime": 1697052887112
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1697055875667,
+    "isSharingScreen": true,
+    "joinTime": 1697053251012
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697053225277
+  },
+  {
+    "userId": "user046",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1697053248958
+  },
+  {
+    "userId": "user061",
+    "meetingId": "meeting_c48ecb98",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1697052998286
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1770483434880
+  },
+  {
+    "userId": "user059",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1770483605260
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1770485905683,
+    "isSharingScreen": false,
+    "joinTime": 1770483363149
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1770483264897
+  },
+  {
+    "userId": "user065",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1770486942561,
+    "isSharingScreen": true,
+    "joinTime": 1770483229974
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1770483449188
+  },
+  {
+    "userId": "user032",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1770485927811,
+    "isSharingScreen": false,
+    "joinTime": 1770483698112
+  },
+  {
+    "userId": "user054",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1770483268747
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1770485278342,
+    "isSharingScreen": true,
+    "joinTime": 1770483634006
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1770483202533
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_efded6cd",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1770483379666
+  },
+  {
+    "userId": "user136",
+    "meetingId": "meeting_d7ce3ddc",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1766739843942
+  },
+  {
+    "userId": "user073",
+    "meetingId": "meeting_d7ce3ddc",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1766740073739
+  },
+  {
+    "userId": "user026",
+    "meetingId": "meeting_d7ce3ddc",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1766739958434
+  },
+  {
+    "userId": "user072",
+    "meetingId": "meeting_d7ce3ddc",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1766741219685,
+    "isSharingScreen": true,
+    "joinTime": 1766739927524
+  },
+  {
+    "userId": "user112",
+    "meetingId": "meeting_d7ce3ddc",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1766740194487
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1784236995211
+  },
+  {
+    "userId": "user092",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1784237007948
+  },
+  {
+    "userId": "user082",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1784239511417,
+    "isSharingScreen": false,
+    "joinTime": 1784236608907
+  },
+  {
+    "userId": "user090",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1784237322123,
+    "isSharingScreen": true,
+    "joinTime": 1784236912068
+  },
+  {
+    "userId": "user150",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1784237341407,
+    "isSharingScreen": true,
+    "joinTime": 1784236584678
+  },
+  {
+    "userId": "user001",
+    "meetingId": "meeting_cbfdbccc",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1784238783692,
+    "isSharingScreen": false,
+    "joinTime": 1784236525476
+  },
+  {
+    "userId": "user070",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1750421681792,
+    "isSharingScreen": false,
+    "joinTime": 1750419921280
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750421036784,
+    "isSharingScreen": false,
+    "joinTime": 1750419866048
+  },
+  {
+    "userId": "user118",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750419701930
+  },
+  {
+    "userId": "user067",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750420041821,
+    "isSharingScreen": true,
+    "joinTime": 1750419594807
+  },
+  {
+    "userId": "user052",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750419691836
+  },
+  {
+    "userId": "user120",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750419462005
+  },
+  {
+    "userId": "user065",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750420926838,
+    "isSharingScreen": false,
+    "joinTime": 1750419693003
+  },
+  {
+    "userId": "user068",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750419603235
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1750421793933,
+    "isSharingScreen": true,
+    "joinTime": 1750419648933
+  },
+  {
+    "userId": "user150",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750419549990
+  },
+  {
+    "userId": "user095",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750419763312
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750419950973
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750422257368,
+    "isSharingScreen": true,
+    "joinTime": 1750419602010
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_c7effd23",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1750421334982,
+    "isSharingScreen": false,
+    "joinTime": 1750419843304
+  },
+  {
+    "userId": "user150",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1756127190999
+  },
+  {
+    "userId": "user053",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1756129669852,
+    "isSharingScreen": false,
+    "joinTime": 1756126783161
+  },
+  {
+    "userId": "user087",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1756128725803,
+    "isSharingScreen": false,
+    "joinTime": 1756126915050
+  },
+  {
+    "userId": "user136",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1756127030871
+  },
+  {
+    "userId": "user071",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1756126800493
+  },
+  {
+    "userId": "user076",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1756129680055,
+    "isSharingScreen": true,
+    "joinTime": 1756126753444
+  },
+  {
+    "userId": "user041",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1756127174030
+  },
+  {
+    "userId": "user091",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1756127356137,
+    "isSharingScreen": false,
+    "joinTime": 1756127175570
+  },
+  {
+    "userId": "user101",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1756126828830
+  },
+  {
+    "userId": "user083",
+    "meetingId": "meeting_9cebaec7",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1756127190315
+  },
+  {
+    "userId": "user122",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1752311042570,
+    "isSharingScreen": false,
+    "joinTime": 1752308009057
+  },
+  {
+    "userId": "user086",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307633570
+  },
+  {
+    "userId": "user081",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1752310821744,
+    "isSharingScreen": false,
+    "joinTime": 1752308142762
+  },
+  {
+    "userId": "user099",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307624222
+  },
+  {
+    "userId": "user035",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307580320
+  },
+  {
+    "userId": "user074",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307894003
+  },
+  {
+    "userId": "user126",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307910078
+  },
+  {
+    "userId": "user142",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1752308285518,
+    "isSharingScreen": true,
+    "joinTime": 1752307778566
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307644943
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1752311437625,
+    "isSharingScreen": false,
+    "joinTime": 1752307788552
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1752308164815
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1752309637704,
+    "isSharingScreen": true,
+    "joinTime": 1752307933898
+  },
+  {
+    "userId": "user133",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1752307996398
+  },
+  {
+    "userId": "user062",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1752308730661,
+    "isSharingScreen": false,
+    "joinTime": 1752307876183
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1752308104115
+  },
+  {
+    "userId": "user065",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1752310528955,
+    "isSharingScreen": false,
+    "joinTime": 1752307896240
+  },
+  {
+    "userId": "user111",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1752307745432
+  },
+  {
+    "userId": "user114",
+    "meetingId": "meeting_b7d52d1a",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1752309634508,
+    "isSharingScreen": true,
+    "joinTime": 1752307708731
+  },
+  {
+    "userId": "user004",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1757485023422
+  },
+  {
+    "userId": "user071",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1757486198286,
+    "isSharingScreen": false,
+    "joinTime": 1757484552803
+  },
+  {
+    "userId": "user090",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1757484667936
+  },
+  {
+    "userId": "user005",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1757485305033,
+    "isSharingScreen": false,
+    "joinTime": 1757485020627
+  },
+  {
+    "userId": "user125",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1757485308867,
+    "isSharingScreen": false,
+    "joinTime": 1757484936406
+  },
+  {
+    "userId": "user141",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1757487150845,
+    "isSharingScreen": true,
+    "joinTime": 1757484825741
+  },
+  {
+    "userId": "user116",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1757484844257,
+    "isSharingScreen": true,
+    "joinTime": 1757484719062
+  },
+  {
+    "userId": "user046",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1757485225642,
+    "isSharingScreen": false,
+    "joinTime": 1757484943208
+  },
+  {
+    "userId": "user034",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1757484854184
+  },
+  {
+    "userId": "user113",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1757484508094
+  },
+  {
+    "userId": "user006",
+    "meetingId": "meeting_8bb7d443",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1757487508378,
+    "isSharingScreen": false,
+    "joinTime": 1757484648454
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1744355659034
+  },
+  {
+    "userId": "user074",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1744355461398
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1744355543660
+  },
+  {
+    "userId": "user082",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1744358114479,
+    "isSharingScreen": true,
+    "joinTime": 1744355765574
+  },
+  {
+    "userId": "user122",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1744355564325
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1744355706116
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1744355942012
+  },
+  {
+    "userId": "user079",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1744355811078
+  },
+  {
+    "userId": "user068",
+    "meetingId": "meeting_85d8d4fa",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1744355822261,
+    "isSharingScreen": false,
+    "joinTime": 1744355539938
+  },
+  {
+    "userId": "user124",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750610512097
+  },
+  {
+    "userId": "user060",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750610304765
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750610395470
+  },
+  {
+    "userId": "user016",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750610135693
+  },
+  {
+    "userId": "user083",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1750611653362,
+    "isSharingScreen": true,
+    "joinTime": 1750610634456
+  },
+  {
+    "userId": "user071",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750610192716
+  },
+  {
+    "userId": "user064",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750610842943,
+    "isSharingScreen": true,
+    "joinTime": 1750610345904
+  },
+  {
+    "userId": "user142",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1750612653119,
+    "isSharingScreen": true,
+    "joinTime": 1750610475490
+  },
+  {
+    "userId": "user021",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1750610325294
+  },
+  {
+    "userId": "user050",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750610296748
+  },
+  {
+    "userId": "user112",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1750610479940
+  },
+  {
+    "userId": "user063",
+    "meetingId": "meeting_cbfdbd8d",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1750611826240,
+    "isSharingScreen": false,
+    "joinTime": 1750610336730
+  },
+  {
+    "userId": "user031",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1794259742649
+  },
+  {
+    "userId": "user136",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259872913
+  },
+  {
+    "userId": "user110",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1794262720530,
+    "isSharingScreen": false,
+    "joinTime": 1794259492871
+  },
+  {
+    "userId": "user100",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259762781
+  },
+  {
+    "userId": "user037",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259624254
+  },
+  {
+    "userId": "user078",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259807129
+  },
+  {
+    "userId": "user019",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259439892
+  },
+  {
+    "userId": "user081",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1794259858233
+  },
+  {
+    "userId": "user002",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1794259606550
+  },
+  {
+    "userId": "user033",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1794260179881,
+    "isSharingScreen": true,
+    "joinTime": 1794259766871
+  },
+  {
+    "userId": "user030",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1794261492929,
+    "isSharingScreen": true,
+    "joinTime": 1794259544061
+  },
+  {
+    "userId": "user039",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259704284
+  },
+  {
+    "userId": "user089",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1794262381082,
+    "isSharingScreen": false,
+    "joinTime": 1794259483147
+  },
+  {
+    "userId": "user107",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1794259468374
+  },
+  {
+    "userId": "user074",
+    "meetingId": "meeting_2790ae51",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1794259616710
+  },
+  {
+    "userId": "user049",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1738455881290
+  },
+  {
+    "userId": "user084",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738456275603
+  },
+  {
+    "userId": "user138",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1738458450364,
+    "isSharingScreen": false,
+    "joinTime": 1738455769268
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738458825891,
+    "isSharingScreen": true,
+    "joinTime": 1738455956740
+  },
+  {
+    "userId": "user054",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1738456753130,
+    "isSharingScreen": true,
+    "joinTime": 1738455958520
+  },
+  {
+    "userId": "user029",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1738455974950
+  },
+  {
+    "userId": "user133",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738455761344
+  },
+  {
+    "userId": "user121",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1738456250469
+  },
+  {
+    "userId": "user120",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738458051068,
+    "isSharingScreen": false,
+    "joinTime": 1738455893551
+  },
+  {
+    "userId": "user055",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738456771342,
+    "isSharingScreen": false,
+    "joinTime": 1738456005365
+  },
+  {
+    "userId": "user147",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738456758576,
+    "isSharingScreen": true,
+    "joinTime": 1738455977735
+  },
+  {
+    "userId": "user104",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738455867920
+  },
+  {
+    "userId": "user042",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738456198637
+  },
+  {
+    "userId": "user051",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738457042138,
+    "isSharingScreen": true,
+    "joinTime": 1738455966031
+  },
+  {
+    "userId": "user074",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738456290277
+  },
+  {
+    "userId": "user097",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738456180515
+  },
+  {
+    "userId": "user024",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1738456537780,
+    "isSharingScreen": true,
+    "joinTime": 1738455860275
+  },
+  {
+    "userId": "user089",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1738456171011
+  },
+  {
+    "userId": "user023",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": true,
+    "joinTime": 1738455827561
+  },
+  {
+    "userId": "user048",
+    "meetingId": "meeting_a48ad42c",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1738459616569,
+    "isSharingScreen": false,
+    "joinTime": 1738455993257
+  },
+  {
+    "userId": "user102",
+    "meetingId": "meeting_3c2d7c7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1785150897954
+  },
+  {
+    "userId": "user125",
+    "meetingId": "meeting_3c2d7c7b",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1785150954698
+  },
+  {
+    "userId": "user009",
+    "meetingId": "meeting_3c2d7c7b",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1785153226556,
+    "isSharingScreen": true,
+    "joinTime": 1785150891909
+  },
+  {
+    "userId": "user036",
+    "meetingId": "meeting_3c2d7c7b",
+    "isMuted": true,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1785154361093,
+    "isSharingScreen": false,
+    "joinTime": 1785151294669
+  },
+  {
+    "userId": "user071",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762394607782,
+    "isSharingScreen": true,
+    "joinTime": 1762392732482
+  },
+  {
+    "userId": "user015",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762396203796,
+    "isSharingScreen": true,
+    "joinTime": 1762392944794
+  },
+  {
+    "userId": "user027",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": false,
+    "handRaisedTime": null,
+    "isSharingScreen": false,
+    "joinTime": 1762392901999
+  },
+  {
+    "userId": "user088",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762393161100,
+    "isSharingScreen": false,
+    "joinTime": 1762393073052
+  },
+  {
+    "userId": "user121",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762393199209,
+    "isSharingScreen": false,
+    "joinTime": 1762393009357
+  },
+  {
+    "userId": "user017",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1762395696490,
+    "isSharingScreen": false,
+    "joinTime": 1762392605108
+  },
+  {
+    "userId": "user067",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": true,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762394918108,
+    "isSharingScreen": false,
+    "joinTime": 1762392880976
+  },
+  {
+    "userId": "user011",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": false,
+    "isCameraOn": true,
+    "isHandRaised": true,
+    "handRaisedTime": 1762392981036,
+    "isSharingScreen": true,
+    "joinTime": 1762392761618
+  },
+  {
+    "userId": "user069",
+    "meetingId": "meeting_aaeadaa8",
+    "isMuted": false,
+    "isCameraOn": false,
+    "isHandRaised": true,
+    "handRaisedTime": 1762393114879,
+    "isSharingScreen": false,
+    "joinTime": 1762393169774
   }
 ]

@@ -463,6 +463,9 @@ app/src/main/java/com/example/tencentmeeting/
 
 ## 数据文件
 项目使用JSON文件模拟数据，存储在`app/src/main/assets/data/`目录：
+
+**重要提示**：已自动生成并追加更多随机联系人（总计60条）和会议记录（总计30条）至以下文件，以丰富测试数据。
+
 - `users.json` - 用户信息
 - `meetings.json` - 会议信息
 - `meeting_participants.json` - 参会人员状态

@@ -60,7 +60,8 @@
       "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencentmeeting cat files/meeting_participants.json)",
       "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencentmeeting ls files)",
       "Bash(grep:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(nul)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">腾讯会议</string>
+
+    <!-- Common Buttons -->
+    <string name="btn_confirm">确认</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_ok">确定</string>
+    <string name="btn_retry">重试</string>
+    <string name="btn_loading">加载中…</string>
+    <string name="btn_close">关闭</string>
+    <string name="btn_back">返回</string>
+    <string name="btn_next">下一步</string>
+    <string name="btn_previous">上一步</string>
+    <string name="btn_save">保存</string>
+    <string name="btn_delete">删除</string>
+    <string name="btn_edit">编辑</string>
+    <string name="btn_exit">退出</string>
+    <string name="btn_logout">退出登录</string>
+    <string name="btn_create">创建</string>
+    <string name="btn_invite">邀请</string>
+    <string name="btn_copy_success">复制成功</string>
+    <string name="btn_copy_link">复制链接</string>
+    <string name="btn_share_wechat">分享到微信</string>
+    <string name="btn_reset">重置</string>
+    <string name="btn_add">添加</string>
+    <string name="btn_ai_hosting">AI托管</string>
+    <string name="btn_start_share">开始共享</string>
+    <string name="btn_play">播放</string>
+    <string name="btn_pause">暂停</string>
+    <string name="btn_mute_all">全体静音</string>
+    <string name="btn_unmute_all">解除全体静音</string>
+    <string name="btn_invite_new_member">邀请新成员</string>
+    <string name="btn_invite_count">邀请 (%d)</string>
+
+    <!-- Meeting Module -->
+    <string name="meeting_list">会议列表</string>
+    <string name="meeting_history">历史会议</string>
+    <string name="meeting_quick">快速会议</string>
+    <string name="meeting_scheduled">预定会议</string>
+    <string name="meeting_join">加入会议</string>
+    <string name="meeting_start">开始会议</string>
+    <string name="meeting_end">结束</string>
+    <string name="meeting_duration">会议时长</string>
+    <string name="meeting_number">会议号</string>
+    <string name="meeting_password">入会密码</string>
+    <string name="meeting_topic">会议主题</string>
+    <string name="meeting_status_ongoing">进行中</string>
+    <string name="meeting_status_upcoming">待开始</string>
+    <string name="meeting_status_completed">已结束</string>
+    <string name="meeting_participants">参会人</string>
+    <string name="meeting_manage_members">管理成员</string>
+    <string name="meeting_manage_members_count">管理成员(%d)</string>
+    <string name="meeting_default_name">腾讯会议</string>
+    <string name="meeting_chat">会议聊天</string>
+    <string name="meeting_replay">会议回放</string>
+    <string name="meeting_share_screen">共享屏幕</string>
+    <string name="meeting_id_label">会议号</string>
+    <string name="meeting_scheduled_by">%s预定的会议</string>
+    <string name="meeting_details">会议详情</string>
+    <string name="meeting_phone_entry">电话入会</string>
+    <string name="meeting_materials">会议资料</string>
+    <string name="meeting_enter">进入会议</string>
+    <string name="label_host">发起人</string>
+    <string name="label_me">我</string>
+    <string name="label_time_with_value">时间：%s</string>
+    <string name="label_host_with_value">发起人：%s</string>
+    <string name="label_duration_minutes">%d分钟</string>
+    <string name="label_application">应用</string>
+    <string name="label_duration">时长</string>
+    <string name="label_meeting_info">会议信息</string>
+    <string name="label_start_time">开始时间</string>
+    <string name="label_participants_count">参会人数</string>
+    <string name="label_hours">小时</string>
+    <string name="label_minutes_unit">分钟</string>
+    <string name="label_less_than_minute">少于1分钟</string>
+    <string name="label_person_unit">人</string>
+    <string name="phone_number_china_mainland">+86 (0)755 36550000 (中国大陆)</string>
+    <string name="setting_always_use_name">当前设备始终使用此名称入会</string>
+    <string name="help_how_to_share_screen">如何共享屏幕?</string>
+
+    <!-- Meeting Placeholders -->
+    <string name="placeholder_meeting_id">请输入会议号</string>
+    <string name="placeholder_password">请输入入会密码(选填)</string>
+    <string name="placeholder_your_name">您的姓名</string>
+    <string name="placeholder_chat_input">说点什么...</string>
+    <string name="placeholder_password_optional">请输入入会密码(选填)</string>
+    <string name="placeholder_enter_message">请输入消息...</string>
+    <string name="placeholder_meeting_search">会议名称、会议备注、会议号、发起人</string>
+    <string name="placeholder_search_members">搜索成员</string>
+
+    <!-- Device Settings -->
+    <string name="device_mic">麦克风</string>
+    <string name="device_mic_enable">开启麦克风</string>
+    <string name="device_mic_disable">关闭麦克风</string>
+    <string name="device_mic_mute">静音</string>
+    <string name="device_mic_unmute">解除静音</string>
+    <string name="device_video">摄像头</string>
+    <string name="device_video_enable">开启视频</string>
+    <string name="device_video_disable">关闭视频</string>
+    <string name="device_camera_enable">开启视频</string>
+    <string name="device_camera_disable">关闭视频</string>
+    <string name="device_speaker">扬声器</string>
+    <string name="device_speaker_enable">开启扬声器</string>
+    <string name="device_speaker_disable">关闭扬声器</string>
+    <string name="device_screen_share">共享屏幕</string>
+    <string name="device_recording">会议录制</string>
+    <string name="device_recording_start">开始录制</string>
+    <string name="device_recording_stop">停止录制</string>
+    <string name="device_volume">声音</string>
+    <string name="device_mic_enabled_question">麦克风是否开启</string>
+    <string name="device_camera_enabled_question">摄像头是否开启</string>
+    <string name="device_speaker_enabled_question">扬声器是否开启</string>
+
+    <!-- User Module -->
+    <string name="user_name">姓名</string>
+    <string name="user_phone">手机号</string>
+    <string name="user_email">邮箱</string>
+    <string name="user_signature">签名</string>
+    <string name="user_avatar">头像</string>
+    <string name="user_info">用户信息</string>
+    <string name="user_personal_room">个人会议室</string>
+    <string name="user_personal_info">个人信息</string>
+    <string name="user_not_set_phone">未设置手机号</string>
+    <string name="user_default_signature">点击设置签名,所有人均可查看</string>
+    <string name="user_set_background">点击设置背景图</string>
+    <string name="user_online">在线</string>
+    <string name="user_offline">离线</string>
+    <string name="user_entry_name">入会姓名</string>
+    <string name="user_use_name_always">当前设备始终使用此名称入会</string>
+    <string name="user_your_name">您的姓名</string>
+
+    <!-- Contact Module -->
+    <string name="contact_title">通讯录</string>
+    <string name="contact_add">添加联系人</string>
+    <string name="contact_search">搜索</string>
+    <string name="contact_my_contacts">我的联系人</string>
+    <string name="contact_invite">邀请联系人</string>
+    <string name="contact_clear">清除</string>
+    <string name="contact_add_friend">添加好友</string>
+    <string name="label_free_version">免费版</string>
+    <string name="msg_max_contacts_limit">最多可添加100位联系人到通讯录</string>
+    <string name="contact_invite_template">我是%s，申请添加您为腾讯会议联系人，点击链接查看：%s</string>
+    <string name="label_source">来源</string>
+    <string name="label_contact_method">联系方式</string>
+    <string name="label_email">邮箱</string>
+    <string name="btn_call">呼叫</string>
+    <string name="msg_calling">正在呼叫 %s…</string>
+    <string name="msg_added_via_meeting">通过会议添加</string>
+    <string name="msg_link_copied">链接已复制到剪贴板</string>
+
+    <!-- Profile Module (Me) -->
+    <string name="me_recording">录制</string>
+    <string name="me_notes">我的笔记</string>
+    <string name="me_ai_assistant">AI 助手</string>
+    <string name="me_orders_service">订单与服务</string>
+    <string name="me_control_rooms">控制Rooms</string>
+    <string name="me_points_center">积分中心</string>
+    <string name="me_account_security">账号与安全</string>
+    <string name="me_settings">设置</string>
+    <string name="me_privacy">隐私</string>
+    <string name="me_help">帮助与客服</string>
+    <string name="me_about">关于我们</string>
+
+    <!-- Common Messages -->
+    <string name="msg_empty_state">暂无数据</string>
+    <string name="msg_empty_meetings">暂无会议</string>
+    <string name="msg_empty_contacts">暂无联系人</string>
+    <string name="msg_empty_search_result">无搜索结果</string>
+    <string name="msg_empty_history_meetings">暂无历史会议</string>
+    <string name="msg_empty_messages">暂无消息</string>
+    <string name="msg_loading">加载中…</string>
+    <string name="msg_success">成功</string>
+    <string name="msg_failure">失败</string>
+    <string name="msg_error">错误</string>
+    <string name="msg_copy_success">复制成功</string>
+    <string name="msg_starting_meeting">正在启动会议…</string>
+    <string name="msg_joining_meeting">正在加入会议…</string>
+    <string name="msg_invited_contact">已邀请 %s 加入会议</string>
+    <string name="msg_invited_all_contacts">已邀请所有联系人加入会议</string>
+    <string name="msg_network_error">网络错误，请检查您的网络连接</string>
+    <string name="msg_unknown_error">发生未知错误</string>
+    <string name="msg_no_content_add">暂无内容，去添加</string>
+    <string name="msg_enter_meeting_code">请输入 Rooms共享码 或 会议号</string>
+    <string name="msg_all_muted">已全员静音</string>
+    <string name="msg_all_unmuted">已解除全员静音</string>
+    <string name="msg_invited_members_count">已成功邀请 %d 位成员</string>
+    <string name="msg_invite_failed">邀请失败: %s</string>
+    <string name="msg_in_meeting_count">会议中(%d)</string>
+    <string name="msg_not_joined">未入会</string>
+    <string name="msg_no_invitation_records">暂无邀请记录</string>
+    <string name="msg_invited">已邀请</string>
+    <string name="msg_waiting_response">待响应</string>
+
+    <!-- Action Labels -->
+    <string name="action_hand_raise">举手</string>
+    <string name="action_hand_lower">取消举手</string>
+    <string name="action_chat">聊天</string>
+    <string name="action_emoji">表情</string>
+    <string name="action_view_history">查看历史会议</string>
+    <string name="action_enter">进入</string>
+
+    <!-- Icon Descriptions (ContentDescription) -->
+    <string name="icon_desc_back">返回</string>
+    <string name="icon_desc_close">关闭</string>
+    <string name="icon_desc_search">搜索</string>
+    <string name="icon_desc_clear">清除</string>
+    <string name="icon_desc_add">添加</string>
+    <string name="icon_desc_avatar">头像</string>
+    <string name="icon_desc_volume">声音</string>
+    <string name="icon_desc_recording">录制</string>
+    <string name="icon_desc_hand_raise">举手</string>
+    <string name="icon_desc_hand_lower">取消举手</string>
+    <string name="icon_desc_more">更多</string>
+    <string name="icon_desc_view_details">查看详情</string>
+    <string name="icon_desc_send">发送</string>
+    <string name="icon_desc_copy">复制</string>
+    <string name="icon_desc_decrease_year">减少年份</string>
+    <string name="icon_desc_increase_year">增加年份</string>
+    <string name="icon_desc_decrease_month">减少月份</string>
+    <string name="icon_desc_increase_month">增加月份</string>
+    <string name="icon_desc_decrease_day">减少日期</string>
+    <string name="icon_desc_increase_day">增加日期</string>
+    <string name="icon_desc_decrease_hour">减少小时</string>
+    <string name="icon_desc_increase_hour">增加小时</string>
+    <string name="icon_desc_decrease_minute">减少分钟</string>
+    <string name="icon_desc_increase_minute">增加分钟</string>
+
+    <!-- Scheduled Meeting Module -->
+    <string name="meeting_recurrence_freq">重复频率</string>
+    <string name="dialog_select_duration">选择会议时长</string>
+    <string name="dialog_select_recurrence">选择重复频率</string>
+    <string name="dialog_select_participants">选择参会人</string>
+    <string name="dialog_set_password">设置入会密码</string>
+    <string name="dialog_select_date">选择日期</string>
+    <string name="dialog_select_time">选择时间</string>
+    <string name="label_select_all">全选</string>
+    <string name="msg_enter_6_digit_password">请输入6位数字密码</string>
+    <string name="placeholder_6_digits">6位数字</string>
+    <string name="label_year">年</string>
+    <string name="label_month">月</string>
+    <string name="label_day">日</string>
+    <string name="label_year_with_value">%d年</string>
+    <string name="label_month_with_value">%d月</string>
+    <string name="label_day_with_value">%d日</string>
+    <string name="label_minutes_with_value">%d分钟</string>
+    <string name="label_people_count">%d人</string>
+    <string name="btn_done">完成</string>
+
+    <!-- Personal Meeting Room Module -->
+    <string name="label_personal_meeting_room_with_name">%s的个人会议室</string>
+    <string name="btn_edit_profile">编辑资料</string>
+    <string name="btn_qr_code">二维码</string>
+    <string name="label_meeting_link">会议链接</string>
+    <string name="msg_meeting_id_copied">会议号已复制</string>
+    <string name="msg_link_already_copied">链接已复制</string>
+    <string name="label_not_set">未设置</string>
+    <string name="label_waiting_room">等候室</string>
+    <string name="label_on">开启</string>
+    <string name="label_off">关闭</string>
+    <string name="label_allow_before_host">允许成员在主持人前入会</string>
+    <string name="label_yes">是</string>
+    <string name="label_no">否</string>
+    <string name="label_meeting_watermark">会议水印</string>
+    <string name="label_not_enabled">未开启</string>
+    <string name="label_mute_on_entry">成员入会时静音</string>
+    <string name="label_allow_multi_device">允许成员多端入会</string>
+    <string name="btn_enter_meeting_room">进入会议室</string>
+    <string name="label_password_6_digits">密码（6位数字）</string>
+    <string name="label_selected">已选</string>
+    <string name="label_mute_off">关闭</string>
+    <string name="label_mute_auto_6">超过6人后自动开启</string>
+    <string name="label_mute_always">始终开启</string>
+    <string name="icon_desc_share">分享</string>
+
+    <!-- Recording Module -->
+    <string name="btn_start_recording">开始录制</string>
+    <string name="label_all_files">全部文件</string>
+    <string name="label_recent_viewed">最近浏览</string>
+    <string name="label_my_recordings">我的录制</string>
+    <string name="icon_desc_filter">过滤</string>
+    <string name="label_storage_used">已使用 %1$dMB/%2$dGB (共%3$d个云端存储文件)</string>
+    <string name="btn_expand">扩容</string>
+    <string name="msg_no_recording_files">暂无录制文件</string>
+</resources>

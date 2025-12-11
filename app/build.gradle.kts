@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tencentmeeting"
+    namespace = "com.example.tencent_meeting_sim"
     compileSdk = 35
-    
+
     defaultConfig {
-        applicationId = "com.example.tencentmeeting"
+        applicationId = "com.example.tencent_meeting_sim"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -60,6 +60,9 @@ dependencies {
 
     // Accompanist System UI Controller
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.32.0")
+
+    // Jetpack Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
