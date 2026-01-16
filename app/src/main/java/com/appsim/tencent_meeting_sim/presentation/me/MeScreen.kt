@@ -29,7 +29,7 @@ import com.appsim.tencent_meeting_sim.data.model.User
 import com.appsim.tencent_meeting_sim.presentation.me.MePresenter
 
 @Composable
-fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: () -> Unit = {}, onPersonalInfoClick: () -> Unit = {}, onRecordClick: () -> Unit = {}) {
+fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: () -> Unit = {}, onPersonalInfoClick: () -> Unit = {}, onRecordClick: () -> Unit = {}, onNavigateToPlaceholder: (String) -> Unit = {}) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
     val presenter = remember { MePresenter(dataRepository) }
@@ -85,7 +85,7 @@ fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: 
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(text = stringResource(R.string.me_recording), fontSize = 13.sp, color = Color.Black)
                     }
-                    Column(modifier = Modifier.weight(1f).clickable(onClick = { }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.weight(1f).clickable(onClick = { onNavigateToPlaceholder("我的笔记") }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(imageVector = Icons.Default.Note, contentDescription = stringResource(R.string.me_notes), tint = Color(0xFF1976D2), modifier = Modifier.size(40.dp))
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(text = stringResource(R.string.me_notes), fontSize = 13.sp, color = Color.Black)
@@ -93,17 +93,17 @@ fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: 
                 }
                 Spacer(modifier = Modifier.height(24.dp))
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceAround, verticalAlignment = Alignment.CenterVertically) {
-                    Column(modifier = Modifier.weight(1f).clickable(onClick = { }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.weight(1f).clickable(onClick = { onNavigateToPlaceholder("AI助手") }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(imageVector = Icons.Default.SmartToy, contentDescription = stringResource(R.string.me_ai_assistant), tint = Color(0xFF1976D2), modifier = Modifier.size(40.dp))
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(text = stringResource(R.string.me_ai_assistant), fontSize = 13.sp, color = Color.Black)
                     }
-                    Column(modifier = Modifier.weight(1f).clickable(onClick = { }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.weight(1f).clickable(onClick = { onNavigateToPlaceholder("订单与服务") }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = stringResource(R.string.me_orders_service), tint = Color(0xFF1976D2), modifier = Modifier.size(40.dp))
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(text = stringResource(R.string.me_orders_service), fontSize = 13.sp, color = Color.Black)
                     }
-                    Column(modifier = Modifier.weight(1f).clickable(onClick = { }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(modifier = Modifier.weight(1f).clickable(onClick = { onNavigateToPlaceholder("控制室") }).padding(vertical = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(imageVector = Icons.Default.MeetingRoom, contentDescription = stringResource(R.string.me_control_rooms), tint = Color(0xFF1976D2), modifier = Modifier.size(40.dp))
                         Spacer(modifier = Modifier.height(8.dp))
                         Text(text = stringResource(R.string.me_control_rooms), fontSize = 13.sp, color = Color.Black)
@@ -123,7 +123,7 @@ fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: 
                 Icons.Default.Help to stringResource(R.string.me_help),
                 Icons.Default.Info to stringResource(R.string.me_about)
             ).forEach { (icon, text) ->
-                Card(modifier = Modifier.fillMaxWidth().clickable(onClick = { }), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(defaultElevation = 1.dp), shape = RoundedCornerShape(8.dp)) {
+                Card(modifier = Modifier.fillMaxWidth().clickable(onClick = { onNavigateToPlaceholder(text) }), colors = CardDefaults.cardColors(containerColor = Color.White), elevation = CardDefaults.cardElevation(defaultElevation = 1.dp), shape = RoundedCornerShape(8.dp)) {
                     Row(modifier = Modifier.fillMaxWidth().padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
                         Icon(imageVector = icon, contentDescription = text, tint = Color.Gray, modifier = Modifier.size(24.dp))
                         Spacer(modifier = Modifier.width(12.dp))
@@ -137,7 +137,7 @@ fun MeScreen(onMeetingClick: (String) -> Unit = {}, onPersonalMeetingRoomClick: 
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).clickable { }, contentAlignment = Alignment.Center) {
+        Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).clickable { onNavigateToPlaceholder("退出登录") }, contentAlignment = Alignment.Center) {
             Text(text = stringResource(R.string.btn_logout), fontSize = 16.sp, fontWeight = FontWeight.Medium, color = Color(0xFFE53935))
         }
 

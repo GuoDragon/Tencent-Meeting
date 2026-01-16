@@ -18,6 +18,9 @@ interface MembersManageContract {
         fun showInviteSuccess(invitedCount: Int)
         fun showInviteFailed(message: String)
         fun updateInvitedMembers(users: List<User>)
+        // 移出参会人相关
+        fun showRemoveSuccess(userName: String)
+        fun showRemoveFailed(message: String)
     }
 
     interface Presenter {
@@ -32,5 +35,7 @@ interface MembersManageContract {
         fun loadAvailableContacts()
         fun sendInvitations(selectedUserIds: List<String>)
         fun loadInvitedMembers(meetingId: String)
+        // 移出参会人
+        fun removeMember(meetingId: String, userId: String, userName: String)
     }
 }

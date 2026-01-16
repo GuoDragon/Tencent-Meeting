@@ -144,7 +144,17 @@ fun MeetingDetailsScreen(
             modifier = Modifier.align(Alignment.BottomStart).padding(start = 16.dp, bottom = 120.dp),
             onClick = onNavigateToChatPage,
             isHandRaised = isHandRaised,
-            onHandRaiseClick = { isHandRaised = !isHandRaised }
+            onHandRaiseClick = {
+                if (!isHandRaised) {
+                    // 举手 - 当前用户固定为user001
+                    presenter.raiseHand(meetingId, "user001", "我")
+                    isHandRaised = true
+                } else {
+                    // 放下手
+                    presenter.lowerHand(meetingId, "user001")
+                    isHandRaised = false
+                }
+            }
         )
 
         // 主持人视角：显示举手提示和解除静音按钮

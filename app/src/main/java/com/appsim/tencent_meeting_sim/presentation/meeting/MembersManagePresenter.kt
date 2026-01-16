@@ -49,13 +49,10 @@ class MembersManagePresenter(
             try {
                 val participants = dataRepository.getMeetingParticipants()
 
-                participants.forEach { participant ->
-                    dataRepository.addOrUpdateParticipant(
-                        participant.copy(isMuted = true)
-                    )
-                }
+                // 批量更新，避免循环中频繁写入文件
+                val updatedParticipants = participants.map { it.copy(isMuted = true) }
+                dataRepository.saveMeetingParticipantsToFile(updatedParticipants)
 
-                dataRepository.saveMeetingParticipantsToFile(participants.map { it.copy(isMuted = true) })
                 view?.showMuteAllSuccess()
             } catch (e: Exception) {
                 view?.showError("全员静音失败: ${e.message}")
@@ -68,13 +65,10 @@ class MembersManagePresenter(
             try {
                 val participants = dataRepository.getMeetingParticipants()
 
-                participants.forEach { participant ->
-                    dataRepository.addOrUpdateParticipant(
-                        participant.copy(isMuted = false)
-                    )
-                }
+                // 批量更新，避免循环中频繁写入文件
+                val updatedParticipants = participants.map { it.copy(isMuted = false) }
+                dataRepository.saveMeetingParticipantsToFile(updatedParticipants)
 
-                dataRepository.saveMeetingParticipantsToFile(participants.map { it.copy(isMuted = false) })
                 view?.showUnmuteAllSuccess()
             } catch (e: Exception) {
                 view?.showError("解除全员静音失败: ${e.message}")
@@ -177,6 +171,23 @@ class MembersManagePresenter(
                 view?.updateInvitedMembers(invitedUsers)
             } catch (e: Exception) {
                 view?.showError("加载已邀请成员失败: ${e.message}")
+            }
+        }
+    }
+
+    override fun removeMember(meetingId: String, userId: String, userName: String) {
+        presenterScope.launch {
+            try {
+                // 从参会人列表中移除该用户
+                dataRepository.removeParticipant(meetingId, userId)
+
+                // 刷新成员列表
+                loadMembers()
+
+                // 通知View移除成功
+                view?.showRemoveSuccess(userName)
+            } catch (e: Exception) {
+                view?.showRemoveFailed("移出参会人失败: ${e.message}")
             }
         }
     }

@@ -56,6 +56,15 @@ sealed class Screen(val route: String) {
     object PersonalMeetingRoom : Screen("personal_meeting_room")
     object PersonalInformation : Screen("personal_information")
     object Record : Screen("record")
+
+    // Placeholder Screen (for unimplemented features)
+    object Placeholder : Screen("placeholder/{featureName}") {
+        fun createRoute(featureName: String): String {
+            // URL encode Chinese characters
+            val encodedName = java.net.URLEncoder.encode(featureName, "UTF-8")
+            return "placeholder/$encodedName"
+        }
+    }
 }
 
 /**
@@ -69,4 +78,5 @@ object NavArgs {
     const val SPEAKER_ENABLED = "speakerEnabled"
     const val RECORDING_ENABLED = "recordingEnabled"
     const val SCREEN_SHARING = "screenSharing"
+    const val FEATURE_NAME = "featureName"
 }

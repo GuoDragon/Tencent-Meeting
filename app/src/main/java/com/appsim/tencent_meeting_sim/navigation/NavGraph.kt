@@ -83,6 +83,9 @@ fun TencentMeetingNavGraph(
                 },
                 onRecordClick = {
                     navController.navigate(Screen.Record.route)
+                },
+                onNavigateToPlaceholder = { featureName ->
+                    navController.navigate(Screen.Placeholder.createRoute(featureName))
                 }
             )
         }
@@ -273,18 +276,42 @@ fun TencentMeetingNavGraph(
                 onNavigateBack = { navController.popBackStack() },
                 onNavigateToMeetingDetails = { meetingId ->
                     navController.navigate(Screen.MeetingDetails.createRoute(meetingId))
+                },
+                onNavigateToPlaceholder = { featureName ->
+                    navController.navigate(Screen.Placeholder.createRoute(featureName))
                 }
             )
         }
 
         composable(Screen.PersonalInformation.route) {
             PersonalInformationScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToPlaceholder = { featureName ->
+                    navController.navigate(Screen.Placeholder.createRoute(featureName))
+                }
             )
         }
 
         composable(Screen.Record.route) {
             RecordScreen(
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToPlaceholder = { featureName ->
+                    navController.navigate(Screen.Placeholder.createRoute(featureName))
+                }
+            )
+        }
+
+        // ===== Placeholder Screen =====
+
+        composable(
+            route = Screen.Placeholder.route,
+            arguments = listOf(
+                navArgument(NavArgs.FEATURE_NAME) { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val featureName = backStackEntry.arguments?.getString(NavArgs.FEATURE_NAME) ?: ""
+            com.appsim.tencent_meeting_sim.presentation.common.PlaceholderScreen(
+                featureName = featureName,
                 onNavigateBack = { navController.popBackStack() }
             )
         }

@@ -54,9 +54,41 @@ class DataRepository(private val context: Context) {
             val jsonString = readJsonFromFilesDir("meetings.json", "data/meetings.json")
             val type = object : TypeToken<List<Meeting>>() {}.type
             val jsonMeetings: List<Meeting> = gson.fromJson(jsonString, type)
-            // 返回文件中的会议（已包含所有更新）
-            jsonMeetings
+            
+            android.util.Log.d("DataRepository", "读取到 ${jsonMeetings.size} 个会议")
+            
+            // 数据校验：过滤异常的会议时长
+            val validatedMeetings = jsonMeetings.mapNotNull { meeting ->
+                try {
+                    if (meeting.endTime != null) {
+                        val duration = meeting.endTime!! - meeting.startTime
+                        // 如果时长超过30天或为负数，认为数据异常
+                        val maxDuration = 30L * 24 * 60 * 60 * 1000
+                        if (duration > maxDuration || duration < 0) {
+                            android.util.Log.d("DataRepository", "会议 ${meeting.meetingId} 时长异常，清除endTime")
+                            meeting.copy(endTime = null)  // 清除异常endTime
+                        } else {
+                            meeting
+                        }
+                    } else {
+                        meeting
+                    }
+                } catch (e: Exception) {
+                    android.util.Log.e("DataRepository", "处理会议 ${meeting.meetingId} 时出错", e)
+                    meeting  // 返回原始会议对象
+                }
+            }
+            
+            android.util.Log.d("DataRepository", "校验后返回 ${validatedMeetings.size} 个会议")
+            val ongoing = validatedMeetings.count { it.status == MeetingStatus.ONGOING }
+            val upcoming = validatedMeetings.count { it.status == MeetingStatus.UPCOMING }
+            val ended = validatedMeetings.count { it.status == MeetingStatus.ENDED }
+            android.util.Log.d("DataRepository", "ONGOING: $ongoing, UPCOMING: $upcoming, ENDED: $ended")
+            
+            // 返回文件中的会议 + 内存中的会议
+            validatedMeetings + inMemoryMeetings
         } catch (e: Exception) {
+            android.util.Log.e("DataRepository", "getMeetings 出错", e)
             inMemoryMeetings.toList()
         }
     }
@@ -71,11 +103,12 @@ class DataRepository(private val context: Context) {
 
     fun getMeetingParticipants(): List<MeetingParticipant> {
         return try {
-            val jsonString = readJsonFromAssets("data/meeting_participants.json")
+            // 优先从 filesDir 读取，如果不存在则从 assets 读取
+            val jsonString = readJsonFromFilesDir("meeting_participants.json", "data/meeting_participants.json")
             val type = object : TypeToken<List<MeetingParticipant>>() {}.type
             val jsonParticipants: List<MeetingParticipant> = gson.fromJson(jsonString, type)
-            // 合并JSON文件中的参会人和内存中的参会人
-            jsonParticipants + inMemoryParticipants
+            // 返回文件中的参会人（已包含所有更新）
+            jsonParticipants
         } catch (e: Exception) {
             inMemoryParticipants.toList()
         }
@@ -83,7 +116,8 @@ class DataRepository(private val context: Context) {
 
     fun getMessages(): List<Message> {
         return try {
-            val jsonString = readJsonFromAssets("data/messages.json")
+            // 优先从 filesDir 读取，如果不存在则从 assets 读取
+            val jsonString = readJsonFromFilesDir("messages.json", "data/messages.json")
             val type = object : TypeToken<List<Message>>() {}.type
             val jsonMessages: List<Message> = gson.fromJson(jsonString, type)
             // 合并JSON文件中的消息和内存中的消息
@@ -115,7 +149,8 @@ class DataRepository(private val context: Context) {
 
     fun getHandRaiseRecords(): List<HandRaiseRecord> {
         return try {
-            val jsonString = readJsonFromAssets("data/hand_raise_records.json")
+            // 优先从 filesDir 读取，如果不存在则从 assets 读取
+            val jsonString = readJsonFromFilesDir("hand_raise_records.json", "data/hand_raise_records.json")
             val type = object : TypeToken<List<HandRaiseRecord>>() {}.type
             val jsonRecords: List<HandRaiseRecord> = gson.fromJson(jsonString, type)
             // 合并JSON文件中的记录和内存中的记录
@@ -130,7 +165,8 @@ class DataRepository(private val context: Context) {
      */
     fun getMeetingInvitations(): List<MeetingInvitation> {
         return try {
-            val jsonString = readJsonFromAssets("data/meeting_invitations.json")
+            // 优先从 filesDir 读取，如果不存在则从 assets 读取
+            val jsonString = readJsonFromFilesDir("meeting_invitations.json", "data/meeting_invitations.json")
             val type = object : TypeToken<List<MeetingInvitation>>() {}.type
             val jsonInvitations: List<MeetingInvitation> = gson.fromJson(jsonString, type)
             // 合并JSON文件中的邀请和内存中的邀请
@@ -185,9 +221,9 @@ class DataRepository(private val context: Context) {
         // 先检查内存中是否有
         inMemoryPersonalMeetingRooms[userId]?.let { return it }
 
-        // 从JSON文件加载
+        // 从JSON文件加载（优先从 filesDir 读取，如果不存在则从 assets 读取）
         return try {
-            val jsonString = readJsonFromAssets("data/personal_meeting_rooms.json")
+            val jsonString = readJsonFromFilesDir("personal_meeting_rooms.json", "data/personal_meeting_rooms.json")
             val type = object : TypeToken<List<PersonalMeetingRoom>>() {}.type
             val rooms: List<PersonalMeetingRoom> = gson.fromJson(jsonString, type)
             val room = rooms.find { it.userId == userId }
@@ -372,6 +408,27 @@ class DataRepository(private val context: Context) {
         // 去重
         val uniqueParticipants = allParticipants.distinctBy { "${it.userId}_${it.meetingId}" }
         saveMeetingParticipantsToFile(uniqueParticipants)
+    }
+
+    /**
+     * 移出参会人并保存到文件
+     * @param meetingId 会议ID
+     * @param userId 要移出的用户ID
+     */
+    fun removeParticipant(meetingId: String, userId: String) {
+        // 从所有参会人中过滤掉要移出的用户
+        val allParticipants = getMeetingParticipants()
+        val filtered = allParticipants.filter {
+            !(it.meetingId == meetingId && it.userId == userId)
+        }
+
+        // 同时从内存中移除
+        inMemoryParticipants.removeIf {
+            it.meetingId == meetingId && it.userId == userId
+        }
+
+        // 保存到文件
+        saveMeetingParticipantsToFile(filtered)
     }
 
     /**

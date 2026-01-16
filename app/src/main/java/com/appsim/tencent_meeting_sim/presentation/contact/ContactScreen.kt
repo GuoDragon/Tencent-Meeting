@@ -139,7 +139,7 @@ fun ContactScreen(onNavigateToAddFriends: () -> Unit = {}, onNavigateToFriendDet
         }
 
         Button(
-            onClick = { if (contacts.isNotEmpty()) { inviteMessage = context.getString(R.string.msg_invited_all_contacts) } },
+            onClick = onNavigateToAddFriends,
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1976D2)),
             shape = RoundedCornerShape(8.dp)

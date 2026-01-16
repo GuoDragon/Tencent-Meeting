@@ -91,6 +91,13 @@ fun MembersManageScreen(
                 inviteLoading = false
             }
             override fun updateInvitedMembers(invitedList: List<User>) { invitedMembers = invitedList }
+            override fun showRemoveSuccess(userName: String) {
+                errorMessage = "已将 $userName 移出会议"
+                presenter.loadMembers()
+            }
+            override fun showRemoveFailed(message: String) {
+                errorMessage = message
+            }
         }
     }
 
@@ -239,6 +246,12 @@ fun MembersManageScreen(
                         } else {
                             selectedContacts + contactId
                         }
+                    },
+                    onSelectAll = {
+                        selectedContacts = availableContacts.map { it.userId }.toSet()
+                    },
+                    onDeselectAll = {
+                        selectedContacts = emptySet()
                     },
                     onInvite = {
                         if (selectedContacts.isNotEmpty()) {

@@ -205,8 +205,17 @@ class MeetingDetailsPresenter(
         }
     }
 
-    override fun lowerHand(meetingId: String, userId: String, recordId: String) {
-        dataRepository.updateHandRaiseLowerTime(recordId, System.currentTimeMillis())
+    override fun lowerHand(meetingId: String, userId: String) {
+        // 查找当前用户正在进行的举手记录（lowerTime为null）
+        val records = dataRepository.getHandRaiseRecords()
+        val currentRecord = records.find {
+            it.meetingId == meetingId && it.userId == userId && it.lowerTime == null
+        }
+
+        // 更新lowerTime
+        currentRecord?.let {
+            dataRepository.updateHandRaiseLowerTime(it.recordId, System.currentTimeMillis())
+        }
 
         // 更新participant的举手状态
         updateParticipantStatus(meetingId, userId) { participant ->

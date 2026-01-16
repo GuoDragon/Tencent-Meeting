@@ -32,7 +32,7 @@ import com.appsim.tencent_meeting_sim.presentation.me.PersonalMeetingRoomPresent
 import com.appsim.tencent_meeting_sim.presentation.me.components.*
 
 @Composable
-fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeetingDetails: (String) -> Unit = {}) {
+fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeetingDetails: (String) -> Unit = {}, onNavigateToPlaceholder: (String) -> Unit = {}) {
     val context = LocalContext.current
     val presenter = remember { PersonalMeetingRoomPresenter(context) }
     var roomInfo by remember { mutableStateOf<PersonalMeetingRoom?>(null) }
@@ -62,8 +62,8 @@ fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeeti
                     Icon(imageVector = Icons.Default.ArrowBack, contentDescription = stringResource(R.string.icon_desc_back), tint = Color(0xFF1976D2))
                 }
                 Spacer(modifier = Modifier.weight(1f))
-                IconButton(onClick = { }) { Icon(imageVector = Icons.Default.Person, contentDescription = stringResource(R.string.user_personal_info), tint = Color(0xFF1976D2)) }
-                IconButton(onClick = { }) { Icon(imageVector = Icons.Default.Share, contentDescription = stringResource(R.string.icon_desc_share), tint = Color(0xFF1976D2)) }
+                IconButton(onClick = { onNavigateToPlaceholder("个人信息") }) { Icon(imageVector = Icons.Default.Person, contentDescription = stringResource(R.string.user_personal_info), tint = Color(0xFF1976D2)) }
+                IconButton(onClick = { onNavigateToPlaceholder("分享会议室") }) { Icon(imageVector = Icons.Default.Share, contentDescription = stringResource(R.string.icon_desc_share), tint = Color(0xFF1976D2)) }
             }
 
             roomInfo?.let { room ->
@@ -79,14 +79,14 @@ fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeeti
                                     Text(text = stringResource(R.string.label_personal_meeting_room_with_name, currentUser.username), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.Black)
                                 }
                                 Column(horizontalAlignment = Alignment.End, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                    OutlinedButton(onClick = { }, modifier = Modifier.width(100.dp), contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
+                                    OutlinedButton(onClick = { onNavigateToPlaceholder("编辑资料") }, modifier = Modifier.width(100.dp), contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
                                         Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                                             Icon(imageVector = Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(16.dp))
                                             Spacer(modifier = Modifier.width(4.dp))
                                             Text(stringResource(R.string.btn_edit_profile), fontSize = 12.sp)
                                         }
                                     }
-                                    OutlinedButton(onClick = { }, modifier = Modifier.width(100.dp), contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
+                                    OutlinedButton(onClick = { onNavigateToPlaceholder("会议室二维码") }, modifier = Modifier.width(100.dp), contentPadding = PaddingValues(horizontal = 8.dp, vertical = 6.dp)) {
                                         Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
                                             Icon(imageVector = Icons.Default.QrCode, contentDescription = null, modifier = Modifier.size(16.dp))
                                             Spacer(modifier = Modifier.width(4.dp))

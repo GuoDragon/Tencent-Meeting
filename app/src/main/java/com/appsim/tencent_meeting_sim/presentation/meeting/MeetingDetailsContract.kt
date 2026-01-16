@@ -29,7 +29,7 @@ interface MeetingDetailsContract {
         fun endMeeting()
         fun sendDanmu(message: String)
         fun raiseHand(meetingId: String, userId: String, userName: String)
-        fun lowerHand(meetingId: String, userId: String, recordId: String)
+        fun lowerHand(meetingId: String, userId: String)
         fun lockMeeting()
         fun unlockMeeting()
         fun setAllowUnmute(allow: Boolean)

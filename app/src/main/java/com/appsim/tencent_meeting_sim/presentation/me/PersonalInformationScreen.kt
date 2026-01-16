@@ -28,7 +28,8 @@ import com.appsim.tencent_meeting_sim.presentation.me.PersonalInformationPresent
 
 @Composable
 fun PersonalInformationScreen(
-    onNavigateBack: () -> Unit = {}
+    onNavigateBack: () -> Unit = {},
+    onNavigateToPlaceholder: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -103,7 +104,9 @@ fun PersonalInformationScreen(
                 text = stringResource(R.string.user_set_background),
                 fontSize = 16.sp,
                 color = Color.White,
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .clickable { onNavigateToPlaceholder("设置背景图") }
             )
         }
 
@@ -147,7 +150,7 @@ fun PersonalInformationScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { /* 暂不处理 */ }
+                                .clickable { onNavigateToPlaceholder("编辑用户名") }
                                 .padding(horizontal = 16.dp, vertical = 16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
@@ -180,7 +183,7 @@ fun PersonalInformationScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable { /* 暂不处理 */ }
+                                .clickable { onNavigateToPlaceholder("编辑签名") }
                                 .padding(horizontal = 16.dp, vertical = 16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically

@@ -33,6 +33,8 @@ fun InviteContactDialog(
     contacts: List<User>,
     selectedContacts: Set<String>,
     onContactToggle: (String) -> Unit,
+    onSelectAll: () -> Unit,
+    onDeselectAll: () -> Unit,
     onInvite: () -> Unit,
     onDismiss: () -> Unit,
     isLoading: Boolean = false
@@ -68,12 +70,35 @@ fun InviteContactDialog(
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
-                    IconButton(onClick = onDismiss) {
-                        Icon(
-                            imageVector = Icons.Default.Close,
-                            contentDescription = stringResource(R.string.icon_desc_close),
-                            tint = Color.Gray
-                        )
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        // 全选/取消全选按钮
+                        TextButton(
+                            onClick = {
+                                if (selectedContacts.size == contacts.size) {
+                                    onDeselectAll()
+                                } else {
+                                    onSelectAll()
+                                }
+                            }
+                        ) {
+                            Text(
+                                text = if (selectedContacts.size == contacts.size) "取消全选" else "全选",
+                                fontSize = 14.sp,
+                                color = Color(0xFF1976D2)
+                            )
+                        }
+
+                        IconButton(onClick = onDismiss) {
+                            Icon(
+                                imageVector = Icons.Default.Close,
+                                contentDescription = stringResource(R.string.icon_desc_close),
+                                tint = Color.Gray
+                            )
+                        }
                     }
                 }
 

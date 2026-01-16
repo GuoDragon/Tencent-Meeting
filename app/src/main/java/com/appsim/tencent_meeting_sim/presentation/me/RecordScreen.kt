@@ -23,7 +23,8 @@ import com.appsim.tencent_meeting_sim.presentation.me.RecordPresenter
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RecordScreen(
-    onNavigateBack: () -> Unit = {}
+    onNavigateBack: () -> Unit = {},
+    onNavigateToPlaceholder: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
@@ -84,7 +85,7 @@ fun RecordScreen(
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* 搜索功能暂不处理 */ }) {
+                    IconButton(onClick = { onNavigateToPlaceholder("搜索录制") }) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = stringResource(R.string.icon_desc_search)
@@ -101,7 +102,7 @@ fun RecordScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /* 录制功能暂不处理 */ },
+                onClick = { onNavigateToPlaceholder("开始录制") },
                 containerColor = Color(0xFF1976D2),
                 contentColor = Color.White
             ) {
@@ -123,7 +124,8 @@ fun RecordScreen(
             StorageInfoSection(
                 usedMB = usedMB,
                 totalMB = totalMB,
-                fileCount = fileCount
+                fileCount = fileCount,
+                onNavigateToPlaceholder = onNavigateToPlaceholder
             )
 
             // Tab栏
@@ -163,7 +165,7 @@ fun RecordScreen(
                     tint = Color.Gray,
                     modifier = Modifier
                         .size(24.dp)
-                        .clickable { /* 过滤功能暂不处理 */ }
+                        .clickable { onNavigateToPlaceholder("过滤录制") }
                 )
             }
 
@@ -179,7 +181,8 @@ fun RecordScreen(
 private fun StorageInfoSection(
     usedMB: Int,
     totalMB: Int,
-    fileCount: Int
+    fileCount: Int,
+    onNavigateToPlaceholder: (String) -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -204,7 +207,7 @@ private fun StorageInfoSection(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { /* 扩容功能暂不处理 */ },
+                .clickable { onNavigateToPlaceholder("扩容存储") },
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
