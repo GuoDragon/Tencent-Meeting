@@ -23,7 +23,7 @@ def check_screen_sharing(userId='user002', meetingId='meeting_3d7e91', expected_
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/meeting_participants.json'
     ], capture_output=True, text=True)

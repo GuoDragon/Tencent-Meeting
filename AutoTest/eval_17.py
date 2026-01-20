@@ -21,7 +21,7 @@ def check_search_user_by_phone(phone_number='15823467912'):
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/users.json'
     ], capture_output=True, text=True)

@@ -24,7 +24,7 @@ def check_join_meeting_with_password(meetingId='meeting_8f4a2b', password='74298
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meetings.json'
         ], capture_output=True, text=True)
@@ -60,7 +60,7 @@ def check_join_meeting_with_password(meetingId='meeting_8f4a2b', password='74298
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_participants.json'
         ], capture_output=True, text=True)

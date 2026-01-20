@@ -25,7 +25,7 @@ def check_message_to_participant(meetingId='meeting_3d7e91', senderId='user001',
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/messages.json'
     ], stdout=open('messages.json', 'w'), stderr=subprocess.PIPE)

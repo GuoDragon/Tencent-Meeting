@@ -10,7 +10,7 @@ import os
 
 ADB_PATH = r'D:\AndroidStudio\platform-tools\adb.exe'
 DATA_DIR = r'D:\android_template\Tencent-Meeting\app\src\main\assets\data'
-PACKAGE_NAME = 'com.example.tencentmeeting'
+PACKAGE_NAME = 'com.example.tencent_meeting_sim'
 
 JSON_FILES = [
     'meeting_participants.json',

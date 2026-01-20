@@ -23,7 +23,7 @@ def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_participants.json'
         ], capture_output=True, text=True)
@@ -51,7 +51,7 @@ def check_hand_raise(userId='user003', meetingId='meeting_3d7e91'):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/hand_raise_records.json'
         ], capture_output=True, text=True)

@@ -11,7 +11,7 @@ import json
 import os
 
 ADB_PATH = r'D:\AndroidStudio\platform-tools\adb.exe'
-PACKAGE_NAME = 'com.example.tencentmeeting'
+PACKAGE_NAME = 'com.example.tencent_meeting_sim'
 
 # 需要检查的数据文件列表
 JSON_FILES = [

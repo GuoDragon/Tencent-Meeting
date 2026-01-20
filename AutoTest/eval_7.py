@@ -24,7 +24,7 @@ def check_scheduled_meeting(meetingId='meeting003', hostId='user001', expected_s
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/meetings.json'
     ], stdout=open('meetings.json', 'w'), stderr=subprocess.PIPE)

@@ -22,7 +22,7 @@ def check_instant_meeting_created(meetingId='meeting_8f4a2b', hostId='user001'):
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/meetings.json'
     ], stdout=open('meetings.json', 'w'), stderr=subprocess.PIPE)

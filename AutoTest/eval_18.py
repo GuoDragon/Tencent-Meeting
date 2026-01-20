@@ -25,7 +25,7 @@ def check_scheduled_meeting_with_recording(meetingId='meeting_5c2f84', hostId='u
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meetings.json'
         ], stdout=open('meetings.json', 'w'), stderr=subprocess.PIPE)
@@ -62,7 +62,7 @@ def check_scheduled_meeting_with_recording(meetingId='meeting_5c2f84', hostId='u
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_invitations.json'
         ], stdout=open('meeting_invitations.json', 'w'), stderr=subprocess.PIPE)

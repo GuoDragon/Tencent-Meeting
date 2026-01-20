@@ -24,7 +24,7 @@ def check_instant_meeting_with_participants(meetingId='meeting_3d7e91', hostId='
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meetings.json'
         ], stdout=open('meetings.json', 'w'), stderr=subprocess.PIPE)
@@ -58,7 +58,7 @@ def check_instant_meeting_with_participants(meetingId='meeting_3d7e91', hostId='
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_participants.json'
         ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)

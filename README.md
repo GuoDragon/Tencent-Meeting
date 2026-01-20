@@ -485,19 +485,19 @@ APP运行时的数据存储采用双重路径设计：
 - 特点：只读，用于首次安装时初始化数据
 
 **2. Android虚拟机/设备（运行时数据）**
-- 路径：`/data/data/com.example.tencentmeeting/files/`
+- 路径：`/data/data/com.example.tencent_meeting_sim/files/`
 - 用途：APP运行时读写数据的实际位置
 - 特点：可读写，所有用户操作会实时写入此目录
 - 访问方式：通过ADB命令访问
   ```bash
   # 查看文件列表
-  adb shell run-as com.example.tencentmeeting ls files/
+  adb shell run-as com.example.tencent_meeting_sim ls files/
 
   # 读取文件内容
-  adb shell run-as com.example.tencentmeeting cat files/meetings.json
+  adb shell run-as com.example.tencent_meeting_sim cat files/meetings.json
 
   # 拉取文件到本地
-  adb exec-out run-as com.example.tencentmeeting cat files/meetings.json > meetings.json
+  adb exec-out run-as com.example.tencent_meeting_sim cat files/meetings.json > meetings.json
   ```
 
 ### JSON文件详细说明

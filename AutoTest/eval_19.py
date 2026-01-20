@@ -22,7 +22,7 @@ def check_uninvited_participants(meetingId='meeting_5c2f84'):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_invitations.json'
         ], stdout=open('meeting_invitations.json', 'w'), stderr=subprocess.PIPE)
@@ -47,7 +47,7 @@ def check_uninvited_participants(meetingId='meeting_5c2f84'):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_participants.json'
         ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)
@@ -93,7 +93,7 @@ def verify_reinvitation(meetingId, user_id):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/meeting_invitations.json'
         ], stdout=open('meeting_invitations.json', 'w'), stderr=subprocess.PIPE)

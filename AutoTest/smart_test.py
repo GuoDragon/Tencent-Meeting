@@ -21,7 +21,7 @@ import sys
 from datetime import datetime
 
 ADB_PATH = r'D:\AndroidStudio\platform-tools\adb.exe'
-PACKAGE_NAME = 'com.example.tencentmeeting'
+PACKAGE_NAME = 'com.example.tencent_meeting_sim'
 
 
 class SmartTester:
@@ -228,7 +228,7 @@ import subprocess
 import json
 
 ADB_PATH = r'D:\\AndroidStudio\\platform-tools\\adb.exe'
-PACKAGE_NAME = 'com.example.tencentmeeting'
+PACKAGE_NAME = 'com.example.tencent_meeting_sim'
 
 def check_microphone_muted(userId, meetingId, expected_muted_status):
     """检查麦克风静音状态"""

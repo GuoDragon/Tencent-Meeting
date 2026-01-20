@@ -21,7 +21,7 @@ def check_waiting_room_enabled_and_entered(userId='user001'):
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/personal_meeting_rooms.json'
     ], capture_output=True, text=True)
@@ -73,7 +73,7 @@ def check_waiting_room_enabled_and_entered(userId='user001'):
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/meeting_participants.json'
     ], capture_output=True, text=True)

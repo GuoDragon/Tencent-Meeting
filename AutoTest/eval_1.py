@@ -23,7 +23,7 @@ def check_microphone_muted(userId='user001', meetingId='meeting_8f4a2b', expecte
         r'D:\AndroidStudio\platform-tools\adb.exe',
         'exec-out',
         'run-as',
-        'com.example.tencentmeeting',
+        'com.example.tencent_meeting_sim',
         'cat',
         'files/meeting_participants.json'
     ], stdout=open('meeting_participants.json', 'w'), stderr=subprocess.PIPE)

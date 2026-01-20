@@ -22,7 +22,7 @@ def check_contact_and_invitation_link(meetingId='4157555988'):
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/personal_meeting_rooms.json'
         ], capture_output=True, text=True)
@@ -61,7 +61,7 @@ def check_contacts_list():
             r'D:\AndroidStudio\platform-tools\adb.exe',
             'exec-out',
             'run-as',
-            'com.example.tencentmeeting',
+            'com.example.tencent_meeting_sim',
             'cat',
             'files/users.json'
         ], capture_output=True, text=True)

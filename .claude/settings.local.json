@@ -57,8 +57,8 @@
       "Bash(./venv/Scripts/activate:*)",
       "Bash(rd:*)",
       "Bash(.\\my_venv\\Scripts\\Activate.ps1)",
-      "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencentmeeting cat files/meeting_participants.json)",
-      "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencentmeeting ls files)",
+      "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencent_meeting_sim cat files/meeting_participants.json)",
+      "Bash(D:AndroidStudioplatform-toolsadb.exe -s emulator-5554 exec-out run-as com.example.tencent_meeting_sim ls files)",
       "Bash(grep:*)",
       "Bash(find:*)",
       "Bash(nul)"
