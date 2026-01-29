@@ -43,6 +43,7 @@ fun MeetingDetailsScreen(
     var meetingTopic by remember { mutableStateOf(context.getString(R.string.meeting_default_name)) }
     var meetingDuration by remember { mutableStateOf("00:00") }
     var participants by remember { mutableStateOf<List<User>>(emptyList()) }
+    var participantStates by remember { mutableStateOf<List<com.appsim.tencent_meeting_sim.data.model.MeetingParticipant>>(emptyList()) }
     var micEnabled by remember { mutableStateOf(initialMicEnabled) }
     var videoEnabled by remember { mutableStateOf(initialVideoEnabled) }
     var speakerEnabled by remember { mutableStateOf(initialSpeakerEnabled) }
@@ -58,7 +59,11 @@ fun MeetingDetailsScreen(
     val view = remember {
         object : MeetingDetailsContract.View {
             override fun showMeetingInfo(topic: String, id: String) { meetingTopic = topic }
-            override fun showParticipants(users: List<User>) { participants = users }
+            override fun showParticipants(users: List<User>) {
+                participants = users
+                // 同时加载participant状态数据
+                participantStates = dataRepository.getMeetingParticipants()
+            }
             override fun updateMicStatus(enabled: Boolean) { micEnabled = enabled }
             override fun updateVideoStatus(enabled: Boolean) { videoEnabled = enabled }
             override fun updateSpeakerStatus(enabled: Boolean) { speakerEnabled = enabled }
@@ -121,7 +126,12 @@ fun MeetingDetailsScreen(
                     ScreenShareView()
                 } else {
                     if (participants.isNotEmpty()) {
-                        ParticipantView(participant = participants.first(), micEnabled = micEnabled)
+                        // 找到第一个participant的状态数据
+                        val firstParticipant = participants.first()
+                        val participantState = participantStates.find { it.userId == firstParticipant.userId }
+                        // 使用participant的实际isMuted状态，如果找不到则使用micEnabled
+                        val actualMicEnabled = participantState?.let { !it.isMuted } ?: micEnabled
+                        ParticipantView(participant = firstParticipant, micEnabled = actualMicEnabled)
                     }
                 }
             }

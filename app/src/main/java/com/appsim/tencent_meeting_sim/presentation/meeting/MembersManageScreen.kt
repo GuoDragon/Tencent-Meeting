@@ -45,11 +45,11 @@ fun MembersManageScreen(
     val presenter = remember { MembersManagePresenter(dataRepository) }
 
     var members by remember { mutableStateOf<List<User>>(emptyList()) }
+    var participants by remember { mutableStateOf<List<com.appsim.tencent_meeting_sim.data.model.MeetingParticipant>>(emptyList()) }
     var searchQuery by remember { mutableStateOf("") }
     var selectedTab by remember { mutableStateOf(0) } // 0: 会议中, 1: 未入会
     var isLoading by remember { mutableStateOf(false) }
     var errorMessage by remember { mutableStateOf<String?>(null) }
-    var allMicsMuted by remember { mutableStateOf(false) }
 
     // 邀请对话框相关状态
     var showInviteDialog by remember { mutableStateOf(false) }
@@ -63,7 +63,11 @@ fun MembersManageScreen(
     // MVP View实现
     val view = remember {
         object : MembersManageContract.View {
-            override fun showMembers(membersList: List<User>) { members = membersList }
+            override fun showMembers(membersList: List<User>) {
+                members = membersList
+                // 同时加载participants数据
+                participants = dataRepository.getMeetingParticipants()
+            }
             override fun updateMemberMicStatus(userId: String, enabled: Boolean) { }
             override fun updateMemberVideoStatus(userId: String, enabled: Boolean) { }
             override fun showLoading() { isLoading = true }
@@ -185,9 +189,7 @@ fun MembersManageScreen(
                 if (selectedTab == 0) {
                     MembersList(
                         members = members,
-                        micEnabled = micEnabled,
-                        videoEnabled = videoEnabled,
-                        allMicsMuted = allMicsMuted,
+                        participants = participants,
                         modifier = Modifier.weight(1f)
                     )
                 } else {
@@ -205,20 +207,14 @@ fun MembersManageScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     OutlinedButton(
-                        onClick = {
-                            allMicsMuted = true
-                            presenter.muteAll()
-                        },
+                        onClick = { presenter.muteAll() },
                         modifier = Modifier.weight(1f),
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black)
                     ) {
                         Text(stringResource(R.string.btn_mute_all), fontSize = 14.sp)
                     }
                     OutlinedButton(
-                        onClick = {
-                            allMicsMuted = false
-                            presenter.unmuteAll()
-                        },
+                        onClick = { presenter.unmuteAll() },
                         modifier = Modifier.weight(1f),
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.Black)
                     ) {
@@ -271,12 +267,15 @@ fun MembersManageScreen(
 
 @Composable
 private fun MembersList(
-    members: List<User>, micEnabled: Boolean, videoEnabled: Boolean,
-    allMicsMuted: Boolean, modifier: Modifier = Modifier
+    members: List<User>,
+    participants: List<com.appsim.tencent_meeting_sim.data.model.MeetingParticipant>,
+    modifier: Modifier = Modifier
 ) {
     LazyColumn(modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp)) {
         items(members) { member ->
-            MemberItem(member, micEnabled, videoEnabled, allMicsMuted)
+            // 找到对应的participant数据
+            val participant = participants.find { it.userId == member.userId }
+            MemberItem(member, participant)
         }
     }
 }

@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.appsim.tencent_meeting_sim.data.model.User
+import com.appsim.tencent_meeting_sim.data.model.MeetingParticipant
 import com.example.tencent_meeting_sim.R
 
 /**
@@ -29,12 +30,11 @@ import com.example.tencent_meeting_sim.R
 @Composable
 fun MemberItem(
     member: User,
-    micEnabled: Boolean,
-    videoEnabled: Boolean,
-    allMicsMuted: Boolean
+    participant: MeetingParticipant? = null
 ) {
-    // 判断麦克风是否应该显示为静音状态
-    val shouldShowMicMuted = allMicsMuted || !micEnabled
+    // 使用participant的实际状态，如果participant为null则使用默认值
+    val isMuted = participant?.isMuted ?: true
+    val isCameraOn = participant?.isCameraOn ?: false
 
     Row(
         modifier = Modifier
@@ -77,21 +77,21 @@ fun MemberItem(
             )
         }
 
-        // 麦克风图标
+        // 麦克风图标 - 使用participant的实际isMuted状态
         Icon(
-            imageVector = if (shouldShowMicMuted) Icons.Default.MicOff else Icons.Default.Mic,
-            contentDescription = stringResource(if (shouldShowMicMuted) R.string.device_mic_disable else R.string.device_mic_enable),
-            tint = if (shouldShowMicMuted) Color.Red else Color.Gray,
+            imageVector = if (isMuted) Icons.Default.MicOff else Icons.Default.Mic,
+            contentDescription = stringResource(if (isMuted) R.string.device_mic_disable else R.string.device_mic_enable),
+            tint = if (isMuted) Color.Red else Color.Gray,
             modifier = Modifier.size(24.dp)
         )
 
         Spacer(modifier = Modifier.width(16.dp))
 
-        // 摄像头图标
+        // 摄像头图标 - 使用participant的实际isCameraOn状态
         Icon(
-            imageVector = if (videoEnabled) Icons.Default.Videocam else Icons.Default.VideocamOff,
-            contentDescription = stringResource(if (videoEnabled) R.string.device_camera_enable else R.string.device_camera_disable),
-            tint = if (videoEnabled) Color.Gray else Color.Red,
+            imageVector = if (isCameraOn) Icons.Default.Videocam else Icons.Default.VideocamOff,
+            contentDescription = stringResource(if (isCameraOn) R.string.device_camera_enable else R.string.device_camera_disable),
+            tint = if (isCameraOn) Color.Gray else Color.Red,
             modifier = Modifier.size(24.dp)
         )
     }

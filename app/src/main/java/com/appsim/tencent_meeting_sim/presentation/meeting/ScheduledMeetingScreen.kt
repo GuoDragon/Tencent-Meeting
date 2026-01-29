@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -152,19 +153,36 @@ fun ScheduledMeetingScreen(
                 )
                 .verticalScroll(rememberScrollState())
         ) {
-            // 会议主题
+            // 会议主题 - 可编辑的TextField
             Spacer(modifier = Modifier.height(16.dp))
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White)
-                    .padding(16.dp)
+                    .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
-                Text(
-                    text = meetingTopic,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = Color.Black
+                OutlinedTextField(
+                    value = meetingTopic,
+                    onValueChange = { meetingTopic = it },
+                    placeholder = {
+                        Text(
+                            text = "请输入会议主题",
+                            fontSize = 16.sp,
+                            color = Color.Gray
+                        )
+                    },
+                    singleLine = true,
+                    textStyle = TextStyle(
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color.Black
+                    ),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        cursorColor = Color(0xFF1976D2)
+                    ),
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -218,82 +236,82 @@ fun ScheduledMeetingScreen(
                 onCheckedChange = { recordingEnabled = it }
             )
         }
+    }
 
-        // 日期选择器
-        if (showDatePicker) {
-            DatePickerDialog(
-                currentTime = startTime,
-                onConfirm = { newTime ->
-                    startTime = newTime
-                    showDatePicker = false
-                    showTimePicker = true
-                },
-                onDismiss = { showDatePicker = false }
-            )
-        }
+    // 日期选择器
+    if (showDatePicker) {
+        DatePickerDialog(
+            currentTime = startTime,
+            onConfirm = { newTime ->
+                startTime = newTime
+                showDatePicker = false
+                showTimePicker = true
+            },
+            onDismiss = { showDatePicker = false }
+        )
+    }
 
-        // 时间选择器
-        if (showTimePicker) {
-            TimePickerDialog(
-                currentTime = startTime,
-                onConfirm = { newTime ->
-                    startTime = newTime
-                    showTimePicker = false
-                },
-                onDismiss = { showTimePicker = false }
-            )
-        }
+    // 时间选择器
+    if (showTimePicker) {
+        TimePickerDialog(
+            currentTime = startTime,
+            onConfirm = { newTime ->
+                startTime = newTime
+                showTimePicker = false
+            },
+            onDismiss = { showTimePicker = false }
+        )
+    }
 
-        // 会议时长选择器
-        if (showDurationPicker) {
-            DurationPickerDialog(
-                currentDuration = duration,
-                onConfirm = { newDuration ->
-                    duration = newDuration
-                    showDurationPicker = false
-                },
-                onDismiss = { showDurationPicker = false }
-            )
-        }
+    // 会议时长选择器
+    if (showDurationPicker) {
+        DurationPickerDialog(
+            currentDuration = duration,
+            onConfirm = { newDuration ->
+                duration = newDuration
+                showDurationPicker = false
+            },
+            onDismiss = { showDurationPicker = false }
+        )
+    }
 
-        // 重复频率选择器
-        if (showRecurrencePicker) {
-            RecurrencePickerDialog(
-                currentRecurrence = recurrence,
-                onConfirm = { newRecurrence ->
-                    recurrence = newRecurrence
-                    showRecurrencePicker = false
-                },
-                onDismiss = { showRecurrencePicker = false }
-            )
-        }
+    // 重复频率选择器
+    if (showRecurrencePicker) {
+        RecurrencePickerDialog(
+            currentRecurrence = recurrence,
+            onConfirm = { newRecurrence ->
+                recurrence = newRecurrence
+                showRecurrencePicker = false
+            },
+            onDismiss = { showRecurrencePicker = false }
+        )
+    }
 
-        // 参会人选择器
-        if (showParticipantPicker) {
-            ParticipantPickerDialog(
-                availableUsers = availableUsers.filter { it.userId != "user001" }, // 过滤掉当前用户"刘承龙"
-                selectedUsers = selectedParticipants,
-                onConfirm = { selected ->
-                    selectedParticipants = selected
-                    showParticipantPicker = false
-                },
-                onDismiss = { showParticipantPicker = false }
-            )
-        }
+    // 参会人选择器
+    if (showParticipantPicker) {
+        ParticipantPickerDialog(
+            availableUsers = availableUsers.filter { it.userId != "user001" }, // 过滤掉当前用户"刘承龙"
+            selectedUsers = selectedParticipants,
+            onConfirm = { selected ->
+                selectedParticipants = selected
+                showParticipantPicker = false
+            },
+            onDismiss = { showParticipantPicker = false }
+        )
+    }
 
-        // 密码输入对话框
-        if (showPasswordDialog) {
-            PasswordInputDialog(
-                currentPassword = password,
-                onConfirm = { newPassword ->
-                    password = newPassword
-                    showPasswordDialog = false
-                },
-                onDismiss = {
-                    passwordEnabled = false
-                    showPasswordDialog = false
-                }
-            )
-        }
+    // 密码输入对话框
+    if (showPasswordDialog) {
+        PasswordInputDialog(
+            currentPassword = password,
+            onConfirm = { newPassword ->
+                password = newPassword
+                showPasswordDialog = false
+            },
+            onDismiss = {
+                passwordEnabled = false
+                showPasswordDialog = false
+            }
+        )
     }
 }

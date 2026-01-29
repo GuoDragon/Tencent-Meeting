@@ -46,15 +46,21 @@ fun TimePickerDialog(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    IconButton(onClick = {
-                        if (selectedHour > 0) selectedHour-- else selectedHour = 23
-                    }) {
+                    IconButton(
+                        onClick = {
+                            selectedHour = if (selectedHour > 0) selectedHour - 1 else 23
+                        },
+                        modifier = Modifier.size(48.dp)
+                    ) {
                         Icon(Icons.Default.Remove, stringResource(R.string.icon_desc_decrease_hour))
                     }
                     Text(String.format("%02d", selectedHour), fontSize = 32.sp, fontWeight = FontWeight.Bold)
-                    IconButton(onClick = {
-                        if (selectedHour < 23) selectedHour++ else selectedHour = 0
-                    }) {
+                    IconButton(
+                        onClick = {
+                            selectedHour = if (selectedHour < 23) selectedHour + 1 else 0
+                        },
+                        modifier = Modifier.size(48.dp)
+                    ) {
                         Icon(Icons.Default.Add, stringResource(R.string.icon_desc_increase_hour))
                     }
                 }
@@ -67,15 +73,21 @@ fun TimePickerDialog(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    IconButton(onClick = {
-                        if (selectedMinute > 0) selectedMinute-- else selectedMinute = 59
-                    }) {
+                    IconButton(
+                        onClick = {
+                            selectedMinute = if (selectedMinute > 0) selectedMinute - 1 else 59
+                        },
+                        modifier = Modifier.size(48.dp)
+                    ) {
                         Icon(Icons.Default.Remove, stringResource(R.string.icon_desc_decrease_minute))
                     }
                     Text(String.format("%02d", selectedMinute), fontSize = 32.sp, fontWeight = FontWeight.Bold)
-                    IconButton(onClick = {
-                        if (selectedMinute < 59) selectedMinute++ else selectedMinute = 0
-                    }) {
+                    IconButton(
+                        onClick = {
+                            selectedMinute = if (selectedMinute < 59) selectedMinute + 1 else 0
+                        },
+                        modifier = Modifier.size(48.dp)
+                    ) {
                         Icon(Icons.Default.Add, stringResource(R.string.icon_desc_increase_minute))
                     }
                 }
