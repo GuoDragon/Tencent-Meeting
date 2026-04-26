@@ -15,7 +15,8 @@ class MeetingDetailsPresenter(
     private val dataRepository: DataRepository,
     initialMicEnabled: Boolean = false,
     initialVideoEnabled: Boolean = false,
-    initialSpeakerEnabled: Boolean = true
+    initialSpeakerEnabled: Boolean = true,
+    initialScreenSharing: Boolean = false
 ) : MeetingDetailsContract.Presenter {
 
     private var view: MeetingDetailsContract.View? = null
@@ -25,7 +26,7 @@ class MeetingDetailsPresenter(
     private var micEnabled = initialMicEnabled
     private var videoEnabled = initialVideoEnabled
     private var speakerEnabled = initialSpeakerEnabled
-    private var isScreenSharing = false
+    private var isScreenSharing = initialScreenSharing
 
     private var durationJob: Job? = null
     private var durationSeconds = 0
@@ -71,6 +72,13 @@ class MeetingDetailsPresenter(
                 // 加载参会人列表（包含当前用户和前5位好友，共6人）
                 val defaultParticipants = users.take(6)
                 view?.showParticipants(defaultParticipants)
+
+                if (isScreenSharing) {
+                    view?.updateScreenShareStatus(true)
+                    updateParticipantStatus(currentMeetingId, currentUserId) { participant ->
+                        participant.copy(isSharingScreen = true)
+                    }
+                }
 
                 // 启动会议计时
                 startMeetingDuration()

@@ -6,5 +6,6 @@ package com.example.tencent_meeting_sim.data.model
  */
 enum class MeetingType {
     INSTANT,     // 快速会议 - 立即开始的会议
-    SCHEDULED    // 预约会议 - 需要预约时间的会议
+    SCHEDULED,   // 预约会议 - 需要预约时间的会议
+    PERSONAL     // 个人会议室 - 用户固定的个人会议室
 }

@@ -39,7 +39,15 @@ fun MeetingDetailsScreen(
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
-    val presenter = remember { MeetingDetailsPresenter(dataRepository, initialMicEnabled, initialVideoEnabled, initialSpeakerEnabled) }
+    val presenter = remember {
+        MeetingDetailsPresenter(
+            dataRepository,
+            initialMicEnabled,
+            initialVideoEnabled,
+            initialSpeakerEnabled,
+            initialScreenSharing
+        )
+    }
 
     var meetingTopic by remember { mutableStateOf(context.getString(R.string.meeting_default_name)) }
     var meetingDuration by remember { mutableStateOf("00:00") }

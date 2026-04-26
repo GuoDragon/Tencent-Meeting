@@ -86,6 +86,12 @@ interface PersonalMeetingRoomContract {
         fun updateMultiDevice(allowed: Boolean)
 
         /**
+         * 进入个人会议室前持久化对应的进行中会议记录。
+         * @return 个人会议室会议号；如果房间信息不存在则返回 null
+         */
+        fun enterMeetingRoom(): String?
+
+        /**
          * 销毁Presenter
          */
         fun onDestroy()

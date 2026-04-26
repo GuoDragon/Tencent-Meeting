@@ -3,6 +3,11 @@ package com.example.tencent_meeting_sim.presentation.me
 import android.content.Context
 import com.example.tencent_meeting_sim.presentation.me.PersonalMeetingRoomContract
 import com.example.tencent_meeting_sim.data.repository.DataRepository
+import com.example.tencent_meeting_sim.data.model.Meeting
+import com.example.tencent_meeting_sim.data.model.MeetingParticipant
+import com.example.tencent_meeting_sim.data.model.MeetingSettings
+import com.example.tencent_meeting_sim.data.model.MeetingStatus
+import com.example.tencent_meeting_sim.data.model.MeetingType
 import com.example.tencent_meeting_sim.data.model.PersonalMeetingRoom
 
 /**
@@ -102,6 +107,46 @@ class PersonalMeetingRoomPresenter(
             repository.savePersonalMeetingRoomsToFile()
             view?.updateSettings(room)
         }
+    }
+
+    override fun enterMeetingRoom(): String? {
+        val room = currentRoomInfo
+        if (room == null) {
+            view?.showError("个人会议室信息不存在")
+            return null
+        }
+
+        val currentTime = System.currentTimeMillis()
+        repository.savePersonalMeetingRoom(room)
+        repository.savePersonalMeetingRoomsToFile()
+
+        val meeting = Meeting(
+            meetingId = room.meetingId,
+            topic = "Personal Meeting Room",
+            password = if (room.enablePassword) room.password else null,
+            hostId = room.userId,
+            startTime = currentTime,
+            endTime = null,
+            status = MeetingStatus.ONGOING,
+            meetingType = MeetingType.PERSONAL,
+            participantIds = listOf(room.userId),
+            settings = MeetingSettings(enableWaitingRoom = room.enableWaitingRoom)
+        )
+        repository.addOrUpdateMeeting(meeting)
+
+        val participant = MeetingParticipant(
+            userId = room.userId,
+            meetingId = room.meetingId,
+            isMuted = true,
+            isCameraOn = false,
+            isHandRaised = false,
+            handRaisedTime = null,
+            isSharingScreen = false,
+            joinTime = currentTime
+        )
+        repository.addOrUpdateParticipant(participant)
+
+        return room.meetingId
     }
 
     override fun onDestroy() {

@@ -98,7 +98,12 @@ class DataRepository(private val context: Context) {
      * 注意：这只会保存到内存中，不会写入JSON文件
      */
     fun saveMeeting(meeting: Meeting) {
-        inMemoryMeetings.add(meeting)
+        val index = inMemoryMeetings.indexOfFirst { it.meetingId == meeting.meetingId }
+        if (index >= 0) {
+            inMemoryMeetings[index] = meeting
+        } else {
+            inMemoryMeetings.add(meeting)
+        }
     }
 
     fun getMeetingParticipants(): List<MeetingParticipant> {
@@ -383,6 +388,14 @@ class DataRepository(private val context: Context) {
     }
 
     /**
+     * 添加或更新会议信息并立即保存到文件。
+     */
+    fun addOrUpdateMeeting(meeting: Meeting) {
+        saveMeeting(meeting)
+        saveMeetingsToFile()
+    }
+
+    /**
      * 保存参会人列表到文件
      */
     fun saveMeetingParticipantsToFile(participants: List<MeetingParticipant>) {
@@ -393,7 +406,6 @@ class DataRepository(private val context: Context) {
      * 添加或更新参会人信息并保存到文件
      */
     fun addOrUpdateParticipant(participant: MeetingParticipant) {
-        // 从内存中找
         val index = inMemoryParticipants.indexOfFirst {
             it.userId == participant.userId && it.meetingId == participant.meetingId
         }
@@ -403,11 +415,24 @@ class DataRepository(private val context: Context) {
             inMemoryParticipants.add(participant)
         }
 
-        // 合并所有数据并保存
-        val allParticipants = getMeetingParticipants() + inMemoryParticipants
-        // 去重
-        val uniqueParticipants = allParticipants.distinctBy { "${it.userId}_${it.meetingId}" }
-        saveMeetingParticipantsToFile(uniqueParticipants)
+        val existingParticipants = try {
+            val jsonString = readJsonFromFilesDir("meeting_participants.json", "data/meeting_participants.json")
+            val type = object : TypeToken<List<MeetingParticipant>>() {}.type
+            gson.fromJson<List<MeetingParticipant>>(jsonString, type)
+        } catch (e: Exception) {
+            emptyList()
+        }
+
+        val participantsByKey = linkedMapOf<String, MeetingParticipant>()
+        existingParticipants.forEach { existing ->
+            participantsByKey["${existing.meetingId}_${existing.userId}"] = existing
+        }
+        inMemoryParticipants.forEach { inMemory ->
+            participantsByKey["${inMemory.meetingId}_${inMemory.userId}"] = inMemory
+        }
+        participantsByKey["${participant.meetingId}_${participant.userId}"] = participant
+
+        saveMeetingParticipantsToFile(participantsByKey.values.toList())
     }
 
     /**
@@ -472,8 +497,23 @@ class DataRepository(private val context: Context) {
      * 保存个人会议室列表到文件
      */
     fun savePersonalMeetingRoomsToFile() {
-        val rooms = inMemoryPersonalMeetingRooms.values.toList()
-        writeJsonToFile("personal_meeting_rooms.json", rooms)
+        val existingRooms = try {
+            val jsonString = readJsonFromFilesDir("personal_meeting_rooms.json", "data/personal_meeting_rooms.json")
+            val type = object : TypeToken<List<PersonalMeetingRoom>>() {}.type
+            gson.fromJson<List<PersonalMeetingRoom>>(jsonString, type)
+        } catch (e: Exception) {
+            emptyList()
+        }
+
+        val roomsByUserId = linkedMapOf<String, PersonalMeetingRoom>()
+        existingRooms.forEach { room ->
+            roomsByUserId[room.userId] = room
+        }
+        inMemoryPersonalMeetingRooms.values.forEach { room ->
+            roomsByUserId[room.userId] = room
+        }
+
+        writeJsonToFile("personal_meeting_rooms.json", roomsByUserId.values.toList())
     }
 
     private fun readJsonFromAssets(fileName: String): String {

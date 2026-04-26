@@ -122,7 +122,7 @@ fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeeti
                     }
 
                     Spacer(modifier = Modifier.height(32.dp))
-                    Button(onClick = { onNavigateToMeetingDetails(room.meetingId) }, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(48.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1976D2)), shape = RoundedCornerShape(8.dp)) {
+                    Button(onClick = { presenter.enterMeetingRoom()?.let(onNavigateToMeetingDetails) }, modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).height(48.dp), colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1976D2)), shape = RoundedCornerShape(8.dp)) {
                         Text(text = stringResource(R.string.btn_enter_meeting_room), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.White)
                     }
                     Spacer(modifier = Modifier.height(32.dp))
