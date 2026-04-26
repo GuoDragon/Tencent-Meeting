@@ -1,0 +1,173 @@
+# 所有指令
+from ..base import AppTasks, TaskItem
+from .eval_3 import check_recent_ended_meeting
+from .eval_8 import check_previous_meeting_playback
+from .eval_9 import check_join_meeting_with_password
+from .eval_11 import check_screen_sharing
+from .eval_12 import check_hand_raise
+from .eval_17 import check_search_user_by_phone, verify_search_result
+from .eval_20 import (
+    check_contact_and_invitation_link,
+    check_contacts_list,
+    verify_invitation_link_copied,
+)
+from .eval_21 import check_participant_count
+from .eval_22 import check_personal_meeting_room_password
+from .eval_23 import check_invitation_success
+from .eval_24 import check_remove_participant_success
+from .eval_25 import check_unmute_participant_success
+from .eval_26 import check_waiting_room_enabled
+from .eval_27 import check_meeting_password_changed
+from .eval_1 import check_mic_status
+from .eval_2 import check_camera_status
+from .eval_4 import check_all_mics_off
+from .eval_5 import check_message_sent
+from .eval_6 import check_quick_meeting_creation
+from .eval_7 import check_scheduled_meeting_with_all_friends
+from .eval_13 import check_recent_meeting_details
+from .eval_28 import check_screen_sharing_status
+from .eval_29 import check_personal_meeting_room_and_waiting_room
+
+TENCENT_MEETING_TASKS = AppTasks(
+    package_name="com.example.tencentmeeting",
+    task_items=[
+        TaskItem(
+            instruction="查看历史会议记录",
+            verify_func=check_recent_ended_meeting,
+            human_steps=1,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在历史会议里观看最近一次会议的回放",
+            verify_func=check_previous_meeting_playback,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="用会议号 341234546 + 密码 312435 加入会议",
+            verify_func=check_join_meeting_with_password,
+            human_steps=6,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在技术方案讨论中，开启 '共享屏幕'",
+            verify_func=check_screen_sharing,
+            human_steps=2,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在技术方案讨论中举手发言",
+            verify_func=check_hand_raise,
+            human_steps=2,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="呼叫手机号为15823467912的联系人",
+            verify_func=check_search_user_by_phone,
+            human_steps=4,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="复制我的邀请链接让别人加我为好友",
+            verify_func=check_contact_and_invitation_link,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="数一下会议列表中的会议数目",
+            verify_func=check_participant_count,
+            human_steps=1,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="数一下我的联系人数目",
+            verify_func=check_personal_meeting_room_password,
+            human_steps=3,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="数一下我的会议室的参会人数",
+            verify_func=check_invitation_success,
+            human_steps=5,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="数一下未开始会议的数目",
+            verify_func=check_remove_participant_success,
+            human_steps=1,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="数一下周姓的人数",
+            verify_func=check_unmute_participant_success,
+            human_steps=3,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="计算手机号13开头的人数",
+            verify_func=check_waiting_room_enabled,
+            human_steps=4,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="数一下会议中可邀请的人员数量",
+            verify_func=check_meeting_password_changed,
+            human_steps=5,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="在技术讨论会议（会议号Meeting_3d7e91）中打开自己的麦克风",
+            verify_func=check_mic_status,
+            human_steps=2,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在技术讨论会议（会议号Meeting_3d7e91）中打开自己的摄像头",
+            verify_func=check_camera_status,
+            human_steps=2,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在技术讨论会议（会议号Meeting_3d7e91）中关闭所有人的麦克风",
+            verify_func=check_all_mics_off,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="在技术讨论会议（会议号Meeting_3d7e91）中发送消息“大家好”",
+            verify_func=check_message_sent,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="保持默认配置创建一场快速会议",
+            verify_func=check_quick_meeting_creation,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="预约一场会议，时间定为明天晚上八点，邀请所有好友参加",
+            verify_func=check_scheduled_meeting_with_all_friends,
+            human_steps=5,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="查看最近一场会议的会议主题和会议时长",
+            verify_func=check_recent_meeting_details,
+            human_steps=2,
+            is_reasoning=True,
+        ),
+        TaskItem(
+            instruction="通过会议号Meeting_5d8e21共享屏幕",
+            verify_func=check_screen_sharing_status,
+            human_steps=3,
+            is_reasoning=False,
+        ),
+        TaskItem(
+            instruction="将“个人会议室”的“等候室”设置为“开启”，然后进入会议室",
+            verify_func=check_personal_meeting_room_and_waiting_room,
+            human_steps=4,
+            is_reasoning=False,
+        ),
+    ],
+)
