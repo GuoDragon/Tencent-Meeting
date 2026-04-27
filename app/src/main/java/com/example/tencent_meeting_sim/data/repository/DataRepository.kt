@@ -1,6 +1,7 @@
 package com.example.tencent_meeting_sim.data.repository
 
 import android.content.Context
+import com.example.tencent_meeting_sim.common.utils.UserSortUtils
 import com.example.tencent_meeting_sim.data.model.*
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -201,12 +202,12 @@ class DataRepository(private val context: Context) {
         val invitations = getInvitationsByMeetingId(meetingId)
         val invitedUserIds = invitations.map { it.inviteeId }
 
-        return allUsers.filter { user ->
+        return UserSortUtils.sortUsers(allUsers.filter { user ->
             // 排除当前用户（主持人）、已在会议中的用户、已被邀请的用户
             user.userId != currentUserId &&
             !participantIds.contains(user.userId) &&
             !invitedUserIds.contains(user.userId)
-        }
+        })
     }
 
     /**
@@ -215,6 +216,30 @@ class DataRepository(private val context: Context) {
      */
     fun addInvitation(invitation: MeetingInvitation) {
         inMemoryInvitations.add(invitation)
+    }
+
+    fun recordClipboardAction(userId: String, type: String, text: String) {
+        val action = ClipboardAction(
+            userId = userId,
+            type = type,
+            text = text,
+            timestamp = System.currentTimeMillis()
+        )
+
+        writeJsonToFile("last_copied_link.json", action)
+
+        val actionsFile = File(context.filesDir, "clipboard_actions.json")
+        val existingActions = try {
+            if (actionsFile.exists()) {
+                val listType = object : TypeToken<List<ClipboardAction>>() {}.type
+                gson.fromJson<List<ClipboardAction>>(actionsFile.readText(), listType) ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+        writeJsonToFile("clipboard_actions.json", (existingActions + action).takeLast(100))
     }
 
     /**
@@ -302,6 +327,9 @@ class DataRepository(private val context: Context) {
         inMemoryPersonalMeetingRooms.clear()
         inMemoryHandRaiseRecords.clear()
         inMemoryParticipants.clear()
+        listOf("last_copied_link.json", "clipboard_actions.json").forEach { fileName ->
+            File(context.filesDir, fileName).delete()
+        }
     }
 
     /**

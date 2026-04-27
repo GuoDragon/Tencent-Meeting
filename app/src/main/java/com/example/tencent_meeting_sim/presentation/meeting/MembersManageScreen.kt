@@ -37,13 +37,15 @@ import com.example.tencent_meeting_sim.presentation.meeting.components.InviteCon
 
 @Composable
 fun MembersManageScreen(
+    meetingId: String,
     onDismiss: () -> Unit,
     micEnabled: Boolean = false,
-    videoEnabled: Boolean = false
+    videoEnabled: Boolean = false,
+    currentUserId: String = "user001"
 ) {
     val context = LocalContext.current
     val dataRepository = DataRepository.getInstance(context)
-    val presenter = remember { MembersManagePresenter(dataRepository) }
+    val presenter = remember(meetingId, currentUserId) { MembersManagePresenter(dataRepository, meetingId, currentUserId) }
 
     var members by remember { mutableStateOf<List<User>>(emptyList()) }
     var participants by remember { mutableStateOf<List<MeetingParticipant>>(emptyList()) }
@@ -62,7 +64,7 @@ fun MembersManageScreen(
     var invitedMembers by remember { mutableStateOf<List<User>>(emptyList()) }
 
     // MVP View实现
-    val view = remember {
+    val view = remember(meetingId, presenter) {
         object : MembersManageContract.View {
             override fun showMembers(membersList: List<User>) {
                 members = membersList
@@ -89,7 +91,7 @@ fun MembersManageScreen(
                 errorMessage = context.getString(R.string.msg_invited_members_count, invitedCount)
                 showInviteDialog = false
                 inviteLoading = false
-                presenter.loadInvitedMembers("meeting001")
+                presenter.loadInvitedMembers(meetingId)
             }
             override fun showInviteFailed(message: String) {
                 errorMessage = context.getString(R.string.msg_invite_failed, message)
@@ -106,13 +108,13 @@ fun MembersManageScreen(
         }
     }
 
-    LaunchedEffect(Unit) {
+    LaunchedEffect(meetingId, presenter) {
         presenter.attachView(view)
         presenter.loadMembers()
-        presenter.loadInvitedMembers("meeting001")
+        presenter.loadInvitedMembers(meetingId)
     }
 
-    DisposableEffect(Unit) { onDispose { presenter.onDestroy() } }
+    DisposableEffect(presenter) { onDispose { presenter.onDestroy() } }
 
     Dialog(
         onDismissRequest = onDismiss,

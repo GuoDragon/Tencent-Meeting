@@ -1,6 +1,7 @@
 package com.example.tencent_meeting_sim.presentation.contact
 
 import com.example.tencent_meeting_sim.presentation.contact.ContactContract
+import com.example.tencent_meeting_sim.common.utils.UserSortUtils
 import com.example.tencent_meeting_sim.data.repository.DataRepository
 import com.example.tencent_meeting_sim.data.model.User
 import kotlinx.coroutines.CoroutineScope
@@ -30,8 +31,10 @@ class ContactPresenter(
             try {
                 view?.showLoading()
                 val contacts = withContext(Dispatchers.IO) {
-                    dataRepository.getUsers()
-                        .filter { it.userId != "user001" } // 过滤当前用户"刘承龙"
+                    UserSortUtils.sortUsers(
+                        dataRepository.getUsers()
+                            .filter { it.userId != "user001" } // 过滤当前用户"刘承龙"
+                    )
                 }
 
                 allContacts = contacts
@@ -50,10 +53,10 @@ class ContactPresenter(
             return
         }
         
-        val filteredContacts = allContacts.filter { contact ->
+        val filteredContacts = UserSortUtils.sortUsers(allContacts.filter { contact ->
             contact.username.contains(query, ignoreCase = true) ||
             contact.phone?.contains(query) == true
-        }
+        })
         
         if (filteredContacts.isNotEmpty()) {
             view?.showSearchResults(filteredContacts)

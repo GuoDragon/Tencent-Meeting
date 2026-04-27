@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tencent_meeting_sim.R
 import com.example.tencent_meeting_sim.presentation.me.PersonalMeetingRoomContract
+import com.example.tencent_meeting_sim.data.repository.DataRepository
 import com.example.tencent_meeting_sim.data.model.PersonalMeetingRoom
 import com.example.tencent_meeting_sim.data.model.User
 import com.example.tencent_meeting_sim.presentation.me.PersonalMeetingRoomPresenter
@@ -98,7 +99,7 @@ fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeeti
                             Spacer(modifier = Modifier.height(20.dp))
                             MeetingInfoRow(label = stringResource(R.string.meeting_id_label), value = formatMeetingId(room.meetingId), onCopy = { copyToClipboard(context, room.meetingId, context.getString(R.string.msg_meeting_id_copied)) })
                             Spacer(modifier = Modifier.height(12.dp))
-                            MeetingInfoRow(label = stringResource(R.string.label_meeting_link), value = room.meetingLink, onCopy = { copyToClipboard(context, room.meetingLink, context.getString(R.string.msg_link_already_copied)) })
+                            MeetingInfoRow(label = stringResource(R.string.label_meeting_link), value = room.meetingLink, onCopy = { copyToClipboard(context, room.meetingLink, context.getString(R.string.msg_link_already_copied), room.userId, "personal_room_link") })
                             Spacer(modifier = Modifier.height(16.dp))
                         }
                     }
@@ -153,7 +154,16 @@ fun PersonalMeetingRoomScreen(onNavigateBack: () -> Unit = {}, onNavigateToMeeti
 
 fun formatMeetingId(meetingId: String): String = if (meetingId.length == 10) "${meetingId.substring(0, 3)} ${meetingId.substring(3, 6)} ${meetingId.substring(6)}" else meetingId
 
-fun copyToClipboard(context: Context, text: String, message: String) {
+fun copyToClipboard(
+    context: Context,
+    text: String,
+    message: String,
+    userId: String? = null,
+    actionType: String? = null
+) {
     (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newPlainText("label", text))
+    if (userId != null && actionType != null) {
+        DataRepository.getInstance(context).recordClipboardAction(userId, actionType, text)
+    }
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

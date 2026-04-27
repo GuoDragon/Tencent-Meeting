@@ -225,6 +225,7 @@ fun MeetingDetailsScreen(
         // 成员管理页面
         if (showMembersManage) {
             MembersManageScreen(
+                meetingId = meetingId,
                 onDismiss = { showMembersManage = false },
                 micEnabled = micEnabled,
                 videoEnabled = videoEnabled

@@ -1,6 +1,7 @@
 package com.example.tencent_meeting_sim.presentation.meeting
 
 import com.example.tencent_meeting_sim.presentation.meeting.MembersManageContract
+import com.example.tencent_meeting_sim.common.utils.UserSortUtils
 import com.example.tencent_meeting_sim.data.repository.DataRepository
 import com.example.tencent_meeting_sim.data.model.InvitationStatus
 import com.example.tencent_meeting_sim.data.model.MeetingInvitation
@@ -11,7 +12,9 @@ import kotlinx.coroutines.launch
 import java.util.UUID
 
 class MembersManagePresenter(
-    private val dataRepository: DataRepository
+    private val dataRepository: DataRepository,
+    private val meetingId: String,
+    private val currentUserId: String = "user001"
 ) : MembersManageContract.Presenter {
 
     private var view: MembersManageContract.View? = null
@@ -82,7 +85,7 @@ class MembersManagePresenter(
                 view?.showLoading()
 
                 // 获取可邀请的联系人
-                val availableContacts = dataRepository.getAvailableUsersToInvite("meeting001", "user001")
+                val availableContacts = dataRepository.getAvailableUsersToInvite(meetingId, currentUserId)
 
                 if (availableContacts.isEmpty()) {
                     view?.showError("暂无可邀请的联系人")
@@ -102,7 +105,7 @@ class MembersManagePresenter(
         presenterScope.launch {
             try {
                 view?.showLoading()
-                val availableContacts = dataRepository.getAvailableUsersToInvite("meeting001", "user001")
+                val availableContacts = dataRepository.getAvailableUsersToInvite(meetingId, currentUserId)
                 view?.hideLoading()
                 view?.showInviteDialog(availableContacts)
             } catch (e: Exception) {
@@ -121,8 +124,8 @@ class MembersManagePresenter(
                 selectedUserIds.forEach { userId ->
                     val invitation = MeetingInvitation(
                         invitationId = UUID.randomUUID().toString(),
-                        meetingId = "meeting001",
-                        inviterId = "user001", // 主持人ID
+                        meetingId = meetingId,
+                        inviterId = currentUserId, // 主持人ID
                         inviteeId = userId,
                         status = InvitationStatus.PENDING,
                         invitedTime = currentTime
@@ -148,7 +151,7 @@ class MembersManagePresenter(
                     loadMembers()
                 } else {
                     val users = dataRepository.getUsers()
-                    val filtered = users.filter { it.username.contains(query) }
+                    val filtered = UserSortUtils.sortUsers(users.filter { it.username.contains(query) })
                     view?.showMembers(filtered)
                 }
             } catch (e: Exception) {
@@ -164,9 +167,9 @@ class MembersManagePresenter(
                     .filter { it.status == InvitationStatus.PENDING }
 
                 val allUsers = dataRepository.getUsers()
-                val invitedUsers = allUsers.filter { user ->
+                val invitedUsers = UserSortUtils.sortUsers(allUsers.filter { user ->
                     invitations.any { it.inviteeId == user.userId }
-                }
+                })
 
                 view?.updateInvitedMembers(invitedUsers)
             } catch (e: Exception) {
